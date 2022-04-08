@@ -18,7 +18,22 @@ import lombok.Data;
 @ApiModel(description = "医院设置")
 @TableName("hospital_set")
 public class CampusSet extends BaseEntity {
-	
+	public String getSignKey() {
+		return signKey;
+	}
+
+	public void setSignKey(String signKey) {
+		this.signKey = signKey;
+	}
+
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+
 	private static final long serialVersionUID = 1L;
 
 	@ApiModelProperty(value = "医院名称")

@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.group2.campus.service.HospitalSetService;
 import com.group2.nustudy.common.result.Result;
+import com.group2.nustudy.common.utils.MD5;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Random;
 
 /**
  * Author: Ying Tuo
@@ -79,4 +81,20 @@ public class HospitalSetController {
         return Result.ok(pageHospitalSet);
     }
 
+    //4 添加医院设置
+    @PostMapping("saveHospitalSet")
+    public Result saveHospitalSet(@RequestBody CampusSet campusSet) {
+        //设置状态 1 使用 0 不能使用
+        campusSet.setStatus(1);
+        //签名秘钥
+        Random random = new Random();
+        campusSet.setSignKey(MD5.encrypt(System.currentTimeMillis()+""+random.nextInt(1000)));
+        //调用service
+        boolean save = hospitalSetService.save(campusSet);
+        if(save) {
+            return Result.ok();
+        } else {
+            return Result.fail();
+        }
+    }
 }
