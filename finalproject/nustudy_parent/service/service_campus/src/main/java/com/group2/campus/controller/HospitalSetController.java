@@ -3,6 +3,7 @@ package com.group2.campus.controller;
 import com.atguigu.yygh.model.hosp.Hospital;
 import com.atguigu.yygh.model.hosp.HospitalSet;
 import com.group2.campus.service.HospitalSetService;
+import com.group2.nustudy.common.result.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,17 +28,21 @@ public class HospitalSetController {
     // http://localhost:8201/admin/hosp/hospitalSet/findAll
     @ApiOperation(value = "Get all campus info list")
     @GetMapping("findAll")
-    public List<HospitalSet> findAllHospitalSet(){
+    public Result findAllHospitalSet(){
         List<HospitalSet> list = hospitalSetService.list();
-        return list;
+        return Result.ok(list);
     }
 
     // delete
     @ApiOperation(value = "Delete campus by its id")
     @DeleteMapping("{id}")
-    public boolean removeHospitalSet(@PathVariable Long id){
+    public Result removeHospitalSet(@PathVariable Long id){
         boolean flag = hospitalSetService.removeById(id);
-        return flag;
+        if (flag){
+            return Result.ok();
+        }else{
+            return Result.fail();
+        }
     }
 
 }
