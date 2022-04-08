@@ -17,7 +17,7 @@ import lombok.Data;
 @Data
 @ApiModel(description = "医院设置")
 @TableName("hospital_set")
-public class HospitalSet extends BaseEntity {
+public class CampusSet extends BaseEntity {
 	
 	private static final long serialVersionUID = 1L;
 

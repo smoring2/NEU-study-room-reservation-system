@@ -1,6 +1,6 @@
 package com.group2.campus.mapper;
 
-import com.atguigu.yygh.model.hosp.HospitalSet;
+import com.atguigu.yygh.model.hosp.CampusSet;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -8,5 +8,5 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * Created Time: $[Date]
  * Description:
  */
-public interface HospitialSetMapper extends BaseMapper<HospitalSet> {
+public interface HospitialSetMapper extends BaseMapper<CampusSet> {
 }

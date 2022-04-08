@@ -1,6 +1,6 @@
 package com.group2.campus.service.impl;
 
-import com.atguigu.yygh.model.hosp.HospitalSet;
+import com.atguigu.yygh.model.hosp.CampusSet;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.group2.campus.mapper.HospitialSetMapper;
 import com.group2.campus.service.HospitalSetService;
@@ -12,5 +12,5 @@ import org.springframework.stereotype.Service;
  * Description:
  */
 @Service
-public class HospitalSetServiceImpl extends ServiceImpl<HospitialSetMapper, HospitalSet> implements HospitalSetService {
+public class HospitalSetServiceImpl extends ServiceImpl<HospitialSetMapper, CampusSet> implements HospitalSetService {
 }

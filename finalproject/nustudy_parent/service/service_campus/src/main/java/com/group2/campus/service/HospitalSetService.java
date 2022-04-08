@@ -1,6 +1,6 @@
 package com.group2.campus.service;
 
-import com.atguigu.yygh.model.hosp.HospitalSet;
+import com.atguigu.yygh.model.hosp.CampusSet;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -8,5 +8,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * Created Time: $[Date]
  * Description:
  */
-public interface HospitalSetService extends IService<HospitalSet> {
+public interface HospitalSetService extends IService<CampusSet> {
 }
