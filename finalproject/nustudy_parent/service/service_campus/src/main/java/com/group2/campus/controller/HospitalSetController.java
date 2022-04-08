@@ -97,4 +97,49 @@ public class HospitalSetController {
             return Result.fail();
         }
     }
+
+    //5 根据id获取医院设置
+    @GetMapping("getHospSet/{id}")
+    public Result getHospSet(@PathVariable Long id) {
+//        try {
+//            //模拟异常
+//            int a = 1/0;
+//        }catch (Exception e) {
+//            throw new YyghException("失败",201);
+//        }
+
+        CampusSet campusSet = hospitalSetService.getById(id);
+        return Result.ok(campusSet);
+    }
+
+    //6 修改医院设置
+    @PostMapping("updateHospitalSet")
+    public Result updateHospitalSet(@RequestBody CampusSet campusSet) {
+        boolean flag = hospitalSetService.updateById(campusSet);
+        if(flag) {
+            return Result.ok();
+        } else {
+            return Result.fail();
+        }
+    }
+
+    //7 批量删除医院设置
+    @DeleteMapping("batchRemove")
+    public Result batchRemoveHospitalSet(@RequestBody List<Long> idList) {
+        hospitalSetService.removeByIds(idList);
+        return Result.ok();
+    }
+
+    //8 医院设置锁定和解锁
+    @PutMapping("lockHospitalSet/{id}/{status}")
+    public Result lockHospitalSet(@PathVariable Long id,
+                                  @PathVariable Integer status) {
+        //根据id查询医院设置信息
+        CampusSet campusSet = hospitalSetService.getById(id);
+        //设置状态
+        campusSet.setStatus(status);
+        //调用方法
+        hospitalSetService.updateById(campusSet);
+        return Result.ok();
+    }
 }
