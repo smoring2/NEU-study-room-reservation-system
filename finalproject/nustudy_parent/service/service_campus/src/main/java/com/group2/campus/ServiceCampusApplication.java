@@ -2,6 +2,7 @@ package com.group2.campus;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
 /**
  * Author: Ying Tuo
@@ -9,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * Description:
  */
 @SpringBootApplication
+@ComponentScan(basePackages = "com.group2") // set the scan rules; for example, in order to find the Swagger2Config under common/service_util
 public class ServiceCampusApplication {
     public static void main(String[] args) {
         SpringApplication.run(ServiceCampusApplication.class, args);
