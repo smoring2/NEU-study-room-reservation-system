@@ -142,4 +142,15 @@ public class HospitalSetController {
         hospitalSetService.updateById(campusSet);
         return Result.ok();
     }
+
+
+    //9 发送签名秘钥
+    @PutMapping("sendKey/{id}")
+    public Result lockHospitalSet(@PathVariable Long id) {
+        CampusSet campusSet = hospitalSetService.getById(id);
+        String signKey = campusSet.getSignKey();
+        String hoscode = campusSet.getHoscode();
+        //TODO 发送短信
+        return Result.ok();
+    }
 }

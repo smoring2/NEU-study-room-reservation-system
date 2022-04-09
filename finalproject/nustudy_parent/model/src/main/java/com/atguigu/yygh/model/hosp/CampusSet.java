@@ -22,6 +22,10 @@ public class CampusSet extends BaseEntity {
 		return signKey;
 	}
 
+	public String getHoscode() {
+		return hoscode;
+	}
+
 	public void setSignKey(String signKey) {
 		this.signKey = signKey;
 	}
