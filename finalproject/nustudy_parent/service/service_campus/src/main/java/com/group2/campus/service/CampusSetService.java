@@ -8,5 +8,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * Created Time: $[Date]
  * Description:
  */
-public interface HospitalSetService extends IService<CampusSet> {
+public interface CampusSetService extends IService<CampusSet> {
 }
