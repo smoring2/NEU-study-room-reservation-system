@@ -3,46 +3,70 @@
     Campus set list
     <el-form :inline="true" class="demo-form-inline">
       <el-form-item>
-        <el-input v-model="searchObj.hosname" placeholder="医院名称"/>
+        <el-input v-model="searchObj.hosname" placeholder="Campus Name" />
       </el-form-item>
       <el-form-item>
-        <el-input v-model="searchObj.hoscode" placeholder="医院编号"/>
+        <el-input v-model="searchObj.hoscode" placeholder="Campus Code" />
       </el-form-item>
-      <el-button type="primary" icon="el-icon-search" @click="getList()">查询</el-button>
+      <el-button type="primary" icon="el-icon-search" @click="getList()"
+        >Search</el-button
+      >
     </el-form>
 
     <div>
-      <el-button type="danger" size="mini" @click="removeRows()">Delete All Chosen records</el-button>
+      <el-button type="danger" size="mini" @click="removeRows()"
+        >Delete All Chosen records</el-button
+      >
     </div>
     <el-table
-      :data="list" stripe style="width: 100%" @selection-change="handleSelectionChange">
-
-      <el-table-column type="selection" width="55"/>
-      <el-table-column prop="index" label="No." width="50"/>
-      <el-table-column prop="hosname" label="医院名称"/>
-      <el-table-column prop="hoscode" label="医院编号"/>
-      <el-table-column prop="apiUrl" label="api基础路径" width="180"/>
-      <el-table-column prop="contactsName" label="联系人姓名"/>
-      <el-table-column prop="contactsPhone" label="联系人手机"/>
-      <el-table-column label="状态" width="60">
+      :data="list"
+      stripe
+      style="width: 100%"
+      @selection-change="handleSelectionChange"
+    >
+      <el-table-column type="selection" width="55" />
+      <el-table-column prop="index" label="No." width="50" />
+      <el-table-column prop="hosname" label="Campus Name" />
+      <el-table-column prop="hoscode" label="Campus Code" />
+      <el-table-column prop="apiUrl" label="API Url" width="180" />
+      <el-table-column prop="contactsName" label="Contact (Name)" />
+      <el-table-column prop="contactsPhone" label="Contact (Phone)" />
+      <el-table-column label="Status" width="60">
         <template slot-scope="scope">
-          {{ scope.row.status === 1 ? 'online' : 'offline' }}
+          {{ scope.row.status === 1 ? "online" : "offline" }}
         </template>
       </el-table-column>
       <el-table-column label="operations" width="280" align="center">
         <template slot-scope="scope">
-          <el-button type="danger" size="mini"
-                     icon="el-icon-delete" @click="removeDataById(scope.row.id)">Delete
+          <el-button
+            type="danger"
+            size="mini"
+            icon="el-icon-delete"
+            @click="removeDataById(scope.row.id)"
+            >Delete
           </el-button>
-          <el-button v-if="scope.row.status==1" type="primary" size="mini"
-                     icon="el-icon-delete" @click="lockHospSet(scope.row.id, 0)">Lock
+          <el-button
+            v-if="scope.row.status == 1"
+            type="primary"
+            size="mini"
+            icon="el-icon-delete"
+            @click="lockHospSet(scope.row.id, 0)"
+            >Lock
           </el-button>
-          <el-button v-if="scope.row.status==0" type="danger" size="mini"
-                     icon="el-icon-delete" @click="lockHospSet(scope.row.id, 1)">Unlock
+          <el-button
+            v-if="scope.row.status == 0"
+            type="danger"
+            size="mini"
+            icon="el-icon-delete"
+            @click="lockHospSet(scope.row.id, 1)"
+            >Unlock
           </el-button>
           <router-link :to="'/hospSet/edit/' + scope.row.id">
-            <el-button type="primary" size="mini"
-                       icon="el-icon-edit"></el-button>
+            <el-button
+              type="primary"
+              size="mini"
+              icon="el-icon-edit"
+            ></el-button>
           </router-link>
         </template>
       </el-table-column>
@@ -58,7 +82,8 @@
   </div>
 </template>
 <script>
-import hospset from '@/api/hospset'
+//DEBUG TRANSLATE check src/api/hospset
+import hospset from "@/api/hospset";
 
 export default {
   data() {
@@ -69,74 +94,72 @@ export default {
       list: [],
       total: 0,
       multipleSelection: 0
-    }
+    };
   },
   created() {
-    this.getList()
+    this.getList();
   },
   methods: {
     getList(page = 1) {
-      this.current = page
-      hospset.getHospSetList(this.current, this.limit, this.searchObj)
+      this.current = page;
+      hospset
+        .getHospSetList(this.current, this.limit, this.searchObj)
         .then(response => {
-          this.list = response.data.records
-          this.total = response.data.total
-          console.log(response)
+          this.list = response.data.records;
+          this.total = response.data.total;
+          console.log(response);
         })
         .error(error => {
-          console.log(error)
-        })
+          console.log(error);
+        });
     },
 
     removeDataById(id) {
-      this.$confirm('It will delete this record.', 'Notice', {
-        confirmButtonText: 'Yes',
-        cancelButtonText: 'cancel',
-        type: 'warning'
+      this.$confirm("It will delete this record.", "Notice", {
+        confirmButtonText: "Yes",
+        cancelButtonText: "cancel",
+        type: "warning"
       }).then(() => {
-        hospset.deleteHospitalSet(id)
-          .then(response => {
-            this.$message({
-              type: 'success',
-              message: 'deleted!'
-            })
-            this.getList(1)
-          })
-      })
+        hospset.deleteHospitalSet(id).then(response => {
+          this.$message({
+            type: "success",
+            message: "deleted!"
+          });
+          this.getList(1);
+        });
+      });
     },
 
     removeRows() {
-      this.$confirm('It will delete all these chosen record.', 'Notice', {
-        confirmButtonText: 'Yes',
-        cancelButtonText: 'cancel',
-        type: 'warning'
+      this.$confirm("It will delete all these chosen record.", "Notice", {
+        confirmButtonText: "Yes",
+        cancelButtonText: "cancel",
+        type: "warning"
       }).then(() => {
-        var idList = []
+        var idList = [];
         for (var i = 0; i < this.multipleSelection.length; i++) {
-          var obj = this.multipleSelection[i]
-          var id = obj.id
-          idList.push(id)
+          var obj = this.multipleSelection[i];
+          var id = obj.id;
+          idList.push(id);
         }
-        hospset.batchRemoveHospitalSet(idList)
-          .then(result => {
-            this.$message({
-              type: 'success',
-              message: 'deleted!'
-            })
-            this.getList(1)
-          })
-      })
+        hospset.batchRemoveHospitalSet(idList).then(result => {
+          this.$message({
+            type: "success",
+            message: "deleted!"
+          });
+          this.getList(1);
+        });
+      });
     },
     handleSelectionChange(selection) {
-      console.log(selection)
-      this.multipleSelection = selection
+      console.log(selection);
+      this.multipleSelection = selection;
     },
     lockHospSet(id, status) {
-      hospset.lockHospSet(id, status)
-        .then(response => {
-          this.getList()
-        })
+      hospset.lockHospSet(id, status).then(response => {
+        this.getList();
+      });
     }
   }
-}
+};
 </script>

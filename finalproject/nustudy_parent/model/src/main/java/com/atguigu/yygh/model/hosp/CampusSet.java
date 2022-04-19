@@ -15,7 +15,7 @@ import lombok.Data;
  * @author qy
  */
 @Data
-@ApiModel(description = "医院设置")
+@ApiModel(description = "Campus Settings")
 @TableName("hospital_set")
 public class CampusSet extends BaseEntity {
 	public String getSignKey() {

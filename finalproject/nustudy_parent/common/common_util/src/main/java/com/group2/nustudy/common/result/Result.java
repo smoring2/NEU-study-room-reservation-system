@@ -8,16 +8,16 @@ import lombok.Data;
  * 全局统一返回结果类
  */
 @Data
-@ApiModel(value = "全局统一返回结果")
+@ApiModel(value = "Standardize the return format全局统一返回结果")
 public class Result<T> {
 
-    @ApiModelProperty(value = "返回码")
+    @ApiModelProperty(value = "responseCode")
     private Integer code;
 
-    @ApiModelProperty(value = "返回消息")
+    @ApiModelProperty(value = "responseMessage")
     private String message;
 
-    @ApiModelProperty(value = "返回数据")
+    @ApiModelProperty(value = "responseData")
     private T data;
 
     public Result(){}
@@ -72,7 +72,7 @@ public class Result<T> {
     }
 
     /**
-     * 操作成功
+     * Succeed
      * @param data
      * @param <T>
      * @return
@@ -87,7 +87,7 @@ public class Result<T> {
     }
 
     /**
-     * 操作失败
+     * Failed
      * @param data
      * @param <T>
      * @return

@@ -7,10 +7,10 @@ import lombok.Getter;
  */
 @Getter
 public enum ResultCodeEnum {
-
-    SUCCESS(200,"成功"),
-    FAIL(201, "失败"),
-    PARAM_ERROR( 202, "参数不正确"),
+// DEBUG TRANSLATE
+    SUCCESS(200,"Succeed"),
+    FAIL(201, "Failed"),
+    PARAM_ERROR( 202, "The param is wrong"),
     SERVICE_ERROR(203, "服务异常"),
     DATA_ERROR(204, "数据异常"),
     DATA_UPDATE_ERROR(205, "数据版本异常"),
