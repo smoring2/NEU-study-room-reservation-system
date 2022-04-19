@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/finalproject/nustudy_parent/common/common.iml" filepath="$PROJECT_DIR$/finalproject/nustudy_parent/common/common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/finalproject/nustudy_parent/common/common_util/common_util.iml" filepath="$PROJECT_DIR$/finalproject/nustudy_parent/common/common_util/common_util.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/cs6650-final-project.iml" filepath="$PROJECT_DIR$/.idea/cs6650-final-project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/finalproject/nustudy_parent/model/model.iml" filepath="$PROJECT_DIR$/finalproject/nustudy_parent/model/model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/finalproject/nustudy_parent/nustudy_parent.iml" filepath="$PROJECT_DIR$/finalproject/nustudy_parent/nustudy_parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/finalproject/nustudy_parent/service/service.iml" filepath="$PROJECT_DIR$/finalproject/nustudy_parent/service/service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/finalproject/nustudy_parent/service/service_campus/service_campus.iml" filepath="$PROJECT_DIR$/finalproject/nustudy_parent/service/service_campus/service_campus.iml" />
+      <module fileurl="file://$PROJECT_DIR$/finalproject/nustudy_parent/common/service_util/service_util.iml" filepath="$PROJECT_DIR$/finalproject/nustudy_parent/common/service_util/service_util.iml" />
+    </modules>
+  </component>
+</project>

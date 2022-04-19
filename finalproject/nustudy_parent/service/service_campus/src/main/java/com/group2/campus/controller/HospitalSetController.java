@@ -25,7 +25,8 @@ import java.util.Random;
 @Api(tags = "Campus meeting room information management")
 @RestController
 @RequestMapping("/admin/hosp/hospitalSet")
-public class HospitalSetController {
+@CrossOrigin
+class HospitalSetController {
 
     @Autowired
     private CampusSetService campusSetService;
@@ -82,7 +83,7 @@ public class HospitalSetController {
     }
 
     //4 添加医院设置
-    @PostMapping("saveHospitalSet")
+    @PostMapping("saveHospSet")
     public Result saveHospitalSet(@RequestBody CampusSet campusSet) {
         //设置状态 1 使用 0 不能使用
         campusSet.setStatus(1);
@@ -113,7 +114,7 @@ public class HospitalSetController {
     }
 
     //6 修改医院设置
-    @PostMapping("updateHospitalSet")
+    @PostMapping("updateHospSet")
     public Result updateHospitalSet(@RequestBody CampusSet campusSet) {
         boolean flag = campusSetService.updateById(campusSet);
         if(flag) {
@@ -131,7 +132,7 @@ public class HospitalSetController {
     }
 
     //8 医院设置锁定和解锁
-    @PutMapping("lockHospitalSet/{id}/{status}")
+    @PutMapping("lockHospSet/{id}/{status}")
     public Result lockHospitalSet(@PathVariable Long id,
                                   @PathVariable Integer status) {
         //根据id查询医院设置信息
