@@ -1,6 +1,6 @@
 package com.group2.campus.service.impl;
 
-import com.atguigu.yygh.model.hosp.CampusSet;
+import com.group2.nustudy.model.hosp.CampusSet;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.group2.campus.mapper.HospitalSetMapper;
 import com.group2.campus.service.CampusSetService;
