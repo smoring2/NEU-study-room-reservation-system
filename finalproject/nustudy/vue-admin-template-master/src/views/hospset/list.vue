@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    Campus set list
+    Campus Set List
     <el-form :inline="true" class="demo-form-inline">
       <el-form-item>
         <el-input v-model="searchObj.hosname" placeholder="Campus Name" />
@@ -15,7 +15,7 @@
 
     <div>
       <el-button type="danger" size="mini" @click="removeRows()"
-        >Delete All Chosen records</el-button
+        >Delete All Chosen Records</el-button
       >
     </div>
     <el-table
@@ -38,6 +38,7 @@
       </el-table-column>
       <el-table-column label="operations" width="280" align="center">
         <template slot-scope="scope">
+          <!-- Delete -->
           <el-button
             type="danger"
             size="mini"
@@ -45,6 +46,7 @@
             @click="removeDataById(scope.row.id)"
             >Delete
           </el-button>
+          <!-- Lcok -->
           <el-button
             v-if="scope.row.status == 1"
             type="primary"
@@ -53,6 +55,7 @@
             @click="lockHospSet(scope.row.id, 0)"
             >Lock
           </el-button>
+          <!-- Unlock -->
           <el-button
             v-if="scope.row.status == 0"
             type="danger"
@@ -71,6 +74,7 @@
         </template>
       </el-table-column>
     </el-table>
+    <!-- Pagination -->
     <el-pagination
       :current-page="page"
       :page-size="limit"
@@ -117,13 +121,13 @@ export default {
     removeDataById(id) {
       this.$confirm("It will delete this record.", "Notice", {
         confirmButtonText: "Yes",
-        cancelButtonText: "cancel",
+        cancelButtonText: "Cancel",
         type: "warning"
       }).then(() => {
         hospset.deleteHospitalSet(id).then(response => {
           this.$message({
             type: "success",
-            message: "deleted!"
+            message: "Deleted!"
           });
           this.getList(1);
         });
@@ -133,7 +137,7 @@ export default {
     removeRows() {
       this.$confirm("It will delete all these chosen record.", "Notice", {
         confirmButtonText: "Yes",
-        cancelButtonText: "cancel",
+        cancelButtonText: "Cancel",
         type: "warning"
       }).then(() => {
         var idList = [];
@@ -145,7 +149,7 @@ export default {
         hospset.batchRemoveHospitalSet(idList).then(result => {
           this.$message({
             type: "success",
-            message: "deleted!"
+            message: "Deleted!"
           });
           this.getList(1);
         });

@@ -51,7 +51,7 @@ export default {
       hospset.saveHospSet(this.hospitalSet).then(response => {
         this.$message({
           type: "success",
-          message: "saved!"
+          message: "Saved!"
         });
         this.$router.push({ path: "/hospSet/list" });
       });
@@ -60,7 +60,7 @@ export default {
       hospset.updateHospSet(this.hospitalSet).then(response => {
         this.$message({
           type: "success",
-          message: "edited!"
+          message: "Updated!"
         });
         this.$router.push({ path: "/hospSet/list" });
       });

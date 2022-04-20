@@ -35,7 +35,7 @@ class HospitalSetController {
     // http://localhost:8201/admin/hosp/hospitalSet/findAll
     @ApiOperation(value = "Get all campus info list")
     @GetMapping("findAll")
-    public Result findAllHospitalSet(){
+    public Result findAllCampusSet(){
         List<CampusSet> list = campusSetService.list();
         return Result.ok(list);
     }
@@ -43,7 +43,7 @@ class HospitalSetController {
     // delete
     @ApiOperation(value = "Delete campus by its id")
     @DeleteMapping("{id}")
-    public Result removeHospitalSet(@PathVariable Long id){
+    public Result removeCampusSet(@PathVariable Long id){
         boolean flag = campusSetService.removeById(id);
         if (flag){
             return Result.ok();
@@ -54,11 +54,11 @@ class HospitalSetController {
 
     //3 条件查询带分页
     @PostMapping("findPageHospSet/{current}/{limit}")
-    public Result findPageHospSet(@PathVariable long current,
-                                  @PathVariable long limit,
-                                  // @RequestBody means that we should use json format to pass data to the backend,
-                                  // which can be more adaptive to frontend
-                                  @RequestBody(required = false) CampusSetQueryVo campusSetQueryVo) { //Vo class
+    public Result findPageCampusSet(@PathVariable long current,
+                                    @PathVariable long limit,
+                                    // @RequestBody means that we should use json format to pass data to the backend,
+                                    // which can be more adaptive to frontend
+                                    @RequestBody(required = false) CampusSetQueryVo campusSetQueryVo) { //Vo class
 
 
 
@@ -84,7 +84,7 @@ class HospitalSetController {
 
     //4 添加医院设置
     @PostMapping("saveHospSet")
-    public Result saveHospitalSet(@RequestBody CampusSet campusSet) {
+    public Result saveCampusSet(@RequestBody CampusSet campusSet) {
         //设置状态 1 使用 0 不能使用
         campusSet.setStatus(1);
         //签名秘钥
@@ -101,7 +101,7 @@ class HospitalSetController {
 
     //5 根据id获取医院设置
     @GetMapping("getHospSet/{id}")
-    public Result getHospSet(@PathVariable Long id) {
+    public Result getCampusSet(@PathVariable Long id) {
 //        try {
 //            //模拟异常
 //            int a = 1/0;
@@ -115,7 +115,7 @@ class HospitalSetController {
 
     //6 修改医院设置
     @PostMapping("updateHospSet")
-    public Result updateHospitalSet(@RequestBody CampusSet campusSet) {
+    public Result updateCampusSet(@RequestBody CampusSet campusSet) {
         boolean flag = campusSetService.updateById(campusSet);
         if(flag) {
             return Result.ok();
@@ -126,15 +126,15 @@ class HospitalSetController {
 
     //7 批量删除医院设置
     @DeleteMapping("batchRemove")
-    public Result batchRemoveHospitalSet(@RequestBody List<Long> idList) {
+    public Result batchRemoveCampusSet(@RequestBody List<Long> idList) {
         campusSetService.removeByIds(idList);
         return Result.ok();
     }
 
     //8 医院设置锁定和解锁
     @PutMapping("lockHospSet/{id}/{status}")
-    public Result lockHospitalSet(@PathVariable Long id,
-                                  @PathVariable Integer status) {
+    public Result lockCampusSet(@PathVariable Long id,
+                                @PathVariable Integer status) {
         //根据id查询医院设置信息
         CampusSet campusSet = campusSetService.getById(id);
         //设置状态
@@ -147,7 +147,7 @@ class HospitalSetController {
 
     //9 发送签名秘钥
     @PutMapping("sendKey/{id}")
-    public Result lockHospitalSet(@PathVariable Long id) {
+    public Result lockCampusSet(@PathVariable Long id) {
         CampusSet campusSet = campusSetService.getById(id);
         String signKey = campusSet.getSignKey();
         String hoscode = campusSet.getHoscode();
