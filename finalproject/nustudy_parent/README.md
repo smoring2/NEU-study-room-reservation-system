@@ -14,6 +14,8 @@ Spring Cache 引入了缓存 + Redis -> 可写入report [P64]
 
 P63更改了数据的id 手动导入形式
 
+[P73] http://localhost:9998/ 医院接口模拟管理系统
+
 TODO:
 /hosp 改路径时, nginx需要改；前端路径需要改；后端两个controller需要改 （Dict & ServiceCampusApp）
 # Report Group Project NU-Study
@@ -25,6 +27,12 @@ TODO:
 ## How To Test
 ## Configurations
 #### MySQL
+- Created the MySQL database schemas
+  - nustudy_management
+  - nustudy_campus
+  - nustudy_cmn
+  - nustudy_order
+  - nustudy_user
 #### MongoDB
 #### Nginx
 - Download Nginx. You can use homebrew to install nginx `brew install nginx`.  
