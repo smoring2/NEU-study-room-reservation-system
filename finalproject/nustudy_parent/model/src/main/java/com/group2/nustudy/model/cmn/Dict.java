@@ -15,6 +15,13 @@ import java.util.Map;
 @ApiModel(description = "数据字典")
 @TableName("dict")
 public class Dict {
+    public Long getId() {
+        return id;
+    }
+
+    public void setHasChildren(boolean hasChildren) {
+        this.hasChildren = hasChildren;
+    }
 
     private static final long serialVersionUID = 1L;
 
