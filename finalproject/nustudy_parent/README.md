@@ -14,6 +14,34 @@ Spring Cache 引入了缓存 + Redis -> 可写入report [P64]
 
 P63更改了数据的id 手动导入形式
 
-
 TODO:
-/hosp 该路径时, nginx需要改；前端路径需要改；后端两个controller需要改 （Dict & ServiceCampusApp）
+/hosp 改路径时, nginx需要改；前端路径需要改；后端两个controller需要改 （Dict & ServiceCampusApp）
+# Report Group Project NU-Study
+## Overview
+
+## Technical Impression
+### Tech stack
+
+## How To Test
+## Configurations
+#### MySQL
+#### MongoDB
+#### Nginx
+- Download Nginx. You can use homebrew to install nginx `brew install nginx`.  
+- Modify its config. If you use homebrew to install nginx, you can find its config file at `/usr/local/etc/nginx/nginx.conf`. Please add the following setting in the `http` block:
+    ```nginx configuration
+        server {
+                listen       9001;
+                server_name  localhost;
+    
+            location ~ /campus/ {
+                proxy_pass http://localhost:8201;
+            }
+            location ~ /cmn/ {
+                proxy_pass http://localhost:8202;
+            }
+        }
+    ```
+- Start the Nginx. For example, using `brew services restart nginx` to brew start the service.
+
+
