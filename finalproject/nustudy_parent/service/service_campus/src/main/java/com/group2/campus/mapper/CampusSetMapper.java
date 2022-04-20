@@ -8,5 +8,5 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * Created Time: $[Date]
  * Description:
  */
-public interface HospitalSetMapper extends BaseMapper<CampusSet> {
+public interface CampusSetMapper extends BaseMapper<CampusSet> {
 }

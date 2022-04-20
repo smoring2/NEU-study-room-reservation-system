@@ -61,29 +61,29 @@ export const constantRouterMap = [
   },
 
   {
-    path: "/hospSet",
+    path: "/campusset",
     component: Layout,
-    redirect: "/hospSet/list",
-    name: "hospital Set",
-    meta: { title: "hospital set", icon: "example" },
+    redirect: "/campusset/list",
+    name: "Campus Set",
+    meta: { title: "Campus set", icon: "example" },
     children: [
       {
         path: "list",
-        name: "hospitalSet list",
-        component: () => import("@/views/hospset/list"),
-        meta: { title: "hospitalSet list", icon: "table" }
+        name: "Campus Set List",
+        component: () => import("@/views/campusSet/list"),
+        meta: { title: "Campus Set List", icon: "table" }
       },
       {
         path: "add",
-        name: "hospitalSet add",
-        component: () => import("@/views/hospset/add"),
-        meta: { title: "hospitalSet Add", icon: "tree" }
+        name: "Campus Set Add",
+        component: () => import("@/views/campusSet/add"),
+        meta: { title: "Campus Set Add", icon: "tree" }
       },
       {
         path: "edit/:id",
-        name: "hospitalSet edit",
-        component: () => import("@/views/hospset/add"),
-        meta: { title: "hospitalSet edit", noCache: true },
+        name: "Campus Set Edit",
+        component: () => import("@/views/campusSet/add"),
+        meta: { title: "Campus Set Edit", noCache: true },
         hidden: true
       }
     ]

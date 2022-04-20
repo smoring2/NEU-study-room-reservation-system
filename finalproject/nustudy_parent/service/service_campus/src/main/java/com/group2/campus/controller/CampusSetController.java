@@ -24,15 +24,15 @@ import java.util.Random;
  */
 @Api(tags = "Campus meeting room information management")
 @RestController
-@RequestMapping("/admin/hosp/hospitalSet")
+@RequestMapping("/admin/campus/campusSet")
 @CrossOrigin
-class HospitalSetController {
+class CampusSetController {
 
     @Autowired
     private CampusSetService campusSetService;
 
     //read all data
-    // http://localhost:8201/admin/hosp/hospitalSet/findAll
+    // http://localhost:8201/admin/campus/campusSet/findAll
     @ApiOperation(value = "Get all campus info list")
     @GetMapping("findAll")
     public Result findAllCampusSet(){
@@ -53,7 +53,7 @@ class HospitalSetController {
     }
 
     //3 条件查询带分页
-    @PostMapping("findPageHospSet/{current}/{limit}")
+    @PostMapping("findPageCampusSet/{current}/{limit}")
     public Result findPageCampusSet(@PathVariable long current,
                                     @PathVariable long limit,
                                     // @RequestBody means that we should use json format to pass data to the backend,
@@ -83,7 +83,7 @@ class HospitalSetController {
     }
 
     //4 添加医院设置
-    @PostMapping("saveHospSet")
+    @PostMapping("saveCampusSet")
     public Result saveCampusSet(@RequestBody CampusSet campusSet) {
         //设置状态 1 使用 0 不能使用
         campusSet.setStatus(1);
@@ -100,7 +100,7 @@ class HospitalSetController {
     }
 
     //5 根据id获取医院设置
-    @GetMapping("getHospSet/{id}")
+    @GetMapping("getCampusSet/{id}")
     public Result getCampusSet(@PathVariable Long id) {
 //        try {
 //            //模拟异常
@@ -114,7 +114,7 @@ class HospitalSetController {
     }
 
     //6 修改医院设置
-    @PostMapping("updateHospSet")
+    @PostMapping("updateCampusSet")
     public Result updateCampusSet(@RequestBody CampusSet campusSet) {
         boolean flag = campusSetService.updateById(campusSet);
         if(flag) {
@@ -132,7 +132,7 @@ class HospitalSetController {
     }
 
     //8 医院设置锁定和解锁
-    @PutMapping("lockHospSet/{id}/{status}")
+    @PutMapping("lockCampusSet/{id}/{status}")
     public Result lockCampusSet(@PathVariable Long id,
                                 @PathVariable Integer status) {
         //根据id查询医院设置信息

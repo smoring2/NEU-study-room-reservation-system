@@ -8,15 +8,11 @@
       <el-form-item>
         <el-input v-model="searchObj.hoscode" placeholder="Campus Code" />
       </el-form-item>
-      <el-button type="primary" icon="el-icon-search" @click="getList()"
-        >Search</el-button
-      >
+      <el-button type="primary" icon="el-icon-search" @click="getList()">Search</el-button>
     </el-form>
 
     <div>
-      <el-button type="danger" size="mini" @click="removeRows()"
-        >Delete All Chosen Records</el-button
-      >
+      <el-button type="danger" size="mini" @click="removeRows()">Delete All Chosen Records</el-button>
     </div>
     <el-table
       :data="list"
@@ -43,33 +39,26 @@
             type="danger"
             size="mini"
             icon="el-icon-delete"
-            @click="removeDataById(scope.row.id)"
-            >Delete
-          </el-button>
+            @click="removeDataById(scope.row.id)">Delete</el-button>
           <!-- Lcok -->
           <el-button
             v-if="scope.row.status == 1"
             type="primary"
             size="mini"
             icon="el-icon-delete"
-            @click="lockHospSet(scope.row.id, 0)"
-            >Lock
-          </el-button>
+            @click="lockHospSet(scope.row.id, 0)">Lock</el-button>
           <!-- Unlock -->
           <el-button
             v-if="scope.row.status == 0"
             type="danger"
             size="mini"
             icon="el-icon-delete"
-            @click="lockHospSet(scope.row.id, 1)"
-            >Unlock
-          </el-button>
-          <router-link :to="'/hospSet/edit/' + scope.row.id">
+            @click="lockHospSet(scope.row.id, 1)">Unlock</el-button>
+          <router-link :to="'/campusset/edit/' + scope.row.id">
             <el-button
               type="primary"
               size="mini"
-              icon="el-icon-edit"
-            ></el-button>
+              icon="el-icon-edit"></el-button>
           </router-link>
         </template>
       </el-table-column>
@@ -86,8 +75,8 @@
   </div>
 </template>
 <script>
-//DEBUG TRANSLATE check src/api/hospset
-import hospset from "@/api/hospset";
+
+import campusset from "@/api/campusset";
 
 export default {
   data() {
@@ -98,24 +87,24 @@ export default {
       list: [],
       total: 0,
       multipleSelection: 0
-    };
+    }
   },
   created() {
-    this.getList();
+    this.getList()
   },
   methods: {
     getList(page = 1) {
-      this.current = page;
-      hospset
-        .getHospSetList(this.current, this.limit, this.searchObj)
+      this.current = page
+      campusset
+        .getCampusSetList(this.current, this.limit, this.searchObj)
         .then(response => {
-          this.list = response.data.records;
-          this.total = response.data.total;
-          console.log(response);
+          this.list = response.data.records
+          this.total = response.data.total
+          console.log(response)
         })
         .error(error => {
-          console.log(error);
-        });
+          console.log(error)
+        })
     },
 
     removeDataById(id) {
@@ -124,14 +113,14 @@ export default {
         cancelButtonText: "Cancel",
         type: "warning"
       }).then(() => {
-        hospset.deleteHospitalSet(id).then(response => {
+        campusset.deleteCampusSet(id).then(response => {
           this.$message({
             type: "success",
             message: "Deleted!"
-          });
-          this.getList(1);
-        });
-      });
+          })
+          this.getList(1)
+        })
+      })
     },
 
     removeRows() {
@@ -140,30 +129,30 @@ export default {
         cancelButtonText: "Cancel",
         type: "warning"
       }).then(() => {
-        var idList = [];
+        var idList = []
         for (var i = 0; i < this.multipleSelection.length; i++) {
-          var obj = this.multipleSelection[i];
-          var id = obj.id;
-          idList.push(id);
+          var obj = this.multipleSelection[i]
+          var id = obj.id
+          idList.push(id)
         }
-        hospset.batchRemoveHospitalSet(idList).then(result => {
+        campusset.batchRemoveCampusSet(idList).then(result => {
           this.$message({
-            type: "success",
+            type: 'success',
             message: "Deleted!"
-          });
-          this.getList(1);
-        });
-      });
+          })
+          this.getList(1)
+        })
+      })
     },
     handleSelectionChange(selection) {
-      console.log(selection);
-      this.multipleSelection = selection;
+      console.log(selection)
+      this.multipleSelection = selection
     },
     lockHospSet(id, status) {
-      hospset.lockHospSet(id, status).then(response => {
-        this.getList();
-      });
+      campusset.lockCampusSet(id, status).then(response => {
+        this.getList()
+      })
     }
   }
-};
+}
 </script>

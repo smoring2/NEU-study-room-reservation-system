@@ -72,17 +72,17 @@
 </template>
 
 <script>
-import dict from "@/api/dict";
+import dict from "@/api/dict"
 
 export default {
   data() {
     return {
       // dialogImportVisible:false,//设置弹框是否弹出
       list: [] //数据字典列表数组
-    };
+    }
   },
   created() {
-    this.getDictList(1);
+    this.getDictList(1)
   },
   // DEBUG TRANSLATE
   methods: {
@@ -102,18 +102,18 @@ export default {
     //     //调用导出接口
     //     window.location.href="http://localhost:8202/admin/cmn/dict/exportData"
     // },
-    //数据字典列表
+    // 数据字典列表
     getDictList(id) {
       dict.dictList(id).then(response => {
-        this.list = response.data;
-      });
+        this.list = response.data
+      })
     },
     getChildrens(tree, treeNode, resolve) {
       dict.dictList(tree.id).then(response => {
-        resolve(response.data);
-      });
+        resolve(response.data)
+      })
     }
   }
-};
+}
 </script>
 >

@@ -9,6 +9,7 @@
       <module fileurl="file://$PROJECT_DIR$/finalproject/nustudy_parent/nustudy_parent.iml" filepath="$PROJECT_DIR$/finalproject/nustudy_parent/nustudy_parent.iml" />
       <module fileurl="file://$PROJECT_DIR$/finalproject/nustudy_parent/service/service.iml" filepath="$PROJECT_DIR$/finalproject/nustudy_parent/service/service.iml" />
       <module fileurl="file://$PROJECT_DIR$/finalproject/nustudy_parent/service/service_campus/service_campus.iml" filepath="$PROJECT_DIR$/finalproject/nustudy_parent/service/service_campus/service_campus.iml" />
+      <module fileurl="file://$PROJECT_DIR$/finalproject/nustudy_parent/service/service_cmn/service_cmn.iml" filepath="$PROJECT_DIR$/finalproject/nustudy_parent/service/service_cmn/service_cmn.iml" />
       <module fileurl="file://$PROJECT_DIR$/finalproject/nustudy_parent/common/service_util/service_util.iml" filepath="$PROJECT_DIR$/finalproject/nustudy_parent/common/service_util/service_util.iml" />
     </modules>
   </component>

@@ -11,6 +11,7 @@
         <module name="service_campus" />
         <module name="service_util" />
         <module name="model" />
+        <module name="service_cmn" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -20,6 +21,7 @@
       <module name="nustudy_parent" target="1.8" />
       <module name="service" target="1.8" />
       <module name="service_campus" target="1.8" />
+      <module name="service_cmn" target="1.8" />
       <module name="service_util" target="1.8" />
     </bytecodeTargetLevel>
   </component>
@@ -28,6 +30,7 @@
       <module name="common_util" options="-parameters" />
       <module name="model" options="-parameters" />
       <module name="service_campus" options="-parameters" />
+      <module name="service_cmn" options="-parameters" />
       <module name="service_util" options="-parameters" />
     </option>
   </component>

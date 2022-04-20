@@ -25,53 +25,53 @@
 </template>
 
 <script>
-import hospset from "@/api/hospset";
+import campusset from "@/api/campusset";
 
 export default {
   data() {
     return {
       hospitalSet: {}
-    };
+    }
   },
   created() {
     if (this.$route.params && this.$route.params.id) {
-      const id = this.$route.params.id;
-      this.getHostSet(id);
+      const id = this.$route.params.id
+      this.getHostSet(id)
     } else {
-      this.hospitalSet = {};
+      this.hospitalSet = {}
     }
   },
   methods: {
     getHostSet(id) {
-      hospset.getHospSet(id).then(response => {
-        this.hospitalSet = response.data;
-      });
+      campusset.getCampusSet(id).then(response => {
+        this.hospitalSet = response.data
+      })
     },
     save() {
-      hospset.saveHospSet(this.hospitalSet).then(response => {
+      campusset.saveCampusSet(this.hospitalSet).then(response => {
         this.$message({
           type: "success",
           message: "Saved!"
-        });
-        this.$router.push({ path: "/hospSet/list" });
-      });
+        })
+        this.$router.push({ path: "/campusset/list" });
+      })
     },
     update() {
-      hospset.updateHospSet(this.hospitalSet).then(response => {
+      campusset.updateCampusSet(this.hospitalSet).then(response => {
         this.$message({
           type: "success",
           message: "Updated!"
-        });
-        this.$router.push({ path: "/hospSet/list" });
-      });
+        })
+        this.$router.push({ path: "/campusset/list" });
+      })
     },
     saveOrUpdate() {
       if (this.hospitalSet.id) {
-        this.update();
+        this.update()
       } else {
-        this.save();
+        this.save()
       }
     }
   }
-};
+}
 </script>

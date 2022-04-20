@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @MapperScan("com.group2.campus.mapper")
-public class HospConfig {
+public class CampusSetConfig {
     //Page divider plugin
     @Bean
     public PaginationInterceptor paginationInterceptor() {
