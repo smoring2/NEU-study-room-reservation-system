@@ -34,7 +34,7 @@ TODO:
                 listen       9001;
                 server_name  localhost;
     
-            location ~ /campus/ {
+            location ~ /campusset/ {
                 proxy_pass http://localhost:8201;
             }
             location ~ /cmn/ {
