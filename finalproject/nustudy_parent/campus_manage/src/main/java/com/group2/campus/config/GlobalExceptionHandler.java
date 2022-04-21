@@ -1,6 +1,6 @@
 package com.group2.campus.config;
 
-import com.group2.campus.util.YyghException;
+import com.group2.campus.util.NustudyException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -26,8 +26,8 @@ public class GlobalExceptionHandler {
      * @param e
      * @return
      */
-    @ExceptionHandler(YyghException.class)
-    public String error(YyghException e, Model model){
+    @ExceptionHandler(NustudyException.class)
+    public String error(NustudyException e, Model model){
         model.addAttribute("message", e.getMessage());
         return "error";
     }

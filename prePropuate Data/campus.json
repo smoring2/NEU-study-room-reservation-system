@@ -1,0 +1,23 @@
+{
+  "hoscode": "1000_00",
+  "hosname": "Bostom",
+  "hostype": "1",
+  "provinceCode": "110000",
+  "cityCode": "110100",
+  "districtCode": "110102",
+  "address": "360 Huntington Ave, Boston, MA 02115",
+  "intro": "Northeastern University (NU or NEU) is a private research university with its main campus in Boston. Established in 1898, the university offers undergraduate and graduate programs on its main campus in Boston as well as satellite campuses in Charlotte, North Carolina; Seattle, Washington; San Jose, California; Oakland, California; Portland, Maine; and Toronto and Vancouver in Canada.",
+  "route": "https://goo.gl/maps/xxirUfdndwrk2yT87",
+  "logoData":"",
+  "bookingRule": {
+    "cycle": "10",
+    "releaseTime": "08:30",
+    "stopTime": "11:30",
+    "quitDay": "-1",
+    "quitTime": "15:30",
+    "rule": [
+      "rule1",
+      "rule1"
+    ]
+  }
+}

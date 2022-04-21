@@ -9,7 +9,8 @@ import com.group2.campus.model.Schedule;
 import com.group2.campus.service.ApiService;
 import com.group2.campus.util.BeanUtils;
 import com.group2.campus.util.HttpRequestHelper;
-import com.group2.campus.util.YyghException;
+import com.group2.campus.util.MD5;
+import com.group2.campus.util.NustudyException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -98,7 +99,8 @@ public class ApiServiceImpl implements ApiService {
         paramMap.put("bookingRule",bookingRule.toJSONString());
 
         paramMap.put("timestamp", HttpRequestHelper.getTimestamp());
-        paramMap.put("sign", HttpRequestHelper.getSign(paramMap, this.getSignKey()));
+        paramMap.put("sign", MD5.encrypt(this.getSignKey()));
+//        paramMap.put("sign", HttpRequestHelper.getSign(paramMap, this.getSignKey()));
 
         JSONObject respone = HttpRequestHelper.sendRequest(paramMap,this.getApiUrl()+"/api/hosp/saveHospital");
         System.out.println(respone.toJSONString());
@@ -106,7 +108,7 @@ public class ApiServiceImpl implements ApiService {
         if(null != respone && 200 == respone.getIntValue("code")) {
             return true;
         } else {
-            throw new YyghException(respone.getString("message"), 201);
+            throw new NustudyException(respone.getString("message"), 201);
         }
     }
 
@@ -129,7 +131,7 @@ public class ApiServiceImpl implements ApiService {
             result.put("pageNum", pageNum);
             result.put("list", jsonObject.getJSONArray("content"));
         } else {
-            throw new YyghException(respone.getString("message"), 201);
+            throw new NustudyException(respone.getString("message"), 201);
         }
         return result;
     }
@@ -161,7 +163,7 @@ public class ApiServiceImpl implements ApiService {
             System.out.println(respone.toJSONString());
 
             if(null == respone || 200 != respone.getIntValue("code")) {
-                throw new YyghException(respone.getString("message"), 201);
+                throw new NustudyException(respone.getString("message"), 201);
             }
         }
         return true;
@@ -179,7 +181,7 @@ public class ApiServiceImpl implements ApiService {
         if(null != respone && 200 == respone.getIntValue("code")) {
             return true;
         } else {
-            throw new YyghException(respone.getString("message"), 201);
+            throw new NustudyException(respone.getString("message"), 201);
         }
     }
 
@@ -202,7 +204,7 @@ public class ApiServiceImpl implements ApiService {
             result.put("pageNum", pageNum);
             result.put("list", jsonObject.getJSONArray("content"));
         } else {
-            throw new YyghException(respone.getString("message"), 201);
+            throw new NustudyException(respone.getString("message"), 201);
         }
         return result;
     }
@@ -263,7 +265,7 @@ public class ApiServiceImpl implements ApiService {
             JSONObject respone = HttpRequestHelper.sendRequest(paramMap,this.getApiUrl()+"/api/hosp/saveSchedule");
             System.out.println(respone.toJSONString());
             if(null == respone || 200 != respone.getIntValue("code")) {
-                throw new YyghException(respone.getString("message"), 201);
+                throw new NustudyException(respone.getString("message"), 201);
             }
         }
         return false;
@@ -281,7 +283,7 @@ public class ApiServiceImpl implements ApiService {
         if(null != respone && 200 == respone.getIntValue("code")) {
             return true;
         } else {
-            throw new YyghException(respone.getString("message"), 201);
+            throw new NustudyException(respone.getString("message"), 201);
         }
     }
 
@@ -341,7 +343,7 @@ public class ApiServiceImpl implements ApiService {
             JSONObject respone = HttpRequestHelper.sendRequest(paramMap,"http://localhost/api/hosp/saveHospital");
             System.out.println(respone.toJSONString());
             if(null == respone || 200 != respone.getIntValue("code")) {
-                throw new YyghException(respone.getString("message"), 201);
+                throw new NustudyException(respone.getString("message"), 201);
             }
         }
     }

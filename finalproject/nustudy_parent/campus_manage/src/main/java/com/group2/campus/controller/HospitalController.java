@@ -2,11 +2,10 @@ package com.group2.campus.controller;
 
 import com.group2.campus.service.ApiService;
 import com.group2.campus.service.HospitalService;
-import com.group2.campus.util.*;
 import com.group2.campus.util.HttpRequestHelper;
 import com.group2.campus.util.Result;
 import com.group2.campus.util.ResultCodeEnum;
-import com.group2.campus.util.YyghException;
+import com.group2.campus.util.NustudyException;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -41,12 +40,12 @@ public class HospitalController {
 		try {
 			Map<String, Object> paramMap = HttpRequestHelper.switchMap(request.getParameterMap());
 			if(!HttpRequestHelper.isSignEquals(paramMap, apiService.getSignKey())) {
-				throw new YyghException(ResultCodeEnum.SIGN_ERROR);
+				throw new NustudyException(ResultCodeEnum.SIGN_ERROR);
 			}
 
 			Map<String, Object> resultMap = hospitalService.submitOrder(paramMap);
 			return Result.ok(resultMap);
-		} catch (YyghException e) {
+		} catch (NustudyException e) {
 			return Result.fail().message(e.getMessage());
 		}
 	}
@@ -61,12 +60,12 @@ public class HospitalController {
 		try {
 			Map<String, Object> paramMap = HttpRequestHelper.switchMap(request.getParameterMap());
 			if(!HttpRequestHelper.isSignEquals(paramMap, apiService.getSignKey())) {
-				throw new YyghException(ResultCodeEnum.SIGN_ERROR);
+				throw new NustudyException(ResultCodeEnum.SIGN_ERROR);
 			}
 
 			hospitalService.updatePayStatus(paramMap);
 			return Result.ok();
-		} catch (YyghException e) {
+		} catch (NustudyException e) {
 			return Result.fail().message(e.getMessage());
 		}
 	}
@@ -81,12 +80,12 @@ public class HospitalController {
 		try {
 			Map<String, Object> paramMap = HttpRequestHelper.switchMap(request.getParameterMap());
 			if(!HttpRequestHelper.isSignEquals(paramMap, apiService.getSignKey())) {
-				throw new YyghException(ResultCodeEnum.SIGN_ERROR);
+				throw new NustudyException(ResultCodeEnum.SIGN_ERROR);
 			}
 
 			hospitalService.updateCancelStatus(paramMap);
 			return Result.ok();
-		} catch (YyghException e) {
+		} catch (NustudyException e) {
 			return Result.fail().message(e.getMessage());
 		}
 	}

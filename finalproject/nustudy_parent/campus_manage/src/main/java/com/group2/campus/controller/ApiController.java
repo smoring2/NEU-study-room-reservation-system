@@ -3,7 +3,7 @@ package com.group2.campus.controller;
 import com.group2.campus.mapper.HospitalSetMapper;
 import com.group2.campus.model.HospitalSet;
 import com.group2.campus.service.ApiService;
-import com.group2.campus.util.YyghException;
+import com.group2.campus.util.NustudyException;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,12 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
-
-/**
- *
- * @author qy
- *
- */
 @Api(tags = "医院管理接口")
 @Controller
 @RequestMapping
@@ -56,7 +50,7 @@ public class ApiController extends BaseController {
 			}
 
 			model.addAttribute("hospital", apiService.getHospital());
-		} catch (YyghException e) {
+		} catch (NustudyException e) {
 			this.failureMessage(e.getMessage(), request);
 		} catch (Exception e) {
 			this.failureMessage("数据异常", request);
@@ -73,7 +67,7 @@ public class ApiController extends BaseController {
 	public String saveHospital(String data, HttpServletRequest request) {
 		try {
 			apiService.saveHospital(data);
-		} catch (YyghException e) {
+		} catch (NustudyException e) {
 			return this.failurePage(e.getMessage(),request);
 		} catch (Exception e) {
 			return this.failurePage("数据异常",request);
@@ -94,7 +88,7 @@ public class ApiController extends BaseController {
 			}
 
 			model.addAllAttributes(apiService.findDepartment(pageNum, pageSize));
-		} catch (YyghException e) {
+		} catch (NustudyException e) {
 			this.failureMessage(e.getMessage(), request);
 		} catch (Exception e) {
 			this.failureMessage("数据异常", request);
@@ -111,7 +105,7 @@ public class ApiController extends BaseController {
 	public String save(String data, HttpServletRequest request) {
 		try {
 			apiService.saveDepartment(data);
-		} catch (YyghException e) {
+		} catch (NustudyException e) {
 			return this.failurePage(e.getMessage(),request);
 		} catch (Exception e) {
 			return this.failurePage("数据异常",request);
@@ -132,7 +126,7 @@ public class ApiController extends BaseController {
 			}
 
 			model.addAllAttributes(apiService.findSchedule(pageNum, pageSize));
-		} catch (YyghException e) {
+		} catch (NustudyException e) {
 			this.failureMessage(e.getMessage(), request);
 		} catch (Exception e) {
 			this.failureMessage("数据异常", request);
@@ -150,7 +144,7 @@ public class ApiController extends BaseController {
 		try {
 			//data = data.replaceAll("\r\n", "").replace(" ", "");
 			apiService.saveSchedule(data);
-		} catch (YyghException e) {
+		} catch (NustudyException e) {
 			return this.failurePage(e.getMessage(),request);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -168,7 +162,7 @@ public class ApiController extends BaseController {
 	public String saveBatchHospital(HttpServletRequest request) {
 		try {
 			apiService.saveBatchHospital();
-		} catch (YyghException e) {
+		} catch (NustudyException e) {
 			return this.failurePage(e.getMessage(),request);
 		} catch (Exception e) {
 			return this.failurePage("数据异常",request);

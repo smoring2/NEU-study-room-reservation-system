@@ -8,7 +8,7 @@ import com.group2.campus.model.Patient;
 import com.group2.campus.model.Schedule;
 import com.group2.campus.service.HospitalService;
 import com.group2.campus.util.ResultCodeEnum;
-import com.group2.campus.util.YyghException;
+import com.group2.campus.util.NustudyException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,13 +42,13 @@ public class HospitalServiceImpl implements HospitalService {
 
         Schedule schedule = this.getSchedule(hosScheduleId);
         if(null == schedule) {
-            throw new YyghException(ResultCodeEnum.DATA_ERROR);
+            throw new NustudyException(ResultCodeEnum.DATA_ERROR);
         }
 
         if(!schedule.getHoscode().equals(hoscode)
                 || !schedule.getDepcode().equals(depcode)
                 || !schedule.getAmount().toString().equals(amount)) {
-            throw new YyghException(ResultCodeEnum.DATA_ERROR);
+            throw new NustudyException(ResultCodeEnum.DATA_ERROR);
         }
 
         //就诊人信息
@@ -92,7 +92,7 @@ public class HospitalServiceImpl implements HospitalService {
             //排班剩余预约数
             resultMap.put("availableNumber", schedule.getAvailableNumber());
         } else {
-            throw new YyghException(ResultCodeEnum.DATA_ERROR);
+            throw new NustudyException(ResultCodeEnum.DATA_ERROR);
         }
         return resultMap;
     }
@@ -104,7 +104,7 @@ public class HospitalServiceImpl implements HospitalService {
 
         OrderInfo orderInfo = orderInfoMapper.selectById(hosRecordId);
         if(null == orderInfo) {
-            throw new YyghException(ResultCodeEnum.DATA_ERROR);
+            throw new NustudyException(ResultCodeEnum.DATA_ERROR);
         }
         //已支付
         orderInfo.setOrderStatus(1);
@@ -119,7 +119,7 @@ public class HospitalServiceImpl implements HospitalService {
 
         OrderInfo orderInfo = orderInfoMapper.selectById(hosRecordId);
         if(null == orderInfo) {
-            throw new YyghException(ResultCodeEnum.DATA_ERROR);
+            throw new NustudyException(ResultCodeEnum.DATA_ERROR);
         }
         //已取消
         orderInfo.setOrderStatus(-1);

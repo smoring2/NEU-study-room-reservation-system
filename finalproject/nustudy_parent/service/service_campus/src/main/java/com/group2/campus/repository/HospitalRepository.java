@@ -11,4 +11,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface HospitalRepository extends MongoRepository<Hospital, String> {
+
+    // check whether the data existgetHospitalByHoscode(String hoscode);
+    Hospital getHospitalByHoscode(String hoscode); // no need to implement the method, since MongoRepository will help us to implement it based on its standard
 }
