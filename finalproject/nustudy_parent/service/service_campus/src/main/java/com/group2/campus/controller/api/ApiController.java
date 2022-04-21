@@ -1,6 +1,7 @@
 package com.group2.campus.controller.api;
 
 import com.group2.campus.service.HospitalService;
+import com.group2.campus.service.CampusSetService;
 import com.group2.nustudy.common.exception.NustudyException;
 import com.group2.nustudy.common.helper.HttpRequestHelper;
 import com.group2.nustudy.common.result.Result;
@@ -29,8 +30,8 @@ public class ApiController {
     @Autowired
     private HospitalService hospitalService;
 
-//    @Autowired
-//    private HospitalSetService hospitalSetService;
+    @Autowired
+    private CampusSetService campusSetService;
 //
 //    @Autowired
 //    private DepartmentService departmentService;
@@ -188,25 +189,25 @@ public class ApiController {
         Map<String, String[]> requestMap = request.getParameterMap();
         Map<String, Object> paramMap = HttpRequestHelper.switchMap(requestMap);
 
-//        //1 获取医院系统传递过来的签名,签名进行MD5加密
-//        String hospSign = (String)paramMap.get("sign");
-//
-//        //2 根据传递过来医院编码，查询数据库，查询签名
-//        String hoscode = (String)paramMap.get("hoscode");
-//        String signKey = hospitalSetService.getSignKey(hoscode);
-//
-//        //3 把数据库查询签名进行MD5加密
-//        String signKeyMd5 = MD5.encrypt(signKey);
-//
-//        //4 判断签名是否一致
-//        if(!hospSign.equals(signKeyMd5)) {
-//            throw new NustudyException(ResultCodeEnum.SIGN_ERROR);
-//        }
-//
-//        //传输过程中“+”转换为了“ ”，因此我们要转换回来
-//        String logoData = (String)paramMap.get("logoData");
-//        logoData = logoData.replaceAll(" ","+");
-//        paramMap.put("logoData",logoData);
+        //1 get key and encode with MD5
+        String hospSign = (String)paramMap.get("sign");
+
+        //2 lookup the sign via campus code
+        String hoscode = (String)paramMap.get("hoscode");
+        String signKey = campusSetService.getSignKey(hoscode);
+
+        //3 MD5 encode
+        String signKeyMd5 = MD5.encrypt(signKey);
+
+        //4 check key
+        if(!hospSign.equals(signKeyMd5)) {
+            throw new NustudyException(ResultCodeEnum.SIGN_ERROR);
+        }
+
+        // fix bug - in the transmission, '+' is converted to ' '
+        String logoData = (String)paramMap.get("logoData");
+        logoData = logoData.replaceAll(" ","+");
+        paramMap.put("logoData",logoData);
 
         //调用service的方法
         hospitalService.save(paramMap);

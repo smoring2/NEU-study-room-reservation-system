@@ -36,7 +36,7 @@ public class HttpRequestHelper {
     }
 
     /**
-     * 请求数据获取签名
+     * request sign
      * @param paramMap
      * @return
      */
@@ -50,14 +50,14 @@ public class HttpRequestHelper {
             str.append(param.getValue()).append("|");
         }
         str.append(signKey);
-        log.info("加密前：" + str.toString());
+        log.info("before encode：" + str.toString());
         String md5Str = MD5.encrypt(str.toString());
-        log.info("加密后：" + md5Str);
+        log.info("after encode：" + md5Str);
         return md5Str;
     }
 
     /**
-     * 签名校验
+     * check sign
      * @param paramMap
      * @return
      */
@@ -71,7 +71,7 @@ public class HttpRequestHelper {
     }
 
     /**
-     * 获取时间戳
+     * get timestamp
      * @return
      */
     public static long getTimestamp() {
@@ -79,7 +79,6 @@ public class HttpRequestHelper {
     }
 
     /**
-     * 封装同步请求
      * @param paramMap
      * @param url
      * @return
@@ -87,17 +86,16 @@ public class HttpRequestHelper {
     public static JSONObject sendRequest(Map<String, Object> paramMap, String url){
         String result = "";
         try {
-            //封装post参数
             StringBuilder postdata = new StringBuilder();
             for (Map.Entry<String, Object> param : paramMap.entrySet()) {
                 postdata.append(param.getKey()).append("=")
                         .append(param.getValue()).append("&");
             }
-            log.info(String.format("--> 发送请求：post data %1s", postdata));
+            log.info(String.format("--> Request：post data %1s", postdata));
             byte[] reqData = postdata.toString().getBytes("utf-8");
             byte[] respdata = HttpUtil.doPost(url,reqData);
             result = new String(respdata);
-            log.info(String.format("--> 应答结果：result data %1s", result));
+            log.info(String.format("--> Response：result data %1s", result));
         } catch (Exception ex) {
             ex.printStackTrace();
         }

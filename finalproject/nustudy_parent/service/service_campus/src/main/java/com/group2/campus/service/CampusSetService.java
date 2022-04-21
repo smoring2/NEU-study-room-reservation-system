@@ -9,4 +9,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * Description:
  */
 public interface CampusSetService extends IService<CampusSet> {
+    String getSignKey(String hoscode);
 }

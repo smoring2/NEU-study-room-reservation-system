@@ -15,6 +15,6 @@
 - sql 数据库 把“hospital”相关翻译为“campus”相关，并create sql初始化file （2file）
 - code 中“hospital”相关翻译为“campus”相关，如api路径 hosp/findAll
 
-跟分布式有关系：Nacos, Microservice, MongoDB(主从数据库，数据一致性)
+跟分布式有关系：Nacos, Microservice, Security(MD5 加密，[P75]), MongoDB(主从数据库，数据一致性)
 
 大家的available时间
