@@ -15,7 +15,12 @@
     <name>service_campus</name>
     <description>service_campus</description>
 
+    <!--    for mongoDB-->
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-mongodb</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
