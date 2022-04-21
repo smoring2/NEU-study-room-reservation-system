@@ -7,6 +7,7 @@ import com.group2.nustudy.common.helper.HttpRequestHelper;
 import com.group2.nustudy.common.result.Result;
 import com.group2.nustudy.common.result.ResultCodeEnum;
 import com.group2.nustudy.common.utils.MD5;
+import com.group2.nustudy.model.hosp.Hospital;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.ui.ModelMap;
@@ -155,32 +156,32 @@ public class ApiController {
 //        return Result.ok();
 //    }
 //
-//    //查询医院
-//    @PostMapping("hospital/show")
-//    public Result getHospital(HttpServletRequest request) {
-//        //获取传递过来医院信息
-//        Map<String, String[]> requestMap = request.getParameterMap();
-//        Map<String, Object> paramMap = HttpRequestHelper.switchMap(requestMap);
-//        //获取医院编号
-//        String hoscode = (String)paramMap.get("hoscode");
-//        //1 获取医院系统传递过来的签名,签名进行MD5加密
-//        String hospSign = (String)paramMap.get("sign");
-//
-//        //2 根据传递过来医院编码，查询数据库，查询签名
-//        String signKey = hospitalSetService.getSignKey(hoscode);
-//
-//        //3 把数据库查询签名进行MD5加密
-//        String signKeyMd5 = MD5.encrypt(signKey);
-//
-//        //4 判断签名是否一致
-//        if(!hospSign.equals(signKeyMd5)) {
-//            throw new YyghException(ResultCodeEnum.SIGN_ERROR);
-//        }
-//
-//        //调用service方法实现根据医院编号查询
-//        Hospital hospital = hospitalService.getByHoscode(hoscode);
-//        return Result.ok(hospital);
-//    }
+//    查询医院
+    @PostMapping("hospital/show")
+    public Result getHospital(HttpServletRequest request) {
+        //获取传递过来医院信息
+        Map<String, String[]> requestMap = request.getParameterMap();
+        Map<String, Object> paramMap = HttpRequestHelper.switchMap(requestMap);
+        //获取医院编号
+        String hoscode = (String)paramMap.get("hoscode");
+        //1 获取医院系统传递过来的签名,签名进行MD5加密
+        String hospSign = (String)paramMap.get("sign");
+
+        //2 根据传递过来医院编码，查询数据库，查询签名
+        String signKey = campusSetService.getSignKey(hoscode);
+
+        //3 把数据库查询签名进行MD5加密
+        String signKeyMd5 = MD5.encrypt(signKey);
+
+        //4 判断签名是否一致
+        if(!hospSign.equals(signKeyMd5)) {
+            throw new NustudyException(ResultCodeEnum.SIGN_ERROR);
+        }
+
+        //调用service方法实现根据医院编号查询
+        Hospital hospital = hospitalService.getByHoscode(hoscode);
+        return Result.ok(hospital);
+    }
 
     //上传医院接口
     @PostMapping("saveHospital")

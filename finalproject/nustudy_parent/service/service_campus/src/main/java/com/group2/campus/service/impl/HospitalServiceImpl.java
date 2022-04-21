@@ -48,11 +48,11 @@ public class HospitalServiceImpl implements HospitalService {
         }
     }
 
-//    @Override
-//    public Hospital getByHoscode(String hoscode) {
-//        Hospital hospital = hospitalRepository.getHospitalByHoscode(hoscode);
-//        return hospital;
-//    }
+    @Override
+    public Hospital getByHoscode(String hoscode) {
+        Hospital hospital = hospitalRepository.getHospitalByHoscode(hoscode);
+        return hospital;
+    }
 //
 //    //医院列表(条件查询分页)
 //    @Override
