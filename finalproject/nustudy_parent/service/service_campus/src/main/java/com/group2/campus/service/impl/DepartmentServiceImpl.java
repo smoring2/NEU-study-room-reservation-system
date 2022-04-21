@@ -47,16 +47,16 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     @Override
     public Page<Department> findPageDepartment(int page, int limit, DepartmentQueryVo departmentQueryVo) {
-        // 创建Pageable对象，设置当前页和每页记录数
-        //0是第一页
+        // Create Pageable object，set the current page and page limitation
+        // 0 is the first page
         Pageable pageable = PageRequest.of(page-1,limit);
-        // 创建Example对象
+
         Department department = new Department();
         BeanUtils.copyProperties(departmentQueryVo,department);
         department.setIsDeleted(0);
 
         ExampleMatcher matcher = ExampleMatcher.matching()
-            .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING)
+            .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING) // fuzzy query
             .withIgnoreCase(true);
         Example<Department> example = Example.of(department,matcher);
 

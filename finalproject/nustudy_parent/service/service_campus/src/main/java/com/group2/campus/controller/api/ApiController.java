@@ -8,7 +8,9 @@ import com.group2.nustudy.common.helper.HttpRequestHelper;
 import com.group2.nustudy.common.result.Result;
 import com.group2.nustudy.common.result.ResultCodeEnum;
 import com.group2.nustudy.common.utils.MD5;
+import com.group2.nustudy.model.hosp.Department;
 import com.group2.nustudy.model.hosp.Hospital;
+import com.group2.nustudy.vo.hosp.DepartmentQueryVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.ui.ModelMap;
@@ -94,41 +96,41 @@ public class ApiController {
 //        return Result.ok();
 //    }
 //
-//    //删除科室接口
-//    @PostMapping("department/remove")
-//    public Result removeDepartment(HttpServletRequest request) {
-//        //获取传递过来科室信息
-//        Map<String, String[]> requestMap = request.getParameterMap();
-//        Map<String, Object> paramMap = HttpRequestHelper.switchMap(requestMap);
-//        //医院编号 和 科室编号
-//        String hoscode = (String)paramMap.get("hoscode");
-//        String depcode = (String)paramMap.get("depcode");
-//        //TODO 签名校验
-//        departmentService.remove(hoscode,depcode);
-//        return Result.ok();
-//    }
-//
-//    //查询科室接口
-//    @PostMapping("department/list")
-//    public Result findDepartment(HttpServletRequest request) {
-//        //获取传递过来科室信息
-//        Map<String, String[]> requestMap = request.getParameterMap();
-//        Map<String, Object> paramMap = HttpRequestHelper.switchMap(requestMap);
-//
-//        //医院编号
-//        String hoscode = (String)paramMap.get("hoscode");
-//        //当前页 和 每页记录数
-//        int page = StringUtils.isEmpty(paramMap.get("page")) ? 1 : Integer.parseInt((String)paramMap.get("page"));
-//        int limit = StringUtils.isEmpty(paramMap.get("limit")) ? 1 : Integer.parseInt((String)paramMap.get("limit"));
-//        //TODO 签名校验
-//
-//        DepartmentQueryVo departmentQueryVo = new DepartmentQueryVo();
-//        departmentQueryVo.setHoscode(hoscode);
-//        //调用service方法
-//        Page<Department> pageModel = departmentService.findPageDepartment(page,limit,departmentQueryVo);
-//        return Result.ok(pageModel);
-//    }
-//
+    //删除科室接口
+    @PostMapping("department/remove")
+    public Result removeDepartment(HttpServletRequest request) {
+        //获取传递过来科室信息
+        Map<String, String[]> requestMap = request.getParameterMap();
+        Map<String, Object> paramMap = HttpRequestHelper.switchMap(requestMap);
+        //医院编号 和 科室编号
+        String hoscode = (String)paramMap.get("hoscode");
+        String depcode = (String)paramMap.get("depcode");
+        //TODO 签名校验
+        departmentService.remove(hoscode,depcode);
+        return Result.ok();
+    }
+
+    //查询科室接口
+    @PostMapping("department/list")
+    public Result findDepartment(HttpServletRequest request) {
+        // get department info
+        Map<String, String[]> requestMap = request.getParameterMap();
+        Map<String, Object> paramMap = HttpRequestHelper.switchMap(requestMap);
+
+        // campus code
+        String hoscode = (String)paramMap.get("hoscode");
+        // current page and the limitation of each page
+        int page = StringUtils.isEmpty(paramMap.get("page")) ? 1 : Integer.parseInt((String)paramMap.get("page"));
+        int limit = StringUtils.isEmpty(paramMap.get("limit")) ? 1 : Integer.parseInt((String)paramMap.get("limit"));
+        //TODO sign_key check
+
+        DepartmentQueryVo departmentQueryVo = new DepartmentQueryVo();
+        departmentQueryVo.setHoscode(hoscode);
+
+        Page<Department> pageModel = departmentService.findPageDepartment(page,limit,departmentQueryVo);
+        return Result.ok(pageModel);
+    }
+
     //上传科室接口
     @PostMapping("saveDepartment")
     public Result saveDepartment(HttpServletRequest request) {
