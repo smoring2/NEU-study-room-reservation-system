@@ -4,7 +4,10 @@ import com.alibaba.fastjson.JSONObject;
 import com.group2.campus.repository.HospitalRepository;
 import com.group2.campus.service.HospitalService;
 import com.group2.nustudy.model.hosp.Hospital;
+import com.group2.nustudy.vo.hosp.HospitalQueryVo;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -53,7 +56,7 @@ public class HospitalServiceImpl implements HospitalService {
         Hospital hospital = hospitalRepository.getHospitalByHoscode(hoscode);
         return hospital;
     }
-//
+
 //    //医院列表(条件查询分页)
 //    @Override
 //    public Page<Hospital> selectHospPage(Integer page, Integer limit, HospitalQueryVo hospitalQueryVo) {
@@ -78,6 +81,7 @@ public class HospitalServiceImpl implements HospitalService {
 //
 //        return pages;
 //    }
+
 //
 //    //更新医院上线状态
 //    @Override
@@ -102,22 +106,22 @@ public class HospitalServiceImpl implements HospitalService {
 //        hospital.setBookingRule(null);
 //        return result;
 //    }
-//
-//    //获取医院名称
-//    @Override
-//    public String getHospName(String hoscode) {
-//        Hospital hospital = hospitalRepository.getHospitalByHoscode(hoscode);
-//        if(hospital != null) {
-//            return hospital.getHosname();
-//        }
-//        return null;
-//    }
-//
-//    //根据医院名称查询
-//    @Override
-//    public List<Hospital> findByHosname(String hosname) {
-//        return hospitalRepository.findHospitalByHosnameLike(hosname);
-//    }
+
+    //获取医院名称
+    @Override
+    public String getHospName(String hoscode) {
+        Hospital hospital = hospitalRepository.getHospitalByHoscode(hoscode);
+        if(hospital != null) {
+            return hospital.getHosname();
+        }
+        return null;
+    }
+
+    //根据医院名称查询
+    @Override
+    public List<Hospital> findByHosname(String hosname) {
+        return hospitalRepository.findHospitalByHosnameLike(hosname);
+    }
 //
 //    //根据医院编号获取医院预约挂号详情
 //    @Override
@@ -133,7 +137,7 @@ public class HospitalServiceImpl implements HospitalService {
 //        return result;
 //    }
 //
-//    //获取查询list集合，遍历进行医院等级封装
+    //获取查询list集合，遍历进行医院等级封装
 //    private Hospital setHospitalHosType(Hospital hospital) {
 //        //根据dictCode和value获取医院等级名称
 //        String hostypeString = dictFeignClient.getName("Hostype", hospital.getHostype());

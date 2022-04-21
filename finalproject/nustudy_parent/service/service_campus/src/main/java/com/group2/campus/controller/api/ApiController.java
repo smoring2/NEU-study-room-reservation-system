@@ -3,6 +3,7 @@ package com.group2.campus.controller.api;
 import com.group2.campus.service.DepartmentService;
 import com.group2.campus.service.HospitalService;
 import com.group2.campus.service.CampusSetService;
+import com.group2.campus.service.ScheduleService;
 import com.group2.nustudy.common.exception.NustudyException;
 import com.group2.nustudy.common.helper.HttpRequestHelper;
 import com.group2.nustudy.common.result.Result;
@@ -10,7 +11,9 @@ import com.group2.nustudy.common.result.ResultCodeEnum;
 import com.group2.nustudy.common.utils.MD5;
 import com.group2.nustudy.model.hosp.Department;
 import com.group2.nustudy.model.hosp.Hospital;
+import com.group2.nustudy.model.hosp.Schedule;
 import com.group2.nustudy.vo.hosp.DepartmentQueryVo;
+import com.group2.nustudy.vo.hosp.ScheduleQueryVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.ui.ModelMap;
@@ -40,62 +43,62 @@ public class ApiController {
     @Autowired
     private DepartmentService departmentService;
 
-//    @Autowired
-//    private ScheduleService scheduleService;
+    @Autowired
+    private ScheduleService scheduleService;
 
-//    //删除排班
-//    @PostMapping("schedule/remove")
-//    public Result remove(HttpServletRequest request) {
-//        //获取传递过来科室信息
-//        Map<String, String[]> requestMap = request.getParameterMap();
-//        Map<String, Object> paramMap = HttpRequestHelper.switchMap(requestMap);
-//        //获取医院编号和排班编号
-//        String hoscode = (String)paramMap.get("hoscode");
-//        String hosScheduleId = (String)paramMap.get("hosScheduleId");
-//
-//        //TODO 签名校验
-//
-//        scheduleService.remove(hoscode,hosScheduleId);
-//        return Result.ok();
-//    }
-//
-//    //查询排班接口
-//    @PostMapping("schedule/list")
-//    public Result findSchedule(HttpServletRequest request) {
-//        //获取传递过来科室信息
-//        Map<String, String[]> requestMap = request.getParameterMap();
-//        Map<String, Object> paramMap = HttpRequestHelper.switchMap(requestMap);
-//
-//        //医院编号
-//        String hoscode = (String)paramMap.get("hoscode");
-//
-//        //科室编号
-//        String depcode = (String)paramMap.get("depcode");
-//        //当前页 和 每页记录数
-//        int page = StringUtils.isEmpty(paramMap.get("page")) ? 1 : Integer.parseInt((String)paramMap.get("page"));
-//        int limit = StringUtils.isEmpty(paramMap.get("limit")) ? 1 : Integer.parseInt((String)paramMap.get("limit"));
-//        //TODO 签名校验
-//
-//        ScheduleQueryVo scheduleQueryVo = new ScheduleQueryVo();
-//        scheduleQueryVo.setHoscode(hoscode);
-//        scheduleQueryVo.setDepcode(depcode);
-//        //调用service方法
-//        Page<Schedule> pageModel = scheduleService.findPageSchedule(page,limit,scheduleQueryVo);
-//        return Result.ok(pageModel);
-//    }
-//
-//    //上传排班接口
-//    @PostMapping("saveSchedule")
-//    public Result saveSchedule(HttpServletRequest request) {
-//        //获取传递过来科室信息
-//        Map<String, String[]> requestMap = request.getParameterMap();
-//        Map<String, Object> paramMap = HttpRequestHelper.switchMap(requestMap);
-//
-//        //TODO 签名校验
-//        scheduleService.save(paramMap);
-//        return Result.ok();
-//    }
-//
+    // delete schedule api
+    @PostMapping("schedule/remove")
+    public Result remove(HttpServletRequest request) {
+        //获取传递过来科室信息
+        Map<String, String[]> requestMap = request.getParameterMap();
+        Map<String, Object> paramMap = HttpRequestHelper.switchMap(requestMap);
+        //获取医院编号和排班编号
+        String hoscode = (String)paramMap.get("hoscode");
+        String hosScheduleId = (String)paramMap.get("hosScheduleId");
+
+        //TODO sign_key check
+
+        scheduleService.remove(hoscode,hosScheduleId);
+        return Result.ok();
+    }
+
+    // lookup schedule api
+    @PostMapping("schedule/list")
+    public Result findSchedule(HttpServletRequest request) {
+        //获取传递过来科室信息
+        Map<String, String[]> requestMap = request.getParameterMap();
+        Map<String, Object> paramMap = HttpRequestHelper.switchMap(requestMap);
+
+        // campus code
+        String hoscode = (String)paramMap.get("hoscode");
+
+        //科室编号
+        String depcode = (String)paramMap.get("depcode");
+        //当前页 和 每页记录数
+        int page = StringUtils.isEmpty(paramMap.get("page")) ? 1 : Integer.parseInt((String)paramMap.get("page"));
+        int limit = StringUtils.isEmpty(paramMap.get("limit")) ? 1 : Integer.parseInt((String)paramMap.get("limit"));
+        //TODO sign_key check
+
+        ScheduleQueryVo scheduleQueryVo = new ScheduleQueryVo();
+        scheduleQueryVo.setHoscode(hoscode);
+        scheduleQueryVo.setDepcode(depcode);
+        //调用service方法
+        Page<Schedule> pageModel = scheduleService.findPageSchedule(page,limit,scheduleQueryVo);
+        return Result.ok(pageModel);
+    }
+
+    //上传排班接口
+    @PostMapping("saveSchedule")
+    public Result saveSchedule(HttpServletRequest request) {
+        //获取传递过来科室信息
+        Map<String, String[]> requestMap = request.getParameterMap();
+        Map<String, Object> paramMap = HttpRequestHelper.switchMap(requestMap);
+
+        //TODO sign_key check
+        scheduleService.save(paramMap);
+        return Result.ok();
+    }
+
     //删除科室接口
     @PostMapping("department/remove")
     public Result removeDepartment(HttpServletRequest request) {
@@ -105,7 +108,7 @@ public class ApiController {
         //医院编号 和 科室编号
         String hoscode = (String)paramMap.get("hoscode");
         String depcode = (String)paramMap.get("depcode");
-        //TODO 签名校验
+        //TODO sign_key check
         departmentService.remove(hoscode,depcode);
         return Result.ok();
     }

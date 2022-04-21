@@ -4,14 +4,13 @@ import com.group2.nustudy.model.hosp.Hospital;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
-/**
- * Author: Ying Tuo
- * Created Time: $[Date]
- * Description:
- */
-@Repository
-public interface HospitalRepository extends MongoRepository<Hospital, String> {
+import java.util.List;
 
-    // check whether the data existgetHospitalByHoscode(String hoscode);
-    Hospital getHospitalByHoscode(String hoscode); // no need to implement the method, since MongoRepository will help us to implement it based on its standard
+@Repository
+public interface HospitalRepository extends MongoRepository<Hospital,String> {
+    //判断是否存在数据
+    Hospital getHospitalByHoscode(String hoscode);
+
+    //根据医院名称查询
+    List<Hospital> findHospitalByHosnameLike(String hosname);
 }
