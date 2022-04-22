@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/finalproject/nustudy_parent/campus_manage/campus_manage.iml" filepath="$PROJECT_DIR$/finalproject/nustudy_parent/campus_manage/campus_manage.iml" />
       <module fileurl="file://$PROJECT_DIR$/finalproject/nustudy_parent/common/common.iml" filepath="$PROJECT_DIR$/finalproject/nustudy_parent/common/common.iml" />
       <module fileurl="file://$PROJECT_DIR$/finalproject/nustudy_parent/common/common_util/common_util.iml" filepath="$PROJECT_DIR$/finalproject/nustudy_parent/common/common_util/common_util.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/cs6650-final-project.iml" filepath="$PROJECT_DIR$/.idea/cs6650-final-project.iml" />
@@ -9,7 +10,12 @@
       <module fileurl="file://$PROJECT_DIR$/finalproject/nustudy_parent/nustudy_parent.iml" filepath="$PROJECT_DIR$/finalproject/nustudy_parent/nustudy_parent.iml" />
       <module fileurl="file://$PROJECT_DIR$/finalproject/nustudy_parent/service/service.iml" filepath="$PROJECT_DIR$/finalproject/nustudy_parent/service/service.iml" />
       <module fileurl="file://$PROJECT_DIR$/finalproject/nustudy_parent/service/service_campus/service_campus.iml" filepath="$PROJECT_DIR$/finalproject/nustudy_parent/service/service_campus/service_campus.iml" />
+      <module fileurl="file://$PROJECT_DIR$/finalproject/nustudy_parent/service_client/service_client.iml" filepath="$PROJECT_DIR$/finalproject/nustudy_parent/service_client/service_client.iml" />
       <module fileurl="file://$PROJECT_DIR$/finalproject/nustudy_parent/service/service_cmn/service_cmn.iml" filepath="$PROJECT_DIR$/finalproject/nustudy_parent/service/service_cmn/service_cmn.iml" />
+      <module fileurl="file://$PROJECT_DIR$/finalproject/nustudy_parent/service_client/service_cmn_client/service_cmn_client.iml" filepath="$PROJECT_DIR$/finalproject/nustudy_parent/service_client/service_cmn_client/service_cmn_client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/finalproject/nustudy_parent/service_client/service_hosp_client/service_hosp_client.iml" filepath="$PROJECT_DIR$/finalproject/nustudy_parent/service_client/service_hosp_client/service_hosp_client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/finalproject/nustudy_parent/service_client/service_order_client/service_order_client.iml" filepath="$PROJECT_DIR$/finalproject/nustudy_parent/service_client/service_order_client/service_order_client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/finalproject/nustudy_parent/service_client/service_user_client/service_user_client.iml" filepath="$PROJECT_DIR$/finalproject/nustudy_parent/service_client/service_user_client/service_user_client.iml" />
       <module fileurl="file://$PROJECT_DIR$/finalproject/nustudy_parent/common/service_util/service_util.iml" filepath="$PROJECT_DIR$/finalproject/nustudy_parent/common/service_util/service_util.iml" />
     </modules>
   </component>

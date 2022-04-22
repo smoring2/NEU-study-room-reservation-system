@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/finalproject/nustudy_parent/campus_manage/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/finalproject/nustudy_parent/common/common_util/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/finalproject/nustudy_parent/common/service_util/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/finalproject/nustudy_parent/model/src/main/java" charset="UTF-8" />
@@ -8,6 +9,10 @@
     <file url="file://$PROJECT_DIR$/finalproject/nustudy_parent/service/service_campus/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/finalproject/nustudy_parent/service/service_cmn/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/finalproject/nustudy_parent/service/service_cmn/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/finalproject/nustudy_parent/service_client/service_cmn_client/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/finalproject/nustudy_parent/service_client/service_hosp_client/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/finalproject/nustudy_parent/service_client/service_order_client/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/finalproject/nustudy_parent/service_client/service_user_client/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/finalproject/nustudy_parent/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/finalproject/nustudy_parent/src/main/resources" charset="UTF-8" />
   </component>

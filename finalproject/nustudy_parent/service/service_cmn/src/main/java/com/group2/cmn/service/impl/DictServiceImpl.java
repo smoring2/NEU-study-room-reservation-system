@@ -13,6 +13,7 @@ import com.group2.nustudy.model.cmn.Dict;
 import com.group2.nustudy.vo.cmn.DictEeVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
@@ -86,6 +87,27 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements Di
             EasyExcel.read(file.getInputStream(), DictEeVo.class, dictListener).sheet().doRead();
         } catch (IOException ioException) {
             ioException.printStackTrace();
+        }
+    }
+
+    @Override
+    public String getDictName(String dictCode, String value) {
+        QueryWrapper<Dict> wrapper = new QueryWrapper<>();
+        System.out.println("use wrapper: " + value + ", " + dictCode);
+        if (StringUtils.isEmpty(dictCode)) {
+            wrapper.eq("value", value);
+            Dict dict = baseMapper.selectOne(wrapper);
+            System.out.println("find dict: " + dict);
+            return dict.getName();
+        } else {
+            wrapper = new QueryWrapper<>();
+            wrapper.eq("dict_code", dictCode);
+            Dict codeDict = baseMapper.selectOne(wrapper);
+            Long id = codeDict.getId();
+            Dict finalDict = baseMapper.selectOne(new QueryWrapper<Dict>()
+                    .eq("parent_id", id)
+                    .eq("value", value));
+            return finalDict.getName();
         }
     }
 }

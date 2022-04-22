@@ -5,6 +5,8 @@
       <list>
         <option value="$PROJECT_DIR$/finalproject/nustudy_parent/pom.xml" />
         <option value="$PROJECT_DIR$/finalproject/nustudy_parent/service/service_cmn/pom.xml" />
+        <option value="$PROJECT_DIR$/finalproject/nustudy_parent/campus_manage/pom.xml" />
+        <option value="$PROJECT_DIR$/finalproject/nustudy_parent/service_client/pom.xml" />
       </list>
     </option>
   </component>

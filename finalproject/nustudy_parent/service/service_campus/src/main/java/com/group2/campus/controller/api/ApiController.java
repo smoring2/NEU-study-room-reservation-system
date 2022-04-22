@@ -1,7 +1,7 @@
 package com.group2.campus.controller.api;
 
+import com.group2.campus.service.CampusService;
 import com.group2.campus.service.DepartmentService;
-import com.group2.campus.service.HospitalService;
 import com.group2.campus.service.CampusSetService;
 import com.group2.campus.service.ScheduleService;
 import com.group2.nustudy.common.exception.NustudyException;
@@ -10,16 +10,14 @@ import com.group2.nustudy.common.result.Result;
 import com.group2.nustudy.common.result.ResultCodeEnum;
 import com.group2.nustudy.common.utils.MD5;
 import com.group2.nustudy.model.hosp.Department;
-import com.group2.nustudy.model.hosp.Hospital;
+import com.group2.nustudy.model.hosp.Campus;
 import com.group2.nustudy.model.hosp.Schedule;
 import com.group2.nustudy.vo.hosp.DepartmentQueryVo;
 import com.group2.nustudy.vo.hosp.ScheduleQueryVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.ui.ModelMap;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
@@ -35,7 +33,7 @@ import java.util.Map;
 public class ApiController {
 
     @Autowired
-    private HospitalService hospitalService;
+    private CampusService campusService;
 
     @Autowired
     private CampusSetService campusSetService;
@@ -185,8 +183,8 @@ public class ApiController {
         }
 
         //调用service方法实现根据医院编号查询
-        Hospital hospital = hospitalService.getByHoscode(hoscode);
-        return Result.ok(hospital);
+        Campus campus = campusService.getByHoscode(hoscode);
+        return Result.ok(campus);
     }
 
     //上传医院接口
@@ -217,7 +215,7 @@ public class ApiController {
         paramMap.put("logoData",logoData);
 
         //调用service的方法
-        hospitalService.save(paramMap);
+        campusService.save(paramMap);
         return Result.ok();
     }
 

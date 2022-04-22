@@ -17,16 +17,16 @@ public class BaseMongoEntity implements Serializable {
     @Id
     private String id;
 
-    @ApiModelProperty(value = "创建时间")
+    @ApiModelProperty(value = "create_time")
     private Date createTime;
 
-    @ApiModelProperty(value = "更新时间")
+    @ApiModelProperty(value = "update_time")
     private Date updateTime;
 
-    @ApiModelProperty(value = "逻辑删除(1:已删除，0:未删除)")
+    @ApiModelProperty(value = "is_deleted(1:deleted，0:not deleted)")
     private Integer isDeleted;
 
-    @ApiModelProperty(value = "其他参数")
+    @ApiModelProperty(value = "others")
     @Transient //被该注解标注的，将不会被录入到数据库中。只作为普通的javaBean属性
     private Map<String,Object> param = new HashMap<>();
 }

@@ -52,4 +52,18 @@ public class DictController {
         return Result.ok(list);
     }
 
+    @GetMapping("getName/{dictCode}/{value}")
+    public String getName(@PathVariable String dictCode,
+                          @PathVariable String value) {
+        String dictName = dictService.getDictName(dictCode, value);
+        return dictName;
+    }
+
+    @GetMapping("getName/{value}")
+    public String getName(@PathVariable String value) {
+        String dictName = dictService.getDictName("", value);
+        return dictName;
+    }
+
+
 }

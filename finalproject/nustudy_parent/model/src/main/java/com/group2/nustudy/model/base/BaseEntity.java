@@ -20,21 +20,21 @@ public class BaseEntity implements Serializable {
     @TableId(type = IdType.AUTO)
     private Long id;
 
-    @ApiModelProperty(value = "创建时间")
+    @ApiModelProperty(value = "create_time")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @TableField("create_time")
     private Date createTime;
 
-    @ApiModelProperty(value = "更新时间")
+    @ApiModelProperty(value = "update_time")
     @TableField("update_time")
     private Date updateTime;
 
-    @ApiModelProperty(value = "逻辑删除(1:已删除，0:未删除)")
+    @ApiModelProperty(value = "is_deleted(1:deleted，0:not deleted)")
     @TableLogic
     @TableField("is_deleted")
     private Integer isDeleted;
 
-    @ApiModelProperty(value = "其他参数")
+    @ApiModelProperty(value = "others")
     @TableField(exist = false)
     private Map<String,Object> param = new HashMap<>();
 }

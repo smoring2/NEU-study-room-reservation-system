@@ -2,22 +2,19 @@ package com.group2.campus.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.group2.campus.repository.ScheduleRepository;
 import com.group2.campus.service.DepartmentService;
-import com.group2.campus.service.HospitalService;
+import com.group2.campus.service.CampusService;
 import com.group2.campus.service.ScheduleService;
 import com.group2.nustudy.common.exception.NustudyException;
 import com.group2.nustudy.common.result.ResultCodeEnum;
 import com.group2.nustudy.model.hosp.BookingRule;
+import com.group2.nustudy.model.hosp.Campus;
 import com.group2.nustudy.model.hosp.Department;
-import com.group2.nustudy.model.hosp.Hospital;
 import com.group2.nustudy.model.hosp.Schedule;
 import com.group2.nustudy.vo.hosp.BookingScheduleRuleVo;
 import com.group2.nustudy.vo.hosp.ScheduleOrderVo;
 import com.group2.nustudy.vo.hosp.ScheduleQueryVo;
-import net.sf.jsqlparser.expression.DateTimeLiteralExpression;
-import org.bson.codecs.ShortCodec;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeConstants;
 import org.joda.time.format.DateTimeFormat;
@@ -46,7 +43,7 @@ public class ScheduleServiceImpl implements ScheduleService {
     private MongoTemplate mongoTemplate;
 
     @Autowired
-    private HospitalService hospitalService;
+    private CampusService campusService;
 
     @Autowired
     private DepartmentService departmentService;
@@ -155,7 +152,7 @@ public class ScheduleServiceImpl implements ScheduleService {
         result.put("total",total);
 
         //获取医院名称
-        String hosName = hospitalService.getHospName(hoscode);
+        String hosName = campusService.getCampusName(hoscode);
         //其他基础数据
         Map<String, String> baseMap = new HashMap<>();
         baseMap.put("hosname",hosName);
@@ -183,11 +180,11 @@ public class ScheduleServiceImpl implements ScheduleService {
         Map<String,Object> result = new HashMap<>();
         //获取预约规则
         //根据医院编号获取预约规则
-        Hospital hospital = hospitalService.getByHoscode(hoscode);
-        if(hospital == null) {
+        Campus campus = campusService.getByHoscode(hoscode);
+        if(campus == null) {
             throw new NustudyException(ResultCodeEnum.DATA_ERROR);
         }
-        BookingRule bookingRule = hospital.getBookingRule();
+        BookingRule bookingRule = campus.getBookingRule();
 
         //获取可预约日期的数据（分页）
         IPage iPage = this.getListDate(page,limit,bookingRule);
@@ -262,7 +259,7 @@ public class ScheduleServiceImpl implements ScheduleService {
         //其他基础数据
         Map<String, String> baseMap = new HashMap<>();
         //医院名称
-        baseMap.put("hosname", hospitalService.getHospName(hoscode));
+        baseMap.put("hosname", campusService.getCampusName(hoscode));
         //科室
         Department department =departmentService.getDepartment(hoscode, depcode);
         //大科室名称
@@ -297,18 +294,18 @@ public class ScheduleServiceImpl implements ScheduleService {
             throw new NustudyException(ResultCodeEnum.PARAM_ERROR);
         }
         //获取预约规则信息
-        Hospital hospital = hospitalService.getByHoscode(schedule.getHoscode());
-        if(hospital == null) {
+        Campus campus = campusService.getByHoscode(schedule.getHoscode());
+        if(campus == null) {
             throw new NustudyException(ResultCodeEnum.PARAM_ERROR);
         }
-        BookingRule bookingRule = hospital.getBookingRule();
+        BookingRule bookingRule = campus.getBookingRule();
         if(bookingRule == null) {
             throw new NustudyException(ResultCodeEnum.PARAM_ERROR);
         }
 
         //把获取数据设置到scheduleOrderVo
         scheduleOrderVo.setHoscode(schedule.getHoscode());
-        scheduleOrderVo.setHosname(hospitalService.getHospName(schedule.getHoscode()));
+        scheduleOrderVo.setHosname(campusService.getCampusName(schedule.getHoscode()));
         scheduleOrderVo.setDepcode(schedule.getDepcode());
         scheduleOrderVo.setDepname(departmentService.getDepName(schedule.getHoscode(), schedule.getDepcode()));
         scheduleOrderVo.setHosScheduleId(schedule.getHosScheduleId());
@@ -390,7 +387,7 @@ public class ScheduleServiceImpl implements ScheduleService {
     //封装排班详情其他值 医院名称、科室名称、日期对应星期
     private Schedule packageSchedule(Schedule schedule) {
         //设置医院名称
-        schedule.getParam().put("hosname",hospitalService.getHospName(schedule.getHoscode()));
+        schedule.getParam().put("hosname", campusService.getCampusName(schedule.getHoscode()));
         //设置科室名称
         schedule.getParam().put("depname",departmentService.getDepName(schedule.getHoscode(),schedule.getDepcode()));
         //设置日期对应星期

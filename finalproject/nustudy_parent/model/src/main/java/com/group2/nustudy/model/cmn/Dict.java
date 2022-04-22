@@ -43,7 +43,7 @@ public class Dict {
     @TableField("is_deleted")
     private Integer isDeleted;
 
-    @ApiModelProperty(value = "other_params")
+    @ApiModelProperty(value = "others")
     @TableField(exist = false)
     private Map<String,Object> param = new HashMap<>();
 
