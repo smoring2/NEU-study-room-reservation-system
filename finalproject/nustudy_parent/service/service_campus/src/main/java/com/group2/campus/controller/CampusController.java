@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/admin/campus/campus")
 @CrossOrigin
@@ -16,12 +18,13 @@ public class CampusController {
     private CampusService campusService;
 
     // campus list
-
     @GetMapping("list/{page}/{limit}")
     public Result listCampus(@PathVariable Integer page,
                              @PathVariable Integer limit,
                              CampusQueryVo campusQueryVo) {
         Page<Campus> pageModel = campusService.selectCampusPage(page, limit, campusQueryVo);
+        List<Campus> content = pageModel.getContent();
+        long totalElements = pageModel.getTotalElements();
         return Result.ok(pageModel);
     }
 }

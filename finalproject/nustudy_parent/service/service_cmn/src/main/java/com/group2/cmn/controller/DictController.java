@@ -15,12 +15,11 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Author: Ying Tuo
- * Created Time: $[Date]
+ * Author: Group2
  * Description:
  */
 
-@Api(description = "数据字典接口")
+@Api(description = "Data Dict Api")
 @RestController
 @RequestMapping("/admin/cmn/dict")
 @CrossOrigin

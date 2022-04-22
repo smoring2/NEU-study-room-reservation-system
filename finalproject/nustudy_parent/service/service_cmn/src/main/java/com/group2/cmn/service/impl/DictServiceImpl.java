@@ -37,7 +37,7 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements Di
         QueryWrapper<Dict> wrapper = new QueryWrapper<>();
         wrapper.eq("parent_id", id);
         List<Dict> dictList = baseMapper.selectList(wrapper);
-        //向list集合每个dict对象中设置hasChildren
+        //set hasChildren to each dict object in the dictList
         for (Dict dict : dictList) {
             Long dictId = dict.getId();
             boolean isChild = this.isChildren(dictId);
