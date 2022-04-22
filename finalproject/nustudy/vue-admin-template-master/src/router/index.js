@@ -98,6 +98,13 @@ export const constantRouterMap = [
         component: () => import("@/views/campus/show"),
         meta: { title: "Deatils", icon: "table" },
         hidden: true
+      },
+      {
+        path: "campus/schedule/:hoscode",
+        name: "Schedule",
+        component: () => import("@/views/campus/schedule"),
+        meta: { title: "Schedule", icon: "table" },
+        hidden: true
       }
     ]
   },

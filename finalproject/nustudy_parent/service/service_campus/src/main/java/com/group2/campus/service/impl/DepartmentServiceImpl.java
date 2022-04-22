@@ -82,12 +82,13 @@ public class DepartmentServiceImpl implements DepartmentService {
         List<DepartmentVo> result = new ArrayList<>();
 
         //根据医院编号，查询医院所有科室信息
-        Department departmentQuery = new Department();
+        Department departmentQuery = new Department(); // using mongoDB
         departmentQuery.setHoscode(hoscode);
         Example example = Example.of(departmentQuery);
         //所有科室列表 departmentList
         List<Department> departmentList = departmentRepository.findAll(example);
 
+        // DEBUG TRANSLATE bigcode-> building number
         //根据大科室编号  bigcode 分组，获取每个大科室里面下级子科室
         Map<String, List<Department>> deparmentMap =
                 departmentList.stream().collect(Collectors.groupingBy(Department::getBigcode));
@@ -116,7 +117,6 @@ public class DepartmentServiceImpl implements DepartmentService {
             //放到最终result里面
             result.add(departmentVo1);
         }
-        //返回
         return result;
     }
 

@@ -33,5 +33,11 @@ export default {
       url: `/admin/campus/campus/showCampusDetail/${id}`,
       method: "get"
     });
+  },
+  getDeptByCampusCode(hoscode) {
+    return request({
+      url: `/admin/campus/department/getDeptList/${hoscode}`,
+      method: "get"
+    });
   }
 };
