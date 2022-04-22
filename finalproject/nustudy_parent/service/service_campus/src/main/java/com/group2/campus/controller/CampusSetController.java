@@ -1,7 +1,7 @@
 package com.group2.campus.controller;
 
-import com.group2.nustudy.model.hosp.CampusSet;
-import com.group2.nustudy.vo.hosp.CampusSetQueryVo;
+import com.group2.nustudy.model.camp.CampusSet;
+import com.group2.nustudy.vo.camp.CampusSetQueryVo;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;

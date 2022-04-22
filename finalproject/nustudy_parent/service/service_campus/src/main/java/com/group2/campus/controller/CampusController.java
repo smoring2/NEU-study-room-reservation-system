@@ -2,8 +2,8 @@ package com.group2.campus.controller;
 
 import com.group2.campus.service.CampusService;
 import com.group2.nustudy.common.result.Result;
-import com.group2.nustudy.model.hosp.Campus;
-import com.group2.nustudy.vo.hosp.CampusQueryVo;
+import com.group2.nustudy.model.camp.Campus;
+import com.group2.nustudy.vo.camp.CampusQueryVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;

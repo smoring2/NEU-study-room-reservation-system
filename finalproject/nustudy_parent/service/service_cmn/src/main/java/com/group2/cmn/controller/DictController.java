@@ -48,7 +48,7 @@ public class DictController {
     @ApiOperation(value = "Lookup child data list based on id")
     @GetMapping("findChildData/{id}")
     public Result findChildData(@PathVariable Long id) {
-        List<Dict> list = dictService.findChlidData(id);
+        List<Dict> list = dictService.findChildData(id);
         return Result.ok(list);
     }
 
@@ -63,6 +63,13 @@ public class DictController {
     public String getName(@PathVariable String value) {
         String dictName = dictService.getDictName("", value);
         return dictName;
+    }
+
+    @ApiOperation(value = "get childer node by dict code")
+    @GetMapping(value = "findByDictCode/{dictCode}")
+    public Result findByDictCode(@PathVariable String dictCode) {
+        List<Dict> list = dictService.findByDictCode(dictCode);
+        return Result.ok(list);
     }
 
 

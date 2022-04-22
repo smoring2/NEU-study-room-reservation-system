@@ -1,10 +1,10 @@
 package com.group2.campus.mapper;
 
-import com.group2.campus.model.HospitalSet;
+import com.group2.campus.model.CampusSet;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
-public interface HospitalSetMapper extends BaseMapper<HospitalSet> {
+public interface CampusSetMapper extends BaseMapper<CampusSet> {
 
 }

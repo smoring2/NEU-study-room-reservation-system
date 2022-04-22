@@ -1,8 +1,6 @@
-package com.atguigu.yygh.order.client;
+package com.group2.campus.order.client;
 
-import com.atguigu.yygh.vo.hosp.ScheduleOrderVo;
-import com.atguigu.yygh.vo.order.OrderCountQueryVo;
-import com.atguigu.yygh.vo.order.SignInfoVo;
+import com.group2.nustudy.vo.order.OrderCountQueryVo;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.GetMapping;

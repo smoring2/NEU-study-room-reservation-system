@@ -1,7 +1,7 @@
 package com.group2.campus.controller;
 
 import com.group2.campus.service.ApiService;
-import com.group2.campus.service.HospitalService;
+import com.group2.campus.service.CampusService;
 import com.group2.campus.util.HttpRequestHelper;
 import com.group2.campus.util.Result;
 import com.group2.campus.util.ResultCodeEnum;
@@ -22,10 +22,10 @@ import java.util.Map;
  */
 @Api(tags = "医院管理接口")
 @RestController
-public class HospitalController {
+public class CampusController {
 
 	@Autowired
-	private HospitalService hospitalService;
+	private CampusService campusService;
 
 	@Autowired
 	private ApiService apiService;
@@ -43,7 +43,7 @@ public class HospitalController {
 				throw new NustudyException(ResultCodeEnum.SIGN_ERROR);
 			}
 
-			Map<String, Object> resultMap = hospitalService.submitOrder(paramMap);
+			Map<String, Object> resultMap = campusService.submitOrder(paramMap);
 			return Result.ok(resultMap);
 		} catch (NustudyException e) {
 			return Result.fail().message(e.getMessage());
@@ -63,7 +63,7 @@ public class HospitalController {
 				throw new NustudyException(ResultCodeEnum.SIGN_ERROR);
 			}
 
-			hospitalService.updatePayStatus(paramMap);
+			campusService.updatePayStatus(paramMap);
 			return Result.ok();
 		} catch (NustudyException e) {
 			return Result.fail().message(e.getMessage());
@@ -83,7 +83,7 @@ public class HospitalController {
 				throw new NustudyException(ResultCodeEnum.SIGN_ERROR);
 			}
 
-			hospitalService.updateCancelStatus(paramMap);
+			campusService.updateCancelStatus(paramMap);
 			return Result.ok();
 		} catch (NustudyException e) {
 			return Result.fail().message(e.getMessage());

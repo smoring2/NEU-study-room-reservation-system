@@ -1,5 +1,5 @@
 package com.group2.campus.repository;
-import com.group2.nustudy.model.hosp.Schedule;
+import com.group2.nustudy.model.camp.Schedule;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

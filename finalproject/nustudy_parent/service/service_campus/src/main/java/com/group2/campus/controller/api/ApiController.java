@@ -9,11 +9,11 @@ import com.group2.nustudy.common.helper.HttpRequestHelper;
 import com.group2.nustudy.common.result.Result;
 import com.group2.nustudy.common.result.ResultCodeEnum;
 import com.group2.nustudy.common.utils.MD5;
-import com.group2.nustudy.model.hosp.Department;
-import com.group2.nustudy.model.hosp.Campus;
-import com.group2.nustudy.model.hosp.Schedule;
-import com.group2.nustudy.vo.hosp.DepartmentQueryVo;
-import com.group2.nustudy.vo.hosp.ScheduleQueryVo;
+import com.group2.nustudy.model.camp.Department;
+import com.group2.nustudy.model.camp.Campus;
+import com.group2.nustudy.model.camp.Schedule;
+import com.group2.nustudy.vo.camp.DepartmentQueryVo;
+import com.group2.nustudy.vo.camp.ScheduleQueryVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.util.StringUtils;
@@ -29,7 +29,7 @@ import java.util.Map;
  */
 
 @RestController
-@RequestMapping("/api/hosp")
+@RequestMapping("/api/camp")
 public class ApiController {
 
     @Autowired
@@ -161,8 +161,8 @@ public class ApiController {
     }
 
 //    查询医院
-    @PostMapping("hospital/show")
-    public Result getHospital(HttpServletRequest request) {
+    @PostMapping("campus/show")
+    public Result getCampus(HttpServletRequest request) {
         //获取传递过来医院信息
         Map<String, String[]> requestMap = request.getParameterMap();
         Map<String, Object> paramMap = HttpRequestHelper.switchMap(requestMap);
@@ -188,8 +188,8 @@ public class ApiController {
     }
 
     //上传医院接口
-    @PostMapping("saveHospital")
-    public Result saveHosp(HttpServletRequest request) {
+    @PostMapping("saveCampus")
+    public Result saveCamp(HttpServletRequest request) {
         //获取传递过来医院信息
         Map<String, String[]> requestMap = request.getParameterMap();
         Map<String, Object> paramMap = HttpRequestHelper.switchMap(requestMap);

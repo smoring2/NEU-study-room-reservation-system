@@ -3,7 +3,7 @@ package com.group2.campus.service;
 import java.io.IOException;
 import java.util.Map;
 
-public interface HospitalService {
+public interface CampusService {
 
     /**
      * 预约下单

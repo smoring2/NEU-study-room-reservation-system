@@ -1,4 +1,4 @@
-package com.group2.nustudy.vo.hosp;
+package com.group2.nustudy.vo.camp;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

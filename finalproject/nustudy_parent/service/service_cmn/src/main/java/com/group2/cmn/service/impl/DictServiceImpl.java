@@ -33,7 +33,7 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements Di
     //lookup child data list based on id
     @Override
     //@Cacheable(value = "dict",keyGenerator = "keyGenerator")
-    public List<Dict> findChlidData(Long id) {
+    public List<Dict> findChildData(Long id) {
         QueryWrapper<Dict> wrapper = new QueryWrapper<>();
         wrapper.eq("parent_id", id);
         List<Dict> dictList = baseMapper.selectList(wrapper);
@@ -109,5 +109,20 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements Di
                     .eq("value", value));
             return finalDict.getName();
         }
+    }
+
+    @Override
+    public List<Dict> findByDictCode(String dictCode) {
+        //根据dictcode获取对应id
+        Dict dict = this.getDictByDictCode(dictCode);
+        //根据id获取子节点
+        List<Dict> childData = this.findChildData(dict.getId());
+        return childData;
+    }
+    private Dict getDictByDictCode(String dictCode) {
+        QueryWrapper<Dict> wrapper = new QueryWrapper<>();
+        wrapper.eq("dict_code",dictCode);
+        Dict codeDict = baseMapper.selectOne(wrapper);
+        return codeDict;
     }
 }

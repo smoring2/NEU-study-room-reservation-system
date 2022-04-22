@@ -1,4 +1,4 @@
-package com.group2.nustudy.model.hosp;
+package com.group2.nustudy.model.camp;
 
 import com.alibaba.fastjson.JSONArray;
 import io.swagger.annotations.ApiModel;

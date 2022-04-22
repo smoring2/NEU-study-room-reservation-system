@@ -1,17 +1,21 @@
 package com.group2.campus.util;
 
 import com.alibaba.fastjson.JSONObject;
+
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.logging.Log;
 
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.logging.Logger;
 
 @Slf4j
 public class HttpRequestHelper {
 
     //private final static String signKey = "09c1ff67d1ae4999e137f34b0dff1046";
+    //public static Logger log = Logger.getLogger("HttpRequestHelper");
 
     public static void main(String[] args) {
         Map<String, Object> paramMap = new HashMap<>();

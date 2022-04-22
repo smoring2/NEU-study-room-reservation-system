@@ -1,6 +1,7 @@
-package com.atguigu.yygh.user.client;
+package com.group2.campus.user.client;
 
-import com.atguigu.yygh.model.user.Patient;
+
+import com.group2.nustudy.model.user.Patient;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.GetMapping;

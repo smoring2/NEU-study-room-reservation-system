@@ -40,6 +40,7 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
+			<version>1.18.22</version>
 		</dependency>
 
 		<dependency>
@@ -120,6 +121,7 @@
 
 
 	<build>
+
 		<finalName>campus_management</finalName>
 
 		<plugins>
@@ -133,10 +135,7 @@
 			<resource>
 				<directory>src/main/resources</directory>
 			</resource>
-		</resources>>
-
+		</resources>
 
 	</build>
-
-
 </project>

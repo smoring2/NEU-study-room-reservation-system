@@ -2,10 +2,10 @@ package com.group2.campus.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.group2.campus.cmn.client.DictFeignClient;
-import com.group2.campus.repository.HospitalRepository;
+import com.group2.campus.repository.CampusRepository;
 import com.group2.campus.service.CampusService;
-import com.group2.nustudy.model.hosp.Campus;
-import com.group2.nustudy.vo.hosp.CampusQueryVo;
+import com.group2.nustudy.model.camp.Campus;
+import com.group2.nustudy.vo.camp.CampusQueryVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
@@ -25,7 +25,7 @@ import java.util.Map;
 public class CampusServiceImpl implements CampusService {
 
     @Autowired
-    private HospitalRepository hospitalRepository;
+    private CampusRepository campusRepository;
 
     @Autowired
     private DictFeignClient dictFeignClient;
@@ -37,7 +37,7 @@ public class CampusServiceImpl implements CampusService {
 
         // check whether the data exist
         String hoscode = campus.getHoscode();
-        Campus campusExist = hospitalRepository.getHospitalByHoscode(hoscode);
+        Campus campusExist = campusRepository.getCampusByHoscode(hoscode);
 
         // modify if exists
         if (campusExist != null) {
@@ -45,19 +45,19 @@ public class CampusServiceImpl implements CampusService {
             campus.setCreateTime(campusExist.getCreateTime());
             campus.setUpdateTime(new Date());
             campus.setIsDeleted(0);
-            hospitalRepository.save(campus);
+            campusRepository.save(campus);
         } else {// add
             campus.setStatus(0);
             campus.setCreateTime(new Date());
             campus.setUpdateTime(new Date());
             campus.setIsDeleted(0);
-            hospitalRepository.save(campus);
+            campusRepository.save(campus);
         }
     }
 
     @Override
     public Campus getByHoscode(String hoscode) {
-        Campus campus = hospitalRepository.getHospitalByHoscode(hoscode);
+        Campus campus = campusRepository.getCampusByHoscode(hoscode);
         return campus;
     }
 
@@ -75,10 +75,9 @@ public class CampusServiceImpl implements CampusService {
         BeanUtils.copyProperties(campusQueryVo, campus);
         //创建对象
         Example<Campus> example = Example.of(campus, matcher);
-        System.out.println(example.getProbe().toString());
         //调用方法实现查询
 //        Page<Campus> pages = hospitalRepository.findAll(example, pageable);
-        Page<Campus> pages = hospitalRepository.findAll(pageable);
+        Page<Campus> pages = campusRepository.findAll(pageable);
 
         System.out.println("Hosps: " + pages.getSize() + ", " + pages.getTotalElements());
         //获取查询list集合，遍历进行医院等级封装
@@ -95,18 +94,18 @@ public class CampusServiceImpl implements CampusService {
     @Override
     public void updateStatus(String id, Integer status) {
         //根据id查询医院信息
-        Campus campus = hospitalRepository.findById(id).get();
+        Campus campus = campusRepository.findById(id).get();
         //设置修改的值
         campus.setStatus(status);
         campus.setUpdateTime(new Date());
-        hospitalRepository.save(campus);
+        campusRepository.save(campus);
     }
 
     //
     @Override
     public Map<String, Object> getCampusById(String id) {
         Map<String, Object> result = new HashMap<>();
-        Campus campus = this.setCampusCamType(hospitalRepository.findById(id).get());
+        Campus campus = this.setCampusCamType(campusRepository.findById(id).get());
         //医院基本信息（包含医院等级）
         result.put("hospital", campus);
         //单独处理更直观
@@ -119,7 +118,7 @@ public class CampusServiceImpl implements CampusService {
     //获取医院名称
     @Override
     public String getCampusName(String hoscode) {
-        Campus campus = hospitalRepository.getHospitalByHoscode(hoscode);
+        Campus campus = campusRepository.getCampusByHoscode(hoscode);
         if (campus != null) {
             return campus.getHosname();
         }
@@ -129,7 +128,7 @@ public class CampusServiceImpl implements CampusService {
     //根据医院名称查询
     @Override
     public List<Campus> findByCampusname(String hosname) {
-        return hospitalRepository.findHospitalByHosnameLike(hosname);
+        return campusRepository.findCampusByHosnameLike(hosname);
     }
 
     //

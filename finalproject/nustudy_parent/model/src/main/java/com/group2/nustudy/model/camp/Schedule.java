@@ -1,4 +1,4 @@
-package com.group2.nustudy.model.hosp;
+package com.group2.nustudy.model.camp;
 
 import com.group2.nustudy.model.base.BaseMongoEntity;
 import com.fasterxml.jackson.annotation.JsonFormat;

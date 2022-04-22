@@ -1,4 +1,4 @@
-package com.group2.nustudy.vo.hosp;
+package com.group2.nustudy.vo.camp;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;

@@ -1,7 +1,7 @@
 package com.group2.campus.service;
 
-import com.group2.nustudy.model.hosp.Campus;
-import com.group2.nustudy.vo.hosp.CampusQueryVo;
+import com.group2.nustudy.model.camp.Campus;
+import com.group2.nustudy.vo.camp.CampusQueryVo;
 import org.springframework.data.domain.Page;
 
 import java.util.List;

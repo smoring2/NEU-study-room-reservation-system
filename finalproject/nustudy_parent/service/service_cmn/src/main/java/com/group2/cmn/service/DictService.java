@@ -17,9 +17,11 @@ import java.util.List;
 public interface DictService extends IService<Dict> {
 
     //根据数据id查询子数据列表
-    List<Dict> findChlidData(Long id);
+    List<Dict> findChildData(Long id);
 
     void exportDict(HttpServletResponse response);
     void importDict(MultipartFile file) throws IOException;
     String getDictName(String dictCode, String value);
+
+    List<Dict> findByDictCode(String dictCode);
 }

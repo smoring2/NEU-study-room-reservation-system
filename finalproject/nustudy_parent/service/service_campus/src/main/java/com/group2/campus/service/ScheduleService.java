@@ -1,8 +1,8 @@
 package com.group2.campus.service;
 
-import com.group2.nustudy.model.hosp.Schedule;
-import com.group2.nustudy.vo.hosp.ScheduleOrderVo;
-import com.group2.nustudy.vo.hosp.ScheduleQueryVo;
+import com.group2.nustudy.model.camp.Schedule;
+import com.group2.nustudy.vo.camp.ScheduleOrderVo;
+import com.group2.nustudy.vo.camp.ScheduleQueryVo;
 import org.springframework.data.domain.Page;
 
 import java.util.List;

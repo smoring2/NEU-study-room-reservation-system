@@ -13,9 +13,9 @@ import lombok.Data;
  * @author qy
  */
 @Data
-@ApiModel(description = "HospitalSet")
+@ApiModel(description = "CampusSet")
 @TableName("hospital_set")
-public class HospitalSet extends BaseEntity {
+public class CampusSet extends BaseEntity {
 	
 	private static final long serialVersionUID = 1L;
 

@@ -11,9 +11,9 @@ public interface ApiService {
 
     String getSignKey();
 
-    JSONObject getHospital();
+    JSONObject getCampus();
 
-    boolean saveHospital(String data);
+    boolean saveCampus(String data);
 
     Map<String, Object> findDepartment(int pageNum, int pageSize);
 
@@ -27,5 +27,5 @@ public interface ApiService {
 
     boolean removeSchedule(String hosScheduleId);
 
-    void  saveBatchHospital() throws IOException;
+    void saveBatchCampus() throws IOException;
 }

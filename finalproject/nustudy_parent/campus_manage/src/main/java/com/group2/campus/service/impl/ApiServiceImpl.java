@@ -2,9 +2,9 @@ package com.group2.campus.service.impl;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.group2.campus.mapper.HospitalSetMapper;
+import com.group2.campus.mapper.CampusSetMapper;
 import com.group2.campus.mapper.ScheduleMapper;
-import com.group2.campus.model.HospitalSet;
+import com.group2.campus.model.CampusSet;
 import com.group2.campus.model.Schedule;
 import com.group2.campus.service.ApiService;
 import com.group2.campus.util.BeanUtils;
@@ -38,39 +38,39 @@ public class ApiServiceImpl implements ApiService {
     private ScheduleMapper scheduleMapper;
 
     @Autowired
-    private HospitalSetMapper hospitalSetMapper;
+    private CampusSetMapper campusSetMapper;
 
     @Autowired
     private ApiService apiService;
 
     @Value("classpath:hospital.json")
-    private Resource hospitalResource;
+    private Resource campusResource;
 
     @Override
     public String getHoscode() {
-        HospitalSet hospitalSet = hospitalSetMapper.selectById(1);
-        return hospitalSet.getHoscode();
+        CampusSet campusSet = campusSetMapper.selectById(1);
+        return campusSet.getHoscode();
     }
 
     @Override
     public String getSignKey() {
-        HospitalSet hospitalSet = hospitalSetMapper.selectById(1);
-        return hospitalSet.getSignKey();
+        CampusSet campusSet = campusSetMapper.selectById(1);
+        return campusSet.getSignKey();
     }
 
     private String getApiUrl() {
-        HospitalSet hospitalSet = hospitalSetMapper.selectById(1);
-        return hospitalSet.getApiUrl();
+        CampusSet campusSet = campusSetMapper.selectById(1);
+        return campusSet.getApiUrl();
     }
 
     @Override
-    public JSONObject getHospital() {
+    public JSONObject getCampus() {
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("hoscode",this.getHoscode());
         paramMap.put("timestamp", HttpRequestHelper.getTimestamp());
         paramMap.put("sign", MD5.encrypt(this.getSignKey()));
 //        paramMap.put("sign", HttpRequestHelper.getSign(paramMap, this.getSignKey()));
-        JSONObject respone = HttpRequestHelper.sendRequest(paramMap,this.getApiUrl()+"/api/hosp/hospital/show");
+        JSONObject respone = HttpRequestHelper.sendRequest(paramMap,this.getApiUrl()+"/api/camp/campus/show");
         System.out.println(respone.toJSONString());
         if(null != respone && 200 == respone.getIntValue("code")) {
             JSONObject jsonObject = respone.getJSONObject("data");
@@ -80,7 +80,7 @@ public class ApiServiceImpl implements ApiService {
     }
 
     @Override
-    public boolean saveHospital(String data) {
+    public boolean saveCampus(String data) {
         JSONObject jsonObject = JSONObject.parseObject(data);
 
         Map<String, Object> paramMap = new HashMap<>();
@@ -103,7 +103,7 @@ public class ApiServiceImpl implements ApiService {
         paramMap.put("sign", MD5.encrypt(this.getSignKey()));
 //        paramMap.put("sign", HttpRequestHelper.getSign(paramMap, this.getSignKey()));
 
-        JSONObject respone = HttpRequestHelper.sendRequest(paramMap,this.getApiUrl()+"/api/hosp/saveHospital");
+        JSONObject respone = HttpRequestHelper.sendRequest(paramMap,this.getApiUrl()+"/api/camp/saveCampus");
         System.out.println(respone.toJSONString());
 
         if(null != respone && 200 == respone.getIntValue("code")) {
@@ -125,7 +125,7 @@ public class ApiServiceImpl implements ApiService {
         paramMap.put("timestamp", HttpRequestHelper.getTimestamp());
         paramMap.put("sign", MD5.encrypt(this.getSignKey()));
 //        paramMap.put("sign", HttpRequestHelper.getSign(paramMap, this.getSignKey()));
-        JSONObject respone = HttpRequestHelper.sendRequest(paramMap,this.getApiUrl()+"/api/hosp/department/list");
+        JSONObject respone = HttpRequestHelper.sendRequest(paramMap,this.getApiUrl()+"/api/camp/department/list");
         if(null != respone && 200 == respone.getIntValue("code")) {
             JSONObject jsonObject = respone.getJSONObject("data");
 
@@ -162,7 +162,7 @@ public class ApiServiceImpl implements ApiService {
             paramMap.put("timestamp", HttpRequestHelper.getTimestamp());
             paramMap.put("sign", MD5.encrypt(this.getSignKey()));
 //            paramMap.put("sign",HttpRequestHelper.getSign(paramMap, this.getSignKey()));
-            JSONObject respone = HttpRequestHelper.sendRequest(paramMap,this.getApiUrl()+"/api/hosp/saveDepartment");
+            JSONObject respone = HttpRequestHelper.sendRequest(paramMap,this.getApiUrl()+"/api/camp/saveDepartment");
             System.out.println(respone.toJSONString());
 
             if(null == respone || 200 != respone.getIntValue("code")) {
@@ -180,7 +180,7 @@ public class ApiServiceImpl implements ApiService {
         paramMap.put("timestamp", HttpRequestHelper.getTimestamp());
         paramMap.put("sign", MD5.encrypt(this.getSignKey()));
 //        paramMap.put("sign", HttpRequestHelper.getSign(paramMap, this.getSignKey()));
-        JSONObject respone = HttpRequestHelper.sendRequest(paramMap,this.getApiUrl()+"/api/hosp/department/remove");
+        JSONObject respone = HttpRequestHelper.sendRequest(paramMap,this.getApiUrl()+"/api/camp/department/remove");
         System.out.println(respone.toJSONString());
         if(null != respone && 200 == respone.getIntValue("code")) {
             return true;
@@ -200,7 +200,7 @@ public class ApiServiceImpl implements ApiService {
         paramMap.put("timestamp", HttpRequestHelper.getTimestamp());
         paramMap.put("sign", MD5.encrypt(this.getSignKey()));
 //        paramMap.put("sign", HttpRequestHelper.getSign(paramMap, this.getSignKey()));
-        JSONObject respone = HttpRequestHelper.sendRequest(paramMap,this.getApiUrl()+"/api/hosp/schedule/list");
+        JSONObject respone = HttpRequestHelper.sendRequest(paramMap,this.getApiUrl()+"/api/camp/schedule/list");
         System.out.println(respone.toJSONString());
         if(null != respone && 200 == respone.getIntValue("code")) {
             JSONObject jsonObject = respone.getJSONObject("data");
@@ -268,7 +268,7 @@ public class ApiServiceImpl implements ApiService {
             paramMap.put("sign", MD5.encrypt(this.getSignKey()));
 //            paramMap.put("sign",HttpRequestHelper.getSign(paramMap, this.getSignKey()));
 
-            JSONObject respone = HttpRequestHelper.sendRequest(paramMap,this.getApiUrl()+"/api/hosp/saveSchedule");
+            JSONObject respone = HttpRequestHelper.sendRequest(paramMap,this.getApiUrl()+"/api/camp/saveSchedule");
             System.out.println(respone.toJSONString());
             if(null == respone || 200 != respone.getIntValue("code")) {
                 throw new NustudyException(respone.getString("message"), 201);
@@ -285,7 +285,7 @@ public class ApiServiceImpl implements ApiService {
         paramMap.put("timestamp", HttpRequestHelper.getTimestamp());
         paramMap.put("sign", MD5.encrypt(this.getSignKey()));
 //        paramMap.put("sign", HttpRequestHelper.getSign(paramMap, this.getSignKey()));
-        JSONObject respone = HttpRequestHelper.sendRequest(paramMap,this.getApiUrl()+"/api/hosp/schedule/remove");
+        JSONObject respone = HttpRequestHelper.sendRequest(paramMap,this.getApiUrl()+"/api/camp/schedule/remove");
         System.out.println(respone.toJSONString());
         if(null != respone && 200 == respone.getIntValue("code")) {
             return true;
@@ -295,8 +295,8 @@ public class ApiServiceImpl implements ApiService {
     }
 
     @Override
-    public void  saveBatchHospital() throws IOException {
-        File file = hospitalResource.getFile();
+    public void saveBatchCampus() throws IOException {
+        File file = campusResource.getFile();
         String jsonData = this.jsonRead(file);
         JSONArray jsonArray = JSONArray.parseArray(jsonData);
         for(int i=1, len=jsonArray.size(); i<len; i++) {
@@ -348,7 +348,7 @@ public class ApiServiceImpl implements ApiService {
             paramMap.put("sign", MD5.encrypt(this.getSignKey()));
 //            paramMap.put("sign", HttpRequestHelper.getSign(paramMap, apiService.getSignKey()));
 
-            JSONObject respone = HttpRequestHelper.sendRequest(paramMap,"http://localhost/api/hosp/saveHospital");
+            JSONObject respone = HttpRequestHelper.sendRequest(paramMap,"http://localhost/api/camp/saveCampus");
             System.out.println(respone.toJSONString());
             if(null == respone || 200 != respone.getIntValue("code")) {
                 throw new NustudyException(respone.getString("message"), 201);

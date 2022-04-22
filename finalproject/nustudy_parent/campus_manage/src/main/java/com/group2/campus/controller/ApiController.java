@@ -1,7 +1,7 @@
 package com.group2.campus.controller;
 
-import com.group2.campus.mapper.HospitalSetMapper;
-import com.group2.campus.model.HospitalSet;
+import com.group2.campus.mapper.CampusSetMapper;
+import com.group2.campus.model.CampusSet;
 import com.group2.campus.service.ApiService;
 import com.group2.campus.util.NustudyException;
 import io.swagger.annotations.Api;
@@ -25,48 +25,48 @@ public class ApiController extends BaseController {
 	private ApiService apiService;
 
 	@Autowired
-	private HospitalSetMapper hospitalSetMapper;
+	private CampusSetMapper campusSetMapper;
 
-	@RequestMapping("/hospitalSet/index")
-	public String getHospitalSet(ModelMap model,RedirectAttributes redirectAttributes) {
-		HospitalSet hospitalSet = hospitalSetMapper.selectById(1);
-		model.addAttribute("hospitalSet", hospitalSet);
-		return "hospitalSet/index";
+	@RequestMapping("/campusSet/index")
+	public String getCampusSet(ModelMap model, RedirectAttributes redirectAttributes) {
+		CampusSet campusSet = campusSetMapper.selectById(1);
+		model.addAttribute("campusSet", campusSet);
+		return "campusSet/index";
 	}
 
-	@RequestMapping(value="/hospitalSet/save")
-	public String createHospitalSet(ModelMap model,HospitalSet hospitalSet) {
-		hospitalSetMapper.updateById(hospitalSet);
-		return "redirect:/hospitalSet/index";
+	@RequestMapping(value="/campusSet/save")
+	public String createCampusSet(ModelMap model, CampusSet campusSet) {
+		campusSetMapper.updateById(campusSet);
+		return "redirect:/campusSet/index";
 	}
 
-	@RequestMapping("/hospital/index")
-	public String getHospital(ModelMap model,HttpServletRequest request,RedirectAttributes redirectAttributes) {
+	@RequestMapping("/campus/index")
+	public String getCampus(ModelMap model, HttpServletRequest request, RedirectAttributes redirectAttributes) {
 		try {
-			HospitalSet hospitalSet = hospitalSetMapper.selectById(1);
-			if(null == hospitalSet || StringUtils.isEmpty(hospitalSet.getHoscode()) || StringUtils.isEmpty(hospitalSet.getSignKey())) {
+			CampusSet campusSet = campusSetMapper.selectById(1);
+			if(null == campusSet || StringUtils.isEmpty(campusSet.getHoscode()) || StringUtils.isEmpty(campusSet.getSignKey())) {
 				this.failureMessage("先设置医院code与签名key", redirectAttributes);
-				return "redirect:/hospitalSet/index";
+				return "redirect:/campusSet/index";
 			}
 
-			model.addAttribute("hospital", apiService.getHospital());
+			model.addAttribute("campus", apiService.getCampus());
 		} catch (NustudyException e) {
 			this.failureMessage(e.getMessage(), request);
 		} catch (Exception e) {
 			this.failureMessage("数据异常", request);
 		}
-		return "hospital/index";
+		return "campus/index";
 	}
 
-	@RequestMapping(value="/hospital/create")
-	public String createHospital(ModelMap model) {
-		return "hospital/create";
+	@RequestMapping(value="/campus/create")
+	public String createCampus(ModelMap model) {
+		return "campus/create";
 	}
 
-	@RequestMapping(value="/hospital/save",method=RequestMethod.POST)
-	public String saveHospital(String data, HttpServletRequest request) {
+	@RequestMapping(value="/campus/save",method=RequestMethod.POST)
+	public String saveCampus(String data, HttpServletRequest request) {
 		try {
-			apiService.saveHospital(data);
+			apiService.saveCampus(data);
 		} catch (NustudyException e) {
 			return this.failurePage(e.getMessage(),request);
 		} catch (Exception e) {
@@ -81,10 +81,10 @@ public class ApiController extends BaseController {
 								 @RequestParam(defaultValue = "10") int pageSize,
 								 HttpServletRequest request,RedirectAttributes redirectAttributes) {
 		try {
-			HospitalSet hospitalSet = hospitalSetMapper.selectById(1);
-			if(null == hospitalSet || StringUtils.isEmpty(hospitalSet.getHoscode()) || StringUtils.isEmpty(hospitalSet.getSignKey())) {
+			CampusSet campusSet = campusSetMapper.selectById(1);
+			if(null == campusSet || StringUtils.isEmpty(campusSet.getHoscode()) || StringUtils.isEmpty(campusSet.getSignKey())) {
 				this.failureMessage("先设置医院code与签名key", redirectAttributes);
-				return "redirect:/hospitalSet/index";
+				return "redirect:/campusSet/index";
 			}
 
 			model.addAllAttributes(apiService.findDepartment(pageNum, pageSize));
@@ -119,10 +119,10 @@ public class ApiController extends BaseController {
 								 @RequestParam(defaultValue = "10") int pageSize,
 							   HttpServletRequest request,RedirectAttributes redirectAttributes) {
 		try {
-			HospitalSet hospitalSet = hospitalSetMapper.selectById(1);
-			if(null == hospitalSet || StringUtils.isEmpty(hospitalSet.getHoscode()) || StringUtils.isEmpty(hospitalSet.getSignKey())) {
+			CampusSet campusSet = campusSetMapper.selectById(1);
+			if(null == campusSet || StringUtils.isEmpty(campusSet.getHoscode()) || StringUtils.isEmpty(campusSet.getSignKey())) {
 				this.failureMessage("先设置医院code与签名key", redirectAttributes);
-				return "redirect:/hospitalSet/index";
+				return "redirect:/campusSet/index";
 			}
 
 			model.addAllAttributes(apiService.findSchedule(pageNum, pageSize));
@@ -153,15 +153,15 @@ public class ApiController extends BaseController {
 		return this.successPage(null,request);
 	}
 
-	@RequestMapping(value="/hospital/createBatch")
-	public String createHospitalBatch(ModelMap model) {
-		return "hospital/createBatch";
+	@RequestMapping(value="/campus/createBatch")
+	public String createCampusBatch(ModelMap model) {
+		return "campus/createBatch";
 	}
 
-	@RequestMapping(value="/hospital/saveBatch",method=RequestMethod.POST)
-	public String saveBatchHospital(HttpServletRequest request) {
+	@RequestMapping(value="/campus/saveBatch",method=RequestMethod.POST)
+	public String saveBatchCampus(HttpServletRequest request) {
 		try {
-			apiService.saveBatchHospital();
+			apiService.saveBatchCampus();
 		} catch (NustudyException e) {
 			return this.failurePage(e.getMessage(),request);
 		} catch (Exception e) {

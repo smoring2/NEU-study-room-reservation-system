@@ -6,7 +6,7 @@ import com.group2.campus.mapper.ScheduleMapper;
 import com.group2.campus.model.OrderInfo;
 import com.group2.campus.model.Patient;
 import com.group2.campus.model.Schedule;
-import com.group2.campus.service.HospitalService;
+import com.group2.campus.service.CampusService;
 import com.group2.campus.util.ResultCodeEnum;
 import com.group2.campus.util.NustudyException;
 import lombok.extern.slf4j.Slf4j;
@@ -21,10 +21,10 @@ import java.util.Map;
 
 @Service
 @Slf4j
-public class HospitalServiceImpl implements HospitalService {
+public class CampusServiceImpl implements CampusService {
 
 	@Autowired
-	private ScheduleMapper hospitalMapper;
+	private ScheduleMapper campusMapper;
 
     @Autowired
     private OrderInfoMapper orderInfoMapper;
@@ -61,7 +61,7 @@ public class HospitalServiceImpl implements HospitalService {
         int availableNumber = schedule.getAvailableNumber().intValue() - 1;
         if(availableNumber > 0) {
             schedule.setAvailableNumber(availableNumber);
-            hospitalMapper.updateById(schedule);
+            campusMapper.updateById(schedule);
 
             //记录预约记录
             OrderInfo orderInfo = new OrderInfo();
@@ -128,7 +128,7 @@ public class HospitalServiceImpl implements HospitalService {
     }
 
     private Schedule getSchedule(String frontSchId) {
-        return hospitalMapper.selectById(frontSchId);
+        return campusMapper.selectById(frontSchId);
     }
 
     /**
