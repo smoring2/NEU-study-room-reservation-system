@@ -91,6 +91,13 @@ export const constantRouterMap = [
         name: "Campus List",
         component: () => import("@/views/campus/list"),
         meta: { title: "Campus List", icon: "table" }
+      },
+      {
+        path: "campus/show/:id",
+        name: "Deatils",
+        component: () => import("@/views/campus/show"),
+        meta: { title: "Deatils", icon: "table" },
+        hidden: true
       }
     ]
   },

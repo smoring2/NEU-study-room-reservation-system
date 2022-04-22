@@ -27,5 +27,11 @@ export default {
       url: `/admin/campus/campus/updateCampusStatus/${id}/${status}`,
       method: "get"
     });
+  },
+  getCampusById(id) {
+    return request({
+      url: `/admin/campus/campus/showCampusDetail/${id}`,
+      method: "get"
+    });
   }
 };

@@ -30,18 +30,16 @@ public class CampusController {
         return Result.ok(pageModel);
     }
 
-    //更新医院上线状态
-    @ApiOperation(value = "更新医院上线状态")
+    @ApiOperation(value = "updateCampusStatus")
     @GetMapping("updateCampusStatus/{id}/{status}")
     public Result updateHospStatus(@PathVariable String id,@PathVariable Integer status) {
         campusService.updateStatus(id,status);
         return Result.ok();
     }
 
-    //医院详情信息
-    @ApiOperation(value = "医院详情信息")
+    @ApiOperation(value = "Campus Info")
     @GetMapping("showCampusDetail/{id}")
-    public Result showHospDetail(@PathVariable String id) {
+    public Result showCampusDetail(@PathVariable String id) {
         Map<String, Object> map = campusService.getCampusById(id);
         return Result.ok(map);
     }
