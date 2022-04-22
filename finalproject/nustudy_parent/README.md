@@ -36,20 +36,23 @@ TODO:
 #### MongoDB
 #### Nginx
 - Download Nginx. You can use homebrew to install nginx `brew install nginx`.  
-- Modify its config. If you use homebrew to install nginx, you can find its config file at `/usr/local/etc/nginx/nginx.conf`. Please add the following setting in the `http` block:
-    ```nginx configuration
-        server {
-                listen       9001;
-                server_name  localhost;
+  - Modify its config. If you use homebrew to install nginx, you can find its config file at `/usr/local/etc/nginx/nginx.conf`. Please add the following setting in the `http` block:
+      ```nginx configuration
+          server {
+                  listen       9001;
+                  server_name  localhost;
     
-            location ~ /campusset/ {
-                proxy_pass http://localhost:8201;
-            }
-            location ~ /cmn/ {
-                proxy_pass http://localhost:8202;
-            }
-        }
-    ```
+              location ~ /campusset/ {
+                  proxy_pass http://localhost:8201;
+              }
+              location ~ /campus/ {
+                  proxy_pass http://localhost:8201;
+              }
+              location ~ /cmn/ {
+                  proxy_pass http://localhost:8202;
+              }
+          }
+      ```
 - Start the Nginx. For example, using `brew services restart nginx` to brew start the service.
 
 

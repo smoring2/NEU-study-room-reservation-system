@@ -21,5 +21,11 @@ export default {
       url: `/admin/cmn/dict/findChildData/${id}`,
       method: "get"
     });
+  },
+  updateStatus(id, status) {
+    return request({
+      url: `/admin/campus/campus/updateCampusStatus/${id}/${status}`,
+      method: "get"
+    });
   }
 };

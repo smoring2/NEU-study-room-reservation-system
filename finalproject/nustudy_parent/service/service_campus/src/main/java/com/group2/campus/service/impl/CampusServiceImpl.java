@@ -90,7 +90,7 @@ public class CampusServiceImpl implements CampusService {
     }
 
     //
-//    //更新医院上线状态
+    // update the status of campus (offline / online)
     @Override
     public void updateStatus(String id, Integer status) {
         //根据id查询医院信息
