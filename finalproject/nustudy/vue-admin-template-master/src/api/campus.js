@@ -45,11 +45,11 @@ export default {
       url: `admin/campus/schedule/getScheduleRule/${page}/${limit}/${hoscode}/${depcode}`,
       method: 'get'
     })
+  },
+  getScheduleDetail(hoscode, depcode, workDate){
+    return request({
+      url: `admin/campus/schedule/getScheduleDetail/${hoscode}/${depcode}/${workDate}` ,
+      method: 'get'
+    })
   }
-  // getScheduleDetail(){
-  //   return request({
-  //     // url: `admin/campus/schedule/getScheduleRule/${page}/${limit}/${hascode}/${depcode}` ,
-  //     // method: 'get'
-  //   })
-  // }
 }

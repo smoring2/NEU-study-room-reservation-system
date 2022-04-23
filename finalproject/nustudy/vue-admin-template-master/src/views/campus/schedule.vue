@@ -45,8 +45,7 @@
             :data="scheduleList"
             border
             fit
-            highlight-current-row
-          >
+            highlight-current-row>
             <el-table-column label="序号" width="60" align="center">
               <template slot-scope="scope">
                 {{ scope.$index + 1 }}
@@ -65,13 +64,11 @@
             <el-table-column
               prop="reservedNumber"
               label="可预约数"
-              width="80"
-            />
+              width="80"/>
             <el-table-column
               prop="availableNumber"
               label="剩余预约数"
-              width="100"
-            />
+              width="100"/>
             <el-table-column prop="amount" label="挂号费(元)" width="90" />
             <el-table-column prop="skill" label="擅长技能" />
           </el-table>
@@ -113,13 +110,13 @@ export default {
   },
   methods: {
     // 查询排班详情
-    // getDetailSchedule() {
-    //   campusApi
-    //     .getScheduleDetail(this.hoscode, this.depcode, this.workDate)
-    //     .then(response => {
-    //       this.scheduleList = response.data
-    //     })
-    // },
+    getDetailSchedule() {
+      campusApi
+        .getScheduleDetail(this.hoscode, this.depcode, this.workDate)
+        .then(response => {
+          this.scheduleList = response.data
+        })
+    },
 
     fetchData() {
       campusApi.getDeptByCampusCode(this.hoscode).then(response => {
