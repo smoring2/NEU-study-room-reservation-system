@@ -16,5 +16,6 @@
 - code 中“campus”相关翻译为“campus”相关，如api路径 hosp/findAll
 
 跟分布式有关系：Nacos, Microservice, Security(MD5 加密，[P75]), MongoDB(主从数据库，数据一致性)
+网关 - Spring Cloud Gateway：跟Microservice 架构有关（看day10的笔记）
 
 大家的available时间

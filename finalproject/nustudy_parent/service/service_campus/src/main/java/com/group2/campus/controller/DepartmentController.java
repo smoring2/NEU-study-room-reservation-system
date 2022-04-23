@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/admin/campus/department")
-@CrossOrigin
+//@CrossOrigin
 public class DepartmentController {
 
     @Autowired

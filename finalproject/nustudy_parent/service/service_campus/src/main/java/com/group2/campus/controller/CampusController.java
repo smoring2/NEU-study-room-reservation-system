@@ -14,7 +14,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/admin/campus/campus")
-@CrossOrigin
+//@CrossOrigin
 public class CampusController {
     @Autowired
     private CampusService campusService;

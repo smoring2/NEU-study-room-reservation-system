@@ -25,7 +25,7 @@ import java.util.Random;
 @Api(tags = "Campus meeting room information management")
 @RestController
 @RequestMapping("/admin/campus/campusSet")
-@CrossOrigin
+//@CrossOrigin
 class CampusSetController {
 
     @Autowired
