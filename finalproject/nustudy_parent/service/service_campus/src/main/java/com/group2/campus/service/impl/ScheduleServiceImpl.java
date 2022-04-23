@@ -151,9 +151,9 @@ public class ScheduleServiceImpl implements ScheduleService {
         result.put("bookingScheduleRuleList",bookingScheduleRuleVoList);
         result.put("total",total);
 
-        //获取医院名称
+        //get campus name
         String hosName = campusService.getCampusName(hoscode);
-        //其他基础数据
+        //other params
         Map<String, String> baseMap = new HashMap<>();
         baseMap.put("hosname",hosName);
         result.put("baseMap",baseMap);
@@ -396,6 +396,7 @@ public class ScheduleServiceImpl implements ScheduleService {
     }
 
     /**
+     * Util class
      * 根据日期获取周几数据
      * @param dateTime
      * @return

@@ -61,6 +61,7 @@ public class DepartmentServiceImpl implements DepartmentService {
         Example<Department> example = Example.of(department,matcher);
 
         Page<Department> all = departmentRepository.findAll(example, pageable);
+
         return all;
     }
 

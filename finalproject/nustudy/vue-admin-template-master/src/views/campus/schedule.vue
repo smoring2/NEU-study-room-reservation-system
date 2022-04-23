@@ -5,14 +5,12 @@
     </div>
     <el-container style="height: 100%">
       <el-aside width="200px" style="border: 1px silver solid">
-        <!-- 部门 -->
+        <!-- department -->
         <el-tree
           :data="data"
           :props="defaultProps"
           :default-expand-all="true"
-          @node-click="handleNodeClick"
-        >
-        </el-tree>
+          @node-click="handleNodeClick"/>
       </el-aside>
       <el-main style="padding: 0 0 0 20px;">
         <el-row style="width: 100%">
@@ -24,7 +22,7 @@
             :type="index == activeIndex ? '' : 'info'"
             style="height: 60px;margin-right: 5px;margin-right:15px;cursor:pointer;"
           >
-            {{ item.workDate }} {{ item.dayOfWeek }}<br />
+            {{ item.workDate }} {{ item.dayOfWeek }}<br/>
             {{ item.availableNumber }} / {{ item.reservedNumber }}
           </el-tag>
 
@@ -83,7 +81,7 @@
   </div>
 </template>
 <script>
-import campusApi from "@/api/campus";
+import campusApi from "@/api/campus"
 export default {
   data() {
     return {
@@ -102,95 +100,90 @@ export default {
       baseMap: {},
 
       page: 1, // 当前页
-      limit: 7, // 每页个数
+      limit: 10, // 每页个数
       total: 0, // 总页码
 
-      scheduleList: [] //排班详情
-    };
+      scheduleList: [] // 排班详情
+    }
   },
   created() {
-    this.hoscode = this.$route.params.hoscode;
-    this.workDate = this.getCurDate();
-    this.fetchData();
+    this.hoscode = this.$route.params.hoscode
+    this.workDate = this.getCurDate()
+    this.fetchData()
   },
   methods: {
-    //查询排班详情
-    getDetailSchedule() {
-      campusApi
-        .getScheduleDetail(this.hoscode, this.depcode, this.workDate)
-        .then(response => {
-          this.scheduleList = response.data;
-        });
-    },
+    // 查询排班详情
+    // getDetailSchedule() {
+    //   campusApi
+    //     .getScheduleDetail(this.hoscode, this.depcode, this.workDate)
+    //     .then(response => {
+    //       this.scheduleList = response.data
+    //     })
+    // },
 
     fetchData() {
       campusApi.getDeptByCampusCode(this.hoscode).then(response => {
-        this.data = response.data;
+        this.data = response.data
         // 默认选中第一个
         if (this.data.length > 0) {
-          this.depcode = this.data[0].children[0].depcode;
-          this.depname = this.data[0].children[0].depname;
-
-          this.getPage();
+          this.depcode = this.data[0].children[0].depcode
+          this.depname = this.data[0].children[0].depname
+          this.getPage()
         }
-      });
+      })
     },
     getPage(page = 1) {
-      this.page = page;
-      this.workDate = null;
-      this.activeIndex = 0;
-      this.getScheduleRule();
+      this.page = page
+      this.workDate = null
+      this.activeIndex = 0
+      this.getScheduleRule()
     },
 
     getScheduleRule() {
       campusApi
         .getScheduleRule(this.page, this.limit, this.hoscode, this.depcode)
         .then(response => {
-          this.bookingScheduleList = response.data.bookingScheduleRuleList;
-
-          this.total = response.data.total;
-
-          this.scheduleList = response.data.scheduleList;
-          this.baseMap = response.data.baseMap;
-
+          this.bookingScheduleList = response.data.bookingScheduleRuleList
+          this.total = response.data.total
+          this.scheduleList = response.data.scheduleList
+          this.baseMap = response.data.baseMap
           // 分页后workDate=null，默认选中第一个
           if (this.workDate == null) {
             this.workDate = this.bookingScheduleList[0].workDate;
           }
-          //调用查询排班详情
-          this.getDetailSchedule();
-        });
+          // 调用查询排班详情
+          this.getDetailSchedule()
+        })
     },
 
     handleNodeClick(data) {
       // 科室大类直接返回
-      if (data.children != null) return;
-      this.depcode = data.depcode;
-      this.depname = data.depname;
-
-      this.getPage(1);
+      if (data.children != null) return
+      this.depcode = data.depcode
+      this.depname = data.depname
+      this.getPage(1)
     },
 
     selectDate(workDate, index) {
-      this.workDate = workDate;
-      this.activeIndex = index;
-      //调用查询排班详情
-      this.getDetailSchedule();
+      this.workDate = workDate
+      this.activeIndex = index
+      // 调用查询排班详情
+      this.getDetailSchedule()
     },
 
     getCurDate() {
       var datetime = new Date();
-      var year = datetime.getFullYear();
+      var year = datetime.getFullYear()
       var month =
         datetime.getMonth() + 1 < 10
           ? "0" + (datetime.getMonth() + 1)
-          : datetime.getMonth() + 1;
+          : datetime.getMonth() + 1
       var date =
         datetime.getDate() < 10 ? "0" + datetime.getDate() : datetime.getDate();
-      return year + "-" + month + "-" + date;
+      return year + "-" + month + "-" + date
     }
   }
-};
+}
 </script>
 <style>
 .el-tree-node.is-current > .el-tree-node__content {
