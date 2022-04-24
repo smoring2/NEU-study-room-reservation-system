@@ -22,7 +22,7 @@ import java.util.List;
 @Api(description = "Data Dict Api")
 @RestController
 @RequestMapping("/admin/cmn/dict")
-@CrossOrigin
+//@CrossOrigin
 public class DictController {
 
     @Autowired
@@ -67,6 +67,7 @@ public class DictController {
     @ApiOperation(value = "get childer node by dict code")
     @GetMapping(value = "findByDictCode/{dictCode}")
     public Result findByDictCode(@PathVariable String dictCode) {
+        System.out.println("Test");
         List<Dict> list = dictService.findByDictCode(dictCode);
         return Result.ok(list);
     }

@@ -127,12 +127,11 @@ public class CampusServiceImpl implements CampusService {
 
     //根据医院名称查询
     @Override
-    public List<Campus> findByCampusname(String hosname) {
-        return campusRepository.findCampusByHosnameLike(hosname);
+    public List<Campus> findByCampusName(String campusName) {
+        return campusRepository.findCampusByHosnameLike(campusName);
     }
 
-    //
-//    //根据医院编号获取医院预约挂号详情
+    //根据医院编号获取医院预约挂号详情
     @Override
     public Map<String, Object> item(String hoscode) {
         Map<String, Object> result = new HashMap<>();

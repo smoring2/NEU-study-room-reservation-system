@@ -12,5 +12,6 @@ public interface CampusRepository extends MongoRepository<Campus,String> {
     Campus getCampusByHoscode(String hoscode);
 
     //根据医院名称查询
-    List<Campus> findCampusByHosnameLike(String hosname);
+    List<Campus> findCampusByHosnameLike(String campusName);
 }
+
