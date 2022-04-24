@@ -22,12 +22,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
-/**
- * Author: Ying Tuo
- * Created Time: $[Date]
- * Description:
- */
-
 @RestController
 @RequestMapping("/api/campus")
 public class ApiController {

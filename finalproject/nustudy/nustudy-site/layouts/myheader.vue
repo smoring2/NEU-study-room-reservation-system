@@ -49,6 +49,8 @@
   </div>
 </template>
 <script>
+import campusApi from "@/api/campus/campus";
+
 export default {
   data() {
     return {
@@ -243,7 +245,7 @@ export default {
     // 搜索
     querySearchAsync(queryString, cb) {
       if (queryString == "") return;
-      hospitalApi.getByHosname(queryString).then((response) => {
+      campusApi.getByHosname(queryString).then((response) => {
         for (let i = 0, len = response.data.length; i < len; i++) {
           response.data[i].value = response.data[i].hosname;
         }
@@ -252,7 +254,7 @@ export default {
     },
 
     handleSelect(item) {
-      window.location.href = "/hospital/" + item.hoscode;
+      window.location.href = "/campus/" + item.hoscode;
     },
 
     //   weixinLogin() {

@@ -19,6 +19,18 @@ public class ScheduleQueryVo {
 	@ApiModelProperty(value = "医生编号")
 	private String doccode;
 
+	public void setHoscode(String hoscode) {
+		this.hoscode = hoscode;
+	}
+
+	public void setDepcode(String depcode) {
+		this.depcode = depcode;
+	}
+
+	public void setDoccode(String doccode) {
+		this.doccode = doccode;
+	}
+
 	@ApiModelProperty(value = "安排日期")
 	private Date workDate;
 

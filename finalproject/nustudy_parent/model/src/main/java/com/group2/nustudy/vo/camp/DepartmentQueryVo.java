@@ -11,6 +11,26 @@ public class DepartmentQueryVo {
 	@ApiModelProperty(value = "医院编号")
 	private String hoscode;
 
+	public void setHoscode(String hoscode) {
+		this.hoscode = hoscode;
+	}
+
+	public void setDepcode(String depcode) {
+		this.depcode = depcode;
+	}
+
+	public void setDepname(String depname) {
+		this.depname = depname;
+	}
+
+	public void setBigcode(String bigcode) {
+		this.bigcode = bigcode;
+	}
+
+	public void setBigname(String bigname) {
+		this.bigname = bigname;
+	}
+
 	@ApiModelProperty(value = "科室编号")
 	private String depcode;
 
