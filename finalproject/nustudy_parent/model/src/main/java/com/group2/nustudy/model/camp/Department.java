@@ -25,6 +25,54 @@ public class Department extends BaseMongoEntity {
 	@Indexed //普通索引
 	private String hoscode;
 
+	public String getHoscode() {
+		return hoscode;
+	}
+
+	public void setHoscode(String hoscode) {
+		this.hoscode = hoscode;
+	}
+
+	public String getDepcode() {
+		return depcode;
+	}
+
+	public void setDepcode(String depcode) {
+		this.depcode = depcode;
+	}
+
+	public String getDepname() {
+		return depname;
+	}
+
+	public void setDepname(String depname) {
+		this.depname = depname;
+	}
+
+	public String getIntro() {
+		return intro;
+	}
+
+	public void setIntro(String intro) {
+		this.intro = intro;
+	}
+
+	public String getBigcode() {
+		return bigcode;
+	}
+
+	public void setBigcode(String bigcode) {
+		this.bigcode = bigcode;
+	}
+
+	public String getBigname() {
+		return bigname;
+	}
+
+	public void setBigname(String bigname) {
+		this.bigname = bigname;
+	}
+
 	@ApiModelProperty(value = "科室编号")
 	@Indexed(unique = true) //唯一索引
 	private String depcode;

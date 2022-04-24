@@ -33,6 +33,18 @@ public class Campus extends BaseMongoEntity {
 	@ApiModelProperty(value = "医院类型")
 	private String hostype;
 
+	public String getHoscode() {
+		return hoscode;
+	}
+
+	public String getHosname() {
+		return hosname;
+	}
+
+	public String getHostype() {
+		return hostype;
+	}
+
 	@ApiModelProperty(value = "省code")
 	private String provinceCode;
 

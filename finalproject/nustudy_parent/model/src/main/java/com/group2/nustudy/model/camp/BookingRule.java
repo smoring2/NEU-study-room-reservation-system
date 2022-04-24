@@ -27,6 +27,54 @@ public class BookingRule {
 	@ApiModelProperty(value = "放号时间")
 	private String releaseTime;
 
+	public Integer getCycle() {
+		return cycle;
+	}
+
+	public void setCycle(Integer cycle) {
+		this.cycle = cycle;
+	}
+
+	public String getReleaseTime() {
+		return releaseTime;
+	}
+
+	public void setReleaseTime(String releaseTime) {
+		this.releaseTime = releaseTime;
+	}
+
+	public String getStopTime() {
+		return stopTime;
+	}
+
+	public void setStopTime(String stopTime) {
+		this.stopTime = stopTime;
+	}
+
+	public Integer getQuitDay() {
+		return quitDay;
+	}
+
+	public void setQuitDay(Integer quitDay) {
+		this.quitDay = quitDay;
+	}
+
+	public String getQuitTime() {
+		return quitTime;
+	}
+
+	public void setQuitTime(String quitTime) {
+		this.quitTime = quitTime;
+	}
+
+	public List<String> getRule() {
+		return rule;
+	}
+
+	public void setRule(List<String> rule) {
+		this.rule = rule;
+	}
+
 	@ApiModelProperty(value = "停挂时间")
 	private String stopTime;
 
