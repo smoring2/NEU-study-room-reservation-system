@@ -65,7 +65,7 @@ public class CampusApiController {
     }
 
     @ApiOperation(value = "根据医院编号获取医院预约挂号详情")
-    @GetMapping("findCampusDetail/{hoscode}")
+    @GetMapping("findCampusDetail/{campuscode}")
     public Result item(@PathVariable String campuscode) {
         Map<String, Object> map = campusService.item(campuscode);
         return Result.ok(map);
