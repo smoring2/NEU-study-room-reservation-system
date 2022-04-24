@@ -16,4 +16,18 @@ export default {
       method: "get",
     });
   },
+
+  show(campusCode) {
+    return request({
+      url: `${api_name}/findCampusDetail/${campusCode}`,
+      method: "get",
+    });
+  },
+
+  findDepartment(campusCode) {
+    return request({
+      url: `${api_name}/department/${campusCode}`,
+      method: "get",
+    });
+  },
 };

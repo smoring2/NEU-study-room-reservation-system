@@ -68,7 +68,11 @@
             class="v-card clickable list-item"
           >
             <div class="">
-              <div class="hospital-list-item hos-item" index="0">
+              <div
+                class="hospital-list-item hos-item"
+                index="0"
+                @click="show(item.hoscode)"
+              >
                 <div class="wrapper">
                   <div class="hospital-title">{{ item.hosname }}</div>
                   <div class="bottom-container">
@@ -186,7 +190,7 @@
 </template>
 
 <script>
-import campusApi from "@/api/campus";
+import campusApi from "@/api/campus/campus";
 import dictApi from "@/api/dict";
 export default {
   // asyncData：渲染组件之前异步获取数据
