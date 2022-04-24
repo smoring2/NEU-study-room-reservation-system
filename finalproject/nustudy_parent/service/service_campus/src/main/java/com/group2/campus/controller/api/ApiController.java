@@ -29,7 +29,7 @@ import java.util.Map;
  */
 
 @RestController
-@RequestMapping("/api/camp")
+@RequestMapping("/api/campus")
 public class ApiController {
 
     @Autowired

@@ -2,7 +2,7 @@
   <div class="home page-component">
     <el-carousel indicator-position="outside">
       <el-carousel-item v-for="item in 2" :key="item">
-        <img src="~assets/images/banner2.jpeg" alt="">
+        <img src="~assets/images/banner2.jpeg" alt="" />
       </el-carousel-item>
     </el-carousel>
     <!-- search -->
@@ -15,8 +15,14 @@
             v-model="state"
             :fetch-suggestions="querySearchAsync"
             placeholder="Enter campus here"
-            @select="handleSelect">
-            <span slot="suffix" class="search-btn v-link highlight clickable selected"> Search </span>
+            @select="handleSelect"
+          >
+            <span
+              slot="suffix"
+              class="search-btn v-link highlight clickable selected"
+            >
+              Search
+            </span>
           </el-autocomplete>
         </div>
       </div>
@@ -25,53 +31,63 @@
     <div class="bottom">
       <div class="left">
         <div class="home-filter-wrapper">
-          <div class="title"> 医院</div>
+          <div class="title">医院</div>
           <div>
             <div class="filter-wrapper">
-        <span
-          class="label">等级：</span>
+              <span class="label">等级：</span>
               <div class="condition-wrapper">
-                <span v-for="(item,index) in hostypeList" :key="index"
-                class="item v-link clickable"
-                      :class="hostypeActiveIndex == index ? 'selected':''"
-                      @click="hostypeSelect(item.value, index)">{{item.name}}</span>
+                <span
+                  v-for="(item, index) in hostypeList"
+                  :key="index"
+                  class="item v-link clickable"
+                  :class="hostypeActiveIndex == index ? 'selected' : ''"
+                  @click="hostypeSelect(item.value, index)"
+                  >{{ item.name }}</span
+                >
               </div>
             </div>
             <div class="filter-wrapper">
-      <span
-        class="label">地区：</span>
+              <span class="label">地区：</span>
               <div class="condition-wrapper">
-                <span v-for="(item, index) in districtList" :key="index"
-                class="item v-link clickable"
-                      :class="provinceActiveIndex == index ? 'selected':''"
-                      @click="districtSelect(item.value, index)">{{item.name}}</span></div>
+                <span
+                  v-for="(item, index) in districtList"
+                  :key="index"
+                  class="item v-link clickable"
+                  :class="provinceActiveIndex == index ? 'selected' : ''"
+                  @click="districtSelect(item.value, index)"
+                  >{{ item.name }}</span
+                >
+              </div>
             </div>
           </div>
         </div>
         <div class="v-scroll-list hospital-list">
-          <div v-for="(item, index) in list" :key="index"
-               class="v-card clickable list-item">
+          <div
+            v-for="(item, index) in list"
+            :key="index"
+            class="v-card clickable list-item"
+          >
             <div class="">
               <div class="hospital-list-item hos-item" index="0">
                 <div class="wrapper">
-                  <div class="hospital-title">{{item.hosname}}
-                  </div>
+                  <div class="hospital-title">{{ item.hosname }}</div>
                   <div class="bottom-container">
-                    <div
-                      class="icon-wrapper"><span
-                      class="iconfont"></span>
-                      {{item.hostypeString}}
+                    <div class="icon-wrapper">
+                      <span class="iconfont"></span>
+                      {{ item.hostypeString }}
                     </div>
-                    <div
-                      class="icon-wrapper"><span
-                      class="iconfont"></span>
-                      {{item.bookingRule.releaseTime}} 放号
+                    <div class="icon-wrapper">
+                      <span class="iconfont"></span>
+                      {{ item.bookingRule.releaseTime }} 放号
                     </div>
                   </div>
                 </div>
                 <img
                   src="~assets/images/logoNeu.png"
-                  alt="item.hosname" class="hospital-img"></div>
+                  alt="item.hosname"
+                  class="hospital-img"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -79,8 +95,9 @@
       <div class="right">
         <div class="common-dept">
           <div class="header-wrapper">
-            <div class="title"> 常见科室</div>
-            <div class="all-wrapper"><span>全部</span>
+            <div class="title">常见科室</div>
+            <div class="all-wrapper">
+              <span>全部</span>
               <span class="iconfont icon"></span>
             </div>
           </div>
@@ -98,8 +115,8 @@
         <div class="space">
           <div class="header-wrapper">
             <div class="title-wrapper">
-              <div class="icon-wrapper"><span
-                class="iconfont title-icon"></span>
+              <div class="icon-wrapper">
+                <span class="iconfont title-icon"></span>
               </div>
               <span class="title">平台公告</span>
             </div>
@@ -111,15 +128,21 @@
           <div class="content-wrapper">
             <div class="notice-wrapper">
               <div class="point"></div>
-              <span class="notice v-link clickable dark">关于延长北京大学国际医院放假的通知 </span>
+              <span class="notice v-link clickable dark"
+                >关于延长北京大学国际医院放假的通知
+              </span>
             </div>
             <div class="notice-wrapper">
               <div class="point"></div>
-              <span class="notice v-link clickable dark">北京中医药大学东方医院部分科室医生门诊医 </span>
+              <span class="notice v-link clickable dark"
+                >北京中医药大学东方医院部分科室医生门诊医
+              </span>
             </div>
             <div class="notice-wrapper">
               <div class="point"></div>
-              <span class="notice v-link clickable dark"> 武警总医院号源暂停更新通知 </span>
+              <span class="notice v-link clickable dark">
+                武警总医院号源暂停更新通知
+              </span>
             </div>
           </div>
         </div>
@@ -139,15 +162,21 @@
           <div class="content-wrapper">
             <div class="notice-wrapper">
               <div class="point"></div>
-              <span class="notice v-link clickable dark"> 中国人民解放军总医院第六医学中心(原海军总医院)呼吸内科门诊停诊公告 </span>
+              <span class="notice v-link clickable dark">
+                中国人民解放军总医院第六医学中心(原海军总医院)呼吸内科门诊停诊公告
+              </span>
             </div>
             <div class="notice-wrapper">
               <div class="point"></div>
-              <span class="notice v-link clickable dark"> 首都医科大学附属北京潞河医院老年医学科门诊停诊公告 </span>
+              <span class="notice v-link clickable dark">
+                首都医科大学附属北京潞河医院老年医学科门诊停诊公告
+              </span>
             </div>
             <div class="notice-wrapper">
               <div class="point"></div>
-              <span class="notice v-link clickable dark">中日友好医院中西医结合心内科门诊停诊公告 </span>
+              <span class="notice v-link clickable dark"
+                >中日友好医院中西医结合心内科门诊停诊公告
+              </span>
             </div>
           </div>
         </div>
@@ -156,20 +185,18 @@
   </div>
 </template>
 
-
-
 <script>
-import campusApi from '@/api/camp'
-import dictApi from '@/api/dict'
+import campusApi from "@/api/campus";
+import dictApi from "@/api/dict";
 export default {
   // asyncData：渲染组件之前异步获取数据
   asyncData({ params, error }) {
-    return campusApi.getPageList(1, 10, null).then(response => {
+    return campusApi.getPageList(1, 10, null).then((response) => {
       console.log(response.data);
       return {
         list: response.data.content,
-        pages : response.data.totalPages
-      }
+        pages: response.data.totalPages,
+      };
     });
   },
   data() {
@@ -178,48 +205,48 @@ export default {
       page: 1,
       limit: 10,
 
-      hosname: '',
+      hosname: "",
       hostypeList: [],
       districtList: [],
 
       hostypeActiveIndex: 0,
       provinceActiveIndex: 0,
-      state:''
-    }
+      state: "",
+    };
   },
 
   created() {
-    this.init()
+    this.init();
   },
 
   mounted() {
     // document.getElementById("search").style.display = 'none';
 
     // 添加滚动事件，检测滚动到页面底部
-    window.addEventListener('scroll', this.load, true)
+    window.addEventListener("scroll", this.load, true);
   },
 
-  destroyed(){
+  destroyed() {
     // 页面关闭的同时，记得将这个监听器关闭，节省性能
-    window.removeEventListener('scroll', this.load, false)
+    window.removeEventListener("scroll", this.load, false);
   },
 
   methods: {
     init() {
-      dictApi.findByDictCode("Province").then(response => {
-        this.hostypeList = []
-        this.hostypeList.push({"name":"全部", "value":""})
-        for(let i in response.data){
+      dictApi.findByDictCode("Province").then((response) => {
+        this.hostypeList = [];
+        this.hostypeList.push({ name: "全部", value: "" });
+        for (let i in response.data) {
           this.hostypeList.push(response.data[i]);
         }
-      })
-      dictApi.findByDictCode('Beijin').then(response => {
-        this.districtList = []
-        this.districtList.push({"name":"全部", "value":""})
-        for(let i in response.data){
+      });
+      dictApi.findByDictCode("Beijin").then((response) => {
+        this.districtList = [];
+        this.districtList.push({ name: "全部", value: "" });
+        for (let i in response.data) {
           this.districtList.push(response.data[i]);
         }
-      })
+      });
     },
 
     load(event) {
@@ -230,58 +257,63 @@ export default {
       //   document.getElementById("search").style.display = 'none';
       // }
 
-      if(event.target.clientHeight + event.target.scrollTop >= event.target.scrollHeight){
-        if(this.page < this.pages){      //先判断下一页是否有数据
-          this.page = this.page + 1
-          this.getList();              //拉取接口数据
+      if (
+        event.target.clientHeight + event.target.scrollTop >=
+        event.target.scrollHeight
+      ) {
+        if (this.page < this.pages) {
+          //先判断下一页是否有数据
+          this.page = this.page + 1;
+          this.getList(); //拉取接口数据
         }
       }
     },
 
     getList() {
-      campusApi.getPageList(this.page, this.limit, this.searchObj).then(response => {
-        for(let i in response.data.content){
-          this.list.push(response.data.content[i]);
-        }
-        this.pages = response.data.totalPages
-      })
+      campusApi
+        .getPageList(this.page, this.limit, this.searchObj)
+        .then((response) => {
+          for (let i in response.data.content) {
+            this.list.push(response.data.content[i]);
+          }
+          this.pages = response.data.totalPages;
+        });
     },
 
     querySearchAsync(queryString, cb) {
-      this.searchObj = []
-      if(queryString == '') return
-      campusApi.getByCampusName(queryString).then(response => {
+      this.searchObj = [];
+      if (queryString == "") return;
+      campusApi.getByCampusName(queryString).then((response) => {
         for (let i = 0, len = response.data.length; i < len; i++) {
-          response.data[i].value = response.data[i].hosname
+          response.data[i].value = response.data[i].hosname;
         }
-        cb(response.data)
-      })
+        cb(response.data);
+      });
     },
 
     handleSelect(item) {
-      window.location.href = '/campus/' + item.hoscode
+      window.location.href = "/campus/" + item.hoscode;
     },
 
     hostypeSelect(hostype, index) {
-      this.list = []
-      this.page = 1
-      this.hostypeActiveIndex = index
-      this.searchObj.hostype = hostype
+      this.list = [];
+      this.page = 1;
+      this.hostypeActiveIndex = index;
+      this.searchObj.hostype = hostype;
       this.getList();
     },
 
     districtSelect(districtCode, index) {
-      this.list = []
-      this.page = 1
-      this.provinceActiveIndex = index
-      this.searchObj.districtCode = districtCode
+      this.list = [];
+      this.page = 1;
+      this.provinceActiveIndex = index;
+      this.searchObj.districtCode = districtCode;
       this.getList();
     },
 
     show(hoscode) {
-      window.location.href = '/campus/' + hoscode
-    }
-  }
-}
+      window.location.href = "/campus/" + hoscode;
+    },
+  },
+};
 </script>
-

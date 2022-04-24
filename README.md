@@ -15,7 +15,7 @@
 - sql 数据库 把“campus”相关翻译为“campus”相关，并create sql初始化file （2file）
 - code 中“campus”相关翻译为“campus”相关，如api路径 hosp/findAll
 
-跟分布式有关系：Nacos, Microservice, Security(MD5 加密，[P75]), MongoDB(主从数据库，数据一致性)
+跟分布式有关系：Nacos, Microservice, Security(MD5 加密，[P75], 课本P499), MongoDB(主从数据库，数据一致性)
 网关 - Spring Cloud Gateway：跟Microservice 架构有关（看day10的笔记）
 1、网关介绍
 API网关出现的原因是微服务架构的出现，不同的微服务一般会有不同的网络地址，而外部客户端可能需要调用多个服务的接口才能完成一个业务需求，如果让客户端直接与各个微服务通信，会有以下的问题：
