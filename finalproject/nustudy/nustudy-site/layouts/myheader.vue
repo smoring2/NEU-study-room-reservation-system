@@ -19,50 +19,128 @@
             v-model="state"
             :fetch-suggestion="querySearchAsyc"
             placeholder="Campus name"
-            @select="handleSelect"
-          >
+            @select="handleSelect">
             <span
               slot="suffix"
-              class="search-btn v-link highlight clickable selected"
-              >search</span
-            >
+              class="search-btn v-link highlight clickable selected">search</span>
           </el-autocomplete>
         </div>
       </div>
       <div class="right-wrapper">
         <span class="v-link clickable">Help</span>
-        <!--        <el-dropdown >-->
-        <!--              <span class="el-dropdown-link">-->
-        <!--                晴天<i class="el-icon-arrow-down el-icon&#45;&#45;right"></i>-->
-        <!--              </span>-->
-        <!--            <el-dropdown-menu class="user-name-wrapper" slot="dropdown">-->
-        <!--                <el-dropdown-item>挂号订单</el-dropdown-item>-->
-        <!--                <el-dropdown-item>就诊人管理</el-dropdown-item>-->
-        <!--                <el-dropdown-item divided>退出登录</el-dropdown-item>-->
-        <!--            </el-dropdown-menu>-->
-        <!--        </el-dropdown>-->
-        <span class="v-link clickable" @click="dialogUserFormVisible = true">
-          Log in/Sign Up
-        </span>
+        <span v-if="name == ''" class="v-link clickable" @click="showLogin()" id="loginDialog">
+          Log in/Sign Up</span>
+        <el-dropdown v-if="name != ''" @command="loginMenu">
+              <span class="el-dropdown-link">
+                {{ name }}<i class="el-icon-arrow-down el-icon--right"></i>
+              </span>
+          <el-dropdown-menu class="user-name-wrapper" slot="dropdown">
+            <!--            <el-dropdown-item command="/user">实名认证</el-dropdown-item>-->
+            <el-dropdown-item command="/order">Your reservations</el-dropdown-item>
+            <!--            <el-dropdown-item command="/patient">就诊人管理</el-dropdown-item>-->
+            <el-dropdown-item command="/logout" divided>Log out</el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
       </div>
     </div>
+    <!-- 登录弹出层 -->
+    <el-dialog :visible.sync="dialogUserFormVisible" style="text-align: center;" top="50px"
+               height="600px" width="600px" @close="closeDialog()">
+      <div class="container">
+        <!-- 手机登录 #start -->
+<!--        <div class="operate-view" v-if="dialogAtrr.showLoginType === 'email'">-->
+<!--          <div class="wrapper" style="width: 90%">-->
+<!--            <div class="mobile-wrapper" style="position: static;width: 80%">-->
+<!--              <span class="title">{{ dialogAtrr.labelTips }}</span>-->
+<!--              <el-form>-->
+<!--                <el-form-item>-->
+<!--                  <el-input v-model="dialogAtrr.inputValue" :placeholder="dialogAtrr.placeholder" :maxlength="dialogAtrr.maxlength" class="input v-input">-->
+<!--                  </el-input>-->
+<!--                </el-form-item>-->
+<!--                <el-form-item>-->
+<!--                  <el-input v-model="dialogAtrr.inputPassword" :placeholder="dialogAtrr.placeholderpassword"-->
+<!--                            :maxlength="dialogAtrr.maxlengthpassword" class="input v-input">-->
+<!--                  </el-input>-->
+<!--                </el-form-item>-->
+<!--              </el-form>-->
+<!--              <div class="send-button v-button" @click="btnClick()"> {{ dialogAtrr.loginBtn }}</div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+        <div class="login">
+          <el-card>
+            <h2>Login</h2>
+            <el-form
+              class="login-form"
+              :model="model"
+              :rules="rules"
+              ref="form"
+              @submit.native.prevent="login"
+            >
+              <el-form-item prop="username">
+                <el-input v-model="dialogAtrr.inputValue" placeholder="Username" prefix-icon="fas fa-user"></el-input>
+              </el-form-item>
+              <el-form-item prop="password">
+                <el-input
+                  v-model="dialogAtrr.inputPassword"
+                  placeholder="Password"
+                  type="password"
+                  prefix-icon="fas fa-lock"
+                ></el-input>
+              </el-form-item>
+              <el-form-item>
+                <div class="send-button v-button" @click="btnClick()"> {{ dialogAtrr.loginBtn }}</div>
+              </el-form-item>
+              <a class="forgot-password" href="https://oxfordinformatics.com/">Forgot password ?</a>
+            </el-form>
+          </el-card>
+        </div>
+      </div>
+
+      <!-- 手机登录 #end -->
+
+    </el-dialog>
   </div>
+
 </template>
 <script>
-import campusApi from "@/api/campus/campus";
+import cookie from 'js-cookie'
+import Vue from 'vue'
+import userInfoApi from '@/api/user/userInfo'
+import campusApi from "@/api/campus/campus"
 
+const defaultDialogAtrr = {
+  showLoginType: 'email', // 控制手机登录与微信登录切换
+
+  labelTips: 'NEU email login', // 输入框提示
+
+  inputValue: '', // 输入框绑定对象
+  placeholder: 'Please enter your email here', // 输入框placeholder
+  maxlength: 30, // 输入框长度控制
+
+  inputPassword: '',
+  placeholderpassword: 'Please enter your password here', // 输入框placeholder
+  maxlengthpassword: 30, // 输入框长度控制
+
+
+  loginBtn: 'Log in', // 登录按钮或获取验证码按钮文本
+
+  // sending: true,      // 是否可以发送验证码
+  // second: -1,        // 倒计时间  second>0 : 显示倒计时 second=0 ：重新发送 second=-1 ：什么都不显示
+  // clearSmsTime: null  // 倒计时定时任务引用 关闭登录层清除定时任务
+}
 export default {
   data() {
     return {
       userInfo: {
-        phone: "",
+        email: "",
         code: "",
         openid: "",
       },
 
       dialogUserFormVisible: false,
       // 弹出层相关属性
-      // dialogAtrr: defaultDialogAtrr,
+      dialogAtrr: defaultDialogAtrr,
 
       name: "", // 用户登录显示的名称
     };
@@ -107,68 +185,58 @@ export default {
     // },
 
     // // 绑定登录或获取验证码按钮
-    // btnClick() {
-    //   // 判断是获取验证码还是登录
-    //   if (this.dialogAtrr.loginBtn == "获取验证码") {
-    //     this.userInfo.phone = this.dialogAtrr.inputValue;
-
-    //     // 获取验证码
-    //     this.getCodeFun();
-    //   } else {
-    //     // 登录
-    //     this.login();
-    //   }
-    // },
+    btnClick() {
+      this.login();
+    },
 
     // // 绑定登录，点击显示登录层
-    // showLogin() {
-    //   this.dialogUserFormVisible = true;
-
-    //   // 初始化登录层相关参数
-    //   this.dialogAtrr = { ...defaultDialogAtrr };
-    // },
+    showLogin() {
+      this.dialogUserFormVisible = true;
+      // 初始化登录层相关参数
+      this.dialogAtrr = {...defaultDialogAtrr};
+    },
 
     // // 登录
-    // login() {
-    //   debugger;
-    //   this.userInfo.code = this.dialogAtrr.inputValue;
+    login() {
+      console.log("login")
+      // debugger;
+      this.userInfo.email = this.dialogAtrr.inputValue,
+        this.userInfo.code = this.dialogAtrr.inputPassword;
 
-    //   if (this.dialogAtrr.loginBtn == "正在提交...") {
-    //     this.$message.error("重复提交");
-    //     return;
-    //   }
+      if (this.dialogAtrr.loginBtn == "正在提交...") {
+        this.$message.error("重复提交");
+        return;
+      }
 
-    //   if (this.userInfo.code == "") {
-    //     this.$message.error("验证码必须输入");
-    //     return;
-    //   }
-    //   if (this.userInfo.code.length != 6) {
-    //     this.$message.error("验证码格式不正确");
-    //     return;
-    //   }
+      if (this.userInfo.code == "") {
+        this.$message.error("验证码必须输入");
+        return;
+      }
 
-    //   this.dialogAtrr.loginBtn = "正在提交...";
-    //   userInfoApi
-    //     .login(this.userInfo)
-    //     .then((response) => {
-    //       console.log(response.data);
-    //       // 登录成功 设置cookie
-    //       this.setCookies(response.data.name, response.data.token);
-    //     })
-    //     .catch((e) => {
-    //       this.dialogAtrr.loginBtn = "马上登录";
-    //     });
-    // },
+      console.log(this.userInfo.email + " " + this.userInfo.code)
+      this.dialogAtrr.loginBtn = "正在提交...";
+      userInfoApi
+        .login(this.userInfo)
+        .then((response) => {
+          console.log("respose: " + response.data);
+          // 登录成功 设置cookie
+          this.setCookies(response.data.name, response.data.token);
+        })
+        .catch((e) => {
+          console.log("respose: failed");
+          this.dialogAtrr.loginBtn = "马上登录";
+        });
+    },
 
-    // setCookies(name, token) {
-    //   cookie.set("token", token, { domain: "localhost" });
-    //   cookie.set("name", name, { domain: "localhost" });
-    //   window.location.reload();
-    // },
+    setCookies(name, token) {
+      cookie.set("token", token, {domain: "localhost"});
+      cookie.set("name", name, {domain: "localhost"});
+      window.location.reload();
+    },
 
     // // 获取验证码
     // getCodeFun() {
-    //   if (!/^1[34578]\d{9}$/.test(this.userInfo.phone)) {
+    //   if (!/^1[34578]\d{9}$/.test(this.userInfo.email)) {
     //     this.$message.error("手机号码不正确");
     //     return;
     //   }
@@ -186,7 +254,7 @@ export default {
     //   this.timeDown();
     //   this.dialogAtrr.sending = false;
     //   smsApi
-    //     .sendCode(this.userInfo.phone)
+    //     .sendCode(this.userInfo.email)
     //     .then((response) => {
     //       this.timeDown();
     //     })
@@ -204,7 +272,7 @@ export default {
     //   }
     //   this.dialogAtrr.second = 60;
 
-    //   this.dialogAtrr.labelTips = "验证码已发送至" + this.userInfo.phone;
+    //   this.dialogAtrr.labelTips = "验证码已发送至" + this.userInfo.email;
     //   this.clearSmsTime = setInterval(() => {
     //     --this.dialogAtrr.second;
     //     if (this.dialogAtrr.second < 1) {
@@ -216,32 +284,16 @@ export default {
     // },
 
     // // 关闭登录层
-    // closeDialog() {
-    //   if (this.clearSmsTime) {
-    //     clearInterval(this.clearSmsTime);
-    //   }
-    // },
+    closeDialog() {
+    },
 
-    // showInfo() {
-    //   let token = cookie.get("token");
-    //   if (token) {
-    //     this.name = cookie.get("name");
-    //     console.log(this.name);
-    //   }
-    // },
-
-    // loginMenu(command) {
-    //   if ("/logout" == command) {
-    //     cookie.set("name", "", { domain: "localhost" });
-    //     cookie.set("token", "", { domain: "localhost" });
-
-    //     //跳转页面
-    //     window.location.href = "/";
-    //   } else {
-    //     window.location.href = command;
-    //   }
-    // },
-
+    showInfo() {
+      let token = cookie.get("token");
+      if (token) {
+        this.name = cookie.get("name");
+        console.log(this.name);
+      }
+    },
     // 搜索
     querySearchAsync(queryString, cb) {
       if (queryString == "") return;
@@ -255,7 +307,19 @@ export default {
 
     handleSelect(item) {
       window.location.href = "/campus/" + item.hoscode;
-    },
+    }
+
+    // loginMenu(command) {
+    //   if ("/logout" == command) {
+    //     cookie.set("name", "", { domain: "localhost" });
+    //     cookie.set("token", "", { domain: "localhost" });
+
+    //     //跳转页面
+    //     window.location.href = "/";
+    //   } else {
+    //     window.location.href = command;
+    //   }
+    // },
 
     //   weixinLogin() {
     //     this.dialogAtrr.showLoginType = "weixin";
@@ -274,10 +338,10 @@ export default {
     //     });
     //   },
 
-    //   phoneLogin() {
-    //     this.dialogAtrr.showLoginType = "phone";
+    //   emailLogin() {
+    //     this.dialogAtrr.showLoginType = "email";
     //     this.showLogin();
     //   },
-  },
+  }
 };
 </script>

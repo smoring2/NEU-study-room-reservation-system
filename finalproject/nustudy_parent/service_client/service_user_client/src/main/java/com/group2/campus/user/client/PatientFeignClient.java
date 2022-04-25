@@ -1,7 +1,7 @@
 package com.group2.campus.user.client;
 
 
-import com.group2.nustudy.model.user.Patient;
+import com.group2.nustudy.model.user.Student;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,5 +13,5 @@ public interface PatientFeignClient {
 
     //根据就诊人id获取就诊人信息
     @GetMapping("/api/user/patient/inner/get/{id}")
-    public Patient getPatientOrder(@PathVariable("id") Long id);
+    public Student getPatientOrder(@PathVariable("id") Long id);
 }

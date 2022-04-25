@@ -402,7 +402,7 @@ export default {
         timString = days + "天:";
       }
       return (timString +=
-        hours + " 时 " + minutes + " 分 " + seconds + " 秒 ");
+        hours + " : " + minutes + " : " + seconds + "  ");
     },
 
     show() {
@@ -412,7 +412,7 @@ export default {
     booking(scheduleId, availableNumber) {
       debugger;
       if (availableNumber == 0 || this.pageFirstStatus == -1) {
-        this.$message.error("不能预约");
+        this.$message.error("Can not book!");
       } else {
         window.location.href = "/campus/booking?scheduleId=" + scheduleId;
       }

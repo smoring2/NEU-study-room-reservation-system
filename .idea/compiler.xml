@@ -13,6 +13,7 @@
         <module name="service_order_client" />
         <module name="service_user_client" />
         <module name="service_hosp_client" />
+        <module name="service_user" />
         <module name="service_campus" />
         <module name="service_util" />
         <module name="model" />
@@ -34,6 +35,7 @@
       <module name="service_gateway" target="11" />
       <module name="service_hosp_client" target="1.8" />
       <module name="service_order_client" target="1.8" />
+      <module name="service_user" target="1.8" />
       <module name="service_user_client" target="1.8" />
       <module name="service_util" target="1.8" />
     </bytecodeTargetLevel>
@@ -49,6 +51,7 @@
       <module name="service_gateway" options="-parameters" />
       <module name="service_hosp_client" options="-parameters" />
       <module name="service_order_client" options="-parameters" />
+      <module name="service_user" options="-parameters" />
       <module name="service_user_client" options="-parameters" />
       <module name="service_util" options="-parameters" />
     </option>

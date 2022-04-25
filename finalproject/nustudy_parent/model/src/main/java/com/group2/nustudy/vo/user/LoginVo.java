@@ -12,7 +12,7 @@ public class LoginVo {
     private String openid;
 
     @ApiModelProperty(value = "手机号")
-    private String phone;
+    private String email;
 
     @ApiModelProperty(value = "密码")
     private String code;

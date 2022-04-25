@@ -31,7 +31,7 @@ public class UserInfo extends BaseEntity {
 
 	@ApiModelProperty(value = "手机号")
 	@TableField("phone")
-	private String phone;
+	private String email;
 
 	@ApiModelProperty(value = "用户姓名")
 	@TableField("name")

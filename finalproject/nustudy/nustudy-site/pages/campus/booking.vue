@@ -227,7 +227,7 @@
 import "~/assets/css/campus_personal.css";
 import "~/assets/css/campus.css";
 
-import hospitalApi from "@/api/campus/campus";
+import campusApi from "@/api/campus/campus";
 // import patientApi from '@/api/user/patient'
 // import orderInfoApi from '@/api/order/orderInfo'
 
@@ -260,7 +260,7 @@ export default {
     },
 
     getSchedule() {
-      hospitalApi.getSchedule(this.scheduleId).then((response) => {
+      campusApi.getSchedule(this.scheduleId).then((response) => {
         this.schedule = response.data;
       });
     },
