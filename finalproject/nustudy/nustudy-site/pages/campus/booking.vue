@@ -228,7 +228,7 @@ import "~/assets/css/campus_personal.css";
 import "~/assets/css/campus.css";
 
 import campusApi from "@/api/campus/campus";
-// import patientApi from '@/api/user/patient'
+import studentApi from '@/api/user/student'
 // import orderInfoApi from '@/api/order/orderInfo'
 
 export default {
@@ -248,15 +248,13 @@ export default {
 
   created() {
     this.scheduleId = this.$route.query.scheduleId;
-
     this.init();
   },
 
   methods: {
     init() {
       this.getSchedule();
-
-      this.findPatientList();
+      this.findStudentList();
     },
 
     getSchedule() {
@@ -265,8 +263,8 @@ export default {
       });
     },
 
-    findPatientList() {
-      patientApi.findList().then((response) => {
+    findStudentList() {
+      studentApi.findList().then((response) => {
         this.patientList = response.data;
         if (this.patientList.length > 0) {
           this.patient = this.patientList[0];
@@ -279,28 +277,28 @@ export default {
       this.patient = this.patientList[index];
     },
 
-    submitOrder() {
-      if (this.patient.id == null) {
-        this.$message.error("请选择就诊人");
-        return;
-      }
-      // 防止重复提交
-      if (this.submitBnt == "正在提交...") {
-        this.$message.error("重复提交");
-        return;
-      }
-
-      this.submitBnt = "正在提交...";
-      orderInfoApi
-        .submitOrder(this.scheduleId, this.patient.id)
-        .then((response) => {
-          let orderId = response.data;
-          window.location.href = "/order/show?orderId=" + orderId;
-        })
-        .catch((e) => {
-          this.submitBnt = "确认挂号";
-        });
-    },
+    // submitOrder() {
+    //   if (this.patient.id == null) {
+    //     this.$message.error("请选择就诊人");
+    //     return;
+    //   }
+    //   // 防止重复提交
+    //   if (this.submitBnt == "正在提交...") {
+    //     this.$message.error("重复提交");
+    //     return;
+    //   }
+    //
+    //   this.submitBnt = "正在提交...";
+    //   orderInfoApi
+    //     .submitOrder(this.scheduleId, this.patient.id)
+    //     .then((response) => {
+    //       let orderId = response.data;
+    //       window.location.href = "/order/show?orderId=" + orderId;
+    //     })
+    //     .catch((e) => {
+    //       this.submitBnt = "确认挂号";
+    //     });
+    // },
 
     addPatient() {
       window.location.href = "/patient/add";

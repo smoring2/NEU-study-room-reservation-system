@@ -5,6 +5,7 @@
 //import com.group2.nustudy.common.result.Result;
 //import com.group2.nustudy.model.user.UserInfo;
 //import com.group2.nustudy.vo.user.UserInfoQueryVo;
+//import com.group2.user.service.StudentService;
 //import com.group2.user.service.UserInfoService;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.web.bind.annotation.GetMapping;
@@ -16,10 +17,10 @@
 //
 //@RestController
 //@RequestMapping("/admin/user")
-//public class UserController {
+//public class StudentController {
 //
 //    @Autowired
-//    private UserInfoService userInfoService;
+//    private StudentService studentService;
 //
 //    //用户列表（条件查询带分页）
 //    @GetMapping("{page}/{limit}")
@@ -28,14 +29,14 @@
 //                       UserInfoQueryVo userInfoQueryVo) {
 //        Page<UserInfo> pageParam = new Page<>(page,limit);
 //        IPage<UserInfo> pageModel =
-//                userInfoService.selectPage(pageParam,userInfoQueryVo);
+//                studentService.selectPage(pageParam,userInfoQueryVo);
 //        return Result.ok(pageModel);
 //    }
 //
 //    //用户锁定
 //    @GetMapping("lock/{userId}/{status}")
 //    public Result lock(@PathVariable Long userId,@PathVariable Integer status) {
-//        userInfoService.lock(userId,status);
+//        studentService.lock(userId,status);
 //        return Result.ok();
 //    }
 //

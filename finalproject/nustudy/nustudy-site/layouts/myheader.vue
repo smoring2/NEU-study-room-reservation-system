@@ -32,12 +32,10 @@
           Log in/Sign Up</span>
         <el-dropdown v-if="name != ''" @command="loginMenu">
               <span class="el-dropdown-link">
-                {{ name }}<i class="el-icon-arrow-down el-icon--right"></i>
-              </span>
+                {{ name }}<i class="el-icon-arrow-down el-icon--right"></i></span>
           <el-dropdown-menu class="user-name-wrapper" slot="dropdown">
-            <!--            <el-dropdown-item command="/user">实名认证</el-dropdown-item>-->
-            <el-dropdown-item command="/order">Your reservations</el-dropdown-item>
-            <!--            <el-dropdown-item command="/patient">就诊人管理</el-dropdown-item>-->
+            <el-dropdown-item command="/student">My account</el-dropdown-item>
+            <el-dropdown-item command="/order">My reservations</el-dropdown-item>
             <el-dropdown-item command="/logout" divided>Log out</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
@@ -45,7 +43,7 @@
     </div>
     <!-- 登录弹出层 -->
     <el-dialog :visible.sync="dialogUserFormVisible" style="text-align: center;" top="50px"
-               height="600px" width="450px" >
+               height="600px" width="450px">
       <div class="container">
         <div class="login">
           <el-card style="text-align: center">
@@ -57,7 +55,7 @@
               ref="form"
               @submit.native.prevent="login">
               <el-form-item prop="username">
-                <el-input v-model="dialogAtrr.inputValue" placeholder="Username" ></el-input>
+                <el-input v-model="dialogAtrr.inputValue" placeholder="Username"></el-input>
               </el-form-item>
               <el-form-item prop="password">
                 <el-input
@@ -69,7 +67,7 @@
               <el-form-item>
                 <div class="send-button v-button" @click="login"> {{ dialogAtrr.loginBtn }}</div>
               </el-form-item>
-<!--              <a class="forgot-password" href="https://oxfordinformatics.com/">Forgot password ?</a>-->
+              <!--              <a class="forgot-password" href="https://oxfordinformatics.com/">Forgot password ?</a>-->
             </el-form>
           </el-card>
         </div>
@@ -103,9 +101,6 @@ const defaultDialogAtrr = {
 
   loginBtn: 'Log in', // 登录按钮或获取验证码按钮文本
 
-  // sending: true,      // 是否可以发送验证码
-  // second: -1,        // 倒计时间  second>0 : 显示倒计时 second=0 ：重新发送 second=-1 ：什么都不显示
-  // clearSmsTime: null  // 倒计时定时任务引用 关闭登录层清除定时任务
 }
 export default {
   data() {
@@ -125,38 +120,19 @@ export default {
   },
 
   created() {
-     this.showInfo();
+    this.showInfo();
   },
 
   mounted() {
     //   // 注册全局登录事件对象
-      window.loginEvent = new Vue();
-      // 监听登录事件
-      loginEvent.$on("loginDialogEvent", function () {
-        document.getElementById("loginDialog").click();
-      });
-      // 触发事件，显示登录层：
-    //loginEvent.$emit('loginDialogEvent')
-    //   //初始化微信js
-    //   const script = document.createElement("script");
-    //   script.type = "text/javascript";
-    //   script.src =
-    //     "https://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin.js";
-    //   document.body.appendChild(script);
-    //   // 微信登录回调处理
-    //   let self = this;
-    //   window["loginCallback"] = (name, token, openid) => {
-    //     debugger;
-    //     self.loginCallback(name, token, openid);
-    //   };
+    window.loginEvent = new Vue();
+    // 监听登录事件
+    loginEvent.$on("loginDialogEvent", function () {
+      document.getElementById("loginDialog").click();
+    });
   },
 
   methods: {
-
-    // // 绑定登录或获取验证码按钮
-    // btnClick() {
-    //   this.login();
-    // },
 
     // // 绑定登录，点击显示登录层
     showLogin() {
@@ -227,8 +203,8 @@ export default {
 
     loginMenu(command) {
       if ("/logout" == command) {
-        cookie.set("name", "", { domain: "localhost" });
-        cookie.set("token", "", { domain: "localhost" });
+        cookie.set("name", "", {domain: "localhost"});
+        cookie.set("token", "", {domain: "localhost"});
 
         //跳转页面
         window.location.href = "/";
