@@ -4,3 +4,4 @@
 4. nginx: 9001
 5. nacos: 8848
 6. user web: 3000
+7. rabbitmq: run port: 5672; managament port: 15672
