@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @FeignClient(value = "service-user")
 @Repository
-public interface PatientFeignClient {
+public interface StudentFeignClient {
 
     //根据就诊人id获取就诊人信息
-    @GetMapping("/api/user/patient/inner/get/{id}")
-    public Student getPatientOrder(@PathVariable("id") Long id);
+    @GetMapping("/api/user/student/inner/get/{id}")
+    public Student getStudentOrder(@PathVariable("id") Long id);
 }

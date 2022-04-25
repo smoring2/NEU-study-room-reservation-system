@@ -9,12 +9,13 @@
       <module fileurl="file://$PROJECT_DIR$/finalproject/nustudy_parent/model/model.iml" filepath="$PROJECT_DIR$/finalproject/nustudy_parent/model/model.iml" />
       <module fileurl="file://$PROJECT_DIR$/finalproject/nustudy_parent/nustudy_parent.iml" filepath="$PROJECT_DIR$/finalproject/nustudy_parent/nustudy_parent.iml" />
       <module fileurl="file://$PROJECT_DIR$/finalproject/nustudy_parent/service/service.iml" filepath="$PROJECT_DIR$/finalproject/nustudy_parent/service/service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/finalproject/nustudy_parent/service_client/service_camp_client/service_camp_client.iml" filepath="$PROJECT_DIR$/finalproject/nustudy_parent/service_client/service_camp_client/service_camp_client.iml" />
       <module fileurl="file://$PROJECT_DIR$/finalproject/nustudy_parent/service/service_campus/service_campus.iml" filepath="$PROJECT_DIR$/finalproject/nustudy_parent/service/service_campus/service_campus.iml" />
       <module fileurl="file://$PROJECT_DIR$/finalproject/nustudy_parent/service_client/service_client.iml" filepath="$PROJECT_DIR$/finalproject/nustudy_parent/service_client/service_client.iml" />
       <module fileurl="file://$PROJECT_DIR$/finalproject/nustudy_parent/service/service_cmn/service_cmn.iml" filepath="$PROJECT_DIR$/finalproject/nustudy_parent/service/service_cmn/service_cmn.iml" />
       <module fileurl="file://$PROJECT_DIR$/finalproject/nustudy_parent/service_client/service_cmn_client/service_cmn_client.iml" filepath="$PROJECT_DIR$/finalproject/nustudy_parent/service_client/service_cmn_client/service_cmn_client.iml" />
       <module fileurl="file://$PROJECT_DIR$/finalproject/nustudy_parent/service_gateway/service_gateway.iml" filepath="$PROJECT_DIR$/finalproject/nustudy_parent/service_gateway/service_gateway.iml" />
-      <module fileurl="file://$PROJECT_DIR$/finalproject/nustudy_parent/service_client/service_hosp_client/service_hosp_client.iml" filepath="$PROJECT_DIR$/finalproject/nustudy_parent/service_client/service_hosp_client/service_hosp_client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/finalproject/nustudy_parent/service/service_order/service_order.iml" filepath="$PROJECT_DIR$/finalproject/nustudy_parent/service/service_order/service_order.iml" />
       <module fileurl="file://$PROJECT_DIR$/finalproject/nustudy_parent/service_client/service_order_client/service_order_client.iml" filepath="$PROJECT_DIR$/finalproject/nustudy_parent/service_client/service_order_client/service_order_client.iml" />
       <module fileurl="file://$PROJECT_DIR$/finalproject/nustudy_parent/service/service_user/service_user.iml" filepath="$PROJECT_DIR$/finalproject/nustudy_parent/service/service_user/service_user.iml" />
       <module fileurl="file://$PROJECT_DIR$/finalproject/nustudy_parent/service_client/service_user_client/service_user_client.iml" filepath="$PROJECT_DIR$/finalproject/nustudy_parent/service_client/service_user_client/service_user_client.iml" />

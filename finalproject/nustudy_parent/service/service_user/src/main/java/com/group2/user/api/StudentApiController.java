@@ -5,6 +5,7 @@ import com.group2.nustudy.common.result.Result;
 import com.group2.nustudy.common.utils.AuthContextHolder;
 import com.group2.nustudy.model.user.Student;
 import com.group2.user.service.StudentService;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -64,7 +65,9 @@ public class StudentApiController {
 
     //根据就诊人id获取就诊人信息
     @GetMapping("inner/get/{id}")
-    public Student getStudentOrder(@PathVariable Long id) {
+    public Student getStudentOrder(
+            @ApiParam(name="id", value = "student id", required = true)
+            @PathVariable Long id) {
         Student student = studentService.getStudentId(id);
         return student;
     }

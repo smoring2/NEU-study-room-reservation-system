@@ -7,6 +7,7 @@ import com.group2.campus.service.ScheduleService;
 import com.group2.nustudy.common.result.Result;
 import com.group2.nustudy.model.camp.Campus;
 import com.group2.nustudy.model.camp.Schedule;
+import com.group2.nustudy.model.user.Student;
 import com.group2.nustudy.vo.camp.CampusQueryVo;
 import com.group2.nustudy.vo.camp.DepartmentVo;
 import com.group2.nustudy.vo.camp.ScheduleOrderVo;
@@ -119,5 +120,6 @@ public class CampusApiController {
             @PathVariable("hoscode") String hoscode) {
         return campusSetService.getSignInfoVo(hoscode);
     }
+
 
 }
