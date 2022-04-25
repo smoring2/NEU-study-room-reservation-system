@@ -117,9 +117,6 @@
 		</dependency>
 	</dependencies>
 
-
-
-
 	<build>
 
 		<finalName>campus_management</finalName>

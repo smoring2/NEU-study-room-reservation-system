@@ -7,6 +7,23 @@ hosipital -> campus
 医院分级 -> 东海岸西海岸，加拿大/美国
 
 
+
+Schedule 数据翻译规则：
+1000_00 定义为 Silicon Valley 校区 (因为老师比较熟悉)
+
+科室 -> 楼
+depcode -> 就是房间类型
+title -> 房间编号
+docname -> 房间名称
+skill -> 1 monitor
+
+  4 N 2nd St (专科)
+      200040878 901
+    
+  WeWork (妇产科)
+200040878 ->
+
+
 nacos -> 类似zookeeper这种注册中心，所以也是基于paxos的package？
 Nginx 解决跨域问题 [P65] line 7 - BASE_API: '"http://localhost:9001"' (Path: /Users/cortey/Documents/GitHub/cs6650-final-project/finalproject/nustudy/vue-admin-template-master/config/dev.env.js)
 Spring Cache 引入了缓存 + Redis -> 可写入report [P64]
