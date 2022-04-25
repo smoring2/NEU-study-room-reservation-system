@@ -167,7 +167,7 @@
 import "~/assets/css/campus_personal.css";
 import "~/assets/css/campus.css";
 
-// import cookie from "js-cookie";
+import cookie from "js-cookie";
 import campusApi from "@/api/campus/campus";
 // import userInfoApi from "@/api/user/userInfo";
 
@@ -211,11 +211,11 @@ export default {
     schedule(depcode) {
       // debugger;
       // // 登录判断
-      // let token = cookie.get("token");
-      // if (!token) {
-      //   loginEvent.$emit("loginDialogEvent");
-      //   return;
-      // }
+      let token = cookie.get("token");
+      if (!token) {
+        loginEvent.$emit("loginDialogEvent");
+        return;
+      }
 
       // //判断认证
       // userInfoApi.getUserInfo().then((response) => {

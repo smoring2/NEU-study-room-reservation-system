@@ -90,6 +90,7 @@
 <script>
 import "~/assets/css/campus_personal.css";
 import "~/assets/css/campus.css";
+import cookie from 'js-cookie'
 
 import campusApi from "@/api/campus/campus";
 export default {

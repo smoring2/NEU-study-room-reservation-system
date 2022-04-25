@@ -45,53 +45,31 @@
     </div>
     <!-- 登录弹出层 -->
     <el-dialog :visible.sync="dialogUserFormVisible" style="text-align: center;" top="50px"
-               height="600px" width="600px" @close="closeDialog()">
+               height="600px" width="450px" >
       <div class="container">
-        <!-- 手机登录 #start -->
-<!--        <div class="operate-view" v-if="dialogAtrr.showLoginType === 'email'">-->
-<!--          <div class="wrapper" style="width: 90%">-->
-<!--            <div class="mobile-wrapper" style="position: static;width: 80%">-->
-<!--              <span class="title">{{ dialogAtrr.labelTips }}</span>-->
-<!--              <el-form>-->
-<!--                <el-form-item>-->
-<!--                  <el-input v-model="dialogAtrr.inputValue" :placeholder="dialogAtrr.placeholder" :maxlength="dialogAtrr.maxlength" class="input v-input">-->
-<!--                  </el-input>-->
-<!--                </el-form-item>-->
-<!--                <el-form-item>-->
-<!--                  <el-input v-model="dialogAtrr.inputPassword" :placeholder="dialogAtrr.placeholderpassword"-->
-<!--                            :maxlength="dialogAtrr.maxlengthpassword" class="input v-input">-->
-<!--                  </el-input>-->
-<!--                </el-form-item>-->
-<!--              </el-form>-->
-<!--              <div class="send-button v-button" @click="btnClick()"> {{ dialogAtrr.loginBtn }}</div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
         <div class="login">
-          <el-card>
-            <h2>Login</h2>
+          <el-card style="text-align: center">
+            <h2>NU Study Room Reservation Login</h2>
             <el-form
               class="login-form"
               :model="model"
               :rules="rules"
               ref="form"
-              @submit.native.prevent="login"
-            >
+              @submit.native.prevent="login">
               <el-form-item prop="username">
-                <el-input v-model="dialogAtrr.inputValue" placeholder="Username" prefix-icon="fas fa-user"></el-input>
+                <el-input v-model="dialogAtrr.inputValue" placeholder="Username" ></el-input>
               </el-form-item>
               <el-form-item prop="password">
                 <el-input
                   v-model="dialogAtrr.inputPassword"
                   placeholder="Password"
                   type="password"
-                  prefix-icon="fas fa-lock"
                 ></el-input>
               </el-form-item>
               <el-form-item>
-                <div class="send-button v-button" @click="btnClick()"> {{ dialogAtrr.loginBtn }}</div>
+                <div class="send-button v-button" @click="login"> {{ dialogAtrr.loginBtn }}</div>
               </el-form-item>
-              <a class="forgot-password" href="https://oxfordinformatics.com/">Forgot password ?</a>
+<!--              <a class="forgot-password" href="https://oxfordinformatics.com/">Forgot password ?</a>-->
             </el-form>
           </el-card>
         </div>
@@ -110,7 +88,7 @@ import userInfoApi from '@/api/user/userInfo'
 import campusApi from "@/api/campus/campus"
 
 const defaultDialogAtrr = {
-  showLoginType: 'email', // 控制手机登录与微信登录切换
+  //showLoginType: 'email', // 控制手机登录与微信登录切换
 
   labelTips: 'NEU email login', // 输入框提示
 
@@ -147,17 +125,18 @@ export default {
   },
 
   created() {
-    // this.showInfo();
+     this.showInfo();
   },
 
   mounted() {
     //   // 注册全局登录事件对象
-    //   window.loginEvent = new Vue();
-    //   // 监听登录事件
-    //   loginEvent.$on("loginDialogEvent", function () {
-    //     document.getElementById("loginDialog").click();
-    //   });
-    //   // 触发事件，显示登录层：loginEvent.$emit('loginDialogEvent')
+      window.loginEvent = new Vue();
+      // 监听登录事件
+      loginEvent.$on("loginDialogEvent", function () {
+        document.getElementById("loginDialog").click();
+      });
+      // 触发事件，显示登录层：
+    //loginEvent.$emit('loginDialogEvent')
     //   //初始化微信js
     //   const script = document.createElement("script");
     //   script.type = "text/javascript";
@@ -173,21 +152,11 @@ export default {
   },
 
   methods: {
-    // loginCallback(name, token, openid) {
-    //   // 打开手机登录层，绑定手机号，改逻辑与手机登录一致
-    //   if (openid != "") {
-    //     this.userInfo.openid = openid;
-
-    //     this.showLogin();
-    //   } else {
-    //     this.setCookies(name, token);
-    //   }
-    // },
 
     // // 绑定登录或获取验证码按钮
-    btnClick() {
-      this.login();
-    },
+    // btnClick() {
+    //   this.login();
+    // },
 
     // // 绑定登录，点击显示登录层
     showLogin() {
@@ -203,28 +172,28 @@ export default {
       this.userInfo.email = this.dialogAtrr.inputValue,
         this.userInfo.code = this.dialogAtrr.inputPassword;
 
-      if (this.dialogAtrr.loginBtn == "正在提交...") {
-        this.$message.error("重复提交");
+      if (this.dialogAtrr.loginBtn == "Logging...") {
+        this.$message.error("Submit multi-times");
         return;
       }
 
       if (this.userInfo.code == "") {
-        this.$message.error("验证码必须输入");
+        this.$message.error("Password has to be entered");
         return;
       }
 
       console.log(this.userInfo.email + " " + this.userInfo.code)
-      this.dialogAtrr.loginBtn = "正在提交...";
+      this.dialogAtrr.loginBtn = "Logging...";
       userInfoApi
         .login(this.userInfo)
         .then((response) => {
-          console.log("respose: " + response.data);
+          console.log("response: " + response.data);
           // 登录成功 设置cookie
           this.setCookies(response.data.name, response.data.token);
         })
         .catch((e) => {
           console.log("respose: failed");
-          this.dialogAtrr.loginBtn = "马上登录";
+          this.dialogAtrr.loginBtn = "Log in";
         });
     },
 
@@ -232,59 +201,6 @@ export default {
       cookie.set("token", token, {domain: "localhost"});
       cookie.set("name", name, {domain: "localhost"});
       window.location.reload();
-    },
-
-    // // 获取验证码
-    // getCodeFun() {
-    //   if (!/^1[34578]\d{9}$/.test(this.userInfo.email)) {
-    //     this.$message.error("手机号码不正确");
-    //     return;
-    //   }
-
-    //   // 初始化验证码相关属性
-    //   this.dialogAtrr.inputValue = "";
-    //   this.dialogAtrr.placeholder = "请输入验证码";
-    //   this.dialogAtrr.maxlength = 6;
-    //   this.dialogAtrr.loginBtn = "马上登录";
-
-    //   // 控制重复发送
-    //   if (!this.dialogAtrr.sending) return;
-
-    //   // 发送短信验证码
-    //   this.timeDown();
-    //   this.dialogAtrr.sending = false;
-    //   smsApi
-    //     .sendCode(this.userInfo.email)
-    //     .then((response) => {
-    //       this.timeDown();
-    //     })
-    //     .catch((e) => {
-    //       this.$message.error("发送失败，重新发送");
-    //       // 发送失败，回到重新获取验证码界面
-    //       this.showLogin();
-    //     });
-    // },
-
-    // // 倒计时
-    // timeDown() {
-    //   if (this.clearSmsTime) {
-    //     clearInterval(this.clearSmsTime);
-    //   }
-    //   this.dialogAtrr.second = 60;
-
-    //   this.dialogAtrr.labelTips = "验证码已发送至" + this.userInfo.email;
-    //   this.clearSmsTime = setInterval(() => {
-    //     --this.dialogAtrr.second;
-    //     if (this.dialogAtrr.second < 1) {
-    //       clearInterval(this.clearSmsTime);
-    //       this.dialogAtrr.sending = true;
-    //       this.dialogAtrr.second = 0;
-    //     }
-    //   }, 1000);
-    // },
-
-    // // 关闭登录层
-    closeDialog() {
     },
 
     showInfo() {
@@ -307,41 +223,19 @@ export default {
 
     handleSelect(item) {
       window.location.href = "/campus/" + item.hoscode;
+    },
+
+    loginMenu(command) {
+      if ("/logout" == command) {
+        cookie.set("name", "", { domain: "localhost" });
+        cookie.set("token", "", { domain: "localhost" });
+
+        //跳转页面
+        window.location.href = "/";
+      } else {
+        window.location.href = command;
+      }
     }
-
-    // loginMenu(command) {
-    //   if ("/logout" == command) {
-    //     cookie.set("name", "", { domain: "localhost" });
-    //     cookie.set("token", "", { domain: "localhost" });
-
-    //     //跳转页面
-    //     window.location.href = "/";
-    //   } else {
-    //     window.location.href = command;
-    //   }
-    // },
-
-    //   weixinLogin() {
-    //     this.dialogAtrr.showLoginType = "weixin";
-
-    //     weixinApi.getLoginParam().then((response) => {
-    //       var obj = new WxLogin({
-    //         self_redirect: true,
-    //         id: "weixinLogin", // 需要显示的容器id
-    //         appid: response.data.appid, // 公众号appid wx*******
-    //         scope: response.data.scope, // 网页默认即可
-    //         redirect_uri: response.data.redirectUri, // 授权成功后回调的url
-    //         state: response.data.state, // 可设置为简单的随机数加session用来校验
-    //         style: "black", // 提供"black"、"white"可选。二维码的样式
-    //         href: "", // 外部css文件url，需要https
-    //       });
-    //     });
-    //   },
-
-    //   emailLogin() {
-    //     this.dialogAtrr.showLoginType = "email";
-    //     this.showLogin();
-    //   },
   }
 };
 </script>
