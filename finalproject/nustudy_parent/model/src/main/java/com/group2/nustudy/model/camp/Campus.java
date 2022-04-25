@@ -8,13 +8,6 @@ import lombok.Data;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-/**
- * <p>
- * Hospital
- * </p>
- *
- * @author qy
- */
 @Data
 @ApiModel(description = "Hospital")
 @Document("Hospital")
@@ -77,5 +70,12 @@ public class Campus extends BaseMongoEntity {
 		this.bookingRule = JSONObject.parseObject(bookingRule, BookingRule.class);
 	}
 
+	public String getProvinceCode() {
+		return provinceCode;
+	}
+
+	public void setProvinceCode(String provinceCode) {
+		this.provinceCode = provinceCode;
+	}
 }
 

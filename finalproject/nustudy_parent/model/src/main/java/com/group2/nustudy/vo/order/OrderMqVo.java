@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+
 @Data
 @ApiModel(description = "OrderMqVo")
 public class OrderMqVo {
@@ -20,6 +21,7 @@ public class OrderMqVo {
 
 	@ApiModelProperty(value = "短信实体")
 	private MsmVo msmVo;
+
 
 }
 
