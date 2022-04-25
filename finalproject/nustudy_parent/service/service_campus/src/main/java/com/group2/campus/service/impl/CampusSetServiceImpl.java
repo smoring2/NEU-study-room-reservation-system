@@ -32,7 +32,7 @@ public class CampusSetServiceImpl extends ServiceImpl<CampusSetMapper, CampusSet
         wrapper.eq("hoscode",hoscode);
         CampusSet hospitalSet = baseMapper.selectOne(wrapper);
         if(null == hospitalSet) {
-            throw new NustudyException(ResultCodeEnum.HOSPITAL_OPEN);
+            throw new NustudyException(ResultCodeEnum.CAMPUS_OPEN);
         }
         SignInfoVo signInfoVo = new SignInfoVo();
         signInfoVo.setApiUrl(hospitalSet.getApiUrl());

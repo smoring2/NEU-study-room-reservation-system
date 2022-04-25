@@ -60,7 +60,7 @@
                 <div class="v-card clickable item">
                   <div
                     class="inline"
-                    v-for="(item, index) in patientList"
+                    v-for="(item, index) in studentList"
                     :key="item.id"
                     @click="selectPatient(index)"
                     style="margin-right: 10px"
@@ -86,13 +86,6 @@
                   </div>
                 </div>
               </div>
-              <div class="item space add-patient v-card clickable">
-                <div class="">
-                  <div class="item-add-wrapper" @click="addPatient()">
-                    + 添加就诊人
-                  </div>
-                </div>
-              </div>
               <div class="el-loading-mask" style="display: none">
                 <div class="el-loading-spinner">
                   <svg viewBox="25 25 50 50" class="circular">
@@ -108,7 +101,7 @@
               </div>
             </div>
             <!-- 就诊人，选中显示 -->
-            <div class="sub-title" v-if="patientList.length > 0">
+            <div class="sub-title" v-if="studentList.length > 0">
               <div class="block"></div>
               选择就诊卡：
               <span class="card-tips"
@@ -120,22 +113,22 @@
             <el-card
               class="patient-card"
               shadow="always"
-              v-if="patientList.length > 0"
+              v-if="studentList.length > 0"
             >
               <div slot="header" class="clearfix">
                 <div>
                   <span class="name">
-                    {{ patient.name }}
-                    {{ patient.certificatesNo }} 居民身份证</span
+                    {{ student.name }}
+                    {{ student.certificatesNo }} 居民身份证</span
                   >
                 </div>
               </div>
               <div class="card SELF_PAY_CARD">
                 <div class="info">
                   <span class="type">{{
-                    patient.isInsure == 0 ? "自费" : "医保"
-                  }}</span
-                  ><span class="card-no">{{ patient.certificatesNo }}</span
+                      student.isInsure == 0 ? "自费" : "医保"
+                    }}</span
+                  ><span class="card-no">{{ student.certificatesNo }}</span
                   ><span class="card-view">居民身份证</span>
                 </div>
                 <span class="operate"></span>
@@ -201,7 +194,7 @@
               <div class="content-wrapper">
                 <el-form ref="form" :model="form">
                   <el-form-item class="form-item" label="就诊人手机号：">
-                    {{ patient.phone }}
+                    {{ student.phone }}
                   </el-form-item>
                 </el-form>
               </div>
@@ -229,7 +222,7 @@ import "~/assets/css/campus.css";
 
 import campusApi from "@/api/campus/campus";
 import studentApi from '@/api/user/student'
-// import orderInfoApi from '@/api/order/orderInfo'
+import orderInfoApi from '@/api/order/orderInfo'
 
 export default {
   data() {
@@ -238,11 +231,11 @@ export default {
       schedule: {
         param: {},
       },
-      patientList: [],
-      patient: {},
+      studentList: [],
+      student: {},
 
       activeIndex: 0,
-      submitBnt: "确认挂号",
+      submitBnt: "Submit",
     };
   },
 
@@ -265,44 +258,40 @@ export default {
 
     findStudentList() {
       studentApi.findList().then((response) => {
-        this.patientList = response.data;
-        if (this.patientList.length > 0) {
-          this.patient = this.patientList[0];
+        this.studentList = response.data;
+        if (this.studentList.length > 0) {
+          this.student = this.studentList[0];
         }
       });
     },
 
     selectPatient(index) {
       this.activeIndex = index;
-      this.patient = this.patientList[index];
+      this.student = this.studentList[index];
     },
 
-    // submitOrder() {
-    //   if (this.patient.id == null) {
-    //     this.$message.error("请选择就诊人");
-    //     return;
-    //   }
-    //   // 防止重复提交
-    //   if (this.submitBnt == "正在提交...") {
-    //     this.$message.error("重复提交");
-    //     return;
-    //   }
-    //
-    //   this.submitBnt = "正在提交...";
-    //   orderInfoApi
-    //     .submitOrder(this.scheduleId, this.patient.id)
-    //     .then((response) => {
-    //       let orderId = response.data;
-    //       window.location.href = "/order/show?orderId=" + orderId;
-    //     })
-    //     .catch((e) => {
-    //       this.submitBnt = "确认挂号";
-    //     });
-    // },
+    submitOrder() {
+      if (this.student.id == null) {
+        this.$message.error("Please choose the person");
+        return;
+      }
+      // 防止重复提交
+      if (this.submitBnt == "Submitting...") {
+        this.$message.error("Can not submit at the same time");
+        return;
+      }
 
-    addPatient() {
-      window.location.href = "/patient/add";
-    },
+      this.submitBnt = "Submitting...";
+      orderInfoApi
+        .submitOrder(this.scheduleId, this.student.id)
+        .then((response) => {
+          let orderId = response.data;
+          window.location.href = "/order/show?orderId=" + orderId;
+        })
+        .catch((e) => {
+          this.submitBnt = "Submit";
+        });
+    }
   },
 };
 </script>

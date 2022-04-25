@@ -26,15 +26,15 @@
 
         <dependency>
             <groupId>com.nustudy</groupId>
-            <artifactId>service_hosp_client</artifactId>
+            <artifactId>service_campus_client</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>com.atguigu</groupId>-->
-<!--            <artifactId>rabbit_util</artifactId>-->
-<!--            <version>0.0.1-SNAPSHOT</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>com.nustudy</groupId>
+            <artifactId>rabbit_util</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
 
         <dependency>
             <groupId>com.github.wxpay</groupId>

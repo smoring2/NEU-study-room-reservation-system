@@ -90,11 +90,13 @@ public class HttpRequestHelper {
     public static JSONObject sendRequest(Map<String, Object> paramMap, String url){
         String result = "";
         try {
+            System.out.println("paraMap: " + paramMap);
             StringBuilder postdata = new StringBuilder();
             for (Map.Entry<String, Object> param : paramMap.entrySet()) {
                 postdata.append(param.getKey()).append("=")
                         .append(param.getValue()).append("&");
             }
+            System.out.println("postdata: " + postdata);
             log.info(String.format("--> Send request：post data %1s", postdata));
             byte[] reqData = postdata.toString().getBytes("utf-8");
             byte[] respdata = HttpUtil.doPost(url,reqData);

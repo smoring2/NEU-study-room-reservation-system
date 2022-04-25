@@ -40,8 +40,8 @@ public enum ResultCodeEnum {
     TIME_NO(250, "TIME_NO"),
 
     SIGN_ERROR(300, "SIGN_ERROR"),
-    HOSPITAL_OPEN(310, "HOSPITAL_NOT_OPEN"),
-    HOSPITAL_LOCK(320, "HOSPITAL_LOCK"),
+    CAMPUS_OPEN(310, "CAMPUS_NOT_OPEN"),
+    CAMPUS_LOCK(320, "CAMPUS_LOCK"),
     ;
 
     private Integer code;

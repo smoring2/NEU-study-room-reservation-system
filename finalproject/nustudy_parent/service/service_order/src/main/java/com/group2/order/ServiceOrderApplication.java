@@ -11,7 +11,11 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableDiscoveryClient
 @EnableFeignClients(basePackages = {"com.group2"})
 public class ServiceOrderApplication {
+
+
     public static void main(String[] args) {
+        String path = "src/main/resources/all.policy";
+//        System.setProperty("java.security.policy", path);
         SpringApplication.run(ServiceOrderApplication.class, args);
     }
 }

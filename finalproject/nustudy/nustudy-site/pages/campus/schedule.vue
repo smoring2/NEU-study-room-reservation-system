@@ -137,7 +137,7 @@
                   <div class="button-wrapper">
                     <div
                       class="v-button"
-                      @click="booking(item.id, item.availableNumber)"
+                      @click="booking(item.hosScheduleId, item.availableNumber)"
                       :style="
                         item.availableNumber == 0 || pageFirstStatus == -1
                           ? 'background-color: #7f828b;'
@@ -183,7 +183,7 @@
                   <div class="button-wrapper">
                     <div
                       class="v-button"
-                      @click="booking(item.id, item.availableNumber)"
+                      @click="booking(item.hosScheduleId, item.availableNumber)"
                       :style="
                         item.availableNumber == 0 || pageFirstStatus == -1
                           ? 'background-color: #7f828b;'
@@ -270,6 +270,7 @@ export default {
         )
         .then((response) => {
           this.bookingScheduleList = response.data.bookingScheduleList;
+          console.log("bookingScheduleList: " , this.bookingScheduleList)
           this.total = response.data.total;
           this.baseMap = response.data.baseMap;
 
@@ -294,6 +295,7 @@ export default {
         .findScheduleList(this.hoscode, this.depcode, this.workDate)
         .then((response) => {
           this.scheduleList = response.data;
+          console.log("scheduleList: " , this.scheduleList)
         });
     },
 
@@ -410,7 +412,7 @@ export default {
     },
 
     booking(scheduleId, availableNumber) {
-      debugger;
+      console.log("scheduleId: " , scheduleId)
       if (availableNumber == 0 || this.pageFirstStatus == -1) {
         this.$message.error("Can not book!");
       } else {

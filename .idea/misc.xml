@@ -9,6 +9,8 @@
         <option value="$PROJECT_DIR$/finalproject/nustudy_parent/service_client/pom.xml" />
         <option value="$PROJECT_DIR$/finalproject/nustudy_parent/service/service_user/pom.xml" />
         <option value="$PROJECT_DIR$/finalproject/nustudy_parent/service/service_order/pom.xml" />
+        <option value="$PROJECT_DIR$/finalproject/nustudy_parent/service_client/service_campus_client/pom.xml" />
+        <option value="$PROJECT_DIR$/finalproject/nustudy_parent/common/rabbit_util/pom.xml" />
       </list>
     </option>
   </component>

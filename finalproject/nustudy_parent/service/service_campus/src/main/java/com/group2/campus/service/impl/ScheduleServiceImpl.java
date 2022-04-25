@@ -1,6 +1,7 @@
 package com.group2.campus.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.group2.campus.repository.ScheduleRepository;
 import com.group2.campus.service.DepartmentService;
@@ -281,7 +282,7 @@ public class ScheduleServiceImpl implements ScheduleService {
     ////获取排班id获取排班数据
     @Override
     public Schedule getScheduleId(String scheduleId) {
-        Schedule schedule = scheduleRepository.findById(scheduleId).get();
+        Schedule schedule = scheduleRepository.findScheduleByHosScheduleId(scheduleId);
         return this.packageSchedule(schedule);
     }
 

@@ -4,15 +4,17 @@ import com.alibaba.fastjson.JSONObject;
 import com.group2.campus.mapper.OrderInfoMapper;
 import com.group2.campus.mapper.ScheduleMapper;
 import com.group2.campus.model.OrderInfo;
-import com.group2.campus.model.Patient;
 import com.group2.campus.model.Schedule;
 import com.group2.campus.service.CampusService;
 import com.group2.campus.util.ResultCodeEnum;
 import com.group2.campus.util.NustudyException;
+import com.group2.nustudy.model.user.Student;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.bson.types.ObjectId;
+
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -24,7 +26,7 @@ import java.util.Map;
 public class CampusServiceImpl implements CampusService {
 
 	@Autowired
-	private ScheduleMapper campusMapper;
+	private ScheduleMapper scheduleMapper;
 
     @Autowired
     private OrderInfoMapper orderInfoMapper;
@@ -39,6 +41,7 @@ public class CampusServiceImpl implements CampusService {
         String reserveDate = (String)paramMap.get("reserveDate");
         String reserveTime = (String)paramMap.get("reserveTime");
         String amount = (String)paramMap.get("amount");
+//        paramMap.put("birthdate", "2000-01-01");
 
         Schedule schedule = this.getSchedule(hosScheduleId);
         if(null == schedule) {
@@ -50,22 +53,24 @@ public class CampusServiceImpl implements CampusService {
                 || !schedule.getAmount().toString().equals(amount)) {
             throw new NustudyException(ResultCodeEnum.DATA_ERROR);
         }
+        System.out.println(JSONObject.toJSONString(paramMap));
 
         //就诊人信息
-        Patient patient = JSONObject.parseObject(JSONObject.toJSONString(paramMap), Patient.class);
-        log.info(JSONObject.toJSONString(patient));
+        Student student = JSONObject.parseObject(JSONObject.toJSONString(paramMap), Student.class);
+        System.out.println("student: " + student);
+        log.info(JSONObject.toJSONString(student));
         //处理就诊人业务
-        Long patientId = this.savePatient(patient);
+        Long studentId = this.saveStudent(student);
 
         Map<String, Object> resultMap = new HashMap<>();
         int availableNumber = schedule.getAvailableNumber().intValue() - 1;
         if(availableNumber > 0) {
             schedule.setAvailableNumber(availableNumber);
-            campusMapper.updateById(schedule);
+            scheduleMapper.updateById(schedule);
 
             //记录预约记录
             OrderInfo orderInfo = new OrderInfo();
-            orderInfo.setPatientId(patientId);
+            orderInfo.setPatientId(studentId);
             orderInfo.setScheduleId(Long.parseLong(hosScheduleId));
             int number = schedule.getReservedNumber().intValue() - schedule.getAvailableNumber().intValue();
             orderInfo.setNumber(number);
@@ -128,14 +133,15 @@ public class CampusServiceImpl implements CampusService {
     }
 
     private Schedule getSchedule(String frontSchId) {
-        return campusMapper.selectById(frontSchId);
+        System.out.println("frontID: " + frontSchId);
+        return scheduleMapper.selectById(1);
     }
 
     /**
      * 医院处理就诊人信息
-     * @param patient
+     * @param student
      */
-    private Long savePatient(Patient patient) {
+    private Long saveStudent(Student student) {
         // 业务：略
         return 1L;
     }
