@@ -9,7 +9,7 @@
           :onclick="
             'javascript:window.location=\'/campus/' + hospital.hoscode + '\''
           "
-          >预约挂号
+          >Start
         </span>
       </div>
       <div class="nav-item">
@@ -21,7 +21,7 @@
             '\''
           "
         >
-          医院详情
+          Campus Intro
         </span>
       </div>
       <div class="nav-item">
@@ -33,19 +33,13 @@
             '\''
           "
         >
-          预约须知
+          Rules
         </span>
       </div>
-      <div class="nav-item">
-        <span class="v-link clickable dark"> 停诊信息 </span>
-      </div>
-      <div class="nav-item">
-        <span class="v-link clickable dark"> 查询/取消 </span>
-      </div>
     </div>
-    <!-- 左侧导航 #end -->
+    <!-- left navi #end -->
 
-    <!-- 右侧内容 #start -->
+    <!-- right info #start -->
     <div class="page-container">
       <div class="hospital-home">
         <div class="common-header">
@@ -63,7 +57,7 @@
             :alt="hospital.hosname"
           />
           <div class="content-wrapper">
-            <div>挂号规则</div>
+            <div>Reservation Rules</div>
             <div class="line">
               <div>
                 <span class="label">预约周期：</span
@@ -95,7 +89,7 @@
             </div>
           </div>
         </div>
-        <div class="title select-title">选择科室</div>
+        <div class="title select-title">Building And Floor</div>
         <div class="select-dept-wrapper">
           <div class="department-wrapper">
             <div class="hospital-department">

@@ -9,7 +9,7 @@
           :onclick="
             'javascript:window.location=\'/campus/' + hospital.hoscode + '\''
           "
-          >预约挂号
+          >Start
         </span>
       </div>
       <div class="nav-item selected">
@@ -21,7 +21,7 @@
             '\''
           "
         >
-          医院详情
+          Campus Intro
         </span>
       </div>
       <div class="nav-item">
@@ -33,19 +33,13 @@
             '\''
           "
         >
-          预约须知
+          Reservation Rules
         </span>
       </div>
-      <div class="nav-item">
-        <span class="v-link clickable dark"> 停诊信息 </span>
-      </div>
-      <div class="nav-item">
-        <span class="v-link clickable dark"> 查询/取消 </span>
-      </div>
     </div>
-    <!-- 左侧导航 #end -->
+    <!-- left navi #end -->
 
-    <!-- 右侧内容 #start -->
+    <!-- right info #start -->
     <div class="page-container">
       <div class="hospital-detail">
         <div class="common-header">
@@ -90,7 +84,7 @@
 <script>
 import "~/assets/css/campus_personal.css";
 import "~/assets/css/campus.css";
-import cookie from 'js-cookie'
+import cookie from "js-cookie";
 
 import campusApi from "@/api/campus/campus";
 export default {

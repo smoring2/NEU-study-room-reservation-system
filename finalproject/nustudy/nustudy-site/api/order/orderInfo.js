@@ -1,13 +1,13 @@
-import request from '@/utils/request'
+import request from "@/utils/request";
 
-const api_name = `/api/order/orderInfo`
+const api_name = `/api/order/orderInfo`;
 
 export default {
   submitOrder(scheduleId, studentId) {
     return request({
       url: `${api_name}/auth/submitOrder/${scheduleId}/${studentId}`,
-      method: 'post'
-    })
+      method: "post",
+    });
   },
 
   // getPageList(page, limit, searchObj) {
@@ -27,10 +27,11 @@ export default {
 
   getOrderInfo(orderId) {
     return request({
-      url: `${api_name}/auth/getOrderInfo/${orderId}`,
-      method: 'get'
-    })
-  }
+      // url: `${api_name}/auth/getOrderInfo/${orderId}`,
+      url: `${api_name}/auth/getOrders/${orderId}`,
+      method: "get",
+    });
+  },
 
   // cancelOrder(orderId) {
   //   return request({
@@ -38,4 +39,4 @@ export default {
   //     method: 'get'
   //   })
   // }
-}
+};

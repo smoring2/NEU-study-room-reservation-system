@@ -1,7 +1,7 @@
 [
   {
     "hoscode": "1000_00",
-    "hosname": "Northeastern University — Silicon Valley",
+    "hosname": "NEU — Silicon Valley",
     "hostype": "1",
     "provinceCode": "110000",
     "cityCode": "110100",
@@ -21,7 +21,7 @@
   },
   {
     "hoscode": "1000_01",
-    "hosname": "Northeastern University — San Francisco",
+    "hosname": "NEU — San Francisco",
     "hostype": "1",
     "provinceCode": "110000",
     "cityCode": "110100",
@@ -41,7 +41,7 @@
   },
   {
     "hoscode": "1000_02",
-    "hosname": "Northeastern University — Boston",
+    "hosname": "NEU — Boston",
     "hostype": "1",
     "provinceCode": "110000",
     "cityCode": "110100",
@@ -61,7 +61,7 @@
   },
   {
     "hoscode": "1000_03",
-    "hosname": "Northeastern University — Seattle",
+    "hosname": "NEU — Seattle",
     "hostype": "1",
     "provinceCode": "110000",
     "cityCode": "110100",
