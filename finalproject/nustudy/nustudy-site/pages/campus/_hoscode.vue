@@ -1,16 +1,14 @@
 <template>
   <!-- header -->
   <div class="nav-container page-component">
-    <!--左侧导航 #start -->
+    <!--left navi #start -->
     <div class="nav left-nav">
       <div class="nav-item selected">
         <span
           class="v-link selected dark"
           :onclick="
             'javascript:window.location=\'/campus/' + hospital.hoscode + '\''
-          "
-          >Start
-        </span>
+          ">Start</span>
       </div>
       <div class="nav-item">
         <span
@@ -31,7 +29,7 @@
             'javascript:window.location=\'/campus/notice/' +
             hospital.hoscode +
             '\''
-          "
+         "
         >
           Rules
         </span>
@@ -45,8 +43,7 @@
         <div class="common-header">
           <div class="title-wrapper">
             <span class="hospital-title">{{ hospital.hosname }}</span>
-            <div class="icon-wrapper">
-              <span class="iconfont"></span>{{ hospital.param.hostypeString }}
+            <div class="icon-wrapper">{{ hospital.param.hostypeString }}
             </div>
           </div>
         </div>
@@ -60,28 +57,27 @@
             <div>Reservation Rules</div>
             <div class="line">
               <div>
-                <span class="label">预约周期：</span
-                ><span>{{ bookingRule.cycle }}天</span>
+                <span class="label"> Booking cycle: </span
+                ><span>{{ bookingRule.cycle }}Days</span>
               </div>
               <div class="space">
-                <span class="label">放号时间：</span
+                <span class="label">Begin：</span
                 ><span>{{ bookingRule.releaseTime }}</span>
               </div>
               <div class="space">
-                <span class="label">停挂时间：</span
+                <span class="label">End：</span
                 ><span>{{ bookingRule.stopTime }}</span>
               </div>
             </div>
             <div class="line">
-              <span class="label">退号时间：</span>
-              <span v-if="bookingRule.quitDay == -1"
-                >就诊前一工作日{{ bookingRule.quitTime }}前取消</span
-              >
+<!--              <span class="label">退号时间：</span>-->
+<!--              <span v-if="bookingRule.quitDay == -1"-->
+<!--                >就诊前一工作日{{ bookingRule.quitTime }}前取消</span>-->
               <span v-if="bookingRule.quitDay == 0"
                 >就诊前当天{{ bookingRule.quitTime }}前取消</span
               >
             </div>
-            <div style="margin-top: 20px">医院预约规则</div>
+            <div style="margin-top: 20px">Booking rules:</div>
             <div class="rule-wrapper">
               <ol>
                 <li v-for="item in bookingRule.rule" :key="item">{{ item }}</li>

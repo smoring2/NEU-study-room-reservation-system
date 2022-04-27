@@ -2,25 +2,58 @@
 
   <!-- header -->
   <div class="nav-container page-component">
-    <!--左侧导航 #start -->
+    <!--left navi #start -->
+<!--    <div class="nav left-nav">-->
+<!--      <div class="nav-item ">-->
+<!--        <span class="v-link clickable dark" onclick="javascript:window.location='/user'">实名认证 </span>-->
+<!--      </div>-->
+<!--      <div class="nav-item selected">-->
+<!--        <span class="v-link selected dark" onclick="javascript:window.location='/order'"> 挂号订单 </span>-->
+<!--      </div>-->
+<!--      <div class="nav-item ">-->
+<!--        <span class="v-link clickable dark" onclick="javascript:window.location='/patient'"> 就诊人管理 </span>-->
+<!--      </div>-->
+<!--      <div class="nav-item ">-->
+<!--        <span class="v-link clickable dark"> 修改账号信息 </span>-->
+<!--      </div>-->
+<!--      <div class="nav-item ">-->
+<!--        <span class="v-link clickable dark"> 意见反馈 </span>-->
+<!--      </div>-->
+<!--    </div>-->
     <div class="nav left-nav">
-      <div class="nav-item ">
-        <span class="v-link clickable dark" onclick="javascript:window.location='/user'">实名认证 </span>
-      </div>
       <div class="nav-item selected">
-        <span class="v-link selected dark" onclick="javascript:window.location='/order'"> 挂号订单 </span>
+        <span
+          class="v-link selected dark"
+          :onclick="
+            'javascript:window.location=\'/campus/' + campuscode + '\''
+          ">Start</span>
       </div>
-      <div class="nav-item ">
-        <span class="v-link clickable dark" onclick="javascript:window.location='/patient'"> 就诊人管理 </span>
+      <div class="nav-item">
+        <span
+          class="v-link clickable dark"
+          :onclick="
+            'javascript:window.location=\'/campus/detail/' +
+            campuscode +
+            '\''
+          "
+        >
+          Campus Intro
+        </span>
       </div>
-      <div class="nav-item ">
-        <span class="v-link clickable dark"> 修改账号信息 </span>
-      </div>
-      <div class="nav-item ">
-        <span class="v-link clickable dark"> 意见反馈 </span>
+      <div class="nav-item">
+        <span
+          class="v-link clickable dark"
+          :onclick="
+            'javascript:window.location=\'/campus/notice/' +
+            campuscode +
+            '\''
+         "
+        >
+          Rules
+        </span>
       </div>
     </div>
-    <!-- 左侧导航 #end -->
+    <!-- left navi #end -->
 
     <!-- 右侧内容 #start -->
     <div class="page-container">

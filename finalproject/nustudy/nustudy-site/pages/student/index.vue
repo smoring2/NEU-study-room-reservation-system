@@ -7,16 +7,16 @@
       <div class="nav-item">
         <span class="v-link selected dark" onclick="javascript:window.location='/student'"> My Information </span>
       </div>
-      <div class="nav-item">
-        <span class="v-link selected dark" onclick="javascript:window.location='/order'"> My Reservations </span>
-      </div>
+<!--      <div class="nav-item">-->
+<!--        <span class="v-link selected dark" onclick="javascript:window.location='/order'"> My Reservations </span>-->
+<!--      </div>-->
       <div class="nav-item ">
-        <span class="v-link clickable dark" onclick="javascript:window.location='/logout'"> Log out </span>
+        <span class ="v-link clickable" @click="logout"> Log out </span>
       </div>
     </div>
-    <!-- 左侧导航 #end -->
+    <!-- left navi #end -->
 
-    <!-- 右侧内容 #start -->
+    <!-- right #start -->
     <div class="page-container">
       <div class="personal-student">
         <div class="header-wrapper">
@@ -28,7 +28,7 @@
               <div>
                 <span class="name">{{ item.name }}</span>
                 <span>{{ item.certificatesNo }} {{ item.certificatesType }}</span>
-                <div class="detail" @click="show(item.id)"> See more <span class="iconfont"></span></div>
+                <div class="detail" @click="show(item.id)"> See more <span class="iconfont"></span></div>
               </div>
             </div>
           </el-card>
@@ -46,6 +46,7 @@ import '~/assets/css/campus.css'
 import '~/assets/css/personal.css'
 
 import studentApi from '@/api/user/student'
+import cookie from "js-cookie";
 
 export default {
 
@@ -69,6 +70,13 @@ export default {
 
     show(id) {
       window.location.href = '/student/show?id=' + id
+    },
+
+    logout() {
+      console.log("logout")
+      cookie.set("name", "", {domain: "localhost"});
+      cookie.set("token", "", {domain: "localhost"});
+      window.location.href = "/";
     }
   }
 }

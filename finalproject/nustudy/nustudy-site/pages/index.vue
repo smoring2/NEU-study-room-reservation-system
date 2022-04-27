@@ -31,10 +31,10 @@
     <div class="bottom">
       <div class="left">
         <div class="home-filter-wrapper">
-          <div class="title">医院</div>
+          <div class="title">Campus</div>
           <div>
             <div class="filter-wrapper">
-              <span class="label">等级：</span>
+              <span class="label">Location：</span>
               <div class="condition-wrapper">
                 <span
                   v-for="(item, index) in hostypeList"
@@ -47,7 +47,7 @@
               </div>
             </div>
             <div class="filter-wrapper">
-              <span class="label">地区：</span>
+              <span class="label">District：</span>
               <div class="condition-wrapper">
                 <span
                   v-for="(item, index) in districtList"
@@ -82,7 +82,7 @@
                     </div>
                     <div class="icon-wrapper">
                       <span class="iconfont"></span>
-                      {{ item.bookingRule.releaseTime }} 放号
+                      {{ item.bookingRule.releaseTime }} open reservations
                     </div>
                   </div>
                 </div>
@@ -150,14 +150,14 @@ export default {
     init() {
       dictApi.findByDictCode("Province").then((response) => {
         this.hostypeList = [];
-        this.hostypeList.push({ name: "全部", value: "" });
+        this.hostypeList.push({ name: "All", value: "" });
         for (let i in response.data) {
           this.hostypeList.push(response.data[i]);
         }
       });
       dictApi.findByDictCode("Beijin").then((response) => {
         this.districtList = [];
-        this.districtList.push({ name: "全部", value: "" });
+        this.districtList.push({ name: "All", value: "" });
         for (let i in response.data) {
           this.districtList.push(response.data[i]);
         }

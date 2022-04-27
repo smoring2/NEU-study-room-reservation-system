@@ -9,24 +9,20 @@
           height="50"
           src="~assets/images/logoNeu.png"
         />
-        <span class="v-link clickable dark" onclick="javascript:window.location='/'"> NEU study room reservation system</span>
+        <span class="v-link clickable dark"
+              onclick="javascript:window.location='/'"> NEU study room reservation system</span>
       </div>
       <div class="search-wrapper">
         <div class="campus-search animation-show">
-          <el-autocomplete
-            class="search-input-small"
-            prefix-icon="el-icon-search"
-            v-model="state"
-            :fetch-suggestion="querySearchAsyc"
-            placeholder="Campus name"
-            @select="handleSelect"
-          >
-            <span
-              slot="suffix"
-              class="search-btn v-link highlight clickable selected"
-              >search</span
-            >
-          </el-autocomplete>
+          <!--          <el-autocomplete-->
+          <!--            class="search-input-small"-->
+          <!--            prefix-icon="el-icon-search"-->
+          <!--            v-model="state"-->
+          <!--            :fetch-suggestion="querySearchAsyc"-->
+          <!--            placeholder="Campus name"-->
+          <!--            @select="handleSelect">-->
+          <!--            <spa slot="suffix" class="search-btn v-link highlight clickable selected">search</spa>-->
+          <!--          </el-autocomplete>-->
         </div>
       </div>
       <div class="right-wrapper">
@@ -45,17 +41,16 @@
           ></span>
           <el-dropdown-menu class="user-name-wrapper" slot="dropdown">
             <el-dropdown-item command="/student">My account</el-dropdown-item>
-            <el-dropdown-item command="/order"
-              >My reservations</el-dropdown-item
-            >
+            <!--            <el-dropdown-item command="/order">My reservations</el-dropdown-item>-->
             <el-dropdown-item command="/logout" divided
-              >Log out</el-dropdown-item
+            >Log out
+            </el-dropdown-item
             >
           </el-dropdown-menu>
         </el-dropdown>
       </div>
     </div>
-    <!-- 登录弹出层 -->
+    <!-- log in dialog starts here-->
     <el-dialog
       :visible.sync="dialogUserFormVisible"
       style="text-align: center"
@@ -98,7 +93,7 @@
         </div>
       </div>
 
-      <!-- 手机登录 #end -->
+      <!-- log in dialog ends here-->
     </el-dialog>
   </div>
 </template>
@@ -109,19 +104,19 @@ import userInfoApi from "@/api/user/userInfo";
 import campusApi from "@/api/campus/campus";
 
 const defaultDialogAtrr = {
-  //showLoginType: 'email', // 控制手机登录与微信登录切换
+  //showLoginType: 'email',
 
-  labelTips: "NEU email login", // 输入框提示
+  labelTips: "NEU email login", // hint
 
-  inputValue: "", // 输入框绑定对象
-  placeholder: "Please enter your email here", // 输入框placeholder
-  maxlength: 30, // 输入框长度控制
+  inputValue: "", // account username
+  placeholder: "Please enter your email here", // input placeholder
+  maxlength: 30, // input max length
 
-  inputPassword: "",
-  placeholderpassword: "Please enter your password here", // 输入框placeholder
-  maxlengthpassword: 30, // 输入框长度控制
+  inputPassword: "", // account password
+  placeholderpassword: "Please enter your password here", // placeholder
+  maxlengthpassword: 30,
 
-  loginBtn: "Log in", // 登录按钮或获取验证码按钮文本
+  loginBtn: "Log in",
 };
 export default {
   data() {
@@ -133,10 +128,9 @@ export default {
       },
 
       dialogUserFormVisible: false,
-      // 弹出层相关属性
       dialogAtrr: defaultDialogAtrr,
 
-      name: "", // 用户登录显示的名称
+      name: "",
     };
   },
 
@@ -145,29 +139,23 @@ export default {
   },
 
   mounted() {
-    //   // 注册全局登录事件对象
     window.loginEvent = new Vue();
-    // 监听登录事件
     loginEvent.$on("loginDialogEvent", function () {
       document.getElementById("loginDialog").click();
     });
   },
 
   methods: {
-    // // 绑定登录，点击显示登录层
     showLogin() {
       this.dialogUserFormVisible = true;
-      // 初始化登录层相关参数
-      this.dialogAtrr = { ...defaultDialogAtrr };
+      this.dialogAtrr = {...defaultDialogAtrr};
     },
 
-    // // 登录
     login() {
       console.log("login");
       // debugger;
       (this.userInfo.email = this.dialogAtrr.inputValue),
         (this.userInfo.code = this.dialogAtrr.inputPassword);
-
       if (this.dialogAtrr.loginBtn == "Logging...") {
         this.$message.error("Submit multi-times");
         return;
@@ -184,7 +172,6 @@ export default {
         .login(this.userInfo)
         .then((response) => {
           console.log("response: " + response.data);
-          // 登录成功 设置cookie
           this.setCookies(response.data.name, response.data.token);
         })
         .catch((e) => {
@@ -194,8 +181,8 @@ export default {
     },
 
     setCookies(name, token) {
-      cookie.set("token", token, { domain: "localhost" });
-      cookie.set("name", name, { domain: "localhost" });
+      cookie.set("token", token, {domain: "localhost"});
+      cookie.set("name", name, {domain: "localhost"});
       window.location.reload();
     },
 
@@ -206,7 +193,7 @@ export default {
         console.log(this.name);
       }
     },
-    // 搜索
+
     querySearchAsync(queryString, cb) {
       if (queryString == "") return;
       campusApi.getByHosname(queryString).then((response) => {
@@ -223,10 +210,8 @@ export default {
 
     loginMenu(command) {
       if ("/logout" == command) {
-        cookie.set("name", "", { domain: "localhost" });
-        cookie.set("token", "", { domain: "localhost" });
-
-        //跳转页面
+        cookie.set("name", "", {domain: "localhost"});
+        cookie.set("token", "", {domain: "localhost"});
         window.location.href = "/";
       } else {
         window.location.href = command;

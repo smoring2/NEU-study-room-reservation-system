@@ -1,45 +1,80 @@
 <template>
   <!-- header -->
   <div class="nav-container page-component">
-    <!--左侧导航 #start -->
+    <!--left navi #start -->
+<!--    <div class="nav left-nav">-->
+<!--      <div class="nav-item selected">-->
+<!--        <span-->
+<!--          class="v-link selected dark"-->
+<!--          :onclick="'javascript:window.location=\'/campus/' + hoscode + '\''"-->
+<!--          >Reservation-->
+<!--        </span>-->
+<!--      </div>-->
+<!--      <div class="nav-item">-->
+<!--        <span-->
+<!--          class="v-link clickable dark"-->
+<!--          :onclick="-->
+<!--            'javascript:window.location=\'/campus/detail/' + hoscode + '\''-->
+<!--          "-->
+<!--        >-->
+<!--          Campus Detail-->
+<!--        </span>-->
+<!--      </div>-->
+<!--      <div class="nav-item">-->
+<!--        <span-->
+<!--          class="v-link clickable dark"-->
+<!--          :onclick="-->
+<!--            'javascript:window.location=\'/campus/notice/' + hoscode + '\''-->
+<!--          "-->
+<!--        >-->
+<!--          Reservation notice-->
+<!--        </span>-->
+<!--      </div>-->
+<!--      <div class="nav-item">-->
+<!--        <span class="v-link clickable dark"> Suspension information </span>-->
+<!--      </div>-->
+<!--      <div class="nav-item">-->
+<!--        <span class="v-link clickable dark"> Search/Cancel </span>-->
+<!--      </div>-->
+<!--    </div>-->
+    <!-- Left navi #end -->
+    <!--left navi #start -->
     <div class="nav left-nav">
       <div class="nav-item selected">
         <span
           class="v-link selected dark"
-          :onclick="'javascript:window.location=\'/campus/' + hoscode + '\''"
-          >预约挂号
+          :onclick="
+            'javascript:window.location=\'/campus/' + campuscode + '\''
+          ">Start</span>
+      </div>
+      <div class="nav-item">
+        <span
+          class="v-link clickable dark"
+          :onclick="
+            'javascript:window.location=\'/campus/detail/' +
+            campuscode +
+            '\''
+          "
+        >
+          Campus Intro
         </span>
       </div>
       <div class="nav-item">
         <span
           class="v-link clickable dark"
           :onclick="
-            'javascript:window.location=\'/campus/detail/' + hoscode + '\''
-          "
+            'javascript:window.location=\'/campus/notice/' +
+            campuscode +
+            '\''
+         "
         >
-          医院详情
+          Rules
         </span>
-      </div>
-      <div class="nav-item">
-        <span
-          class="v-link clickable dark"
-          :onclick="
-            'javascript:window.location=\'/campus/notice/' + hoscode + '\''
-          "
-        >
-          预约须知
-        </span>
-      </div>
-      <div class="nav-item">
-        <span class="v-link clickable dark"> 停诊信息 </span>
-      </div>
-      <div class="nav-item">
-        <span class="v-link clickable dark"> 查询/取消 </span>
       </div>
     </div>
-    <!-- 左侧导航 #end -->
+    <!-- left navi #end -->
 
-    <!-- 右侧内容 #start -->
+    <!-- Right navi #start -->
     <div class="page-container">
       <div class="hospital-source-list">
         <div class="header-wrapper" style="justify-content: normal">
@@ -50,7 +85,7 @@
           <div>{{ baseMap.bigname }}</div>
         </div>
         <div class="title mt20">{{ baseMap.depname }}</div>
-        <!-- 号源列表 #start -->
+        <!-- time zone list #start -->
         <div class="mt60">
           <div class="title-wrapper">{{ baseMap.workDateString }}</div>
           <div class="calendar-list-wrapper">
@@ -70,19 +105,19 @@
               <div class="status-wrapper" v-if="item.status == 0">
                 {{
                   item.availableNumber == -1
-                    ? "无号"
+                    ? "Not open"
                     : item.availableNumber == 0
-                    ? "约满"
-                    : "有号"
+                    ? "Full already"
+                    : "Available"
                 }}
               </div>
-              <div class="status-wrapper" v-if="item.status == 1">即将放号</div>
+              <div class="status-wrapper" v-if="item.status == 1">Coming soon</div>
               <div class="status-wrapper" v-if="item.status == -1">
-                停止挂号
+                Stopped
               </div>
             </div>
           </div>
-          <!-- 分页 -->
+          <!-- Page Divider -->
           <el-pagination
             class="pagination"
             layout="prev, pager, next"
@@ -94,24 +129,23 @@
           </el-pagination>
         </div>
 
-        <!-- 即将放号 #start-->
+        <!-- Start booking  #start-->
         <div class="countdown-wrapper mt60" v-if="!tabShow">
           <div class="countdonw-title">
             {{ time
             }}<span class="v-link selected">{{ baseMap.releaseTime }} </span
-            >放号
+            >Releasing
           </div>
           <div class="countdown-text">
-            倒 计 时
+            Countdown
             <div>
               <span class="number">{{ timeString }}</span>
             </div>
           </div>
         </div>
-        <!-- 即将放号 #end-->
+        <!-- Start booking #end-->
 
-        <!-- 号源列表 #end -->
-        <!-- 上午号源 #start -->
+        <!-- morning #start -->
         <div class="mt60" v-if="tabShow">
           <div class="">
             <div class="list-title">
@@ -133,7 +167,7 @@
                   <div class="special-wrapper">{{ item.skill }}</div>
                 </div>
                 <div class="right-wrapper">
-                  <div class="fee">￥{{ item.amount }}</div>
+<!--                  <div class="fee">{{ item.amount }}</div>-->
                   <div class="button-wrapper">
                     <div
                       class="v-button"
@@ -159,8 +193,8 @@
             </div>
           </div>
         </div>
-        <!-- 上午号源 #end -->
-        <!-- 下午号源 #start -->
+        <!-- morning #end -->
+        <!-- afternoon #start -->
         <div class="mt60" v-if="tabShow">
           <div class="">
             <div class="list-title">
@@ -182,7 +216,7 @@
                   <div class="special-wrapper">{{ item.skill }}</div>
                 </div>
                 <div class="right-wrapper">
-                  <div class="fee">￥{{ item.amount }}</div>
+<!--                  <div class="fee">￥{{ item.amount }}</div>-->
                   <div class="button-wrapper">
                     <div
                       class="v-button"
@@ -208,11 +242,12 @@
             </div>
           </div>
         </div>
-        <!-- 下午号源 #end -->
+        <!-- afternoon #end -->
       </div>
     </div>
-    <!-- 右侧内容 #end -->
+    <!-- Right navi #end -->
   </div>
+
   <!-- footer -->
 </template>
 
@@ -231,15 +266,15 @@ export default {
       bookingScheduleList: [],
       scheduleList: [],
       baseMap: {},
-      nextWorkDate: null, // 下一页第一个日期
-      preWorkDate: null, // 上一页第一个日期
+      nextWorkDate: null,
+      preWorkDate: null,
 
-      tabShow: true, //挂号列表与即将挂号切换
+      tabShow: true,
       activeIndex: 0,
 
-      page: 1, // 当前页
-      limit: 7, // 每页个数
-      total: 1, // 总页码
+      page: 1,
+      limit: 7,
+      total: 1,
 
       timeString: null,
       time: "今天",
@@ -282,11 +317,9 @@ export default {
 
           this.dealClass();
 
-          // 分页后workDate=null，默认选中第一个
           if (this.workDate == null) {
             this.workDate = this.bookingScheduleList[0].workDate;
           }
-          //判断当天是否停止预约 status == -1 停止预约
           if (this.workDate == this.getCurDate()) {
             this.pageFirstStatus = this.bookingScheduleList[0].status;
           } else {
@@ -312,10 +345,8 @@ export default {
       //清理定时
       if (this.timer != null) clearInterval(this.timer);
 
-      // 是否即将放号
       if (item.status == 1) {
         this.tabShow = false;
-        // 放号时间
         let releaseTime = new Date(
           this.getCurDate() + " " + this.baseMap.releaseTime
         ).getTime();
@@ -331,9 +362,8 @@ export default {
     },
 
     dealClass() {
-      //处理样式
       for (let i = 0; i < this.bookingScheduleList.length; i++) {
-        // depNumber -1:无号 0：约满 >0：有号
+        // depNumber -1:not open 0：full >0：available
         let curClass =
           this.bookingScheduleList[i].availableNumber == -1
             ? "gray space"
@@ -358,24 +388,19 @@ export default {
     },
 
     countDown(releaseTime, nowTime) {
-      //计算倒计时时长
       let secondes = 0;
       if (releaseTime > nowTime) {
-        this.time = "今天";
-        //当前时间到放号时间的时长
+        this.time = "Today";
         secondes = Math.floor((releaseTime - nowTime) / 1000);
       } else {
-        this.time = "明天";
-        //计算明天放号时间
+        this.time = "Tomorrow";
         let releaseDate = new Date(releaseTime);
         releaseTime = new Date(
           releaseDate.setDate(releaseDate.getDate() + 1)
         ).getTime();
-        //当前时间到明天放号时间的时长
         secondes = Math.floor((releaseTime - nowTime) / 1000);
       }
 
-      //定时任务
       this.timer = setInterval(() => {
         secondes = secondes - 1;
         if (secondes <= 0) {
@@ -384,7 +409,6 @@ export default {
         }
         this.timeString = this.convertTimeString(secondes);
       }, 1000);
-      // 通过$once来监听定时器，在beforeDestroy钩子可以被清除。
       this.$once("hook:beforeDestroy", () => {
         clearInterval(timer);
       });
@@ -392,22 +416,17 @@ export default {
 
     convertTimeString(allseconds) {
       if (allseconds <= 0) return "00:00:00";
-      // 计算天数
       let days = Math.floor(allseconds / (60 * 60 * 24));
-      // 小时
       let hours = Math.floor((allseconds - days * 60 * 60 * 24) / (60 * 60));
-      // 分钟
       let minutes = Math.floor(
         (allseconds - days * 60 * 60 * 24 - hours * 60 * 60) / 60
       );
-      // 秒
       let seconds =
         allseconds - days * 60 * 60 * 24 - hours * 60 * 60 - minutes * 60;
 
-      //拼接时间
       let timString = "";
       if (days > 0) {
-        timString = days + "天:";
+        timString = days + "Days:";
       }
       return (timString += hours + " : " + minutes + " : " + seconds + "  ");
     },

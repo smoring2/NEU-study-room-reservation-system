@@ -1,7 +1,7 @@
 <template>
   <!-- header -->
   <div class="nav-container page-component">
-    <!--左侧导航 #start -->
+    <!-- left navi #start -->
     <div class="nav left-nav">
       <div class="nav-item">
         <span
@@ -46,7 +46,7 @@
           <div class="title-wrapper">
             <span class="hospital-title">{{ hospital.hosname }}</span>
             <div class="icon-wrapper">
-              <span class="iconfont"></span> {{ hospital.param.hostypeString }}
+              <span class="iconfont"></span> {{ hospital.param.hostypeString }}
             </div>
           </div>
         </div>
@@ -62,7 +62,7 @@
             <div></div>
             <div>
               <div class="icon-text-wrapper">
-                <span class="iconfont prefix-icon"></span>
+                <span class="iconfont prefix-icon"></span>
                 <span class="text"
                   ><p>{{ hospital.route }}</p> </span
                 ><span class="iconfont right-icon"></span>
@@ -70,13 +70,13 @@
             </div>
           </div>
         </div>
-        <div class="title mt40">医院介绍</div>
+        <div class="title mt40">Cmapus Introduction</div>
         <div class="detail-content mt40">
           <p>{{ hospital.intro }}</p>
         </div>
       </div>
     </div>
-    <!-- 右侧内容 #end -->
+    <!-- right navi #end -->
   </div>
   <!-- footer -->
 </template>

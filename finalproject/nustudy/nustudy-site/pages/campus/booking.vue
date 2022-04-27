@@ -1,59 +1,60 @@
 <template>
   <!-- header -->
   <div class="nav-container page-component">
-    <!--左侧导航 #start -->
-    <div class="nav left-nav">
-      <div class="nav-item selected">
-        <span
-          class="v-link selected dark"
-          :onclick="
-            'javascript:window.location=\'/campus/' + schedule.hoscode + '\''
-          "
-          >预约挂号
-        </span>
-      </div>
-      <div class="nav-item">
-        <span
-          class="v-link clickable dark"
-          :onclick="
-            'javascript:window.location=\'/campus/detail/' +
-            schedule.hoscode +
-            '\''
-          "
-        >
-          医院详情
-        </span>
-      </div>
-      <div class="nav-item">
-        <span
-          class="v-link clickable dark"
-          :onclick="
-            'javascript:window.location=\'/campus/notice/' +
-            schedule.hoscode +
-            '\''
-          "
-        >
-          预约须知
-        </span>
-      </div>
-      <div class="nav-item">
-        <span class="v-link clickable dark"> 停诊信息 </span>
-      </div>
-      <div class="nav-item">
-        <span class="v-link clickable dark"> 查询/取消 </span>
-      </div>
-    </div>
-    <!-- 左侧导航 #end -->
+    <!--left navi #start -->
+<!--    <div class="nav left-nav">-->
+<!--      <div class="nav-item selected">-->
+<!--        <span-->
+<!--          class="v-link selected dark"-->
+<!--          :onclick="-->
+<!--            'javascript:window.location=\'/campus/' + schedule.hoscode + '\''-->
+<!--          "-->
+<!--          >Reservation-->
+<!--        </span>-->
+<!--      </div>-->
+<!--      <div class="nav-item">-->
+<!--        <span-->
+<!--          class="v-link clickable dark"-->
+<!--          :onclick="-->
+<!--            'javascript:window.location=\'/campus/detail/' +-->
+<!--            schedule.hoscode +-->
+<!--            '\''-->
+<!--          "-->
+<!--        >-->
+<!--          Campus Intro-->
+<!--        </span>-->
+<!--      </div>-->
+<!--      <div class="nav-item">-->
+<!--        <span-->
+<!--          class="v-link clickable dark"-->
+<!--          :onclick="-->
+<!--            'javascript:window.location=\'/campus/notice/' +-->
+<!--            schedule.hoscode +-->
+<!--            '\''-->
+<!--          "-->
+<!--        >-->
+<!--          Reservation notice-->
+<!--        </span>-->
+<!--      </div>-->
+<!--      <div class="nav-item">-->
+<!--        <span class="v-link clickable dark"> Suspension information </span>-->
+<!--      </div>-->
+<!--      <div class="nav-item">-->
+<!--        <span class="v-link clickable dark"> Search/Cancel </span>-->
+<!--      </div>-->
+<!--    </div>-->
 
-    <!-- 右侧内容 #start -->
+    <!-- left navi #end -->
+
+    <!-- right navi #start -->
     <div class="page-container">
       <div class="hospital-order">
         <div class="header-wrapper">
-          <div class="title mt20">确认挂号信息</div>
+          <div class="title mt20">Reservation Confirmation</div>
           <div>
             <div class="sub-title">
               <div class="block"></div>
-              选择就诊人：
+              Chosen student：
             </div>
             <div class="patient-wrapper">
               <div>
@@ -65,7 +66,6 @@
                     @click="selectPatient(index)"
                     style="margin-right: 10px"
                   >
-                    <!-- 选中 selected  未选中去掉selected-->
                     <div
                       :class="
                         activeIndex == index
@@ -100,14 +100,13 @@
                 </div>
               </div>
             </div>
-            <!-- 就诊人，选中显示 -->
             <div class="sub-title" v-if="studentList.length > 0">
               <div class="block"></div>
-              选择就诊卡：
-              <span class="card-tips"
-                ><span class="iconfont"></span>
-                如您持社保卡就诊，请务必选择医保预约挂号，以保证正常医保报销</span
-              >
+              Chosen student card：
+<!--              <span class="card-tips"-->
+<!--                ><span class="iconfont"></span>-->
+<!--                如您持社保卡就诊，请务必选择医保预约挂号，以保证正常医保报销</span-->
+<!--              >-->
             </div>
 
             <el-card
@@ -123,16 +122,16 @@
                   >
                 </div>
               </div>
-              <div class="card SELF_PAY_CARD">
-                <div class="info">
-                  <span class="type">{{
-                      student.isInsure == 0 ? "自费" : "医保"
-                    }}</span
-                  ><span class="card-no">{{ student.certificatesNo }}</span
-                  ><span class="card-view">居民身份证</span>
-                </div>
-                <span class="operate"></span>
-              </div>
+<!--              <div class="card SELF_PAY_CARD">-->
+<!--                <div class="info">-->
+<!--                  <span class="type">{{-->
+<!--                      student.isInsure == 0 ? "自费" : "医保"-->
+<!--                    }}</span-->
+<!--                  ><span class="card-no">{{ student.certificatesNo }}</span-->
+<!--                  ><span class="card-view">居民身份证</span>-->
+<!--                </div>-->
+<!--                <span class="operate"></span>-->
+<!--              </div>-->
               <div class="card">
                 <div class="text bind-card"></div>
               </div>
@@ -140,66 +139,66 @@
 
             <div class="sub-title">
               <div class="block"></div>
-              挂号信息
+              Information
             </div>
             <div class="content-wrapper">
               <el-form ref="form">
-                <el-form-item label="就诊日期：">
+                <el-form-item label="Date：">
                   <div class="content">
                     <span
                       >{{ schedule.workDate }} {{ schedule.param.dayOfWeek }}
-                      {{ schedule.workTime == 0 ? "上午" : "下午" }}</span
+                      {{ schedule.workTime == 0 ? "Morning" : "Afternoon" }}</span
                     >
                   </div>
                 </el-form-item>
-                <el-form-item label="就诊医院：">
+                <el-form-item label="Campus：">
                   <div class="content">
                     <span>{{ schedule.param.hosname }} </span>
                   </div>
                 </el-form-item>
-                <el-form-item label="就诊科室：">
+                <el-form-item label="Floor：">
                   <div class="content">
                     <span>{{ schedule.param.depname }} </span>
                   </div>
                 </el-form-item>
-                <el-form-item label="医生姓名：">
+                <el-form-item label="Room：">
                   <div class="content">
                     <span>{{ schedule.docname }} </span>
                   </div>
                 </el-form-item>
-                <el-form-item label="医生职称：">
+                <el-form-item label="Title：">
                   <div class="content">
                     <span>{{ schedule.title }} </span>
                   </div>
                 </el-form-item>
-                <el-form-item label="医生专长：">
+                <el-form-item label="Skills：">
                   <div class="content">
                     <span>{{ schedule.skill }}</span>
                   </div>
                 </el-form-item>
-                <el-form-item label="医事服务费：">
-                  <div class="content">
-                    <div class="fee">{{ schedule.amount }}元</div>
-                  </div>
-                </el-form-item>
+<!--                <el-form-item label="医事服务费：">-->
+<!--                  <div class="content">-->
+<!--                    <div class="fee">{{ schedule.amount }}</div>-->
+<!--                  </div>-->
+<!--                </el-form-item>-->
               </el-form>
             </div>
 
-            <!-- 用户信息 #start-->
+            <!-- user info #start-->
             <div>
               <div class="sub-title">
                 <div class="block"></div>
-                用户信息
+                Student information
               </div>
               <div class="content-wrapper">
                 <el-form ref="form" :model="form">
-                  <el-form-item class="form-item" label="就诊人手机号：">
+                  <el-form-item class="form-item" label="Student Email：">
                     {{ student.phone }}
                   </el-form-item>
                 </el-form>
               </div>
             </div>
-            <!-- 用户信息 #end -->
+            <!-- user info #end -->
             <div class="bottom-wrapper">
               <div class="button-wrapper">
                 <div class="v-button" @click="submitOrder()">
@@ -211,7 +210,7 @@
         </div>
       </div>
     </div>
-    <!-- 右侧内容 #end -->
+    <!-- right navi #end -->
   </div>
   <!-- footer -->
 </template>
@@ -275,7 +274,6 @@ export default {
         this.$message.error("Please choose the person");
         return;
       }
-      // 防止重复提交
       if (this.submitBnt == "Submitting...") {
         this.$message.error("Can not submit at the same time");
         return;

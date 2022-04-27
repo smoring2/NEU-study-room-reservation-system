@@ -11,7 +11,7 @@
         <span class="v-link selected dark" onclick="javascript:window.location='/order'"> My Reservations </span>
       </div>
       <div class="nav-item ">
-        <span class="v-link clickable dark" onclick="javascript:window.location='/logout'"> Log out </span>
+        <span class="v-link clickable dark" @click="logout">Log out </span>
       </div>
 
     </div>
@@ -24,13 +24,13 @@
         <div class="form-wrapper" v-if="userInfo.authStatus == 0">
           <div>
             <el-form :model="userAuah" label-width="110px" label-position="left">
-              <el-form-item prop="name" label="姓名：" class="form-normal">
+              <el-form-item prop="name" label="Name：" class="form-normal">
                 <div class="name-input">
-                  <el-input v-model="userAuah.name" placeholder="请输入联系人姓名全称" class="input v-input"/>
+                  <el-input v-model="userAuah.name" placeholder="Name" class="input v-input"/>
                 </div>
               </el-form-item>
-              <el-form-item prop="certificatesType" label="证件类型：">
-                <el-select v-model="userAuah.certificatesType" placeholder="请选择证件类型" class="v-select patient-select">
+              <el-form-item prop="certificatesType" label="Certification Type：">
+                <el-select v-model="userAuah.certificatesType" placeholder="Certification Type" class="v-select patient-select">
                   <el-option
                     v-for="item in certificatesTypeList"
                     :key="item.value"
@@ -39,10 +39,10 @@
                   </el-option>
                 </el-select>
               </el-form-item>
-              <el-form-item prop="certificatesNo" label="证件号码：">
-                <el-input v-model="userAuah.certificatesNo" placeholder="请输入联系人证件号码" class="input v-input"/>
+              <el-form-item prop="certificatesNo" label="Certification Number：">
+                <el-input v-model="userAuah.certificatesNo" placeholder="Certification Number" class="input v-input"/>
               </el-form-item>
-              <el-form-item prop="name" label="上传证件：">
+              <el-form-item prop="name" label="Upload Certification：">
                 <div class="upload-wrapper">
                   <div class="avatar-uploader">
                     <el-upload
@@ -53,7 +53,7 @@
                       <div class="upload-inner-wrapper">
                         <img v-if="userAuah.certificatesUrl" :src="userAuah.certificatesUrl" class="avatar">
                         <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-                        <div v-if="!userAuah.certificatesUrl" class="text"> 上传证件合照</div>
+                        <div v-if="!userAuah.certificatesUrl" class="text"> Upload Certification</div>
                       </div>
                     </el-upload>
                   </div>
@@ -73,15 +73,15 @@
         <div class="context-container" v-if="userInfo.authStatus != 0">
           <div>
             <el-form :model="formData" label-width="110px" label-position="right">
-              <el-form-item prop="name" label="姓名：" class="form-normal">
+              <el-form-item prop="name" label="Name：" class="form-normal">
                 <div class="name-input">
                   {{ userInfo.name }}
                 </div>
               </el-form-item>
-              <el-form-item prop="name" label="证件类型：">
+              <el-form-item prop="name" label="Certification Type：">
                 {{ userInfo.param.certificatesTypeString }}
               </el-form-item>
-              <el-form-item prop="name" label="证件号码：">
+              <el-form-item prop="name" label="Certification Number：">
                 {{ userInfo.certificatesNo }}
               </el-form-item>
             </el-form>
@@ -90,9 +90,8 @@
 
       </div>
     </div>
-    <!-- 右侧内容 #end -->
+    <!-- right #end -->
 
-    <!-- 登录弹出框 -->
   </div>
   <!-- footer -->
 </template>
@@ -104,6 +103,7 @@ import '~/assets/css/personal.css'
 
 import dictApi from '@/api/dict'
 import userInfoApi from '@/api/user/userInfo'
+import cookie from "js-cookie";
 
 const defaultForm = {
   name: '',
@@ -123,7 +123,7 @@ export default {
         param: {}
       },
 
-      submitBnt: '提交'
+      submitBnt: 'Submit'
     }
   },
 
@@ -145,17 +145,17 @@ export default {
     },
 
     saveUserAuah() {
-      if(this.submitBnt == '正在提交...') {
-        this.$message.info('重复提交')
+      if(this.submitBnt == 'Submitting') {
+        this.$message.info('Submit multi-times')
         return
       }
 
-      this.submitBnt = '正在提交...'
+      this.submitBnt = 'Submitting...'
       userInfoApi.saveUserAuah(this.userAuah).then(response => {
-        this.$message.success("提交成功")
+        this.$message.success("Succeed")
         window.location.reload()
       }).catch(e => {
-        this.submitBnt = '提交'
+        this.submitBnt = 'Submit'
       })
     },
 
@@ -168,11 +168,16 @@ export default {
     onUploadSuccess(response, file) {
       debugger
       if(response.code !== 200) {
-        this.$message.error("上传失败")
+        this.$message.error("Upload failed")
         return
       }
-      // 填充上传文件列表
       this.userAuah.certificatesUrl = file.response.data
+    },
+    logout() {
+      console.log("logout")
+      cookie.set("name", "", {domain: "localhost"});
+      cookie.set("token", "", {domain: "localhost"});
+      window.location.href = "/";
     }
   }
 }
