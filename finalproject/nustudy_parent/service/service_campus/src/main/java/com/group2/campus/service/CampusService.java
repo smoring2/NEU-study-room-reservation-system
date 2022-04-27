@@ -12,7 +12,7 @@ public interface CampusService {
     void save(Map<String, Object> paramMap);
 
     //实现根据医院编号查询
-    Campus getByHoscode(String hoscode);
+    Campus getByCampuscode(String campuscode);
 
     //医院列表(条件查询分页)
     Page<Campus> selectCampusPage(Integer page, Integer limit, CampusQueryVo campusQueryVo);
@@ -24,11 +24,11 @@ public interface CampusService {
     Map<String, Object> getCampusById(String id);
 
     //获取医院名称
-    String getCampusName(String hoscode);
+    String getCampusName(String campuscode);
 
     //根据医院名称查询
     List<Campus> findByCampusName(String campusName);
 
     //根据医院编号获取医院预约挂号详情
-    Map<String, Object> item(String hoscode);
+    Map<String, Object> item(String campuscode);
 }

@@ -22,7 +22,7 @@
         </tr>
         <tr>
           <th>医院编码</th>
-          <td>{{ hospital.hoscode }}</td>
+          <td>{{ hospital.campuscode }}</td>
           <th>地址</th>
           <td>{{ hospital.param.fullAddress }}</td>
         </tr>

@@ -11,7 +11,7 @@ import java.util.Date;
 public class ScheduleQueryVo {
 	
 	@ApiModelProperty(value = "医院编号")
-	private String hoscode;
+	private String campuscode;
 
 	@ApiModelProperty(value = "科室编号")
 	private String depcode;
@@ -19,23 +19,18 @@ public class ScheduleQueryVo {
 	@ApiModelProperty(value = "医生编号")
 	private String doccode;
 
-	public void setHoscode(String hoscode) {
-		this.hoscode = hoscode;
-	}
-
-	public void setDepcode(String depcode) {
-		this.depcode = depcode;
-	}
-
-	public void setDoccode(String doccode) {
-		this.doccode = doccode;
-	}
-
 	@ApiModelProperty(value = "安排日期")
 	private Date workDate;
 
 	@ApiModelProperty(value = "安排时间（0：上午 1：下午）")
 	private Integer workTime;
 
+	public void setCampuscode(String campuscode) {
+		this.campuscode = campuscode;
+	}
+
+	public void setDepcode(String depcode) {
+		this.depcode = depcode;
+	}
 }
 

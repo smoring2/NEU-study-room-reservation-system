@@ -67,12 +67,12 @@ class CampusSetController {
         //构建条件
         QueryWrapper<CampusSet> wrapper = new QueryWrapper<>();
         String hosname = campusSetQueryVo.getHosname();//医院名称
-        String hoscode = campusSetQueryVo.getHoscode();//医院编号
+        String campuscode = campusSetQueryVo.getCampuscode();//医院编号
         if(!StringUtils.isEmpty(hosname)) {
             wrapper.like("hosname", campusSetQueryVo.getHosname());
         }
-        if(!StringUtils.isEmpty(hoscode)) {
-            wrapper.eq("hoscode", campusSetQueryVo.getHoscode());
+        if(!StringUtils.isEmpty(campuscode)) {
+            wrapper.eq("campuscode", campusSetQueryVo.getCampuscode());
         }
 
         //调用方法实现分页查询
@@ -150,7 +150,7 @@ class CampusSetController {
     public Result lockCampusSet(@PathVariable Long id) {
         CampusSet campusSet = campusSetService.getById(id);
         String signKey = campusSet.getSignKey();
-        String hoscode = campusSet.getHoscode();
+        String campuscode = campusSet.getCampuscode();
         //TODO 发送短信
         return Result.ok();
     }

@@ -9,10 +9,22 @@ import lombok.Data;
 public class DepartmentQueryVo {
 	
 	@ApiModelProperty(value = "医院编号")
-	private String hoscode;
+	private String campuscode;
 
-	public void setHoscode(String hoscode) {
-		this.hoscode = hoscode;
+	@ApiModelProperty(value = "科室编号")
+	private String depcode;
+
+	@ApiModelProperty(value = "科室名称")
+	private String depname;
+
+	@ApiModelProperty(value = "大科室编号")
+	private String bigcode;
+
+	@ApiModelProperty(value = "大科室名称")
+	private String bigname;
+
+	public void setCampuscode(String campuscode) {
+		this.campuscode = campuscode;
 	}
 
 	public void setDepcode(String depcode) {
@@ -30,18 +42,6 @@ public class DepartmentQueryVo {
 	public void setBigname(String bigname) {
 		this.bigname = bigname;
 	}
-
-	@ApiModelProperty(value = "科室编号")
-	private String depcode;
-
-	@ApiModelProperty(value = "科室名称")
-	private String depname;
-
-	@ApiModelProperty(value = "大科室编号")
-	private String bigcode;
-
-	@ApiModelProperty(value = "大科室名称")
-	private String bigname;
 
 }
 

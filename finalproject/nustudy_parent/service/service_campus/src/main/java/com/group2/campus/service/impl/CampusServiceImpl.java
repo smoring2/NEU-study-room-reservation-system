@@ -36,8 +36,8 @@ public class CampusServiceImpl implements CampusService {
         Campus campus = JSONObject.parseObject(mapString, Campus.class);
 
         // check whether the data exist
-        String hoscode = campus.getHoscode();
-        Campus campusExist = campusRepository.getCampusByHoscode(hoscode);
+        String campuscode = campus.getCampuscode();
+        Campus campusExist = campusRepository.getCampusByCampuscode(campuscode);
 
         // modify if exists
         if (campusExist != null) {
@@ -56,8 +56,8 @@ public class CampusServiceImpl implements CampusService {
     }
 
     @Override
-    public Campus getByHoscode(String hoscode) {
-        Campus campus = campusRepository.getCampusByHoscode(hoscode);
+    public Campus getByCampuscode(String campuscode) {
+        Campus campus = campusRepository.getCampusByCampuscode(campuscode);
         return campus;
     }
 
@@ -117,8 +117,8 @@ public class CampusServiceImpl implements CampusService {
 
     //获取医院名称
     @Override
-    public String getCampusName(String hoscode) {
-        Campus campus = campusRepository.getCampusByHoscode(hoscode);
+    public String getCampusName(String campuscode) {
+        Campus campus = campusRepository.getCampusByCampuscode(campuscode);
         if (campus != null) {
             return campus.getHosname();
         }
@@ -133,10 +133,10 @@ public class CampusServiceImpl implements CampusService {
 
     //根据医院编号获取医院预约挂号详情
     @Override
-    public Map<String, Object> item(String hoscode) {
+    public Map<String, Object> item(String campuscode) {
         Map<String, Object> result = new HashMap<>();
         //医院详情
-        Campus campus = this.setCampusCamType(this.getByHoscode(hoscode));
+        Campus campus = this.setCampusCamType(this.getByCampuscode(campuscode));
         result.put("hospital", campus);
         //预约规则
         result.put("bookingRule", campus.getBookingRule());

@@ -45,12 +45,12 @@ public class ApiController {
         Map<String, String[]> requestMap = request.getParameterMap();
         Map<String, Object> paramMap = HttpRequestHelper.switchMap(requestMap);
         //获取医院编号和排班编号
-        String hoscode = (String)paramMap.get("hoscode");
+        String campuscode = (String)paramMap.get("campuscode");
         String hosScheduleId = (String)paramMap.get("hosScheduleId");
 
         //TODO sign_key check
 
-        scheduleService.remove(hoscode,hosScheduleId);
+        scheduleService.remove(campuscode,hosScheduleId);
         return Result.ok();
     }
 
@@ -62,9 +62,9 @@ public class ApiController {
         Map<String, Object> paramMap = HttpRequestHelper.switchMap(requestMap);
 
         // campus code
-        String hoscode = (String)paramMap.get("hoscode");
+        String campuscode = (String)paramMap.get("campuscode");
 
-        //科室编号
+        //department code
         String depcode = (String)paramMap.get("depcode");
         //当前页 和 每页记录数
         int page = StringUtils.isEmpty(paramMap.get("page")) ? 1 : Integer.parseInt((String)paramMap.get("page"));
@@ -72,7 +72,7 @@ public class ApiController {
         //TODO sign_key check
 
         ScheduleQueryVo scheduleQueryVo = new ScheduleQueryVo();
-        scheduleQueryVo.setHoscode(hoscode);
+        scheduleQueryVo.setCampuscode(campuscode);
         scheduleQueryVo.setDepcode(depcode);
         //调用service方法
         Page<Schedule> pageModel = scheduleService.findPageSchedule(page,limit,scheduleQueryVo);
@@ -98,10 +98,10 @@ public class ApiController {
         Map<String, String[]> requestMap = request.getParameterMap();
         Map<String, Object> paramMap = HttpRequestHelper.switchMap(requestMap);
         //医院编号 和 科室编号
-        String hoscode = (String)paramMap.get("hoscode");
+        String campuscode = (String)paramMap.get("campuscode");
         String depcode = (String)paramMap.get("depcode");
         //TODO sign_key check
-        departmentService.remove(hoscode,depcode);
+        departmentService.remove(campuscode,depcode);
         return Result.ok();
     }
 
@@ -113,14 +113,14 @@ public class ApiController {
         Map<String, Object> paramMap = HttpRequestHelper.switchMap(requestMap);
 
         // campus code
-        String hoscode = (String)paramMap.get("hoscode");
+        String campuscode = (String)paramMap.get("campuscode");
         // current page and the limitation of each page
         int page = StringUtils.isEmpty(paramMap.get("page")) ? 1 : Integer.parseInt((String)paramMap.get("page"));
         int limit = StringUtils.isEmpty(paramMap.get("limit")) ? 1 : Integer.parseInt((String)paramMap.get("limit"));
         //TODO sign_key check
 
         DepartmentQueryVo departmentQueryVo = new DepartmentQueryVo();
-        departmentQueryVo.setHoscode(hoscode);
+        departmentQueryVo.setCampuscode(campuscode);
 
         Page<Department> pageModel = departmentService.findPageDepartment(page,limit,departmentQueryVo);
         return Result.ok(pageModel);
@@ -134,12 +134,12 @@ public class ApiController {
         Map<String, Object> paramMap = HttpRequestHelper.switchMap(requestMap);
 
         //获取医院编号
-        String hoscode = (String)paramMap.get("hoscode");
+        String campuscode = (String)paramMap.get("campuscode");
         //1 获取医院系统传递过来的签名,签名进行MD5加密
         String hospSign = (String)paramMap.get("sign");
 
         //2 根据传递过来医院编码，查询数据库，查询签名
-        String signKey = campusSetService.getSignKey(hoscode);
+        String signKey = campusSetService.getSignKey(campuscode);
 
         //3 把数据库查询签名进行MD5加密
         String signKeyMd5 = MD5.encrypt(signKey);
@@ -161,12 +161,12 @@ public class ApiController {
         Map<String, String[]> requestMap = request.getParameterMap();
         Map<String, Object> paramMap = HttpRequestHelper.switchMap(requestMap);
         //获取医院编号
-        String hoscode = (String)paramMap.get("hoscode");
+        String campuscode = (String)paramMap.get("campuscode");
         //1 获取医院系统传递过来的签名,签名进行MD5加密
         String hospSign = (String)paramMap.get("sign");
 
         //2 根据传递过来医院编码，查询数据库，查询签名
-        String signKey = campusSetService.getSignKey(hoscode);
+        String signKey = campusSetService.getSignKey(campuscode);
 
         //3 把数据库查询签名进行MD5加密
         String signKeyMd5 = MD5.encrypt(signKey);
@@ -177,7 +177,7 @@ public class ApiController {
         }
 
         //调用service方法实现根据医院编号查询
-        Campus campus = campusService.getByHoscode(hoscode);
+        Campus campus = campusService.getByCampuscode(campuscode);
         return Result.ok(campus);
     }
 
@@ -192,8 +192,8 @@ public class ApiController {
         String hospSign = (String)paramMap.get("sign");
 
         //2 lookup the sign via campus code
-        String hoscode = (String)paramMap.get("hoscode");
-        String signKey = campusSetService.getSignKey(hoscode);
+        String campuscode = (String)paramMap.get("campuscode");
+        String signKey = campusSetService.getSignKey(campuscode);
 
         //3 MD5 encode
         String signKeyMd5 = MD5.encrypt(signKey);

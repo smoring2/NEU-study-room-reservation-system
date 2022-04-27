@@ -7,7 +7,7 @@
         <span
           class="v-link clickable dark"
           :onclick="
-            'javascript:window.location=\'/campus/' + hospital.hoscode + '\''
+            'javascript:window.location=\'/campus/' + hospital.campuscode + '\''
           "
           >Start
         </span>
@@ -17,7 +17,7 @@
           class="v-link selected dark"
           :onclick="
             'javascript:window.location=\'/campus/detail/' +
-            hospital.hoscode +
+            hospital.campuscode +
             '\''
           "
         >
@@ -29,7 +29,7 @@
           class="v-link clickable dark"
           :onclick="
             'javascript:window.location=\'/campus/notice/' +
-            hospital.hoscode +
+            hospital.campuscode +
             '\''
           "
         >
@@ -90,7 +90,7 @@ import campusApi from "@/api/campus/campus";
 export default {
   data() {
     return {
-      hoscode: null,
+      campuscode: null,
       hospital: {
         param: {},
       },
@@ -98,14 +98,14 @@ export default {
   },
 
   created() {
-    this.hoscode = this.$route.params.hoscode;
+    this.campuscode = this.$route.params.campuscode;
 
     this.init();
   },
 
   methods: {
     init() {
-      campusApi.show(this.hoscode).then((response) => {
+      campusApi.show(this.campuscode).then((response) => {
         this.hospital = response.data.hospital;
       });
     },

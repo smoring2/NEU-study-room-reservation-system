@@ -75,7 +75,9 @@
           <router-link :to="'/campusset/campus/show/' + scope.row.id">
             <el-button type="primary" size="mini">Details</el-button>
           </router-link>
-          <router-link :to="'/campusset/campus/schedule/' + scope.row.hoscode">
+          <router-link
+            :to="'/campusset/campus/schedule/' + scope.row.campuscode"
+          >
             <el-button type="primary" size="mini">Schedule</el-button>
           </router-link>
 
@@ -83,12 +85,16 @@
             v-if="scope.row.status == 1"
             type="primary"
             size="mini"
-            @click="updateStatus(scope.row.id, 0)">Offline</el-button>
+            @click="updateStatus(scope.row.id, 0)"
+            >Offline</el-button
+          >
           <el-button
             v-if="scope.row.status == 0"
             type="danger"
             size="mini"
-            @click="updateStatus(scope.row.id, 1)">Online</el-button>
+            @click="updateStatus(scope.row.id, 1)"
+            >Online</el-button
+          >
         </template>
       </el-table-column>
     </el-table>

@@ -44,7 +44,7 @@ public class ApiController extends BaseController {
 	public String getCampus(ModelMap model, HttpServletRequest request, RedirectAttributes redirectAttributes) {
 		try {
 			CampusSet campusSet = campusSetMapper.selectById(1);
-			if(null == campusSet || StringUtils.isEmpty(campusSet.getHoscode()) || StringUtils.isEmpty(campusSet.getSignKey())) {
+			if(null == campusSet || StringUtils.isEmpty(campusSet.getCampuscode()) || StringUtils.isEmpty(campusSet.getSignKey())) {
 				this.failureMessage("先设置医院code与签名key", redirectAttributes);
 				return "redirect:/campusSet/index";
 			}
@@ -82,7 +82,7 @@ public class ApiController extends BaseController {
 								 HttpServletRequest request,RedirectAttributes redirectAttributes) {
 		try {
 			CampusSet campusSet = campusSetMapper.selectById(1);
-			if(null == campusSet || StringUtils.isEmpty(campusSet.getHoscode()) || StringUtils.isEmpty(campusSet.getSignKey())) {
+			if(null == campusSet || StringUtils.isEmpty(campusSet.getCampuscode()) || StringUtils.isEmpty(campusSet.getSignKey())) {
 				this.failureMessage("先设置医院code与签名key", redirectAttributes);
 				return "redirect:/campusSet/index";
 			}
@@ -120,7 +120,7 @@ public class ApiController extends BaseController {
 							   HttpServletRequest request,RedirectAttributes redirectAttributes) {
 		try {
 			CampusSet campusSet = campusSetMapper.selectById(1);
-			if(null == campusSet || StringUtils.isEmpty(campusSet.getHoscode()) || StringUtils.isEmpty(campusSet.getSignKey())) {
+			if(null == campusSet || StringUtils.isEmpty(campusSet.getCampuscode()) || StringUtils.isEmpty(campusSet.getSignKey())) {
 				this.failureMessage("先设置医院code与签名key", redirectAttributes);
 				return "redirect:/campusSet/index";
 			}

@@ -10,7 +10,7 @@ import com.group2.nustudy.vo.order.SignInfoVo;
  * Description:
  */
 public interface CampusSetService extends IService<CampusSet> {
-    String getSignKey(String hoscode);
+    String getSignKey(String campuscode);
 
-    SignInfoVo getSignInfoVo(String hoscode);
+    SignInfoVo getSignInfoVo(String campuscode);
 }

@@ -23,14 +23,14 @@ public class Department extends BaseMongoEntity {
 
 	@ApiModelProperty(value = "医院编号")
 	@Indexed //普通索引
-	private String hoscode;
+	private String campuscode;
 
-	public String getHoscode() {
-		return hoscode;
+	public String getCampuscode() {
+		return campuscode;
 	}
 
-	public void setHoscode(String hoscode) {
-		this.hoscode = hoscode;
+	public void setCampuscode(String campuscode) {
+		this.campuscode = campuscode;
 	}
 
 	public String getDepcode() {

@@ -1,6 +1,6 @@
 [
   {
-    "hoscode": "1000_0",
+    "campuscode": "1000_0",
     "depcode": "200040878",
     "title": "Small Meeting Room",
     "docname": "903",
@@ -14,7 +14,7 @@
     "hosScheduleId": "1"
   },
   {
-    "hoscode": "1000_0",
+    "campuscode": "1000_0",
     "depcode": "200040878",
     "title": "Medium Meeting Room",
     "docname": "902",
@@ -28,7 +28,7 @@
     "hosScheduleId": "2"
   },
   {
-    "hoscode": "1000_0",
+    "campuscode": "1000_0",
     "depcode": "200040878",
     "title": "Medium Meeting Room",
     "docname": "903",
@@ -42,7 +42,7 @@
     "hosScheduleId": "3"
   },
   {
-    "hoscode": "1000_0",
+    "campuscode": "1000_0",
     "depcode": "200040878",
     "title": "Large Meeting Room",
     "docname": "901",
@@ -56,7 +56,7 @@
     "hosScheduleId": "4"
   },
   {
-    "hoscode": "1000_0",
+    "campuscode": "1000_0",
     "depcode": "200040878",
     "title": "Medium Meeting Room",
     "docname": "902",
@@ -70,7 +70,7 @@
     "hosScheduleId": "5"
   },
   {
-    "hoscode": "1000_0",
+    "campuscode": "1000_0",
     "depcode": "200040878",
     "title": "Small Meeting Room",
     "docname": "904",
@@ -84,7 +84,7 @@
     "hosScheduleId": "6"
   },
   {
-    "hoscode": "1000_0",
+    "campuscode": "1000_0",
     "depcode": "200040878",
     "title": "Large Meeting Room",
     "docname": "901",
@@ -98,7 +98,7 @@
     "hosScheduleId": "7"
   },
   {
-    "hoscode": "1000_0",
+    "campuscode": "1000_0",
     "depcode": "200040878",
     "title": "Medium Meeting Room",
     "docname": "902",
@@ -112,7 +112,7 @@
     "hosScheduleId": "8"
   },
   {
-    "hoscode": "1000_0",
+    "campuscode": "1000_0",
     "depcode": "200040878",
     "title": "Medium Meeting Room",
     "docname": "902",
@@ -126,7 +126,7 @@
     "hosScheduleId": "9"
   },
   {
-    "hoscode": "1000_0",
+    "campuscode": "1000_0",
     "depcode": "200040878",
     "title": "Large Meeting Room",
     "docname": "907",
@@ -140,7 +140,7 @@
     "hosScheduleId": "10"
   },
   {
-    "hoscode": "1000_0",
+    "campuscode": "1000_0",
     "depcode": "200040878",
     "title": "Meduium Meeting Room",
     "docname": "902",
@@ -154,7 +154,7 @@
     "hosScheduleId": "11"
   },
   {
-    "hoscode": "1000_0",
+    "campuscode": "1000_0",
     "depcode": "200040878",
     "title": "Small Meeting Room",
     "docname": "903",
@@ -168,7 +168,7 @@
     "hosScheduleId": "12"
   },
   {
-    "hoscode": "1000_0",
+    "campuscode": "1000_0",
     "depcode": "200040878",
     "title": "Large Meeting Room",
     "docname": "901",
@@ -182,7 +182,7 @@
     "hosScheduleId": "13"
   },
   {
-    "hoscode": "1000_0",
+    "campuscode": "1000_0",
     "depcode": "200040878",
     "title": "Small Meeting Room",
     "docname": "903",
@@ -196,7 +196,7 @@
     "hosScheduleId": "14"
   },
   {
-    "hoscode": "1000_0",
+    "campuscode": "1000_0",
     "depcode": "200040878",
     "title": "Small Meeting Room",
     "docname": "903",
@@ -210,7 +210,7 @@
     "hosScheduleId": "15"
   },
   {
-    "hoscode": "1000_0",
+    "campuscode": "1000_0",
     "depcode": "200040878",
     "title": "Small Meeting Room",
     "docname": "903",
@@ -224,7 +224,7 @@
     "hosScheduleId": "16"
   },
   {
-    "hoscode": "1000_0",
+    "campuscode": "1000_0",
     "depcode": "200040878",
     "title": "Medium Meeting Room",
     "docname": "902",
@@ -238,7 +238,7 @@
     "hosScheduleId": "17"
   },
   {
-    "hoscode": "1000_0",
+    "campuscode": "1000_0",
     "depcode": "200040878",
     "title": "Large Meeting Room",
     "docname": "901",
@@ -252,7 +252,7 @@
     "hosScheduleId": "18"
   },
   {
-    "hoscode": "1000_0",
+    "campuscode": "1000_0",
     "depcode": "200040878",
     "title": "Large Meeting Room",
     "docname": "901",
@@ -266,7 +266,7 @@
     "hosScheduleId": "19"
   },
   {
-    "hoscode": "1000_0",
+    "campuscode": "1000_0",
     "depcode": "200040878",
     "title": "Medium Meeting Room",
     "docname": "902",

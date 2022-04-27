@@ -2,10 +2,6 @@ package com.group2.order.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.group2.campus.campus.client.CampusFeignClient;
 import com.group2.campus.user.client.StudentFeignClient;
@@ -15,11 +11,9 @@ import com.group2.nustudy.common.exception.NustudyException;
 import com.group2.nustudy.common.helper.HttpRequestHelper;
 import com.group2.nustudy.common.result.ResultCodeEnum;
 import com.group2.nustudy.enums.OrderStatusEnum;
-import com.group2.nustudy.model.camp.Campus;
 import com.group2.nustudy.model.order.OrderInfo;
 import com.group2.nustudy.model.user.Student;
 import com.group2.nustudy.vo.camp.ScheduleOrderVo;
-import com.group2.nustudy.vo.msm.MsmVo;
 import com.group2.nustudy.vo.order.*;
 import com.group2.order.mapper.OrderMapper;
 import com.group2.order.service.OrderService;
@@ -27,9 +21,7 @@ import org.joda.time.DateTime;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
-import javax.xml.crypto.Data;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -66,7 +58,7 @@ public class OrderServiceImpl extends
         }
 
         //获取签名信息
-        SignInfoVo signInfoVo = campusFeignClient.getSignInfoVo(scheduleOrderVo.getHoscode());
+        SignInfoVo signInfoVo = campusFeignClient.getSignInfoVo(scheduleOrderVo.getCampuscode());
 
         //添加到订单表
         OrderInfo orderInfo = new OrderInfo();
@@ -86,7 +78,7 @@ public class OrderServiceImpl extends
         //调用医院接口，实现预约挂号操作
         //设置调用医院接口需要参数，参数放到map集合
         Map<String, Object> paramMap = new HashMap<>();
-        paramMap.put("hoscode", orderInfo.getHoscode());
+        paramMap.put("campuscode", orderInfo.getCampuscode());
         paramMap.put("depcode", orderInfo.getDepcode());
         paramMap.put("hosScheduleId", orderInfo.getScheduleId());
         paramMap.put("reserveDate", new DateTime(orderInfo.getReserveDate()).toString("yyyy-MM-dd"));

@@ -15,8 +15,8 @@ public class CampusSet extends BaseEntity {
 		return signKey;
 	}
 
-	public String getHoscode() {
-		return hoscode;
+	public String getCampuscode() {
+		return campuscode;
 	}
 
 	public void setSignKey(String signKey) {
@@ -38,8 +38,8 @@ public class CampusSet extends BaseEntity {
 	private String hosname;
 
 	@ApiModelProperty(value = "医院编号")
-	@TableField("hoscode")
-	private String hoscode;
+	@TableField("campuscode")
+	private String campuscode;
 
 	@ApiModelProperty(value = "api基础路径")
 	@TableField("api_url")
@@ -69,32 +69,8 @@ public class CampusSet extends BaseEntity {
 		this.hosname = hosname;
 	}
 
-	public void setHoscode(String hoscode) {
-		this.hoscode = hoscode;
-	}
-
 	public String getApiUrl() {
 		return apiUrl;
-	}
-
-	public void setApiUrl(String apiUrl) {
-		this.apiUrl = apiUrl;
-	}
-
-	public String getContactsName() {
-		return contactsName;
-	}
-
-	public void setContactsName(String contactsName) {
-		this.contactsName = contactsName;
-	}
-
-	public String getContactsPhone() {
-		return contactsPhone;
-	}
-
-	public void setContactsPhone(String contactsPhone) {
-		this.contactsPhone = contactsPhone;
 	}
 }
 

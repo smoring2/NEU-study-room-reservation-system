@@ -43,6 +43,6 @@ public class BaseMongoEntity implements Serializable {
     }
 
     @ApiModelProperty(value = "others")
-    @Transient //被该注解标注的，将不会被录入到数据库中。只作为普通的javaBean属性
+    @Transient
     private Map<String,Object> param = new HashMap<>();
 }

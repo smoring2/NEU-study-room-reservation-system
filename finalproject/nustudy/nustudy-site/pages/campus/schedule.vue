@@ -2,58 +2,56 @@
   <!-- header -->
   <div class="nav-container page-component">
     <!--left navi #start -->
-<!--    <div class="nav left-nav">-->
-<!--      <div class="nav-item selected">-->
-<!--        <span-->
-<!--          class="v-link selected dark"-->
-<!--          :onclick="'javascript:window.location=\'/campus/' + hoscode + '\''"-->
-<!--          >Reservation-->
-<!--        </span>-->
-<!--      </div>-->
-<!--      <div class="nav-item">-->
-<!--        <span-->
-<!--          class="v-link clickable dark"-->
-<!--          :onclick="-->
-<!--            'javascript:window.location=\'/campus/detail/' + hoscode + '\''-->
-<!--          "-->
-<!--        >-->
-<!--          Campus Detail-->
-<!--        </span>-->
-<!--      </div>-->
-<!--      <div class="nav-item">-->
-<!--        <span-->
-<!--          class="v-link clickable dark"-->
-<!--          :onclick="-->
-<!--            'javascript:window.location=\'/campus/notice/' + hoscode + '\''-->
-<!--          "-->
-<!--        >-->
-<!--          Reservation notice-->
-<!--        </span>-->
-<!--      </div>-->
-<!--      <div class="nav-item">-->
-<!--        <span class="v-link clickable dark"> Suspension information </span>-->
-<!--      </div>-->
-<!--      <div class="nav-item">-->
-<!--        <span class="v-link clickable dark"> Search/Cancel </span>-->
-<!--      </div>-->
-<!--    </div>-->
+    <!--    <div class="nav left-nav">-->
+    <!--      <div class="nav-item selected">-->
+    <!--        <span-->
+    <!--          class="v-link selected dark"-->
+    <!--          :onclick="'javascript:window.location=\'/campus/' + campuscode + '\''"-->
+    <!--          >Reservation-->
+    <!--        </span>-->
+    <!--      </div>-->
+    <!--      <div class="nav-item">-->
+    <!--        <span-->
+    <!--          class="v-link clickable dark"-->
+    <!--          :onclick="-->
+    <!--            'javascript:window.location=\'/campus/detail/' + campuscode + '\''-->
+    <!--          "-->
+    <!--        >-->
+    <!--          Campus Detail-->
+    <!--        </span>-->
+    <!--      </div>-->
+    <!--      <div class="nav-item">-->
+    <!--        <span-->
+    <!--          class="v-link clickable dark"-->
+    <!--          :onclick="-->
+    <!--            'javascript:window.location=\'/campus/notice/' + campuscode + '\''-->
+    <!--          "-->
+    <!--        >-->
+    <!--          Reservation notice-->
+    <!--        </span>-->
+    <!--      </div>-->
+    <!--      <div class="nav-item">-->
+    <!--        <span class="v-link clickable dark"> Suspension information </span>-->
+    <!--      </div>-->
+    <!--      <div class="nav-item">-->
+    <!--        <span class="v-link clickable dark"> Search/Cancel </span>-->
+    <!--      </div>-->
+    <!--    </div>-->
     <!-- Left navi #end -->
     <!--left navi #start -->
     <div class="nav left-nav">
       <div class="nav-item selected">
         <span
           class="v-link selected dark"
-          :onclick="
-            'javascript:window.location=\'/campus/' + campuscode + '\''
-          ">Start</span>
+          :onclick="'javascript:window.location=\'/campus/' + campuscode + '\''"
+          >Start</span
+        >
       </div>
       <div class="nav-item">
         <span
           class="v-link clickable dark"
           :onclick="
-            'javascript:window.location=\'/campus/detail/' +
-            campuscode +
-            '\''
+            'javascript:window.location=\'/campus/detail/' + campuscode + '\''
           "
         >
           Campus Intro
@@ -63,10 +61,8 @@
         <span
           class="v-link clickable dark"
           :onclick="
-            'javascript:window.location=\'/campus/notice/' +
-            campuscode +
-            '\''
-         "
+            'javascript:window.location=\'/campus/notice/' + campuscode + '\''
+          "
         >
           Rules
         </span>
@@ -111,10 +107,10 @@
                     : "Available"
                 }}
               </div>
-              <div class="status-wrapper" v-if="item.status == 1">Coming soon</div>
-              <div class="status-wrapper" v-if="item.status == -1">
-                Stopped
+              <div class="status-wrapper" v-if="item.status == 1">
+                Coming soon
               </div>
+              <div class="status-wrapper" v-if="item.status == -1">Stopped</div>
             </div>
           </div>
           <!-- Page Divider -->
@@ -167,7 +163,7 @@
                   <div class="special-wrapper">{{ item.skill }}</div>
                 </div>
                 <div class="right-wrapper">
-<!--                  <div class="fee">{{ item.amount }}</div>-->
+                  <!--                  <div class="fee">{{ item.amount }}</div>-->
                   <div class="button-wrapper">
                     <div
                       class="v-button"
@@ -216,7 +212,7 @@
                   <div class="special-wrapper">{{ item.skill }}</div>
                 </div>
                 <div class="right-wrapper">
-<!--                  <div class="fee">￥{{ item.amount }}</div>-->
+                  <!--                  <div class="fee">￥{{ item.amount }}</div>-->
                   <div class="button-wrapper">
                     <div
                       class="v-button"
@@ -285,7 +281,7 @@ export default {
   },
 
   created() {
-    this.campuscode = this.$route.query.hoscode;
+    this.campuscode = this.$route.query.campuscode;
     this.depcode = this.$route.query.depcode;
     this.workDate = this.getCurDate();
 
@@ -432,7 +428,7 @@ export default {
     },
 
     show() {
-      window.location.href = "/campus/" + this.hoscode;
+      window.location.href = "/campus/" + this.campuscode;
     },
 
     booking(scheduleId, availableNumber) {

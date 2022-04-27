@@ -19,9 +19,9 @@ public class DepartmentController {
 
     //根据医院编号，查询医院所有科室列表
     @ApiOperation(value = "查询医院所有科室列表")
-    @GetMapping("getDeptList/{hoscode}")
-    public Result getDeptList(@PathVariable String hoscode) {
-        List<DepartmentVo> list = departmentService.findDeptTree(hoscode);
+    @GetMapping("getDeptList/{campuscode}")
+    public Result getDeptList(@PathVariable String campuscode) {
+        List<DepartmentVo> list = departmentService.findDeptTree(campuscode);
         return Result.ok(list);
     }
 }

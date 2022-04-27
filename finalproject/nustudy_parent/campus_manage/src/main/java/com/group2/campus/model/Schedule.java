@@ -21,8 +21,8 @@ public class Schedule extends BaseNoAutoEntity {
 	private static final long serialVersionUID = 1L;
 
 	@ApiModelProperty(value = "医院编号")
-	@TableField("hoscode")
-	private String hoscode;
+	@TableField("campuscode")
+	private String campuscode;
 
 	@ApiModelProperty(value = "科室编号")
 	@TableField("depcode")

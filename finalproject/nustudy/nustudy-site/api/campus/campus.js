@@ -31,16 +31,16 @@ export default {
       method: "get",
     });
   },
-  getBookingScheduleRule(page, limit, hoscode, depcode) {
+  getBookingScheduleRule(page, limit, campuscode, depcode) {
     return request({
-      url: `${api_name}/auth/getBookingScheduleRule/${page}/${limit}/${hoscode}/${depcode}`,
+      url: `${api_name}/auth/getBookingScheduleRule/${page}/${limit}/${campuscode}/${depcode}`,
       method: "get",
     });
   },
 
-  findScheduleList(hoscode, depcode, workDate) {
+  findScheduleList(campuscode, depcode, workDate) {
     return request({
-      url: `${api_name}/auth/findScheduleList/${hoscode}/${depcode}/${workDate}`,
+      url: `${api_name}/auth/findScheduleList/${campuscode}/${depcode}/${workDate}`,
       method: "get",
     });
   },
@@ -52,9 +52,9 @@ export default {
     });
   },
 
-  getHospitalInfo(hoscode) {
+  getHospitalInfo(campuscode) {
     return request({
-      url: `${api_name}/getHospitalInfo/${hoscode}`,
+      url: `${api_name}/getHospitalInfo/${campuscode}`,
       method: "get",
     });
   },

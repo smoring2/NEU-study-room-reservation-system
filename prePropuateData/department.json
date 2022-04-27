@@ -1,6 +1,6 @@
 [
   {
-    "hoscode": "1000_0",
+    "campuscode": "1000_0",
     "depcode": "200040878",
     "depname": "9 Floor",
     "intro": "Rooms at 9 Floor, 4 N 2nd St",
@@ -8,7 +8,7 @@
     "bigname": "4 N 2nd St"
   },
   {
-    "hoscode": "1000_0",
+    "campuscode": "1000_0",
     "depcode": "200040182",
     "depname": "10 Floor",
     "intro": "Rooms at 10 Floor, 4 N 2nd St",
@@ -16,7 +16,7 @@
     "bigname": "4 N 2nd St"
   },
   {
-    "hoscode": "1000_0",
+    "campuscode": "1000_0",
     "depcode": "200046682",
     "depname": "9 Floor",
     "intro": "Rooms at 9 Floor, WeWork Building",
@@ -24,7 +24,7 @@
     "bigname": "WeWork Building"
   },
   {
-    "hoscode": "1000_0",
+    "campuscode": "1000_0",
     "depcode": "200046684",
     "depname": "9 Floor",
     "intro": "Rooms at 9 Floor, WeWork Building",

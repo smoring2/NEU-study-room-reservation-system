@@ -13,7 +13,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.bson.types.ObjectId;
 
 
 import java.math.BigDecimal;
@@ -35,7 +34,7 @@ public class CampusServiceImpl implements CampusService {
     @Override
     public Map<String, Object> submitOrder(Map<String, Object> paramMap) {
         log.info(JSONObject.toJSONString(paramMap));
-        String hoscode = (String)paramMap.get("hoscode");
+        String campuscode = (String)paramMap.get("campuscode");
         String depcode = (String)paramMap.get("depcode");
         String hosScheduleId = (String)paramMap.get("hosScheduleId");
         String reserveDate = (String)paramMap.get("reserveDate");
@@ -48,7 +47,7 @@ public class CampusServiceImpl implements CampusService {
             throw new NustudyException(ResultCodeEnum.DATA_ERROR);
         }
 
-        if(!schedule.getHoscode().equals(hoscode)
+        if(!schedule.getCampuscode().equals(campuscode)
                 || !schedule.getDepcode().equals(depcode)
                 || !schedule.getAmount().toString().equals(amount)) {
             throw new NustudyException(ResultCodeEnum.DATA_ERROR);
@@ -104,7 +103,7 @@ public class CampusServiceImpl implements CampusService {
 
     @Override
     public void updatePayStatus(Map<String, Object> paramMap) {
-        String hoscode = (String)paramMap.get("hoscode");
+        String campuscode = (String)paramMap.get("campuscode");
         String hosRecordId = (String)paramMap.get("hosRecordId");
 
         OrderInfo orderInfo = orderInfoMapper.selectById(hosRecordId);
@@ -119,7 +118,7 @@ public class CampusServiceImpl implements CampusService {
 
     @Override
     public void updateCancelStatus(Map<String, Object> paramMap) {
-        String hoscode = (String)paramMap.get("hoscode");
+        String campuscode = (String)paramMap.get("campuscode");
         String hosRecordId = (String)paramMap.get("hosRecordId");
 
         OrderInfo orderInfo = orderInfoMapper.selectById(hosRecordId);

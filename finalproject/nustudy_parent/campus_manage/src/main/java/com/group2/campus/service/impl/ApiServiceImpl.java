@@ -47,9 +47,9 @@ public class ApiServiceImpl implements ApiService {
     private Resource campusResource;
 
     @Override
-    public String getHoscode() {
+    public String getCampuscode() {
         CampusSet campusSet = campusSetMapper.selectById(1);
-        return campusSet.getHoscode();
+        return campusSet.getCampuscode();
     }
 
     @Override
@@ -66,7 +66,7 @@ public class ApiServiceImpl implements ApiService {
     @Override
     public JSONObject getCampus() {
         Map<String, Object> paramMap = new HashMap<>();
-        paramMap.put("hoscode",this.getHoscode());
+        paramMap.put("campuscode",this.getCampuscode());
         paramMap.put("timestamp", HttpRequestHelper.getTimestamp());
         paramMap.put("sign", MD5.encrypt(this.getSignKey()));
 //        paramMap.put("sign", HttpRequestHelper.getSign(paramMap, this.getSignKey()));
@@ -84,7 +84,7 @@ public class ApiServiceImpl implements ApiService {
         JSONObject jsonObject = JSONObject.parseObject(data);
 
         Map<String, Object> paramMap = new HashMap<>();
-        paramMap.put("hoscode",this.getHoscode());
+        paramMap.put("campuscode",this.getCampuscode());
         paramMap.put("hosname",jsonObject.getString("hosname"));
         paramMap.put("hostype",jsonObject.getString("hostype"));
         paramMap.put("provinceCode",jsonObject.getString("provinceCode"));
@@ -118,7 +118,7 @@ public class ApiServiceImpl implements ApiService {
         Map<String, Object> result = new HashMap();
 
         Map<String, Object> paramMap = new HashMap<>();
-        paramMap.put("hoscode",this.getHoscode());
+        paramMap.put("campuscode",this.getCampuscode());
         //paramMap.put("depcode",depcode);
         paramMap.put("page",pageNum);
         paramMap.put("limit",pageSize);
@@ -152,7 +152,7 @@ public class ApiServiceImpl implements ApiService {
             JSONObject jsonObject = jsonArray.getJSONObject(i);
 
             Map<String, Object> paramMap = new HashMap<>();
-            paramMap.put("hoscode",this.getHoscode());
+            paramMap.put("campuscode",this.getCampuscode());
             paramMap.put("depcode",jsonObject.getString("depcode"));
             paramMap.put("depname",jsonObject.getString("depname"));
             paramMap.put("intro",jsonObject.getString("intro"));
@@ -175,7 +175,7 @@ public class ApiServiceImpl implements ApiService {
     @Override
     public boolean removeDepartment(String depcode) {
         Map<String, Object> paramMap = new HashMap<>();
-        paramMap.put("hoscode",this.getHoscode());
+        paramMap.put("campuscode",this.getCampuscode());
         paramMap.put("depcode",depcode);
         paramMap.put("timestamp", HttpRequestHelper.getTimestamp());
         paramMap.put("sign", MD5.encrypt(this.getSignKey()));
@@ -193,7 +193,7 @@ public class ApiServiceImpl implements ApiService {
     public Map<String, Object> findSchedule(int pageNum, int pageSize) {
         Map<String, Object> result = new HashMap();
         Map<String, Object> paramMap = new HashMap<>();
-        paramMap.put("hoscode",this.getHoscode());
+        paramMap.put("campuscode",this.getCampuscode());
         //paramMap.put("depcode",depcode);
         paramMap.put("page",pageNum);
         paramMap.put("limit",pageSize);
@@ -230,7 +230,7 @@ public class ApiServiceImpl implements ApiService {
             Long id = jsonObject.getLong("hosScheduleId");
             Schedule schedule = new Schedule();
             schedule.setId(id);
-            schedule.setHoscode(this.getHoscode());
+            schedule.setCampuscode(this.getCampuscode());
             schedule.setDepcode(jsonObject.getString("depcode"));
             schedule.setTitle(jsonObject.getString("title"));
             schedule.setDocname(jsonObject.getString("docname"));
@@ -252,7 +252,7 @@ public class ApiServiceImpl implements ApiService {
             }
 
             Map<String, Object> paramMap = new HashMap<>();
-            paramMap.put("hoscode",schedule.getHoscode());
+            paramMap.put("campuscode",schedule.getCampuscode());
             paramMap.put("depcode",schedule.getDepcode());
             paramMap.put("title",schedule.getTitle());
             paramMap.put("docname",schedule.getDocname());
@@ -280,7 +280,7 @@ public class ApiServiceImpl implements ApiService {
     @Override
     public boolean removeSchedule(String hosScheduleId) {
         Map<String, Object> paramMap = new HashMap<>();
-        paramMap.put("hoscode",this.getHoscode());
+        paramMap.put("campuscode",this.getCampuscode());
         paramMap.put("hosScheduleId",hosScheduleId);
         paramMap.put("timestamp", HttpRequestHelper.getTimestamp());
         paramMap.put("sign", MD5.encrypt(this.getSignKey()));
@@ -303,7 +303,7 @@ public class ApiServiceImpl implements ApiService {
             JSONObject jsonObject = jsonArray.getJSONObject(i);
 
             Map<String, Object> paramMap = new HashMap<>();
-            paramMap.put("hoscode","1000_"+i);
+            paramMap.put("campuscode","1000_"+i);
             paramMap.put("hosname",jsonObject.getString("hosname"));
             paramMap.put("hostype",i % 3 == 0 ? 1 : i % 3 == 1 ? 2 :4);
             paramMap.put("provinceCode","110000");

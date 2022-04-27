@@ -1,7 +1,6 @@
 package com.group2.campus.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.group2.campus.repository.ScheduleRepository;
 import com.group2.campus.service.DepartmentService;
@@ -58,7 +57,7 @@ public class ScheduleServiceImpl implements ScheduleService {
 
         //根据医院编号 和 排班编号查询
         Schedule scheduleExist = scheduleRepository.
-                getScheduleByHoscodeAndHosScheduleId(schedule.getHoscode(), schedule.getHosScheduleId());
+                getScheduleByCampuscodeAndHosScheduleId(schedule.getCampuscode(), schedule.getHosScheduleId());
         //判断
         if (scheduleExist != null) {
             scheduleExist.setUpdateTime(new Date());
@@ -97,9 +96,9 @@ public class ScheduleServiceImpl implements ScheduleService {
 
     //删除排班
     @Override
-    public void remove(String hoscode, String hosScheduleId) {
+    public void remove(String campuscode, String hosScheduleId) {
         //根据医院编号和排班编号查询信息
-        Schedule schedule = scheduleRepository.getScheduleByHoscodeAndHosScheduleId(hoscode, hosScheduleId);
+        Schedule schedule = scheduleRepository.getScheduleByCampuscodeAndHosScheduleId(campuscode, hosScheduleId);
         if (schedule != null) {
             scheduleRepository.deleteById(schedule.getId());
         }
@@ -107,9 +106,9 @@ public class ScheduleServiceImpl implements ScheduleService {
 
     //根据医院编号 和 科室编号 ，查询排班规则数据
     @Override
-    public Map<String, Object> getRuleSchedule(long page, long limit, String hoscode, String depcode) {
+    public Map<String, Object> getRuleSchedule(long page, long limit, String campuscode, String depcode) {
         //1 根据医院编号 和 科室编号 查询
-        Criteria criteria = Criteria.where("hoscode").is(hoscode).and("depcode").is(depcode);
+        Criteria criteria = Criteria.where("campuscode").is(campuscode).and("depcode").is(depcode);
 
         //2 根据工作日workDate期进行分组
         Aggregation agg = Aggregation.newAggregation(
@@ -149,7 +148,7 @@ public class ScheduleServiceImpl implements ScheduleService {
         result.put("total", total);
 
         //get campus name
-        String hosName = campusService.getCampusName(hoscode);
+        String hosName = campusService.getCampusName(campuscode);
         //other params
         Map<String, String> baseMap = new HashMap<>();
         baseMap.put("hosname", hosName);
@@ -160,10 +159,10 @@ public class ScheduleServiceImpl implements ScheduleService {
 
     //根据医院编号 、科室编号和工作日期，查询排班详细信息
     @Override
-    public List<Schedule> getDetailSchedule(String hoscode, String depcode, String workDate) {
+    public List<Schedule> getDetailSchedule(String campuscode, String depcode, String workDate) {
         //根据参数查询mongodb
         List<Schedule> scheduleList =
-                scheduleRepository.findScheduleByHoscodeAndDepcodeAndWorkDate(hoscode, depcode, new DateTime(workDate).toDate());
+                scheduleRepository.findScheduleByCampuscodeAndDepcodeAndWorkDate(campuscode, depcode, new DateTime(workDate).toDate());
         //把得到list集合遍历，向设置其他值：医院名称、科室名称、日期对应星期
         scheduleList.stream().forEach(item -> {
             this.packageSchedule(item);
@@ -173,11 +172,11 @@ public class ScheduleServiceImpl implements ScheduleService {
 
     //获取可预约的排班数据
     @Override
-    public Map<String, Object> getBookingScheduleRule(int page, int limit, String hoscode, String depcode) {
+    public Map<String, Object> getBookingScheduleRule(int page, int limit, String campuscode, String depcode) {
         Map<String, Object> result = new HashMap<>();
         //获取预约规则
         //根据医院编号获取预约规则
-        Campus campus = campusService.getByHoscode(hoscode);
+        Campus campus = campusService.getByCampuscode(campuscode);
         if (campus == null) {
             throw new NustudyException(ResultCodeEnum.DATA_ERROR);
         }
@@ -190,7 +189,7 @@ public class ScheduleServiceImpl implements ScheduleService {
         List<Date> dateList = iPage.getRecords();
 
         //获取可预约日期里面科室的剩余预约数
-        Criteria criteria = Criteria.where("hoscode").is(hoscode).and("depcode").is(depcode)
+        Criteria criteria = Criteria.where("campuscode").is(campuscode).and("depcode").is(depcode)
                 .and("workDate").in(dateList);
 
         System.out.println("datalist: " + dateList.size());
@@ -262,9 +261,9 @@ public class ScheduleServiceImpl implements ScheduleService {
         //其他基础数据
         Map<String, String> baseMap = new HashMap<>();
         //医院名称
-        baseMap.put("hosname", campusService.getCampusName(hoscode));
+        baseMap.put("hosname", campusService.getCampusName(campuscode));
         //科室
-        Department department = departmentService.getDepartment(hoscode, depcode);
+        Department department = departmentService.getDepartment(campuscode, depcode);
         //大科室名称
         baseMap.put("bigname", department.getBigname());
         //科室名称
@@ -297,7 +296,7 @@ public class ScheduleServiceImpl implements ScheduleService {
             throw new NustudyException(ResultCodeEnum.PARAM_ERROR);
         }
         //获取预约规则信息
-        Campus campus = campusService.getByHoscode(schedule.getHoscode());
+        Campus campus = campusService.getByCampuscode(schedule.getCampuscode());
         if (campus == null) {
             throw new NustudyException(ResultCodeEnum.PARAM_ERROR);
         }
@@ -307,10 +306,10 @@ public class ScheduleServiceImpl implements ScheduleService {
         }
 
         //把获取数据设置到scheduleOrderVo
-        scheduleOrderVo.setHoscode(schedule.getHoscode());
-        scheduleOrderVo.setHosname(campusService.getCampusName(schedule.getHoscode()));
+        scheduleOrderVo.setCampuscode(schedule.getCampuscode());
+        scheduleOrderVo.setHosname(campusService.getCampusName(schedule.getCampuscode()));
         scheduleOrderVo.setDepcode(schedule.getDepcode());
-        scheduleOrderVo.setDepname(departmentService.getDepName(schedule.getHoscode(), schedule.getDepcode()));
+        scheduleOrderVo.setDepname(departmentService.getDepName(schedule.getCampuscode(), schedule.getDepcode()));
         scheduleOrderVo.setHosScheduleId(schedule.getHosScheduleId());
         scheduleOrderVo.setAvailableNumber(schedule.getAvailableNumber());
         scheduleOrderVo.setTitle(schedule.getTitle());
@@ -390,9 +389,9 @@ public class ScheduleServiceImpl implements ScheduleService {
     //封装排班详情其他值 医院名称、科室名称、日期对应星期
     private Schedule packageSchedule(Schedule schedule) {
         //设置医院名称
-        schedule.getParam().put("hosname", campusService.getCampusName(schedule.getHoscode()));
+        schedule.getParam().put("hosname", campusService.getCampusName(schedule.getCampuscode()));
         //设置科室名称
-        schedule.getParam().put("depname", departmentService.getDepName(schedule.getHoscode(), schedule.getDepcode()));
+        schedule.getParam().put("depname", departmentService.getDepName(schedule.getCampuscode(), schedule.getDepcode()));
         //设置日期对应星期
         schedule.getParam().put("dayOfWeek", this.getDayOfWeek(new DateTime(schedule.getWorkDate())));
         return schedule;
@@ -400,6 +399,7 @@ public class ScheduleServiceImpl implements ScheduleService {
 
     /**
      * Util class
+     * 根据日期获取周几数据
      *
      * @param dateTime
      * @return
@@ -432,5 +432,4 @@ public class ScheduleServiceImpl implements ScheduleService {
         }
         return dayOfWeek;
     }
-
 }

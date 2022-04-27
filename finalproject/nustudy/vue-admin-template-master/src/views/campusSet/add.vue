@@ -6,7 +6,7 @@
         <el-input v-model="hospitalSet.hosname" />
       </el-form-item>
       <el-form-item label="Campus Code">
-        <el-input v-model="hospitalSet.hoscode" />
+        <el-input v-model="hospitalSet.campuscode" />
       </el-form-item>
       <el-form-item label="API Url">
         <el-input v-model="hospitalSet.apiUrl" />
@@ -31,47 +31,47 @@ export default {
   data() {
     return {
       hospitalSet: {}
-    }
+    };
   },
   created() {
     if (this.$route.params && this.$route.params.id) {
-      const id = this.$route.params.id
-      this.getHostSet(id)
+      const id = this.$route.params.id;
+      this.getHostSet(id);
     } else {
-      this.hospitalSet = {}
+      this.hospitalSet = {};
     }
   },
   methods: {
     getHostSet(id) {
       campusset.getCampusSet(id).then(response => {
-        this.hospitalSet = response.data
-      })
+        this.hospitalSet = response.data;
+      });
     },
     save() {
       campusset.saveCampusSet(this.hospitalSet).then(response => {
         this.$message({
           type: "success",
           message: "Saved!"
-        })
+        });
         this.$router.push({ path: "/campusset/list" });
-      })
+      });
     },
     update() {
       campusset.updateCampusSet(this.hospitalSet).then(response => {
         this.$message({
           type: "success",
           message: "Updated!"
-        })
+        });
         this.$router.push({ path: "/campusset/list" });
-      })
+      });
     },
     saveOrUpdate() {
       if (this.hospitalSet.id) {
-        this.update()
+        this.update();
       } else {
-        this.save()
+        this.save();
       }
     }
   }
-}
+};
 </script>

@@ -100,7 +100,7 @@ export const constantRouterMap = [
         hidden: true
       },
       {
-        path: "campus/schedule/:hoscode",
+        path: "campus/schedule/:campuscode",
         name: "Schedule",
         component: () => import("@/views/campus/schedule"),
         meta: { title: "Schedule", icon: "table" },

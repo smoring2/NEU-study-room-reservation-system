@@ -9,7 +9,7 @@ import lombok.Data;
 public class OrderCountQueryVo {
 	
 	@ApiModelProperty(value = "医院编号")
-	private String hoscode;
+	private String campuscode;
 
 	@ApiModelProperty(value = "医院名称")
 	private String hosname;

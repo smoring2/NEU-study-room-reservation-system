@@ -17,7 +17,7 @@ public class Campus extends BaseMongoEntity {
 	
 	@ApiModelProperty(value = "医院编号")
 	@Indexed(unique = true) //唯一索引
-	private String hoscode;
+	private String campuscode;
 
 	@ApiModelProperty(value = "医院名称")
 	@Indexed //普通索引
@@ -25,18 +25,6 @@ public class Campus extends BaseMongoEntity {
 
 	@ApiModelProperty(value = "医院类型")
 	private String hostype;
-
-	public String getHoscode() {
-		return hoscode;
-	}
-
-	public String getHosname() {
-		return hosname;
-	}
-
-	public String getHostype() {
-		return hostype;
-	}
 
 	@ApiModelProperty(value = "省code")
 	private String provinceCode;
@@ -65,6 +53,19 @@ public class Campus extends BaseMongoEntity {
 	//预约规则
 	@ApiModelProperty(value = "预约规则")
 	private BookingRule bookingRule;
+
+
+	public String getCampuscode() {
+		return campuscode;
+	}
+
+	public String getHosname() {
+		return hosname;
+	}
+
+	public String getHostype() {
+		return hostype;
+	}
 
 	public void setBookingRule(String bookingRule) {
 		this.bookingRule = JSONObject.parseObject(bookingRule, BookingRule.class);

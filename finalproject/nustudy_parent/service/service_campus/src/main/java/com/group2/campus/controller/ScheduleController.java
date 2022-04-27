@@ -17,23 +17,23 @@ public class ScheduleController {
     @Autowired
     private ScheduleService scheduleService;
 
-    // according to the hoscode & departmentcode
+    // according to the campuscode & departmentcode
     @ApiOperation(value = "Look up schedule rulers")
-    @GetMapping(value = "getScheduleRule/{page}/{limit}/{hoscode}/{depcode}")
+    @GetMapping(value = "getScheduleRule/{page}/{limit}/{campuscode}/{depcode}")
     public Result getScheduleRule(@PathVariable long page,
                                   @PathVariable long limit,
-                                  @PathVariable String hoscode,
+                                  @PathVariable String campuscode,
                                   @PathVariable String depcode) {
-        Map<String, Object> map = scheduleService.getRuleSchedule(page, limit, hoscode, depcode);
+        Map<String, Object> map = scheduleService.getRuleSchedule(page, limit, campuscode, depcode);
         return Result.ok(map);
     }
 
     @ApiOperation(value = "get schedule details")
-    @GetMapping(value = "getScheduleDetail/{hoscode}/{depcode}/{workDate}")
-    public Result getScheduleDetail(@PathVariable String hoscode,
+    @GetMapping(value = "getScheduleDetail/{campuscode}/{depcode}/{workDate}")
+    public Result getScheduleDetail(@PathVariable String campuscode,
                                     @PathVariable String depcode,
                                     @PathVariable String workDate){
-        List<Schedule> list = scheduleService.getDetailSchedule(hoscode, depcode, workDate);
+        List<Schedule> list = scheduleService.getDetailSchedule(campuscode, depcode, workDate);
         return Result.ok(list);
     }
 }

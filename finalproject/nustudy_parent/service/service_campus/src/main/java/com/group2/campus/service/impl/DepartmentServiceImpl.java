@@ -31,7 +31,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 
         // lookup based on the combo of campus code and department code
         Department departmentExist = departmentRepository.
-                getDepartmentByHoscodeAndDepcode(department.getHoscode(),department.getDepcode());
+                getDepartmentByCampuscodeAndDepcode(department.getCampuscode(),department.getDepcode());
 
         if(departmentExist!=null) { //update
             departmentExist.setUpdateTime(new Date());
@@ -67,9 +67,9 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     //删除科室接口
     @Override
-    public void remove(String hoscode, String depcode) {
+    public void remove(String campuscode, String depcode) {
         //根据医院编号 和 科室编号查询
-        Department department = departmentRepository.getDepartmentByHoscodeAndDepcode(hoscode, depcode);
+        Department department = departmentRepository.getDepartmentByCampuscodeAndDepcode(campuscode, depcode);
         if(department != null) {
             //调用方法删除
             departmentRepository.deleteById(department.getId());
@@ -84,7 +84,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 
         //根据医院编号，查询医院所有科室信息
         Department departmentQuery = new Department(); // using mongoDB
-        departmentQuery.setHoscode(campuscode);
+        departmentQuery.setCampuscode(campuscode);
         Example example = Example.of(departmentQuery);
         //所有科室列表 departmentList
         List<Department> departmentList = departmentRepository.findAll(example);
@@ -123,8 +123,8 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     //根据科室编号，和医院编号，查询科室名称
     @Override
-    public String getDepName(String hoscode, String depcode) {
-        Department department = departmentRepository.getDepartmentByHoscodeAndDepcode(hoscode, depcode);
+    public String getDepName(String campuscode, String depcode) {
+        Department department = departmentRepository.getDepartmentByCampuscodeAndDepcode(campuscode, depcode);
         if(department != null) {
             return department.getDepname();
         }
@@ -132,8 +132,8 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public Department getDepartment(String hoscode, String depcode) {
-        return departmentRepository.getDepartmentByHoscodeAndDepcode(hoscode, depcode);
+    public Department getDepartment(String campuscode, String depcode) {
+        return departmentRepository.getDepartmentByCampuscodeAndDepcode(campuscode, depcode);
     }
 
 }

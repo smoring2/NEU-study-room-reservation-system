@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public interface CampusRepository extends MongoRepository<Campus,String> {
     //判断是否存在数据
-    Campus getCampusByHoscode(String hoscode);
+    Campus getCampusByCampuscode(String campuscode);
 
     //根据医院名称查询
     List<Campus> findCampusByHosnameLike(String campusName);

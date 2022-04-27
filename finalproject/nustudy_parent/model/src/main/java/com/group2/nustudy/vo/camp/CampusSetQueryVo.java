@@ -10,13 +10,13 @@ public class CampusSetQueryVo {
     private String hosname;
 
     @ApiModelProperty(value = "医院编号")
-    private String hoscode;
+    private String campuscode;
 
     public String getHosname() {
         return hosname;
     }
 
-    public String getHoscode() {
-        return hoscode;
+    public String getCampuscode() {
+        return campuscode;
     }
 }

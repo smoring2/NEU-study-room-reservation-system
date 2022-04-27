@@ -7,7 +7,7 @@ import java.util.Map;
 
 public interface ApiService {
 
-    String getHoscode();
+    String getCampuscode();
 
     String getSignKey();
 

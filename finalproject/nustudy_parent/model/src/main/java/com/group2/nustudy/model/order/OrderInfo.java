@@ -27,8 +27,8 @@ public class OrderInfo extends BaseEntity {
 	private String outTradeNo;
 
 	@ApiModelProperty(value = "医院编号")
-	@TableField("hoscode")
-	private String hoscode;
+	@TableField("campuscode")
+	private String campuscode;
 
 	@ApiModelProperty(value = "医院名称")
 	@TableField("hosname")

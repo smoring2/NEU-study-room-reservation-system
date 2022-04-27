@@ -9,8 +9,12 @@
           height="50"
           src="~assets/images/logoNeu.png"
         />
-        <span class="v-link clickable dark"
-              onclick="javascript:window.location='/'"> NEU study room reservation system</span>
+        <span
+          class="v-link clickable dark"
+          onclick="javascript:window.location='/'"
+        >
+          NEU study room reservation system</span
+        >
       </div>
       <div class="search-wrapper">
         <div class="campus-search animation-show">
@@ -43,9 +47,8 @@
             <el-dropdown-item command="/student">My account</el-dropdown-item>
             <!--            <el-dropdown-item command="/order">My reservations</el-dropdown-item>-->
             <el-dropdown-item command="/logout" divided
-            >Log out
-            </el-dropdown-item
-            >
+              >Log out
+            </el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </div>
@@ -148,7 +151,7 @@ export default {
   methods: {
     showLogin() {
       this.dialogUserFormVisible = true;
-      this.dialogAtrr = {...defaultDialogAtrr};
+      this.dialogAtrr = { ...defaultDialogAtrr };
     },
 
     login() {
@@ -181,8 +184,8 @@ export default {
     },
 
     setCookies(name, token) {
-      cookie.set("token", token, {domain: "localhost"});
-      cookie.set("name", name, {domain: "localhost"});
+      cookie.set("token", token, { domain: "localhost" });
+      cookie.set("name", name, { domain: "localhost" });
       window.location.reload();
     },
 
@@ -205,13 +208,13 @@ export default {
     },
 
     handleSelect(item) {
-      window.location.href = "/campus/" + item.hoscode;
+      window.location.href = "/campus/" + item.campuscode;
     },
 
     loginMenu(command) {
       if ("/logout" == command) {
-        cookie.set("name", "", {domain: "localhost"});
-        cookie.set("token", "", {domain: "localhost"});
+        cookie.set("name", "", { domain: "localhost" });
+        cookie.set("token", "", { domain: "localhost" });
         window.location.href = "/";
       } else {
         window.location.href = command;

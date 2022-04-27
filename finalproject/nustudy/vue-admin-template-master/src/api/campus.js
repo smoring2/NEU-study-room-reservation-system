@@ -1,4 +1,4 @@
-import request from '@/utils/request'
+import request from "@/utils/request";
 
 // DEBUG TRANSLATE
 export default {
@@ -6,50 +6,50 @@ export default {
   getCampusList(page, limit, searchObj) {
     return request({
       url: `/admin/campus/campus/list/${page}/${limit}`,
-      method: 'get',
+      method: "get",
       params: searchObj
-    })
+    });
   },
   findByDictCode(dictCode) {
     return request({
       url: `/admin/cmn/dict/findByDictCode/${dictCode}`,
-      method: 'get'
-    })
+      method: "get"
+    });
   },
   findChildId(id) {
     return request({
       url: `/admin/cmn/dict/findChildData/${id}`,
-      method: 'get'
-    })
+      method: "get"
+    });
   },
   updateStatus(id, status) {
     return request({
       url: `/admin/campus/campus/updateCampusStatus/${id}/${status}`,
-      method: 'get'
-    })
+      method: "get"
+    });
   },
   getCampusById(id) {
     return request({
       url: `/admin/campus/campus/showCampusDetail/${id}`,
-      method: 'get'
-    })
+      method: "get"
+    });
   },
-  getDeptByCampusCode(hoscode) {
+  getDeptByCampusCode(campuscode) {
     return request({
-      url: `/admin/campus/department/getDeptList/${hoscode}`,
-      method: 'get'
-    })
+      url: `/admin/campus/department/getDeptList/${campuscode}`,
+      method: "get"
+    });
   },
-  getScheduleRule(page, limit, hoscode, depcode) {
+  getScheduleRule(page, limit, campuscode, depcode) {
     return request({
-      url: `admin/campus/schedule/getScheduleRule/${page}/${limit}/${hoscode}/${depcode}`,
-      method: 'get'
-    })
+      url: `admin/campus/schedule/getScheduleRule/${page}/${limit}/${campuscode}/${depcode}`,
+      method: "get"
+    });
   },
-  getScheduleDetail(hoscode, depcode, workDate){
+  getScheduleDetail(campuscode, depcode, workDate) {
     return request({
-      url: `admin/campus/schedule/getScheduleDetail/${hoscode}/${depcode}/${workDate}` ,
-      method: 'get'
-    })
+      url: `admin/campus/schedule/getScheduleDetail/${campuscode}/${depcode}/${workDate}`,
+      method: "get"
+    });
   }
-}
+};

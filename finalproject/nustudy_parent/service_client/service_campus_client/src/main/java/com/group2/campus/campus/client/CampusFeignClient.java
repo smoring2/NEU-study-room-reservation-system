@@ -21,6 +21,6 @@ public interface CampusFeignClient {
     /**
      * 获取医院签名信息
      */
-    @GetMapping("/api/campus/campus/inner/getSignInfoVo/{hoscode}")
-    public SignInfoVo getSignInfoVo(@PathVariable("hoscode") String hoscode);
+    @GetMapping("/api/campus/campus/inner/getSignInfoVo/{campuscode}")
+    public SignInfoVo getSignInfoVo(@PathVariable("campuscode") String campuscode);
 }

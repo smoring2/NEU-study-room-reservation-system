@@ -9,9 +9,9 @@ import java.util.List;
 @Repository
 public interface ScheduleRepository extends MongoRepository<Schedule,String> {
     //根据医院编号 和 排班编号查询
-    Schedule getScheduleByHoscodeAndHosScheduleId(String hoscode, String hosScheduleId);
+    Schedule getScheduleByCampuscodeAndHosScheduleId(String campuscode, String hosScheduleId);
 
     //根据医院编号 、科室编号和工作日期，查询排班详细信息
-    List<Schedule> findScheduleByHoscodeAndDepcodeAndWorkDate(String hoscode, String depcode, Date toDate);
+    List<Schedule> findScheduleByCampuscodeAndDepcodeAndWorkDate(String campuscode, String depcode, Date toDate);
     Schedule findScheduleByHosScheduleId(String scheduleId);
 }

@@ -13,7 +13,7 @@ public class CampusQueryVo implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@ApiModelProperty(value = "医院编号")
-	private String hoscode;
+	private String campuscode;
 
 	@ApiModelProperty(value = "医院名称")
 	private String hosname;

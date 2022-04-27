@@ -10,26 +10,21 @@ import com.group2.campus.service.CampusSetService;
 import com.group2.nustudy.vo.order.SignInfoVo;
 import org.springframework.stereotype.Service;
 
-/**
- * Author: Ying Tuo
- * Created Time: $[Date]
- * Description:
- */
 @Service
 public class CampusSetServiceImpl extends ServiceImpl<CampusSetMapper, CampusSet> implements CampusSetService {
 
     @Override
-    public String getSignKey(String hoscode) {
+    public String getSignKey(String campuscode) {
         QueryWrapper<CampusSet> wrapper = new QueryWrapper<>();
-        wrapper.eq("hoscode",hoscode);
+        wrapper.eq("campuscode",campuscode);
         CampusSet campusSet = baseMapper.selectOne(wrapper);
         return campusSet.getSignKey();
     }
 
     @Override
-    public SignInfoVo getSignInfoVo(String hoscode) {
+    public SignInfoVo getSignInfoVo(String campuscode) {
         QueryWrapper<CampusSet> wrapper = new QueryWrapper<>();
-        wrapper.eq("hoscode",hoscode);
+        wrapper.eq("campuscode",campuscode);
         CampusSet hospitalSet = baseMapper.selectOne(wrapper);
         if(null == hospitalSet) {
             throw new NustudyException(ResultCodeEnum.CAMPUS_OPEN);

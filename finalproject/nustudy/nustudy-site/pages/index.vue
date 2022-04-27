@@ -71,7 +71,7 @@
               <div
                 class="hospital-list-item hos-item"
                 index="0"
-                @click="show(item.hoscode)"
+                @click="show(item.campuscode)"
               >
                 <div class="wrapper">
                   <div class="hospital-title">{{ item.hosname }}</div>
@@ -207,7 +207,7 @@ export default {
     },
 
     handleSelect(item) {
-      window.location.href = "/campus/" + item.hoscode;
+      window.location.href = "/campus/" + item.campuscode;
     },
 
     hostypeSelect(hostype, index) {
@@ -226,8 +226,8 @@ export default {
       this.getList();
     },
 
-    show(hoscode) {
-      window.location.href = "/campus/" + hoscode;
+    show(campuscode) {
+      window.location.href = "/campus/" + campuscode;
     },
   },
 };
