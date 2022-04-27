@@ -199,9 +199,9 @@ export default {
 
     querySearchAsync(queryString, cb) {
       if (queryString == "") return;
-      campusApi.getByHosname(queryString).then((response) => {
+      campusApi.getByCampusname(queryString).then((response) => {
         for (let i = 0, len = response.data.length; i < len; i++) {
-          response.data[i].value = response.data[i].hosname;
+          response.data[i].value = response.data[i].campusname;
         }
         cb(response.data);
       });

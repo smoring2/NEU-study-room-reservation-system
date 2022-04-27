@@ -12,7 +12,7 @@ public class OrderCountQueryVo {
 	private String campuscode;
 
 	@ApiModelProperty(value = "医院名称")
-	private String hosname;
+	private String campusname;
 
 	@ApiModelProperty(value = "安排日期")
 	private String reserveDateBegin;

@@ -7,13 +7,13 @@ import lombok.Data;
 public class CampusSetQueryVo {
 
     @ApiModelProperty(value = "医院名称")
-    private String hosname;
+    private String campusname;
 
     @ApiModelProperty(value = "医院编号")
     private String campuscode;
 
-    public String getHosname() {
-        return hosname;
+    public String getCampusname() {
+        return campusname;
     }
 
     public String getCampuscode() {

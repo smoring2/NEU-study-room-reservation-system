@@ -31,8 +31,8 @@ public class OrderInfo extends BaseEntity {
 	private String campuscode;
 
 	@ApiModelProperty(value = "医院名称")
-	@TableField("hosname")
-	private String hosname;
+	@TableField("campusname")
+	private String campusname;
 
 	@ApiModelProperty(value = "科室编号")
 	@TableField("depcode")

@@ -3,7 +3,7 @@
     Campus Set Add
     <el-form label-width="120px">
       <el-form-item label="Campus Name">
-        <el-input v-model="hospitalSet.hosname" />
+        <el-input v-model="hospitalSet.campusname" />
       </el-form-item>
       <el-form-item label="Campus Code">
         <el-input v-model="hospitalSet.campuscode" />

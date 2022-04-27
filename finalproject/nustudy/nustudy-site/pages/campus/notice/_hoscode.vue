@@ -43,7 +43,7 @@
     <div class="page-container">
       <div class="hospital-notice">
         <div class="content">
-          <h2>{{ hospital.hosname }} Reservation Notice</h2>
+          <h2>{{ hospital.campusname }} Reservation Notice</h2>
           <p>For your convenience, please read the following rules.</p>
           <h4 id="1. User Limitation：">1. User Limitation:</h4>
           <p>

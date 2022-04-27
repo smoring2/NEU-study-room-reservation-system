@@ -34,8 +34,8 @@ public class CampusSet extends BaseEntity {
 	private static final long serialVersionUID = 1L;
 
 	@ApiModelProperty(value = "医院名称")
-	@TableField("hosname")
-	private String hosname;
+	@TableField("campusname")
+	private String campusname;
 
 	@ApiModelProperty(value = "医院编号")
 	@TableField("campuscode")
@@ -61,12 +61,12 @@ public class CampusSet extends BaseEntity {
 	@TableField("status")
 	private Integer status;
 
-	public String getHosname() {
-		return hosname;
+	public String getCampusname() {
+		return campusname;
 	}
 
-	public void setHosname(String hosname) {
-		this.hosname = hosname;
+	public void setCampusname(String campusname) {
+		this.campusname = campusname;
 	}
 
 	public String getApiUrl() {

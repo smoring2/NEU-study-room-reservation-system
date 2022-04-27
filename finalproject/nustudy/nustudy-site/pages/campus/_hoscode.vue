@@ -44,15 +44,17 @@
       <div class="hospital-home">
         <div class="common-header">
           <div class="title-wrapper">
-            <span class="hospital-title">{{ hospital.hosname }}</span>
-            <div class="icon-wrapper">{{ hospital.param.hostypeString }}</div>
+            <span class="hospital-title">{{ hospital.campusname }}</span>
+            <div class="icon-wrapper">
+              {{ hospital.param.campustypeString }}
+            </div>
           </div>
         </div>
         <div class="info-wrapper">
           <img
             class="hospital-img"
             :src="'data:image/jpeg;base64,' + hospital.logoData"
-            :alt="hospital.hosname"
+            :alt="hospital.campusname"
           />
           <div class="content-wrapper">
             <div>Reservation Rules</div>

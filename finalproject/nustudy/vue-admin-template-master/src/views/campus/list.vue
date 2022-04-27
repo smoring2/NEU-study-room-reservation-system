@@ -28,7 +28,7 @@
       </el-form-item>
 
       <el-form-item>
-        <el-input v-model="searchObj.hosname" placeholder="医院名称" />
+        <el-input v-model="searchObj.campusname" placeholder="医院名称" />
       </el-form-item>
 
       <el-button type="primary" icon="el-icon-search" @click="fetchData()"
@@ -60,8 +60,8 @@
         </template>
       </el-table-column>
 
-      <el-table-column prop="hosname" label="医院名称" />
-      <el-table-column prop="param.hostypeString" label="等级" width="90" />
+      <el-table-column prop="campusname" label="医院名称" />
+      <el-table-column prop="param.campustypeString" label="等级" width="90" />
       <el-table-column prop="param.fullAddress" label="详情地址" />
       <el-table-column label="状态" width="80">
         <template slot-scope="scope">

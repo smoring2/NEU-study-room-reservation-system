@@ -37,11 +37,11 @@
               <span class="label">Location：</span>
               <div class="condition-wrapper">
                 <span
-                  v-for="(item, index) in hostypeList"
+                  v-for="(item, index) in campustypeList"
                   :key="index"
                   class="item v-link clickable"
-                  :class="hostypeActiveIndex == index ? 'selected' : ''"
-                  @click="hostypeSelect(item.value, index)"
+                  :class="campustypeActiveIndex == index ? 'selected' : ''"
+                  @click="campustypeSelect(item.value, index)"
                   >{{ item.name }}</span
                 >
               </div>
@@ -74,11 +74,11 @@
                 @click="show(item.campuscode)"
               >
                 <div class="wrapper">
-                  <div class="hospital-title">{{ item.hosname }}</div>
+                  <div class="hospital-title">{{ item.campusname }}</div>
                   <div class="bottom-container">
                     <div class="icon-wrapper">
                       <span class="iconfont"></span>
-                      {{ item.hostypeString }}
+                      {{ item.campustypeString }}
                     </div>
                     <div class="icon-wrapper">
                       <span class="iconfont"></span>
@@ -88,7 +88,7 @@
                 </div>
                 <img
                   src="~assets/images/logoNeu.png"
-                  alt="item.hosname"
+                  alt="item.campusname"
                   class="hospital-img"
                 />
               </div>
@@ -120,11 +120,11 @@ export default {
       page: 1,
       limit: 10,
 
-      hosname: "",
-      hostypeList: [],
+      campusname: "",
+      campustypeList: [],
       districtList: [],
 
-      hostypeActiveIndex: 0,
+      campustypeActiveIndex: 0,
       provinceActiveIndex: 0,
       state: "",
     };
@@ -149,10 +149,10 @@ export default {
   methods: {
     init() {
       dictApi.findByDictCode("Province").then((response) => {
-        this.hostypeList = [];
-        this.hostypeList.push({ name: "All", value: "" });
+        this.campustypeList = [];
+        this.campustypeList.push({ name: "All", value: "" });
         for (let i in response.data) {
-          this.hostypeList.push(response.data[i]);
+          this.campustypeList.push(response.data[i]);
         }
       });
       dictApi.findByDictCode("Beijin").then((response) => {
@@ -200,7 +200,7 @@ export default {
       if (queryString == "") return;
       campusApi.getByCampusName(queryString).then((response) => {
         for (let i = 0, len = response.data.length; i < len; i++) {
-          response.data[i].value = response.data[i].hosname;
+          response.data[i].value = response.data[i].campusname;
         }
         cb(response.data);
       });
@@ -210,11 +210,11 @@ export default {
       window.location.href = "/campus/" + item.campuscode;
     },
 
-    hostypeSelect(hostype, index) {
+    campustypeSelect(campustype, index) {
       this.list = [];
       this.page = 1;
-      this.hostypeActiveIndex = index;
-      this.searchObj.hostype = hostype;
+      this.campustypeActiveIndex = index;
+      this.searchObj.campustype = campustype;
       this.getList();
     },
 

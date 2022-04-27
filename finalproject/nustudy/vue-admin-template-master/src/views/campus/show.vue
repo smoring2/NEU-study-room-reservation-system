@@ -9,8 +9,8 @@
         <tr>
           <th width="15%">医院名称</th>
           <td width="35%">
-            <b style="font-size: 14px">{{ hospital.hosname }}</b> |
-            {{ hospital.param.hostypeString }}
+            <b style="font-size: 14px">{{ hospital.campusname }}</b> |
+            {{ hospital.param.campustypeString }}
           </td>
           <th width="15%">医院logo</th>
           <td width="35%">

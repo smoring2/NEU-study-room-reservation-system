@@ -120,7 +120,7 @@ public class CampusServiceImpl implements CampusService {
     public String getCampusName(String campuscode) {
         Campus campus = campusRepository.getCampusByCampuscode(campuscode);
         if (campus != null) {
-            return campus.getHosname();
+            return campus.getCampusname();
         }
         return null;
     }
@@ -128,7 +128,7 @@ public class CampusServiceImpl implements CampusService {
     //根据医院名称查询
     @Override
     public List<Campus> findByCampusName(String campusName) {
-        return campusRepository.findCampusByHosnameLike(campusName);
+        return campusRepository.findCampusByCampusnameLike(campusName);
     }
 
     //根据医院编号获取医院预约挂号详情
@@ -150,8 +150,8 @@ public class CampusServiceImpl implements CampusService {
     private Campus setCampusCamType(Campus campus) {
         System.out.println("Campus: " + campus);
         //根据dictCode和value获取医院等级名称
-        String hostypeString = dictFeignClient.getName("Hostype", campus.getHostype());
-        System.out.println("hostypeString: " + hostypeString);
+        String campustypeString = dictFeignClient.getName("Campustype", campus.getCampustype());
+        System.out.println("campustypeString: " + campustypeString);
         //查询省 市  地区
         String provinceString = dictFeignClient.getName(campus.getProvinceCode());
         System.out.println("provinceString: " + provinceString);
@@ -159,7 +159,7 @@ public class CampusServiceImpl implements CampusService {
         System.out.println("cityString: " + cityString);
         String districtString = dictFeignClient.getName(campus.getDistrictCode());
         campus.getParam().put("fullAddress", provinceString + cityString + districtString);
-        campus.getParam().put("hostypeString", hostypeString);
+        campus.getParam().put("campustypeString", campustypeString);
         return campus;
     }
 

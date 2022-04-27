@@ -15,11 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 
-/**
- *
- * @author qy
- *
- */
 @Api(tags = "医院管理接口")
 @RestController
 public class CampusController {

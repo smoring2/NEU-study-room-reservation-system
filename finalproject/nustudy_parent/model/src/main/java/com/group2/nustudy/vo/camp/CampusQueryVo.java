@@ -16,10 +16,10 @@ public class CampusQueryVo implements Serializable {
 	private String campuscode;
 
 	@ApiModelProperty(value = "医院名称")
-	private String hosname;
+	private String campusname;
 
 	@ApiModelProperty(value = "医院类型")
-	private String hostype;
+	private String campustype;
 
 	@ApiModelProperty(value = "省code")
 	private String provinceCode;

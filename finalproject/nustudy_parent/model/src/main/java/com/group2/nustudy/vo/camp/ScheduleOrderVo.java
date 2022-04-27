@@ -15,7 +15,7 @@ public class ScheduleOrderVo {
 	private String campuscode;
 
 	@ApiModelProperty(value = "医院名称")
-	private String hosname;
+	private String campusname;
 
 	@ApiModelProperty(value = "科室编号")
 	private String depcode;

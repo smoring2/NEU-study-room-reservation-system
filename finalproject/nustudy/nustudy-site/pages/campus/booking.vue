@@ -2,47 +2,47 @@
   <!-- header -->
   <div class="nav-container page-component">
     <!--left navi #start -->
-<!--    <div class="nav left-nav">-->
-<!--      <div class="nav-item selected">-->
-<!--        <span-->
-<!--          class="v-link selected dark"-->
-<!--          :onclick="-->
-<!--            'javascript:window.location=\'/campus/' + schedule.hoscode + '\''-->
-<!--          "-->
-<!--          >Reservation-->
-<!--        </span>-->
-<!--      </div>-->
-<!--      <div class="nav-item">-->
-<!--        <span-->
-<!--          class="v-link clickable dark"-->
-<!--          :onclick="-->
-<!--            'javascript:window.location=\'/campus/detail/' +-->
-<!--            schedule.hoscode +-->
-<!--            '\''-->
-<!--          "-->
-<!--        >-->
-<!--          Campus Intro-->
-<!--        </span>-->
-<!--      </div>-->
-<!--      <div class="nav-item">-->
-<!--        <span-->
-<!--          class="v-link clickable dark"-->
-<!--          :onclick="-->
-<!--            'javascript:window.location=\'/campus/notice/' +-->
-<!--            schedule.hoscode +-->
-<!--            '\''-->
-<!--          "-->
-<!--        >-->
-<!--          Reservation notice-->
-<!--        </span>-->
-<!--      </div>-->
-<!--      <div class="nav-item">-->
-<!--        <span class="v-link clickable dark"> Suspension information </span>-->
-<!--      </div>-->
-<!--      <div class="nav-item">-->
-<!--        <span class="v-link clickable dark"> Search/Cancel </span>-->
-<!--      </div>-->
-<!--    </div>-->
+    <!--    <div class="nav left-nav">-->
+    <!--      <div class="nav-item selected">-->
+    <!--        <span-->
+    <!--          class="v-link selected dark"-->
+    <!--          :onclick="-->
+    <!--            'javascript:window.location=\'/campus/' + schedule.hoscode + '\''-->
+    <!--          "-->
+    <!--          >Reservation-->
+    <!--        </span>-->
+    <!--      </div>-->
+    <!--      <div class="nav-item">-->
+    <!--        <span-->
+    <!--          class="v-link clickable dark"-->
+    <!--          :onclick="-->
+    <!--            'javascript:window.location=\'/campus/detail/' +-->
+    <!--            schedule.hoscode +-->
+    <!--            '\''-->
+    <!--          "-->
+    <!--        >-->
+    <!--          Campus Intro-->
+    <!--        </span>-->
+    <!--      </div>-->
+    <!--      <div class="nav-item">-->
+    <!--        <span-->
+    <!--          class="v-link clickable dark"-->
+    <!--          :onclick="-->
+    <!--            'javascript:window.location=\'/campus/notice/' +-->
+    <!--            schedule.hoscode +-->
+    <!--            '\''-->
+    <!--          "-->
+    <!--        >-->
+    <!--          Reservation notice-->
+    <!--        </span>-->
+    <!--      </div>-->
+    <!--      <div class="nav-item">-->
+    <!--        <span class="v-link clickable dark"> Suspension information </span>-->
+    <!--      </div>-->
+    <!--      <div class="nav-item">-->
+    <!--        <span class="v-link clickable dark"> Search/Cancel </span>-->
+    <!--      </div>-->
+    <!--    </div>-->
 
     <!-- left navi #end -->
 
@@ -103,10 +103,10 @@
             <div class="sub-title" v-if="studentList.length > 0">
               <div class="block"></div>
               Chosen student card：
-<!--              <span class="card-tips"-->
-<!--                ><span class="iconfont"></span>-->
-<!--                如您持社保卡就诊，请务必选择医保预约挂号，以保证正常医保报销</span-->
-<!--              >-->
+              <!--              <span class="card-tips"-->
+              <!--                ><span class="iconfont"></span>-->
+              <!--                如您持社保卡就诊，请务必选择医保预约挂号，以保证正常医保报销</span-->
+              <!--              >-->
             </div>
 
             <el-card
@@ -122,16 +122,16 @@
                   >
                 </div>
               </div>
-<!--              <div class="card SELF_PAY_CARD">-->
-<!--                <div class="info">-->
-<!--                  <span class="type">{{-->
-<!--                      student.isInsure == 0 ? "自费" : "医保"-->
-<!--                    }}</span-->
-<!--                  ><span class="card-no">{{ student.certificatesNo }}</span-->
-<!--                  ><span class="card-view">居民身份证</span>-->
-<!--                </div>-->
-<!--                <span class="operate"></span>-->
-<!--              </div>-->
+              <!--              <div class="card SELF_PAY_CARD">-->
+              <!--                <div class="info">-->
+              <!--                  <span class="type">{{-->
+              <!--                      student.isInsure == 0 ? "自费" : "医保"-->
+              <!--                    }}</span-->
+              <!--                  ><span class="card-no">{{ student.certificatesNo }}</span-->
+              <!--                  ><span class="card-view">居民身份证</span>-->
+              <!--                </div>-->
+              <!--                <span class="operate"></span>-->
+              <!--              </div>-->
               <div class="card">
                 <div class="text bind-card"></div>
               </div>
@@ -147,13 +147,15 @@
                   <div class="content">
                     <span
                       >{{ schedule.workDate }} {{ schedule.param.dayOfWeek }}
-                      {{ schedule.workTime == 0 ? "Morning" : "Afternoon" }}</span
+                      {{
+                        schedule.workTime == 0 ? "Morning" : "Afternoon"
+                      }}</span
                     >
                   </div>
                 </el-form-item>
                 <el-form-item label="Campus：">
                   <div class="content">
-                    <span>{{ schedule.param.hosname }} </span>
+                    <span>{{ schedule.param.campusname }} </span>
                   </div>
                 </el-form-item>
                 <el-form-item label="Floor：">
@@ -176,11 +178,11 @@
                     <span>{{ schedule.skill }}</span>
                   </div>
                 </el-form-item>
-<!--                <el-form-item label="医事服务费：">-->
-<!--                  <div class="content">-->
-<!--                    <div class="fee">{{ schedule.amount }}</div>-->
-<!--                  </div>-->
-<!--                </el-form-item>-->
+                <!--                <el-form-item label="医事服务费：">-->
+                <!--                  <div class="content">-->
+                <!--                    <div class="fee">{{ schedule.amount }}</div>-->
+                <!--                  </div>-->
+                <!--                </el-form-item>-->
               </el-form>
             </div>
 
@@ -220,8 +222,8 @@ import "~/assets/css/campus_personal.css";
 import "~/assets/css/campus.css";
 
 import campusApi from "@/api/campus/campus";
-import studentApi from '@/api/user/student'
-import orderInfoApi from '@/api/order/orderInfo'
+import studentApi from "@/api/user/student";
+import orderInfoApi from "@/api/order/orderInfo";
 
 export default {
   data() {
@@ -289,7 +291,7 @@ export default {
         .catch((e) => {
           this.submitBnt = "Submit";
         });
-    }
+    },
   },
 };
 </script>

@@ -148,10 +148,10 @@ public class ScheduleServiceImpl implements ScheduleService {
         result.put("total", total);
 
         //get campus name
-        String hosName = campusService.getCampusName(campuscode);
+        String campusname = campusService.getCampusName(campuscode);
         //other params
         Map<String, String> baseMap = new HashMap<>();
-        baseMap.put("hosname", hosName);
+        baseMap.put("campusname", campusname);
         result.put("baseMap", baseMap);
 
         return result;
@@ -261,7 +261,7 @@ public class ScheduleServiceImpl implements ScheduleService {
         //其他基础数据
         Map<String, String> baseMap = new HashMap<>();
         //医院名称
-        baseMap.put("hosname", campusService.getCampusName(campuscode));
+        baseMap.put("campusname", campusService.getCampusName(campuscode));
         //科室
         Department department = departmentService.getDepartment(campuscode, depcode);
         //大科室名称
@@ -307,7 +307,7 @@ public class ScheduleServiceImpl implements ScheduleService {
 
         //把获取数据设置到scheduleOrderVo
         scheduleOrderVo.setCampuscode(schedule.getCampuscode());
-        scheduleOrderVo.setHosname(campusService.getCampusName(schedule.getCampuscode()));
+        scheduleOrderVo.setCampusname(campusService.getCampusName(schedule.getCampuscode()));
         scheduleOrderVo.setDepcode(schedule.getDepcode());
         scheduleOrderVo.setDepname(departmentService.getDepName(schedule.getCampuscode(), schedule.getDepcode()));
         scheduleOrderVo.setHosScheduleId(schedule.getHosScheduleId());
@@ -389,7 +389,7 @@ public class ScheduleServiceImpl implements ScheduleService {
     //封装排班详情其他值 医院名称、科室名称、日期对应星期
     private Schedule packageSchedule(Schedule schedule) {
         //设置医院名称
-        schedule.getParam().put("hosname", campusService.getCampusName(schedule.getCampuscode()));
+        schedule.getParam().put("campusname", campusService.getCampusName(schedule.getCampuscode()));
         //设置科室名称
         schedule.getParam().put("depname", departmentService.getDepName(schedule.getCampuscode(), schedule.getDepcode()));
         //设置日期对应星期

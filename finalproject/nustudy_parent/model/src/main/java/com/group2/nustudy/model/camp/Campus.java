@@ -21,10 +21,10 @@ public class Campus extends BaseMongoEntity {
 
 	@ApiModelProperty(value = "医院名称")
 	@Indexed //普通索引
-	private String hosname;
+	private String campusname;
 
 	@ApiModelProperty(value = "医院类型")
-	private String hostype;
+	private String campustype;
 
 	@ApiModelProperty(value = "省code")
 	private String provinceCode;
@@ -59,12 +59,12 @@ public class Campus extends BaseMongoEntity {
 		return campuscode;
 	}
 
-	public String getHosname() {
-		return hosname;
+	public String getCampusname() {
+		return campusname;
 	}
 
-	public String getHostype() {
-		return hostype;
+	public String getCampustype() {
+		return campustype;
 	}
 
 	public void setBookingRule(String bookingRule) {

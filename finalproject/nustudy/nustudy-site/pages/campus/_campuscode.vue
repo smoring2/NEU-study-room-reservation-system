@@ -44,9 +44,10 @@
       <div class="hospital-home">
         <div class="common-header">
           <div class="title-wrapper">
-            <span class="hospital-title">{{ hospital.hosname }}</span>
+            <span class="hospital-title">{{ hospital.campusname }}</span>
             <div class="icon-wrapper">
-              <span class="iconfont"></span>{{ hospital.param.hostypeString }}
+              <span class="iconfont"></span
+              >{{ hospital.param.campustypeString }}
             </div>
           </div>
         </div>
@@ -54,7 +55,7 @@
           <img
             class="hospital-img"
             :src="'data:image/jpeg;base64,' + hospital.logoData"
-            :alt="hospital.hosname"
+            :alt="hospital.campusname"
           />
           <div class="content-wrapper">
             <div>Reservation Rules</div>

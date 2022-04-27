@@ -1,7 +1,7 @@
 <template>
   <div class="app-container">
     <div style="margin-bottom: 10px;font-size: 10px;">
-      选择：{{ baseMap.hosname }} / {{ depname }} / {{ workDate }}
+      选择：{{ baseMap.campusname }} / {{ depname }} / {{ workDate }}
     </div>
     <el-container style="height: 100%">
       <el-aside width="200px" style="border: 1px silver solid">

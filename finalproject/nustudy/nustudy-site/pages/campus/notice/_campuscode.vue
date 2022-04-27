@@ -43,7 +43,7 @@
     <div class="page-container">
       <div class="hospital-notice">
         <div class="content">
-          <h2>{{ hospital.hosname }}预约挂号须知</h2>
+          <h2>{{ hospital.campusname }}预约挂号须知</h2>
           <p>为方便您早日就医康复，请您认真阅读预约挂号须知：</p>
           <h4 id="一、预约实名制：">一、预约实名制：</h4>
           <p>

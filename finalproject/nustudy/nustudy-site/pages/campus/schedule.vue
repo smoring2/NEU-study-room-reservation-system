@@ -75,7 +75,7 @@
       <div class="hospital-source-list">
         <div class="header-wrapper" style="justify-content: normal">
           <span class="v-link clickable" @click="show()">{{
-            baseMap.hosname
+            baseMap.campusname
           }}</span>
           <div class="split"></div>
           <div>{{ baseMap.bigname }}</div>

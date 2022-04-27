@@ -3,7 +3,7 @@ package com.group2.nustudy.enums;
 public enum DictEnum {
 
 
-    HOSTYPE("Hostype", "医院等级"),
+    CAMPUSTYPE("Campustype", "医院等级"),
     CERTIFICATES_TYPE("CertificatesType", "证件类型"),
     ;
 

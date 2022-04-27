@@ -66,10 +66,10 @@ class CampusSetController {
         Page<CampusSet> page = new Page<>(current,limit);
         //构建条件
         QueryWrapper<CampusSet> wrapper = new QueryWrapper<>();
-        String hosname = campusSetQueryVo.getHosname();//医院名称
+        String campusname = campusSetQueryVo.getCampusname();//医院名称
         String campuscode = campusSetQueryVo.getCampuscode();//医院编号
-        if(!StringUtils.isEmpty(hosname)) {
-            wrapper.like("hosname", campusSetQueryVo.getHosname());
+        if(!StringUtils.isEmpty(campusname)) {
+            wrapper.like("campusname", campusSetQueryVo.getCampusname());
         }
         if(!StringUtils.isEmpty(campuscode)) {
             wrapper.eq("campuscode", campusSetQueryVo.getCampuscode());

@@ -3,7 +3,7 @@
     Campus Set List
     <el-form :inline="true" class="demo-form-inline">
       <el-form-item>
-        <el-input v-model="searchObj.hosname" placeholder="Campus Name" />
+        <el-input v-model="searchObj.campusname" placeholder="Campus Name" />
       </el-form-item>
       <el-form-item>
         <el-input v-model="searchObj.campuscode" placeholder="Campus Code" />
@@ -26,7 +26,7 @@
     >
       <el-table-column type="selection" width="55" />
       <el-table-column prop="index" label="No." width="50" />
-      <el-table-column prop="hosname" label="Campus Name" />
+      <el-table-column prop="campusname" label="Campus Name" />
       <el-table-column prop="campuscode" label="Campus Code" />
       <el-table-column prop="apiUrl" label="API Url" width="180" />
       <el-table-column prop="contactsName" label="Contact (Name)" />
