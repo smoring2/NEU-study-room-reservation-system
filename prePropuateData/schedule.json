@@ -8,7 +8,7 @@
     "workDate": "2022-04-28",
     "workTime": 0,
     "reservedNumber": 1,
-    "availableNumber": 2,
+    "availableNumber": 1,
     "amount": "100",
     "status": 1,
     "hosScheduleId": "1"
@@ -22,7 +22,7 @@
     "workDate": "2022-04-28",
     "workTime": 0,
     "reservedNumber": 1,
-    "availableNumber": 2,
+    "availableNumber": 1,
     "amount": "100",
     "status": 1,
     "hosScheduleId": "2"
@@ -36,7 +36,7 @@
     "workDate": "2020-12-22",
     "workTime": 1,
     "reservedNumber": 1,
-    "availableNumber": 2,
+    "availableNumber": 1,
     "amount": "100",
     "status": 1,
     "hosScheduleId": "3"
@@ -50,7 +50,7 @@
     "workDate": "2022-04-30",
     "workTime": 0,
     "reservedNumber": 1,
-    "availableNumber": 2,
+    "availableNumber": 1,
     "amount": "100",
     "status": 1,
     "hosScheduleId": "4"
@@ -64,7 +64,7 @@
     "workDate": "2022-04-29",
     "workTime": 0,
     "reservedNumber": 1,
-    "availableNumber": 2,
+    "availableNumber": 1,
     "amount": "100",
     "status": 1,
     "hosScheduleId": "5"
@@ -78,7 +78,7 @@
     "workDate": "2022-04-29",
     "workTime": 1,
     "reservedNumber": 1,
-    "availableNumber": 2,
+    "availableNumber": 1,
     "amount": "100",
     "status": 1,
     "hosScheduleId": "6"
@@ -92,7 +92,7 @@
     "workDate": "2022-04-27",
     "workTime": 0,
     "reservedNumber": 1,
-    "availableNumber": 2,
+    "availableNumber": 1,
     "amount": "100",
     "status": 1,
     "hosScheduleId": "7"
@@ -106,7 +106,7 @@
     "workDate": "2022-04-27",
     "workTime": 0,
     "reservedNumber": 1,
-    "availableNumber": 2,
+    "availableNumber": 1,
     "amount": "100",
     "status": 1,
     "hosScheduleId": "8"
@@ -120,7 +120,7 @@
     "workDate": "2022-04-27",
     "workTime": 1,
     "reservedNumber": 1,
-    "availableNumber": 2,
+    "availableNumber": 1,
     "amount": "100",
     "status": 1,
     "hosScheduleId": "9"
@@ -134,7 +134,7 @@
     "workDate": "2022-04-28",
     "workTime": 0,
     "reservedNumber": 1,
-    "availableNumber": 2,
+    "availableNumber": 1,
     "amount": "100",
     "status": 1,
     "hosScheduleId": "10"
@@ -148,7 +148,7 @@
     "workDate": "2022-05-01",
     "workTime": 0,
     "reservedNumber": 1,
-    "availableNumber": 2,
+    "availableNumber": 1,
     "amount": "100",
     "status": 1,
     "hosScheduleId": "11"
@@ -162,7 +162,7 @@
     "workDate": "2022-05-01",
     "workTime": 1,
     "reservedNumber": 1,
-    "availableNumber": 2,
+    "availableNumber": 1,
     "amount": "100",
     "status": 1,
     "hosScheduleId": "12"
@@ -176,7 +176,7 @@
     "workDate": "2022-05-02",
     "workTime": 0,
     "reservedNumber": 1,
-    "availableNumber": 2,
+    "availableNumber": 1,
     "amount": "100",
     "status": 1,
     "hosScheduleId": "13"
@@ -190,7 +190,7 @@
     "workDate": "2022-05-02",
     "workTime": 0,
     "reservedNumber": 1,
-    "availableNumber": 2,
+    "availableNumber": 1,
     "amount": "100",
     "status": 1,
     "hosScheduleId": "14"
@@ -204,7 +204,7 @@
     "workDate": "2022-05-02",
     "workTime": 1,
     "reservedNumber": 1,
-    "availableNumber": 2,
+    "availableNumber": 1,
     "amount": "100",
     "status": 1,
     "hosScheduleId": "15"
@@ -218,7 +218,7 @@
     "workDate": "2020-12-18",
     "workTime": 0,
     "reservedNumber": 1,
-    "availableNumber": 2,
+    "availableNumber": 1,
     "amount": "100",
     "status": 1,
     "hosScheduleId": "16"
@@ -232,7 +232,7 @@
     "workDate": "2022-05-03",
     "workTime": 0,
     "reservedNumber": 1,
-    "availableNumber": 2,
+    "availableNumber": 1,
     "amount": "100",
     "status": 1,
     "hosScheduleId": "17"
@@ -246,7 +246,7 @@
     "workDate": "2022-05-03",
     "workTime": 1,
     "reservedNumber": 1,
-    "availableNumber": 2,
+    "availableNumber": 1,
     "amount": "100",
     "status": 1,
     "hosScheduleId": "18"
@@ -260,7 +260,7 @@
     "workDate": "2022-04-27",
     "workTime": 0,
     "reservedNumber": 1,
-    "availableNumber": 2,
+    "availableNumber": 1,
     "amount": "100",
     "status": 1,
     "hosScheduleId": "19"
@@ -274,7 +274,7 @@
     "workDate": "2022-04-27",
     "workTime": 0,
     "reservedNumber": 1,
-    "availableNumber": 2,
+    "availableNumber": 1,
     "amount": "100",
     "status": 1,
     "hosScheduleId": "20"

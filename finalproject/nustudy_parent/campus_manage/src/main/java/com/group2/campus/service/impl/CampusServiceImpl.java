@@ -63,9 +63,9 @@ public class CampusServiceImpl implements CampusService {
         Long studentId = this.saveStudent(student);
 
         Map<String, Object> resultMap = new HashMap<>();
-        int availableNumber = schedule.getAvailableNumber().intValue() - 1;
+        int availableNumber = schedule.getAvailableNumber().intValue();
         if(availableNumber > 0) {
-            schedule.setAvailableNumber(availableNumber);
+            schedule.setAvailableNumber(availableNumber - 1);
             scheduleMapper.updateById(schedule);
 
             //记录预约记录

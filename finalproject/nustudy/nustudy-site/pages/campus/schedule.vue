@@ -139,16 +139,16 @@
                       class="v-button"
                       @click="booking(item.hosScheduleId, item.availableNumber)"
                       :style="
-                        item.availableNumber == 1 || pageFirstStatus == -1
+                        item.availableNumber == 0 || pageFirstStatus == -1
                           ? 'background-color: #7f828b;'
                           : ''
                       "
                     >
-                      <span v-if="item.availableNumber !== 1"
+                      <span v-if="item.availableNumber !== 0"
                         >Book
                         <!-- <span class="number">{{ item.availableNumber }}</span> -->
                       </span>
-                      <span v-if="item.availableNumber === 1"
+                      <span v-if="item.availableNumber === 0"
                         >Reserved
                         <!-- <span class="number">{{ item.availableNumber }}</span> -->
                       </span>
@@ -188,16 +188,16 @@
                       class="v-button"
                       @click="booking(item.hosScheduleId, item.availableNumber)"
                       :style="
-                        item.availableNumber == 1 || pageFirstStatus == -1
+                        item.availableNumber == 0 || pageFirstStatus == -1
                           ? 'background-color: #7f828b;'
                           : ''
                       "
                     >
-                      <span v-if="item.availableNumber !== 1"
+                      <span v-if="item.availableNumber !== 0"
                         >Book
                         <!-- <span class="number">{{ item.availableNumber }}</span> -->
                       </span>
-                      <span v-if="item.availableNumber === 1"
+                      <span v-if="item.availableNumber === 0"
                         >Reserved
                         <!-- <span class="number">{{ item.availableNumber }}</span> -->
                       </span>
