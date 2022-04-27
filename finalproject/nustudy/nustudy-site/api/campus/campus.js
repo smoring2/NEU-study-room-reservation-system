@@ -17,6 +17,7 @@ export default {
     });
   },
 
+  // show campus by campusCode
   show(campusCode) {
     return request({
       url: `${api_name}/findCampusDetail/${campusCode}`,

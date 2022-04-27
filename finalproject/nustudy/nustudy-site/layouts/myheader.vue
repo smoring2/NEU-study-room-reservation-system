@@ -9,7 +9,7 @@
           height="50"
           src="~assets/images/logoNeu.png"
         />
-        <span class="text"> NEU study room reservation system</span>
+        <span class="v-link clickable dark" onclick="javascript:window.location='/'"> NEU study room reservation system</span>
       </div>
       <div class="search-wrapper">
         <div class="campus-search animation-show">
