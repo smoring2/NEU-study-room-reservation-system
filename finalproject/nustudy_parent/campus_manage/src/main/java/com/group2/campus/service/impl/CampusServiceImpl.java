@@ -134,7 +134,7 @@ public class CampusServiceImpl implements CampusService {
 
     private Schedule getSchedule(String frontSchId) {
         System.out.println("frontID: " + frontSchId);
-        return scheduleMapper.selectById(1);
+        return scheduleMapper.selectById(frontSchId);
     }
 
     /**
