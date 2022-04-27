@@ -38,7 +38,7 @@ public class NustudyException extends RuntimeException {
 
     @Override
     public String toString() {
-        return "YyghException{" +
+        return "NustudyException{" +
                 "code=" + code +
                 ", message=" + this.getMessage() +
                 '}';

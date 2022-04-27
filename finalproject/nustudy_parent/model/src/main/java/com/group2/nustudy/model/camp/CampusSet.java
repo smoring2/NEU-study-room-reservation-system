@@ -68,5 +68,40 @@ public class CampusSet extends BaseEntity {
 	@TableField("status")
 	private Integer status;
 
+	public String getHosname() {
+		return hosname;
+	}
+
+	public void setHosname(String hosname) {
+		this.hosname = hosname;
+	}
+
+	public void setHoscode(String hoscode) {
+		this.hoscode = hoscode;
+	}
+
+	public String getApiUrl() {
+		return apiUrl;
+	}
+
+	public void setApiUrl(String apiUrl) {
+		this.apiUrl = apiUrl;
+	}
+
+	public String getContactsName() {
+		return contactsName;
+	}
+
+	public void setContactsName(String contactsName) {
+		this.contactsName = contactsName;
+	}
+
+	public String getContactsPhone() {
+		return contactsPhone;
+	}
+
+	public void setContactsPhone(String contactsPhone) {
+		this.contactsPhone = contactsPhone;
+	}
 }
 

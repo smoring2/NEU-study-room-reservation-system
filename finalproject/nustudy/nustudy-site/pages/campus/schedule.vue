@@ -144,11 +144,14 @@
                           : ''
                       "
                     >
-                      <span
-                        >剩余<span class="number">{{
-                          item.availableNumber
-                        }}</span></span
-                      >
+                      <span v-if="item.availableNumber !== 0"
+                        >Book
+                        <span class="number">{{ item.availableNumber }}</span>
+                      </span>
+                      <span v-if="item.availableNumber === 0"
+                        >Reserved
+                        <span class="number">{{ item.availableNumber }}</span>
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -270,7 +273,7 @@ export default {
         )
         .then((response) => {
           this.bookingScheduleList = response.data.bookingScheduleList;
-          console.log("bookingScheduleList: " , this.bookingScheduleList)
+          console.log("bookingScheduleList: ", this.bookingScheduleList);
           this.total = response.data.total;
           this.baseMap = response.data.baseMap;
 
@@ -295,7 +298,7 @@ export default {
         .findScheduleList(this.hoscode, this.depcode, this.workDate)
         .then((response) => {
           this.scheduleList = response.data;
-          console.log("scheduleList: " , this.scheduleList)
+          console.log("scheduleList: ", this.scheduleList);
         });
     },
 
@@ -403,8 +406,7 @@ export default {
       if (days > 0) {
         timString = days + "天:";
       }
-      return (timString +=
-        hours + " : " + minutes + " : " + seconds + "  ");
+      return (timString += hours + " : " + minutes + " : " + seconds + "  ");
     },
 
     show() {
@@ -412,7 +414,7 @@ export default {
     },
 
     booking(scheduleId, availableNumber) {
-      console.log("scheduleId: " , scheduleId)
+      console.log("scheduleId: ", scheduleId);
       if (availableNumber == 0 || this.pageFirstStatus == -1) {
         this.$message.error("Can not book!");
       } else {
