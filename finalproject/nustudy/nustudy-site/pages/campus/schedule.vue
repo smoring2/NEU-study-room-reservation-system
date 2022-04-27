@@ -116,7 +116,7 @@
           <div class="">
             <div class="list-title">
               <div class="block"></div>
-              上午号源
+              8:00 AM - 11:50 AM
             </div>
             <div
               v-for="item in scheduleList"
@@ -139,18 +139,18 @@
                       class="v-button"
                       @click="booking(item.hosScheduleId, item.availableNumber)"
                       :style="
-                        item.availableNumber == 0 || pageFirstStatus == -1
+                        item.availableNumber == 1 || pageFirstStatus == -1
                           ? 'background-color: #7f828b;'
                           : ''
                       "
                     >
-                      <span v-if="item.availableNumber !== 0"
+                      <span v-if="item.availableNumber !== 1"
                         >Book
-                        <span class="number">{{ item.availableNumber }}</span>
+                        <!-- <span class="number">{{ item.availableNumber }}</span> -->
                       </span>
-                      <span v-if="item.availableNumber === 0"
+                      <span v-if="item.availableNumber === 1"
                         >Reserved
-                        <span class="number">{{ item.availableNumber }}</span>
+                        <!-- <span class="number">{{ item.availableNumber }}</span> -->
                       </span>
                     </div>
                   </div>
@@ -165,7 +165,7 @@
           <div class="">
             <div class="list-title">
               <div class="block"></div>
-              下午号源
+              12:00 PM - 17:59 PM
             </div>
             <div
               v-for="item in scheduleList"
@@ -188,16 +188,19 @@
                       class="v-button"
                       @click="booking(item.hosScheduleId, item.availableNumber)"
                       :style="
-                        item.availableNumber == 0 || pageFirstStatus == -1
+                        item.availableNumber == 1 || pageFirstStatus == -1
                           ? 'background-color: #7f828b;'
                           : ''
                       "
                     >
-                      <span
-                        >剩余<span class="number">{{
-                          item.availableNumber
-                        }}</span></span
-                      >
+                      <span v-if="item.availableNumber !== 1"
+                        >Book
+                        <!-- <span class="number">{{ item.availableNumber }}</span> -->
+                      </span>
+                      <span v-if="item.availableNumber === 1"
+                        >Reserved
+                        <!-- <span class="number">{{ item.availableNumber }}</span> -->
+                      </span>
                     </div>
                   </div>
                 </div>
