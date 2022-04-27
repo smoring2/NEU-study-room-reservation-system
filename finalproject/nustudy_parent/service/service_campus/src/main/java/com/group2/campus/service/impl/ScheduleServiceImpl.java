@@ -270,7 +270,7 @@ public class ScheduleServiceImpl implements ScheduleService {
         //科室名称
         baseMap.put("depname", department.getDepname());
 //月
-        baseMap.put("workDateString", new DateTime().toString("yyyy年MM月"));
+        baseMap.put("workDateString", new DateTime().toString("yyyy-MM"));
 //放号时间
         baseMap.put("releaseTime", bookingRule.getReleaseTime());
 //停号时间
@@ -400,7 +400,6 @@ public class ScheduleServiceImpl implements ScheduleService {
 
     /**
      * Util class
-     * 根据日期获取周几数据
      *
      * @param dateTime
      * @return
@@ -409,25 +408,25 @@ public class ScheduleServiceImpl implements ScheduleService {
         String dayOfWeek = "";
         switch (dateTime.getDayOfWeek()) {
             case DateTimeConstants.SUNDAY:
-                dayOfWeek = "周日";
+                dayOfWeek = "Sun";
                 break;
             case DateTimeConstants.MONDAY:
-                dayOfWeek = "周一";
+                dayOfWeek = "Mon";
                 break;
             case DateTimeConstants.TUESDAY:
-                dayOfWeek = "周二";
+                dayOfWeek = "Tue";
                 break;
             case DateTimeConstants.WEDNESDAY:
-                dayOfWeek = "周三";
+                dayOfWeek = "Wed";
                 break;
             case DateTimeConstants.THURSDAY:
-                dayOfWeek = "周四";
+                dayOfWeek = "Thu";
                 break;
             case DateTimeConstants.FRIDAY:
-                dayOfWeek = "周五";
+                dayOfWeek = "Fri";
                 break;
             case DateTimeConstants.SATURDAY:
-                dayOfWeek = "周六";
+                dayOfWeek = "Sat";
             default:
                 break;
         }
