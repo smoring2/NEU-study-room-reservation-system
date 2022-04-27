@@ -224,7 +224,7 @@ import campusApi from "@/api/campus/campus";
 export default {
   data() {
     return {
-      hoscode: null,
+      campuscode: null,
       depcode: null,
       workDate: null,
 
@@ -245,12 +245,12 @@ export default {
       time: "今天",
       timer: null,
 
-      pageFirstStatus: 0, // 第一页第一条数据状态
+      pageFirstStatus: 0, // status of first item in the first page
     };
   },
 
   created() {
-    this.hoscode = this.$route.query.hoscode;
+    this.campuscode = this.$route.query.hoscode;
     this.depcode = this.$route.query.depcode;
     this.workDate = this.getCurDate();
 
@@ -271,7 +271,7 @@ export default {
         .getBookingScheduleRule(
           this.page,
           this.limit,
-          this.hoscode,
+          this.campuscode,
           this.depcode
         )
         .then((response) => {
@@ -298,7 +298,7 @@ export default {
 
     findScheduleList() {
       campusApi
-        .findScheduleList(this.hoscode, this.depcode, this.workDate)
+        .findScheduleList(this.campuscode, this.depcode, this.workDate)
         .then((response) => {
           this.scheduleList = response.data;
           console.log("scheduleList: ", this.scheduleList);
