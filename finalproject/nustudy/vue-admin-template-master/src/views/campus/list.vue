@@ -4,7 +4,7 @@
       <el-form-item>
         <el-select
           v-model="searchObj.provinceCode"
-          placeholder="请选择省"
+          placeholder="State"
           @change="provinceChanged"
         >
           <el-option
@@ -17,7 +17,7 @@
       </el-form-item>
 
       <el-form-item>
-        <el-select v-model="searchObj.cityCode" placeholder="请选择市">
+        <el-select v-model="searchObj.cityCode" placeholder="City">
           <el-option
             v-for="item in cityList"
             :key="item.id"
@@ -28,16 +28,16 @@
       </el-form-item>
 
       <el-form-item>
-        <el-input v-model="searchObj.campusname" placeholder="医院名称" />
+        <el-input v-model="searchObj.campusname" placeholder="Campus" />
       </el-form-item>
 
       <el-button type="primary" icon="el-icon-search" @click="fetchData()"
-        >查询</el-button
+        >Search</el-button
       >
-      <el-button type="default" @click="resetData()">清空</el-button>
+      <el-button type="default" @click="resetData()">Clear</el-button>
     </el-form>
 
-    <!-- banner列表 -->
+    <!-- banner -->
     <el-table
       v-loading="listLoading"
       :data="list"
@@ -45,13 +45,13 @@
       fit
       highlight-current-row
     >
-      <el-table-column label="序号" width="60" align="center">
+      <el-table-column label="No." width="60" align="center">
         <template slot-scope="scope">
           {{ (page - 1) * limit + scope.$index + 1 }}
         </template>
       </el-table-column>
 
-      <el-table-column label="医院logo">
+      <el-table-column label="Campus Logo" align="center">
         <template slot-scope="scope">
           <img
             :src="'data:image/jpeg;base64,' + scope.row.logoData"
@@ -60,17 +60,25 @@
         </template>
       </el-table-column>
 
-      <el-table-column prop="campusname" label="医院名称" />
-      <el-table-column prop="param.campustypeString" label="等级" width="90" />
-      <el-table-column prop="param.fullAddress" label="详情地址" />
-      <el-table-column label="状态" width="80">
+      <el-table-column prop="campusname" label="Campus Name" align="center" />
+      <el-table-column
+        prop="param.campustypeString"
+        label="Area"
+        align="center"
+      />
+      <el-table-column
+        prop="param.fullAddress"
+        label="Location"
+        align="center"
+      />
+      <el-table-column label="Status" align="center">
         <template slot-scope="scope">
           {{ scope.row.status === 0 ? "Offline" : "Online" }}
         </template>
       </el-table-column>
-      <el-table-column prop="createTime" label="创建时间" />
+      <el-table-column prop="createTime" label="Created Time" align="center" />
 
-      <el-table-column label="操作" width="230" align="center">
+      <el-table-column label="Operation" align="center">
         <template slot-scope="scope">
           <router-link :to="'/campusset/campus/show/' + scope.row.id">
             <el-button type="primary" size="mini">Details</el-button>
@@ -99,7 +107,7 @@
       </el-table-column>
     </el-table>
 
-    <!-- 分页组件 -->
+    <!-- pagination -->
     <el-pagination
       :current-page="page"
       :total="total"
@@ -117,64 +125,51 @@ import campusApi from "@/api/campus";
 export default {
   data() {
     return {
-      listLoading: true, // 数据是否正在加载
-      list: null, // 医院列表数据集合
-      total: 0, // 数据库中的总记录数
-      page: 1, // 默认页码
-      limit: 10, // 每页记录数
+      listLoading: true,
+      list: null,
+      total: 0,
+      page: 1,
+      limit: 10,
       searchObj: {
         provinceCode: "",
         cityCode: ""
-      }, // 查询表单对象
-      provinceList: [], //所有省集合
-      cityList: [] //所有市集合
+      },
+      provinceList: [],
+      cityList: []
     };
   },
   created() {
-    //调用医院列表
     this.fetchData();
-    //调用查询所有省的方法
     this.findAllProvince();
   },
   methods: {
-    //更新医院上线状态
     updateStatus(id, status) {
       campusApi.updateStatus(id, status).then(response => {
-        //刷新页面
         this.fetchData(1);
       });
     },
-    //医院列表
     fetchData(page = 1) {
       this.page = page;
       campusApi
         .getCampusList(this.page, this.limit, this.searchObj)
         .then(response => {
-          //每页数据集合
           this.list = response.data.content;
-          //总记录数
           this.total = response.data.totalElements;
-          //加载图表不显示
           this.listLoading = false;
         });
     },
-    //查询所有省
     findAllProvince() {
       campusApi.findByDictCode("Province").then(response => {
         this.provinceList = response.data;
       });
     },
-    //点击某个省，显示里面市（联动）
     provinceChanged() {
-      //初始化值
       this.cityList = [];
       this.searchObj.cityCode = "";
-      //调用方法，根据省id，查询下面子节点
       campusApi.findChildId(this.searchObj.provinceCode).then(response => {
         this.cityList = response.data;
       });
     },
-    //分页，页码变化
     changeSize() {
       this.limit = size;
       this.fetchData(1);

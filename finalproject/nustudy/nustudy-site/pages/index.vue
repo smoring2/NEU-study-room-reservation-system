@@ -136,13 +136,10 @@ export default {
 
   mounted() {
     // document.getElementById("search").style.display = 'none';
-
-    // 添加滚动事件，检测滚动到页面底部
     window.addEventListener("scroll", this.load, true);
   },
 
   destroyed() {
-    // 页面关闭的同时，记得将这个监听器关闭，节省性能
     window.removeEventListener("scroll", this.load, false);
   },
 

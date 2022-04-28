@@ -25,7 +25,7 @@
       @selection-change="handleSelectionChange"
     >
       <el-table-column type="selection" width="55" />
-      <el-table-column prop="index" label="No." width="50" />
+      <!-- <el-table-column prop="index" label="No." width="50" /> -->
       <el-table-column prop="campusname" label="Campus Name" />
       <el-table-column prop="campuscode" label="Campus Code" />
       <el-table-column prop="apiUrl" label="API Url" width="180" />
