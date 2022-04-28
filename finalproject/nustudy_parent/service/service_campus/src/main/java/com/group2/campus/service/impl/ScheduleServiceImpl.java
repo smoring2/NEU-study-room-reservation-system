@@ -110,6 +110,7 @@ public class ScheduleServiceImpl implements ScheduleService {
         //1 根据医院编号 和 科室编号 查询
         Criteria criteria = Criteria.where("campuscode").is(campuscode).and("depcode").is(depcode);
 
+
         //2 根据工作日workDate期进行分组
         Aggregation agg = Aggregation.newAggregation(
                 Aggregation.match(criteria),//匹配条件
@@ -122,7 +123,7 @@ public class ScheduleServiceImpl implements ScheduleService {
         );
         //调用方法，最终执行
         AggregationResults<BookingScheduleRuleVo> aggResults =
-                mongoTemplate.aggregate(null, Schedule.class, BookingScheduleRuleVo.class);
+                mongoTemplate.aggregate(agg, Schedule.class, BookingScheduleRuleVo.class);
         System.out.println("aggResults" + aggResults);
         List<BookingScheduleRuleVo> bookingScheduleRuleVoList = aggResults.getMappedResults();
 

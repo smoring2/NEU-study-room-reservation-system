@@ -1,5 +1,5 @@
 spring:
   application:
-    name: hospital-manage
+    name: campus-manage
   profiles:
     active: dev

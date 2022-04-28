@@ -52,7 +52,7 @@ export default {
     });
   },
 
-  getHospitalInfo(campuscode) {
+  getCampusInfo(campuscode) {
     return request({
       url: `${api_name}/getHospitalInfo/${campuscode}`,
       method: "get",

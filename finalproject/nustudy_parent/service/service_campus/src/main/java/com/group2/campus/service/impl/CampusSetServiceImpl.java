@@ -25,13 +25,13 @@ public class CampusSetServiceImpl extends ServiceImpl<CampusSetMapper, CampusSet
     public SignInfoVo getSignInfoVo(String campuscode) {
         QueryWrapper<CampusSet> wrapper = new QueryWrapper<>();
         wrapper.eq("campuscode",campuscode);
-        CampusSet hospitalSet = baseMapper.selectOne(wrapper);
-        if(null == hospitalSet) {
+        CampusSet campusSet = baseMapper.selectOne(wrapper);
+        if(null == campusSet) {
             throw new NustudyException(ResultCodeEnum.CAMPUS_OPEN);
         }
         SignInfoVo signInfoVo = new SignInfoVo();
-        signInfoVo.setApiUrl(hospitalSet.getApiUrl());
-        signInfoVo.setSignKey(hospitalSet.getSignKey());
+        signInfoVo.setApiUrl(campusSet.getApiUrl());
+        signInfoVo.setSignKey(campusSet.getSignKey());
         return signInfoVo;
     }
 

@@ -6,15 +6,11 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
- * <p>
- * HospitalSet
- * </p>
- *
  * @author qy
  */
 @Data
 @ApiModel(description = "CampusSet")
-@TableName("hospital_set")
+@TableName("campus_set")
 public class CampusSet extends BaseEntity {
 	
 	private static final long serialVersionUID = 1L;

@@ -21,7 +21,7 @@ public class OrderInfo extends BaseEntity {
 	private Long scheduleId;
 
 	@ApiModelProperty(value = "就诊人id")
-	@TableField("patient_id")
+	@TableField("student_id")
 	private Long patientId;
 
 	@ApiModelProperty(value = "预约号序")

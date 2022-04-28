@@ -107,7 +107,7 @@ public class CampusServiceImpl implements CampusService {
         Map<String, Object> result = new HashMap<>();
         Campus campus = this.setCampusCamType(campusRepository.findById(id).get());
         //医院基本信息（包含医院等级）
-        result.put("hospital", campus);
+        result.put("campus", campus);
         //单独处理更直观
         result.put("bookingRule", campus.getBookingRule());
         //不需要重复返回

@@ -18,8 +18,8 @@ import java.util.Date;
  * @author qy
  */
 @Data
-@ApiModel(description = "Patient")
-@TableName("patient")
+@ApiModel(description = "Student")
+@TableName("student")
 public class Student extends BaseEntity {
 	
 	private static final long serialVersionUID = 1L;
@@ -50,7 +50,7 @@ public class Student extends BaseEntity {
 	private Date birthdate;
 
 	@ApiModelProperty(value = "手机")
-	@TableField("phone")
+	@TableField("email")
 	private String phone;
 
 	@ApiModelProperty(value = "是否结婚")

@@ -2,11 +2,7 @@ package com.group2.order.api;
 
 
 import com.group2.nustudy.common.result.Result;
-import com.group2.nustudy.common.utils.AuthContextHolder;
-import com.group2.nustudy.enums.OrderStatusEnum;
 import com.group2.nustudy.model.order.OrderInfo;
-import com.group2.nustudy.vo.order.OrderCountQueryVo;
-import com.group2.nustudy.vo.order.OrderQueryVo;
 import com.group2.order.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -20,10 +16,10 @@ public class OrderApiController {
     private OrderService orderService;
 
     //生成挂号订单
-    @PostMapping("auth/submitOrder/{scheduleId}/{patientId}")
+    @PostMapping("auth/submitOrder/{scheduleId}/{studentId}")
     public Result savaOrders(@PathVariable String scheduleId,
-                             @PathVariable Long patientId) {
-        Long orderId = orderService.saveOrder(scheduleId,patientId);
+                             @PathVariable Long studentId) {
+        Long orderId = orderService.saveOrder(scheduleId, studentId);
         return Result.ok(orderId);
     }
 

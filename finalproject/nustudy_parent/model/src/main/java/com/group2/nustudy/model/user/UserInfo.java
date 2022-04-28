@@ -20,17 +20,13 @@ import lombok.Data;
 public class UserInfo extends BaseEntity {
 	
 	private static final long serialVersionUID = 1L;
-	
-	@ApiModelProperty(value = "微信openid")
-	@TableField("openid")
-	private String openid;
 
 	@ApiModelProperty(value = "昵称")
 	@TableField("nick_name")
 	private String nickName;
 
 	@ApiModelProperty(value = "手机号")
-	@TableField("phone")
+	@TableField("email")
 	private String email;
 
 	@ApiModelProperty(value = "用户姓名")
@@ -57,13 +53,6 @@ public class UserInfo extends BaseEntity {
 	@TableField("status")
 	private Integer status;
 
-	public String getOpenid() {
-		return openid;
-	}
-
-	public void setOpenid(String openid) {
-		this.openid = openid;
-	}
 
 	public String getNickName() {
 		return nickName;

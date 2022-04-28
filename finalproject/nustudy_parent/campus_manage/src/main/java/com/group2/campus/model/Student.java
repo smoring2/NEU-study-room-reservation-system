@@ -15,9 +15,9 @@ import lombok.Data;
  * @author qy
  */
 @Data
-@ApiModel(description = "Patient")
-@TableName("patient")
-public class Patient extends BaseEntity {
+@ApiModel(description = "Student")
+@TableName("student")
+public class Student extends BaseEntity {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -47,8 +47,8 @@ public class Patient extends BaseEntity {
 	private String birthdate;
 
 	@ApiModelProperty(value = "手机")
-	@TableField("phone")
-	private String phone;
+	@TableField("email")
+	private String email;
 
 	@ApiModelProperty(value = "是否结婚")
 	@TableField("is_marry")

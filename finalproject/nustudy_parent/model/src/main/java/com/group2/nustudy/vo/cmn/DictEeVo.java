@@ -16,7 +16,7 @@ public class DictEeVo {
 	@ExcelProperty(value = "id" ,index = 0)
 	private Long id;
 
-	@ExcelProperty(value = "parent_id" ,index = 1)
+	@ExcelProperty(value = "student_id" ,index = 1)
 	private Long parentId;
 
 	@ExcelProperty(value = "name" ,index = 2)

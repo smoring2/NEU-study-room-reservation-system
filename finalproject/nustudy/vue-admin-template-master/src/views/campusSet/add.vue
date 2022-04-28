@@ -3,19 +3,19 @@
     Campus Set Add
     <el-form label-width="120px">
       <el-form-item label="Campus Name">
-        <el-input v-model="hospitalSet.campusname" />
+        <el-input v-model="campusSet.campusname" />
       </el-form-item>
       <el-form-item label="Campus Code">
-        <el-input v-model="hospitalSet.campuscode" />
+        <el-input v-model="campusSet.campuscode" />
       </el-form-item>
       <el-form-item label="API Url">
-        <el-input v-model="hospitalSet.apiUrl" />
+        <el-input v-model="campusSet.apiUrl" />
       </el-form-item>
       <el-form-item label="Contact (Name)">
-        <el-input v-model="hospitalSet.contactsName" />
+        <el-input v-model="campusSet.contactsName" />
       </el-form-item>
       <el-form-item label="Contact (Phone)">
-        <el-input v-model="hospitalSet.contactsPhone" />
+        <el-input v-model="campusSet.contactsPhone" />
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="saveOrUpdate">Save</el-button>
@@ -30,7 +30,7 @@ import campusset from "@/api/campusset";
 export default {
   data() {
     return {
-      hospitalSet: {}
+      campusSet: {}
     };
   },
   created() {
@@ -38,17 +38,17 @@ export default {
       const id = this.$route.params.id;
       this.getHostSet(id);
     } else {
-      this.hospitalSet = {};
+      this.campusSet = {};
     }
   },
   methods: {
     getHostSet(id) {
       campusset.getCampusSet(id).then(response => {
-        this.hospitalSet = response.data;
+        this.campusSet = response.data;
       });
     },
     save() {
-      campusset.saveCampusSet(this.hospitalSet).then(response => {
+      campusset.saveCampusSet(this.campusSet).then(response => {
         this.$message({
           type: "success",
           message: "Saved!"
@@ -57,7 +57,7 @@ export default {
       });
     },
     update() {
-      campusset.updateCampusSet(this.hospitalSet).then(response => {
+      campusset.updateCampusSet(this.campusSet).then(response => {
         this.$message({
           type: "success",
           message: "Updated!"
@@ -66,7 +66,7 @@ export default {
       });
     },
     saveOrUpdate() {
-      if (this.hospitalSet.id) {
+      if (this.campusSet.id) {
         this.update();
       } else {
         this.save();

@@ -9,49 +9,49 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
-@ApiModel(description = "Hospital")
-@Document("Hospital")
+@ApiModel(description = "Campus")
+@Document("Campus")
 public class Campus extends BaseMongoEntity {
 	
 	private static final long serialVersionUID = 1L;
 	
-	@ApiModelProperty(value = "医院编号")
-	@Indexed(unique = true) //唯一索引
+	@ApiModelProperty(value = "campus code")
+	@Indexed(unique = true)
 	private String campuscode;
 
-	@ApiModelProperty(value = "医院名称")
-	@Indexed //普通索引
+	@ApiModelProperty(value = "campus name")
+	@Indexed
 	private String campusname;
 
-	@ApiModelProperty(value = "医院类型")
+	@ApiModelProperty(value = "campus type")
 	private String campustype;
 
-	@ApiModelProperty(value = "省code")
+	@ApiModelProperty(value = "province Code")
 	private String provinceCode;
 
-	@ApiModelProperty(value = "市code")
+	@ApiModelProperty(value = "city Code")
 	private String cityCode;
 
-	@ApiModelProperty(value = "区code")
+	@ApiModelProperty(value = "district Code")
 	private String districtCode;
 
-	@ApiModelProperty(value = "详情地址")
+	@ApiModelProperty(value = "address")
 	private String address;
 
-	@ApiModelProperty(value = "医院logo")
+	@ApiModelProperty(value = "logo Data")
 	private String logoData;
 
-	@ApiModelProperty(value = "医院简介")
+	@ApiModelProperty(value = "intro")
 	private String intro;
 
-	@ApiModelProperty(value = "坐车路线")
+	@ApiModelProperty(value = "route")
 	private String route;
 
-	@ApiModelProperty(value = "状态 0：未上线 1：已上线")
+	@ApiModelProperty(value = "status 0:offline 1:online")
 	private Integer status;
 
 	//预约规则
-	@ApiModelProperty(value = "预约规则")
+	@ApiModelProperty(value = "bookingRule")
 	private BookingRule bookingRule;
 
 

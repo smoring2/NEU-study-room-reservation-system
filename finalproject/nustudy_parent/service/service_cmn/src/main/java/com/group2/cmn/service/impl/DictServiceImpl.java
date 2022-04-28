@@ -35,7 +35,7 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements Di
     //@Cacheable(value = "dict",keyGenerator = "keyGenerator")
     public List<Dict> findChildData(Long id) {
         QueryWrapper<Dict> wrapper = new QueryWrapper<>();
-        wrapper.eq("parent_id", id);
+        wrapper.eq("student_id", id);
         List<Dict> dictList = baseMapper.selectList(wrapper);
         //set hasChildren to each dict object in the dictList
         for (Dict dict : dictList) {
@@ -50,7 +50,7 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements Di
     //判断id下面是否有子节点
     private boolean isChildren(Long id) {
         QueryWrapper<Dict> wrapper = new QueryWrapper<>();
-        wrapper.eq("parent_id", id);
+        wrapper.eq("student_id", id);
         Integer count = baseMapper.selectCount(wrapper);
         // 0>0    1>0
         return count > 0;
@@ -105,7 +105,7 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements Di
             Dict codeDict = baseMapper.selectOne(wrapper);
             Long id = codeDict.getId();
             Dict finalDict = baseMapper.selectOne(new QueryWrapper<Dict>()
-                    .eq("parent_id", id)
+                    .eq("student_id", id)
                     .eq("value", value));
             return finalDict.getName();
         }

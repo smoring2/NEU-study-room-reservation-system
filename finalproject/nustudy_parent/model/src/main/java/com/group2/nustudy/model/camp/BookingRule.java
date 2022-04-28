@@ -9,7 +9,7 @@ import org.springframework.util.StringUtils;
 
 import java.util.List;
 @Data
-@ApiModel(description = "预约规则")
+@ApiModel(description = "BookingRule")
 @Document("BookingRule")
 public class BookingRule {
 	

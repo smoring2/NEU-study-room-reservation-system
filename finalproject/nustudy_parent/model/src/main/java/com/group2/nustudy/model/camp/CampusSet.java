@@ -9,7 +9,7 @@ import lombok.Data;
 
 @Data
 @ApiModel(description = "Campus Settings")
-@TableName("hospital_set")
+@TableName("campus_set")
 public class CampusSet extends BaseEntity {
 	public String getSignKey() {
 		return signKey;

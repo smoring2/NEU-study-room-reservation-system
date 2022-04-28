@@ -1,65 +1,64 @@
 <template>
   <div class="app-container">
-    <h4>基本信息</h4>
+    <h4>Basics</h4>
     <table
       class="table table-striped table-condenseda table-bordered"
       width="100%"
     >
       <tbody>
         <tr>
-          <th width="15%">医院名称</th>
+          <th width="15%">Campus Name</th>
           <td width="35%">
-            <b style="font-size: 14px">{{ hospital.campusname }}</b> |
-            {{ hospital.param.campustypeString }}
+            <b style="font-size: 14px">{{ campus.campusname }}</b> |
+            {{ campus.param.campustypeString }}
           </td>
-          <th width="15%">医院logo</th>
+          <th width="15%">Logo</th>
           <td width="35%">
             <img
-              :src="'data:image/jpeg;base64,' + hospital.logoData"
+              :src="'data:image/jpeg;base64,' + campus.logoData"
               width="80"
             />
           </td>
         </tr>
         <tr>
-          <th>医院编码</th>
-          <td>{{ hospital.campuscode }}</td>
-          <th>地址</th>
-          <td>{{ hospital.param.fullAddress }}</td>
+          <th>Campus Code</th>
+          <td>{{ campus.campuscode }}</td>
+          <th>Address</th>
+          <td>{{ campus.param.fullAddress }}</td>
         </tr>
         <tr>
-          <th>坐车路线</th>
-          <td colspan="3">{{ hospital.route }}</td>
+          <th>Route</th>
+          <td colspan="3">{{ campus.route }}</td>
         </tr>
         <tr>
-          <th>医院简介</th>
-          <td colspan="3">{{ hospital.intro }}</td>
+          <th>Introduction</th>
+          <td colspan="3">{{ campus.intro }}</td>
         </tr>
       </tbody>
     </table>
 
-    <h4>预约规则信息</h4>
+    <h4>Reservation Rules</h4>
     <table
       class="table table-striped table-condenseda table-bordered"
       width="100%"
     >
       <tbody>
         <tr>
-          <th width="15%">预约周期</th>
+          <th width="15%">Cycle</th>
           <td width="35%">{{ bookingRule.cycle }}天</td>
-          <th width="15%">放号时间</th>
+          <th width="15%">Start Time</th>
           <td width="35%">{{ bookingRule.releaseTime }}</td>
         </tr>
         <tr>
-          <th>停挂时间</th>
+          <th>End Time</th>
           <td>{{ bookingRule.stopTime }}</td>
-          <th>退号时间</th>
+          <th>Cancel Time</th>
           <td>
-            {{ bookingRule.quitDay == -1 ? "就诊前一工作日" : "就诊当日"
-            }}{{ bookingRule.quitTime }} 前取消
+            {{ bookingRule.quitTime }}{{ bookingRule.quitDay == -1 ? " the day before visitor" : "visitor day" }}
           </td>
         </tr>
         <tr>
-          <th>预约规则</th>
+          <th>Rules</th>
           <td colspan="3">
             <ol>
               <li v-for="item in bookingRule.rule" :key="item">{{ item }}</li>
@@ -68,7 +67,7 @@
         </tr>
         <br />
         <el-row>
-          <el-button @click="back">返回</el-button>
+          <el-button @click="back">Back</el-button>
         </el-row>
       </tbody>
     </table>
@@ -79,28 +78,24 @@ import campusApi from "@/api/campus";
 export default {
   data() {
     return {
-      hospital: null, //医院信息
+      campus: null, //医院信息
       bookingRule: null //预约信息
     };
   },
   created() {
-    //获取路由id
     const id = this.$route.params.id;
-    //调用方法，根据id查询医院详情
     this.fetachCampusDetail(id);
   },
   methods: {
-    //根据id查询医院详情
     fetachCampusDetail(id) {
       campusApi.getCampusById(id).then(response => {
-        this.hospital = response.data.hospital; //DEBUG 改controller里的response封装 CampusServiceImpl/getCampusById()
-        this.bookingRule = response.data.bookingRule;
-      });
+        this.campus = response.data.campus //DEBUG 改controller里的response封装 CampusServiceImpl/getCampusById()
+        this.bookingRule = response.data.bookingRule
+      })
     },
-    //返回医院列表
     back() {
       this.$router.push({ path: "/campusset/campus/list" });
     }
   }
-};
+}
 </script>

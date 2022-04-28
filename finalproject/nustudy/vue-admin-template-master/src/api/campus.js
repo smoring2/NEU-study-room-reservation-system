@@ -32,7 +32,7 @@ export default {
     return request({
       url: `/admin/campus/campus/showCampusDetail/${id}`,
       method: "get"
-    });
+    })
   },
   getDeptByCampusCode(campuscode) {
     return request({

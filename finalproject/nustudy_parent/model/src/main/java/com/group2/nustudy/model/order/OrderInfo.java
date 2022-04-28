@@ -60,19 +60,19 @@ public class OrderInfo extends BaseEntity {
 	private Integer reserveTime;
 
 	@ApiModelProperty(value = "就诊人id")
-	@TableField("patient_id")
+	@TableField("student_id")
 	private Long patientId;
 
 	@ApiModelProperty(value = "就诊人名称")
-	@TableField("patient_name")
+	@TableField("student_name")
 	private String patientName;
 
 	@ApiModelProperty(value = "就诊人手机")
-	@TableField("patient_phone")
+	@TableField("student_email")
 	private String patientPhone;
 
 	@ApiModelProperty(value = "预约记录唯一标识（医院预约记录主键）")
-	@TableField("hos_record_id")
+	@TableField("campus_record_id")
 	private String hosRecordId;
 
 	@ApiModelProperty(value = "预约号序")

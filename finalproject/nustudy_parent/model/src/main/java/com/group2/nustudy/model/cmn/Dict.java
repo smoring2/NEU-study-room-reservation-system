@@ -47,8 +47,8 @@ public class Dict {
     @TableField(exist = false)
     private Map<String,Object> param = new HashMap<>();
 
-    @ApiModelProperty(value = "parent_id")
-    @TableField("parent_id")
+    @ApiModelProperty(value = "student_id")
+    @TableField("student_id")
     private Long parentId;
 
     @ApiModelProperty(value = "name")
