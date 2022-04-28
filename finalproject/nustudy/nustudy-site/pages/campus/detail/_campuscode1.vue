@@ -1,7 +1,7 @@
 <template>
   <!-- header -->
   <div class="nav-container page-component">
-    <!-- left navi #start -->
+    <!--左侧导航 #start -->
     <div class="nav left-nav">
       <div class="nav-item">
         <span
@@ -12,9 +12,9 @@
           >Start
         </span>
       </div>
-      <div class="nav-item">
+      <div class="nav-item selected">
         <span
-          class="v-link clickable dark"
+          class="v-link selected dark"
           :onclick="
             'javascript:window.location=\'/campus/detail/' +
             hospital.campuscode +
@@ -24,16 +24,16 @@
           Campus Intro
         </span>
       </div>
-      <div class="nav-item selected">
+      <div class="nav-item">
         <span
-          class="v-link selected dark"
+          class="v-link clickable dark"
           :onclick="
             'javascript:window.location=\'/campus/notice/' +
             hospital.campuscode +
             '\''
           "
         >
-          Rules
+          Reservation Rules
         </span>
       </div>
     </div>
@@ -41,27 +41,39 @@
 
     <!-- right info #start -->
     <div class="page-container">
-      <div class="hospital-notice">
-        <div class="content">
-          <h2>{{ hospital.campusname }} Reservation Notice</h2>
-          <p>For your convenience, please read the following rules.</p>
-          <h4 id="1. User Limitation：">1. User Limitation:</h4>
-          <p>
-            Only neu students and staff can make appointments on this website
-          </p>
-          <h4 id="2. Reservation rule:">2. Reservation rule:</h4>
-          <ul>
-            <li>
-              On the same calendar day, the same campus, the same room, and the
-              same student, you can book a maximum of 1 number source
-            </li>
-          </ul>
-          <h4 id="3. Cancel:">3. Cancel:</h4>
-          <p>
-            If you need to cancel the reserved study room, please cancel the
-            reservation through the website at least before 18:00 on the
-            previous working day.
-          </p>
+      <div class="hospital-detail">
+        <div class="common-header">
+          <div class="title-wrapper">
+            <span class="hospital-title">{{ hospital.campusname }}</span>
+            <div class="icon-wrapper">
+              <span class="iconfont"></span>
+              {{ hospital.param.campustypeString }}
+            </div>
+          </div>
+        </div>
+        <div class="info-wrapper">
+          <img
+            :src="'data:image/jpeg;base64,' + hospital.logoData"
+            :alt="hospital.campusname"
+            style="width: 80px; height: 80px"
+          />
+          <div class="content-wrapper">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div>
+              <div class="icon-text-wrapper">
+                <span class="iconfont prefix-icon"></span>
+                <span class="text"
+                  ><p>{{ hospital.route }}</p> </span
+                ><span class="iconfont right-icon"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="title mt40">医院介绍</div>
+        <div class="detail-content mt40">
+          <p>{{ hospital.intro }}</p>
         </div>
       </div>
     </div>
@@ -73,6 +85,7 @@
 <script>
 import "~/assets/css/campus_personal.css";
 import "~/assets/css/campus.css";
+import cookie from "js-cookie";
 
 import campusApi from "@/api/campus/campus";
 export default {

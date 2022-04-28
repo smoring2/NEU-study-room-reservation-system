@@ -1,13 +1,13 @@
 <template>
   <!-- header -->
   <div class="nav-container page-component">
-    <!--左侧导航 #start -->
+    <!-- left navi #start -->
     <div class="nav left-nav">
       <div class="nav-item">
         <span
           class="v-link clickable dark"
           :onclick="
-            'javascript:window.location=\'/campus/' + hospital.campuscode + '\''
+            'javascript:window.location=\'/campus/' + campus.campuscode + '\''
           "
           >Start
         </span>
@@ -17,7 +17,7 @@
           class="v-link selected dark"
           :onclick="
             'javascript:window.location=\'/campus/detail/' +
-            hospital.campuscode +
+            campus.campuscode +
             '\''
           "
         >
@@ -29,7 +29,7 @@
           class="v-link clickable dark"
           :onclick="
             'javascript:window.location=\'/campus/notice/' +
-            hospital.campuscode +
+            campus.campuscode +
             '\''
           "
         >
@@ -41,20 +41,20 @@
 
     <!-- right info #start -->
     <div class="page-container">
-      <div class="hospital-detail">
+      <div class="campus-detail">
         <div class="common-header">
           <div class="title-wrapper">
-            <span class="hospital-title">{{ hospital.campusname }}</span>
+            <span class="campus-title">{{ campus.campusname }}</span>
             <div class="icon-wrapper">
-              <span class="iconfont"></span>
-              {{ hospital.param.campustypeString }}
+              <span class="iconfont"></span>
+              {{ campus.param.campustypeString }}
             </div>
           </div>
         </div>
         <div class="info-wrapper">
           <img
-            :src="'data:image/jpeg;base64,' + hospital.logoData"
-            :alt="hospital.campusname"
+            :src="'data:image/jpeg;base64,' + campus.logoData"
+            :alt="campus.campusname"
             style="width: 80px; height: 80px"
           />
           <div class="content-wrapper">
@@ -63,21 +63,21 @@
             <div></div>
             <div>
               <div class="icon-text-wrapper">
-                <span class="iconfont prefix-icon"></span>
+                <span class="iconfont prefix-icon"></span>
                 <span class="text"
-                  ><p>{{ hospital.route }}</p> </span
+                  ><p>{{ campus.route }}</p> </span
                 ><span class="iconfont right-icon"></span>
               </div>
             </div>
           </div>
         </div>
-        <div class="title mt40">医院介绍</div>
+        <div class="title mt40">Campus Introduction</div>
         <div class="detail-content mt40">
-          <p>{{ hospital.intro }}</p>
+          <p>{{ campus.intro }}</p>
         </div>
       </div>
     </div>
-    <!-- 右侧内容 #end -->
+    <!-- right navi #end -->
   </div>
   <!-- footer -->
 </template>
@@ -92,7 +92,7 @@ export default {
   data() {
     return {
       campuscode: null,
-      hospital: {
+      campus: {
         param: {},
       },
     };
@@ -107,14 +107,14 @@ export default {
   methods: {
     init() {
       campusApi.show(this.campuscode).then((response) => {
-        this.hospital = response.data.hospital;
+        this.campus = response.data.campus;
       });
     },
   },
 };
 </script>
 <style>
-.hospital-detail .info-wrapper {
+.campus-detail .info-wrapper {
   width: 100%;
   padding-left: 0;
   padding-top: 0;
@@ -122,11 +122,11 @@ export default {
   flex-direction: inherit;
 }
 
-.hospital-detail .info-wrapper .text {
+.campus-detail .info-wrapper .text {
   font-size: 14px;
 }
 
-.hospital-detail .content-wrapper p {
+.campus-detail .content-wrapper p {
   text-indent: 0;
 }
 </style>

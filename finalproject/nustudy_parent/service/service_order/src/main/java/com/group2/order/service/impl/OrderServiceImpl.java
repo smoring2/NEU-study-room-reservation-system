@@ -38,33 +38,30 @@ public class OrderServiceImpl extends
     @Autowired
     private RabbitService rabbitService;
 
-//    @Autowired
-//    private WeixinService weixinService;weixinService
-
-    //生成挂号订单
+    //Generate orders
     @Override
     public Long saveOrder(String scheduleId, Long studentId) {
         //获取就诊人信息
         Student student = studentFeignClient.getStudentOrder(studentId);
         System.out.println("student: " + student);
 
-        //获取排班相关信息
+        //Get information about scheduling
         ScheduleOrderVo scheduleOrderVo = campusFeignClient.getScheduleOrderVo(scheduleId);
 
-        //判断当前时间是否还可以预约
+        //Determine if the current time is still available for appointment
         if (new DateTime(scheduleOrderVo.getStartTime()).isAfterNow()
                 || new DateTime(scheduleOrderVo.getEndTime()).isBeforeNow()) {
             throw new NustudyException(ResultCodeEnum.TIME_NO);
         }
 
-        //获取签名信息
+        //Get signature information
         SignInfoVo signInfoVo = campusFeignClient.getSignInfoVo(scheduleOrderVo.getCampuscode());
 
-        //添加到订单表
+        //add to order form
         OrderInfo orderInfo = new OrderInfo();
-        //scheduleOrderVo 数据复制到 orderInfo
+        //scheduleOrderVo to orderInfo
         BeanUtils.copyProperties(scheduleOrderVo, orderInfo);
-        //向orderInfo设置其他数据
+        //set the data of orderInfo
         String outTradeNo = System.currentTimeMillis() + "" + new Random().nextInt(100);
         orderInfo.setOutTradeNo(outTradeNo);
         orderInfo.setScheduleId(scheduleId);
@@ -75,8 +72,8 @@ public class OrderServiceImpl extends
         orderInfo.setOrderStatus(OrderStatusEnum.UNPAID.getStatus());
         baseMapper.insert(orderInfo);
 
-        //调用医院接口，实现预约挂号操作
-        //设置调用医院接口需要参数，参数放到map集合
+        //Call the campus interface to realize the appointment registration operation
+        //Set the parameters required to call the campus interface, and put the parameters in the map collection
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("campuscode", orderInfo.getCampuscode());
         paramMap.put("depcode", orderInfo.getDepcode());
@@ -94,7 +91,6 @@ public class OrderServiceImpl extends
         String format = formatter.format(date);
         paramMap.put("birthdate", format);
 
-//        student.getBirthdate().
         System.out.println("birthdate: " + date);
         System.out.println("birthdate: " + format);
         paramMap.put("phone", student.getPhone());
@@ -103,7 +99,7 @@ public class OrderServiceImpl extends
         paramMap.put("cityCode", student.getCityCode());
         paramMap.put("districtCode", student.getDistrictCode());
         paramMap.put("address", student.getAddress());
-        //联系人
+        //contacts
         paramMap.put("contactsName", student.getContactsName());
         paramMap.put("contactsCertificatesType", student.getContactsCertificatesType());
         paramMap.put("contactsCertificatesNo", student.getContactsCertificatesNo());
@@ -113,7 +109,7 @@ public class OrderServiceImpl extends
         String sign = HttpRequestHelper.getSign(paramMap, signInfoVo.getSignKey());
         paramMap.put("sign", sign);
         System.out.println("paraMap: " + paramMap);
-        //请求医院系统接口
+        //require campus interface
         JSONObject result = HttpRequestHelper.sendRequest(paramMap, signInfoVo.getApiUrl() + "/order/submitOrder");
 
         if (result.getInteger("code") == 200) {

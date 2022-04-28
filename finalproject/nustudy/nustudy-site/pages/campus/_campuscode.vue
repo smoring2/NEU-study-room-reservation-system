@@ -1,23 +1,23 @@
 <template>
   <!-- header -->
   <div class="nav-container page-component">
-    <!--左侧导航 #start -->
+    <!--left navi #start -->
     <div class="nav left-nav">
       <div class="nav-item selected">
         <span
           class="v-link selected dark"
           :onclick="
-            'javascript:window.location=\'/campus/' + hospital.campuscode + '\''
+            'javascript:window.location=\'/campus/' + campus.campuscode + '\''
           "
-          >Start
-        </span>
+        >Start</span
+        >
       </div>
       <div class="nav-item">
         <span
           class="v-link clickable dark"
           :onclick="
             'javascript:window.location=\'/campus/detail/' +
-            hospital.campuscode +
+            campus.campuscode +
             '\''
           "
         >
@@ -29,7 +29,7 @@
           class="v-link clickable dark"
           :onclick="
             'javascript:window.location=\'/campus/notice/' +
-            hospital.campuscode +
+            campus.campuscode +
             '\''
           "
         >
@@ -44,49 +44,56 @@
       <div class="hospital-home">
         <div class="common-header">
           <div class="title-wrapper">
-            <span class="hospital-title">{{ hospital.campusname }}</span>
+            <span class="hospital-title">{{ campus.campusname }}</span>
             <div class="icon-wrapper">
-              <span class="iconfont"></span
-              >{{ hospital.param.campustypeString }}
+              {{ campus.param.campustypeString }}
             </div>
           </div>
         </div>
         <div class="info-wrapper">
           <img
             class="hospital-img"
-            :src="'data:image/jpeg;base64,' + hospital.logoData"
-            :alt="hospital.campusname"
+            :src="'data:image/jpeg;base64,' + campus.logoData"
+            :alt="campus.campusname"
           />
           <div class="content-wrapper">
             <div>Reservation Rules</div>
             <div class="line">
               <div>
-                <span class="label">预约周期：</span
-                ><span>{{ bookingRule.cycle }}天</span>
+                <span class="label"> Booking cycle: </span
+                ><span>{{ bookingRule.cycle }}Days</span>
               </div>
               <div class="space">
-                <span class="label">放号时间：</span
+                <span class="label">Begin：</span
                 ><span>{{ bookingRule.releaseTime }}</span>
               </div>
               <div class="space">
-                <span class="label">停挂时间：</span
+                <span class="label">End：</span
                 ><span>{{ bookingRule.stopTime }}</span>
               </div>
             </div>
             <div class="line">
-              <span class="label">退号时间：</span>
+              <span class="label">Cancel：</span>
               <span v-if="bookingRule.quitDay == -1"
-                >就诊前一工作日{{ bookingRule.quitTime }}前取消</span
-              >
+              >By {{ bookingRule.quitTime }} the day before visitor</span>
               <span v-if="bookingRule.quitDay == 0"
-                >就诊前当天{{ bookingRule.quitTime }}前取消</span
+              >By {{ bookingRule.quitTime }}  the visitor of </span
               >
             </div>
-            <div style="margin-top: 20px">医院预约规则</div>
+            <div style="margin-top: 20px">Booking rules:</div>
             <div class="rule-wrapper">
-              <ol>
-                <li v-for="item in bookingRule.rule" :key="item">{{ item }}</li>
-              </ol>
+              <ul>
+                <li>
+                  On the same calendar day, the same campus, the same room, and the same student, you can book a maximum
+                  of
+                  1 number source
+                </li>
+                <li>
+                  If you need to cancel the reserved study room, please cancel the reservation through the website at
+                  least
+                  before 18:00 on the previous working day.
+                </li>
+              </ul>
             </div>
           </div>
         </div>
@@ -172,7 +179,7 @@ export default {
       campuscode: null,
       activeIndex: 0,
 
-      hospital: {
+      campus: {
         param: {},
       },
       bookingRule: {},
@@ -182,14 +189,13 @@ export default {
 
   created() {
     this.campuscode = this.$route.params.campuscode;
-
     this.init();
   },
 
   methods: {
     init() {
       campusApi.show(this.campuscode).then((response) => {
-        this.hospital = response.data.hospital;
+        this.campus = response.data.campus;
         this.bookingRule = response.data.bookingRule;
       });
 
@@ -210,23 +216,12 @@ export default {
         loginEvent.$emit("loginDialogEvent");
         return;
       }
-
-      // //判断认证
-      // userInfoApi.getUserInfo().then((response) => {
-      //   let authStatus = response.data.authStatus;
-      //   // 状态为2认证通过
-      //   if (!authStatus || authStatus != 2) {
-      //     window.location.href = "/user";
-      //     return;
-      //   }
-      // });
-
       window.location.href =
         "/campus/schedule?campuscode=" +
-        this.hospital.campuscode +
+        this.campus.campuscode +
         "&depcode=" +
         depcode;
     },
   },
-};
+}
 </script>

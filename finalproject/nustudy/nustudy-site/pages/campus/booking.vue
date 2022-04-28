@@ -118,7 +118,7 @@
                 <div>
                   <span class="name">
                     {{ student.name }}
-                    {{ student.certificatesNo }} 居民身份证</span
+                    {{ student.certificatesNo }} Student card </span
                   >
                 </div>
               </div>

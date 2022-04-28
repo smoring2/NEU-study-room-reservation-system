@@ -44,7 +44,7 @@ public class CampusApiController {
                                  @PathVariable Integer limit,
                                  CampusQueryVo campusQueryVo) {
         Page<Campus> campuses = campusService.selectCampusPage(page, limit, campusQueryVo);
-//         just for tutorial
+//         just for testing
 //        List<Campus> content = campuses.getContent();
 //        campuses.getTotalPages();
         return Result.ok(campuses);
@@ -57,21 +57,21 @@ public class CampusApiController {
         return Result.ok(list);
     }
 
-    @ApiOperation(value = "根据医院编号获取科室")
+    @ApiOperation(value = "findDepartmentByCampuscode")
     @GetMapping("department/{campusCode}")
     public Result index(@PathVariable String campusCode) {
         List<DepartmentVo> list = departmentService.findDeptTree(campusCode);
         return Result.ok(list);
     }
 
-    @ApiOperation(value = "根据医院编号获取医院预约挂号详情")
+    @ApiOperation(value = "findCampusDetailByCampuscode")
     @GetMapping("findCampusDetail/{campuscode}")
     public Result item(@PathVariable String campuscode) {
         Map<String, Object> map = campusService.item(campuscode);
         return Result.ok(map);
     }
 
-    @ApiOperation(value = "获取可预约排班数据")
+    @ApiOperation(value = "getBookingSchedule")
     @GetMapping("auth/getBookingScheduleRule/{page}/{limit}/{campuscode}/{depcode}")
     public Result getBookingSchedule(
             @ApiParam(name = "page", value = "当前页码", required = true)
@@ -85,7 +85,7 @@ public class CampusApiController {
         return Result.ok(scheduleService.getBookingScheduleRule(page, limit, campuscode, depcode));
     }
 
-    @ApiOperation(value = "获取排班数据")
+    @ApiOperation(value = "findScheduleList")
     @GetMapping("auth/findScheduleList/{campuscode}/{depcode}/{workDate}")
     public Result findScheduleList(
             @ApiParam(name = "campuscode", value = "医院code", required = true)
@@ -97,14 +97,14 @@ public class CampusApiController {
         return Result.ok(scheduleService.getDetailSchedule(campuscode, depcode, workDate));
     }
 
-    @ApiOperation(value = "获取排班id获取排班数据")
+    @ApiOperation(value = "getScheduleByScheduleId")
     @GetMapping("getSchedule/{scheduleId}")
     public Result getSchedule(@PathVariable String scheduleId) {
         Schedule schedule = scheduleService.getScheduleId(scheduleId);
         return Result.ok(schedule);
     }
 
-    @ApiOperation(value = "根据排班id获取预约下单数据")
+    @ApiOperation(value = "getScheduleOrderVo")
     @GetMapping("inner/getScheduleOrderVo/{scheduleId}")
     public ScheduleOrderVo getScheduleOrderVo(
             @ApiParam(name = "scheduleId", value = "排班id", required = true)
@@ -112,7 +112,7 @@ public class CampusApiController {
         return scheduleService.getScheduleOrderVo(scheduleId);
     }
 
-    @ApiOperation(value = "获取医院签名信息")
+    @ApiOperation(value = "getSignInfoVo")
     @GetMapping("inner/getSignInfoVo/{campuscode}")
     public SignInfoVo getSignInfoVo(
             @ApiParam(name = "campuscode", value = "医院code", required = true)

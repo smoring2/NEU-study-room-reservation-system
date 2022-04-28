@@ -14,7 +14,7 @@
             prefix-icon="el-icon-search"
             v-model="state"
             :fetch-suggestions="querySearchAsync"
-            placeholder="Enter campus here"
+            placeholder="Search campus here"
             @select="handleSelect"
           >
             <span
@@ -152,7 +152,7 @@ export default {
           this.campustypeList.push(response.data[i]);
         }
       });
-      dictApi.findByDictCode("Beijin").then((response) => {
+      dictApi.findByDictCode("CA").then((response) => {
         this.districtList = [];
         this.districtList.push({ name: "All", value: "" });
         for (let i in response.data) {

@@ -80,7 +80,6 @@ public final class HttpUtil {
 	}
 	
 	/**
-	 * 从输入流中读取数据
 	 * 
 	 * @param inStream
 	 * @return

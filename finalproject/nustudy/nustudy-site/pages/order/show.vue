@@ -118,26 +118,26 @@
       width="500px"
       @close="closeDialog"
     >
-      <div class="container">
-        <div class="operate-view" style="height: 350px">
-          <div class="wrapper wechat">
-            <div>
-              <!--                <img src="images/weixin.jpg" alt="">-->
-              <qriously :value="payObj.codeUrl" :size="220" />
-              <div
-                style="
-                  text-align: center;
-                  line-height: 25px;
-                  margin-bottom: 40px;
-                "
-              >
-                请使用微信扫一扫<br />
-                扫描二维码支付
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+<!--      <div class="container">-->
+<!--        <div class="operate-view" style="height: 350px">-->
+<!--          <div class="wrapper wechat">-->
+<!--            <div>-->
+<!--              &lt;!&ndash;                <img src="images/weixin.jpg" alt="">&ndash;&gt;-->
+<!--              <qriously :value="payObj.codeUrl" :size="220" />-->
+<!--              <div-->
+<!--                style="-->
+<!--                  text-align: center;-->
+<!--                  line-height: 25px;-->
+<!--                  margin-bottom: 40px;-->
+<!--                "-->
+<!--              >-->
+<!--                请使用微信扫一扫<br />-->
+<!--                扫描二维码支付-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
     </el-dialog>
   </div>
   <!-- footer -->
@@ -178,25 +178,25 @@ export default {
       });
     },
 
-    cancelOrder() {
-      this.$confirm("确定取消预约吗?", "提示", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
-        type: "warning",
-      })
-        .then(() => {
-          // promise
-          // 点击确定，远程调用
-          return orderInfoApi.cancelOrder(this.orderId);
-        })
-        .then((response) => {
-          this.$message.success("取消成功");
-          this.init();
-        })
-        .catch(() => {
-          this.$message.info("已取消取消预约");
-        });
-    },
+    // cancelOrder() {
+    //   this.$confirm("确定取消预约吗?", "提示", {
+    //     confirmButtonText: "确定",
+    //     cancelButtonText: "取消",
+    //     type: "warning",
+    //   })
+    //     .then(() => {
+    //       // promise
+    //       // 点击确定，远程调用
+    //       return orderInfoApi.cancelOrder(this.orderId);
+    //     })
+    //     .then((response) => {
+    //       this.$message.success("取消成功");
+    //       this.init();
+    //     })
+    //     .catch(() => {
+    //       this.$message.info("已取消取消预约");
+    //     });
+    // },
 
     // pay() {
     //   this.dialogPayVisible = true
