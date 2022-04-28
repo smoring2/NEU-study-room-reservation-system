@@ -50,12 +50,12 @@ export default {
       url: `${api_name}/getSchedule/${id}`,
       method: "get",
     });
-  },
+  }
 
-  getCampusInfo(campuscode) {
-    return request({
-      url: `${api_name}/getHospitalInfo/${campuscode}`,
-      method: "get",
-    });
-  },
+  // getCampusInfo(campuscode) {
+  //   return request({
+  //     url: `${api_name}/getHospitalInfo/${campuscode}`,
+  //     method: "get",
+  //   });
+  // },
 };

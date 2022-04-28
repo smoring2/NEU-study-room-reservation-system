@@ -70,17 +70,14 @@ public class CampusServiceImpl implements CampusService {
         ExampleMatcher matcher = ExampleMatcher.matching()
                 .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING)
                 .withIgnoreCase(true);
-        //hospitalSetQueryVo转换Hospital对象
+        //campusQueryVo to Campus
         Campus campus = new Campus();
         BeanUtils.copyProperties(campusQueryVo, campus);
-        //创建对象
+
         Example<Campus> example = Example.of(campus, matcher);
-        //调用方法实现查询
-//        Page<Campus> pages = hospitalRepository.findAll(example, pageable);
         Page<Campus> pages = campusRepository.findAll(pageable);
 
-        System.out.println("Hosps: " + pages.getSize() + ", " + pages.getTotalElements());
-        //获取查询list集合，遍历进行医院等级封装
+        System.out.println("Campus: " + pages.getSize() + ", " + pages.getTotalElements());
         pages.getContent().stream().forEach(item -> {
             System.out.println("item: " + item);
             this.setCampusCamType(item);

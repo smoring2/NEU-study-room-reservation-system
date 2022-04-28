@@ -40,7 +40,6 @@ public class CampusServiceImpl implements CampusService {
         String reserveDate = (String)paramMap.get("reserveDate");
         String reserveTime = (String)paramMap.get("reserveTime");
         String amount = (String)paramMap.get("amount");
-//        paramMap.put("birthdate", "2000-01-01");
 
         Schedule schedule = this.getSchedule(hosScheduleId);
         if(null == schedule) {
@@ -69,7 +68,7 @@ public class CampusServiceImpl implements CampusService {
 
             //记录预约记录
             OrderInfo orderInfo = new OrderInfo();
-            orderInfo.setPatientId(studentId);
+            orderInfo.setStudentId(studentId);
             orderInfo.setScheduleId(Long.parseLong(hosScheduleId));
             int number = schedule.getReservedNumber().intValue() - schedule.getAvailableNumber().intValue();
             orderInfo.setNumber(number);

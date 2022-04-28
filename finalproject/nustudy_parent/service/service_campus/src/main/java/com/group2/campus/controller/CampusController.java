@@ -32,7 +32,7 @@ public class CampusController {
 
     @ApiOperation(value = "updateCampusStatus")
     @GetMapping("updateCampusStatus/{id}/{status}")
-    public Result updateHospStatus(@PathVariable String id,@PathVariable Integer status) {
+    public Result updateCampusStatus(@PathVariable String id, @PathVariable Integer status) {
         campusService.updateStatus(id,status);
         return Result.ok();
     }

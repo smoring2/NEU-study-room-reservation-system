@@ -62,7 +62,7 @@
               class="v-select patient-select"
             >
               <el-option
-                v-for="item in patientList"
+                v-for="item in studentList"
                 :key="item.id"
                 :label="item.name + '【' + item.certificatesNo + '】'"
                 :value="item.id"
@@ -159,7 +159,7 @@ export default {
       limit: 10, // 每页记录数
       searchObj: {}, // 查询表单对象
 
-      patientList: [],
+      studentList: [],
       statusList: [],
     };
   },
@@ -168,7 +168,7 @@ export default {
     this.orderId = this.$route.query.orderId;
 
     this.fetchData();
-    this.findPatientList();
+    this.findStudentList();
     this.getStatusList();
   },
 
@@ -184,9 +184,9 @@ export default {
         });
     },
 
-    findPatientList() {
+    findStudentList() {
       studentApi.findList().then((response) => {
-        this.patientList = response.data;
+        this.studentList = response.data;
       });
     },
 

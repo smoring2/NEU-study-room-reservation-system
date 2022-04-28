@@ -52,7 +52,7 @@
             type="primary"
             size="mini"
             icon="el-icon-delete"
-            @click="lockHospSet(scope.row.id, 0)"
+            @click="lockCampusSet(scope.row.id, 0)"
             >Lock</el-button
           >
           <!-- Unlock -->
@@ -61,7 +61,7 @@
             type="danger"
             size="mini"
             icon="el-icon-delete"
-            @click="lockHospSet(scope.row.id, 1)"
+            @click="lockCampusSet(scope.row.id, 1)"
             >Unlock</el-button
           >
           <router-link :to="'/campusset/edit/' + scope.row.id">
@@ -158,7 +158,7 @@ export default {
       console.log(selection);
       this.multipleSelection = selection;
     },
-    lockHospSet(id, status) {
+    lockCampusSet(id, status) {
       campusset.lockCampusSet(id, status).then(response => {
         this.getList();
       });

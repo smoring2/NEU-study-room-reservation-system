@@ -26,41 +26,23 @@
             Information
           </div>
           <div class="content-wrapper">
-            <el-form :model="student" label-width="110px" label-position="left">
+            <el-form :model="student" label-width="200px" label-position="left">
               <el-form-item label="Name：">
                 <div class=""><span>{{ student.name }}</span></div>
               </el-form-item>
               <el-form-item label="Certification Type：">
-                <div class=""><span>{{ student.certificatesType }}</span></div>
+                <div class=""><span>Student Card</span></div>
               </el-form-item>
               <el-form-item label="Certification Number：">
                 <div class=""><span>{{ student.certificatesNo }} </span></div>
               </el-form-item>
-<!--              <el-form-item label="性别：">-->
-<!--                <div class=""><span>{{ student.sex == 1 ? '男' : '女' }} </span></div>-->
-<!--              </el-form-item>-->
-<!--              <el-form-item label="出生日期：">-->
-<!--                <div class=""><span>{{ student.birthdate }} </span></div>-->
-<!--              </el-form-item>-->
               <el-form-item label="Email：">
-                <div class=""><span>{{ student.phone }} </span></div>
+                <div class=""><span>{{ student.email }} </span></div>
               </el-form-item>
-<!--              <el-form-item label="婚姻状况：">-->
-<!--                <div class=""><span>{{ student.isMarry == 1 ? '已婚' : '未婚' }} </span></div>-->
-<!--              </el-form-item>-->
-<!--              <el-form-item label="Current address：">-->
-<!--                <div class=""><span>{{ student.provinceCode }}/{{ student.citycode }}/{{ student.districtCode }} </span></div>-->
-<!--              </el-form-item>-->
               <el-form-item label="Address：">
                 <div class=""><span>{{ student.address }} </span></div>
               </el-form-item>
-
               <br/>
-<!--              <el-form-item>-->
-<!--                <el-button class="v-button" type="primary" @click="remove()">删除就诊人</el-button>-->
-<!--                <el-button class="v-button" type="primary white" @click="edit()">修改就诊人</el-button>-->
-<!--              </el-form-item>-->
-
             </el-form>
           </div>
         </div>

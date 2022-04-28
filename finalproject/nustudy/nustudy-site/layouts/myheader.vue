@@ -127,7 +127,6 @@ export default {
       userInfo: {
         email: "",
         code: "",
-        openid: "",
       },
 
       dialogUserFormVisible: false,

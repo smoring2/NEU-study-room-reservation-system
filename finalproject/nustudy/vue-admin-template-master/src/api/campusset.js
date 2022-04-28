@@ -28,11 +28,11 @@ export default {
       method: 'put'
     })
   },
-  saveCampusSet(hospitalSet) {
+  saveCampusSet(campusSet) {
     return request({
       url: '/admin/campus/campusSet/saveCampusSet',
       method: 'post',
-      data: hospitalSet
+      data: campusSet
     })
   },
   getCampusSet(id) {
@@ -41,11 +41,11 @@ export default {
       method: 'get'
     })
   },
-  updateCampusSet(hospitalSet) {
+  updateCampusSet(campusSet) {
     return request({
       url: '/admin/campus/campusSet/updateCampusSet',
       method: 'post',
-      data: hospitalSet
+      data: campusSet
     })
   }
 }

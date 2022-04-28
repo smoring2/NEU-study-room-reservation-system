@@ -4,53 +4,123 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
+
 
 import java.math.BigDecimal;
 import java.util.Date;
 
-@Data
 @ApiModel(description = "OrderInfo")
 @TableName("order_info")
 public class OrderInfo extends BaseEntity {
 	
 	private static final long serialVersionUID = 1L;
 	
-	@ApiModelProperty(value = "排班id")
+	@ApiModelProperty(value = "scheduleId")
 	@TableField("schedule_id")
 	private Long scheduleId;
 
-	@ApiModelProperty(value = "就诊人id")
+	@ApiModelProperty(value = "studentId")
 	@TableField("student_id")
-	private Long patientId;
+	private Long studentId;
 
-	@ApiModelProperty(value = "预约号序")
+	@ApiModelProperty(value = "number")
 	@TableField("number")
 	private Integer number;
 
-	@ApiModelProperty(value = "建议取号时间")
+	@ApiModelProperty(value = "fetchTime")
 	@TableField("fetch_time")
 	private String fetchTime;
 
-	@ApiModelProperty(value = "取号地点")
+	@ApiModelProperty(value = "fetchAddress")
 	@TableField("fetch_address")
 	private String fetchAddress;
 
-	@ApiModelProperty(value = "医事服务费")
+	@ApiModelProperty(value = "amount")
 	@TableField("amount")
 	private BigDecimal amount;
 
-	@ApiModelProperty(value = "支付时间")
+	@ApiModelProperty(value = "payTime")
 	@TableField("pay_time")
 	private Date payTime;
 
-	@ApiModelProperty(value = "退号时间")
+	@ApiModelProperty(value = "quitTime")
 	@TableField("quit_time")
 	private Date quitTime;
 
-	@ApiModelProperty(value = "订单状态")
+	@ApiModelProperty(value = "orderStatus")
 	@TableField("order_status")
 	private Integer orderStatus;
 
+	public Long getScheduleId() {
+		return scheduleId;
+	}
+
+	public Long getStudentId() {
+		return studentId;
+	}
+
+	public Integer getNumber() {
+		return number;
+	}
+
+	public String getFetchTime() {
+		return fetchTime;
+	}
+
+	public String getFetchAddress() {
+		return fetchAddress;
+	}
+
+	public BigDecimal getAmount() {
+		return amount;
+	}
+
+	public Date getPayTime() {
+		return payTime;
+	}
+
+	public Date getQuitTime() {
+		return quitTime;
+	}
+
+	public Integer getOrderStatus() {
+		return orderStatus;
+	}
+
+	public void setScheduleId(Long scheduleId) {
+		this.scheduleId = scheduleId;
+	}
+
+	public void setStudentId(Long studentId) {
+		this.studentId = studentId;
+	}
+
+	public void setNumber(Integer number) {
+		this.number = number;
+	}
+
+	public void setFetchTime(String fetchTime) {
+		this.fetchTime = fetchTime;
+	}
+
+	public void setFetchAddress(String fetchAddress) {
+		this.fetchAddress = fetchAddress;
+	}
+
+	public void setAmount(BigDecimal amount) {
+		this.amount = amount;
+	}
+
+	public void setPayTime(Date payTime) {
+		this.payTime = payTime;
+	}
+
+	public void setQuitTime(Date quitTime) {
+		this.quitTime = quitTime;
+	}
+
+	public void setOrderStatus(Integer orderStatus) {
+		this.orderStatus = orderStatus;
+	}
 }
 

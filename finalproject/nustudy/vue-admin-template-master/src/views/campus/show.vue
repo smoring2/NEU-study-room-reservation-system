@@ -65,7 +65,6 @@
             </ol>
           </td>
         </tr>
-        <br />
         <el-row>
           <el-button @click="back">Back</el-button>
         </el-row>

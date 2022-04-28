@@ -9,29 +9,30 @@ import lombok.Data;
 public class OrderQueryVo {
 
 
-	@ApiModelProperty(value = "会员id")
+	@ApiModelProperty(value = "userId")
 	private Long userId;
 	
-	@ApiModelProperty(value = "订单交易号")
+	@ApiModelProperty(value = "outTradeNo")
 	private String outTradeNo;
 
-	@ApiModelProperty(value = "就诊人id")
-	private Long patientId;
+	@ApiModelProperty(value = "studentId")
+	private Long studentId;
 
-	@ApiModelProperty(value = "就诊人")
-	private String patientName;
+	@ApiModelProperty(value = "studentName")
+	private String studentName;
 
-	@ApiModelProperty(value = "医院名称")
+	@ApiModelProperty(value = "keyword")
 	private String keyword;
 
-	@ApiModelProperty(value = "订单状态")
+	@ApiModelProperty(value = "orderStatus")
 	private String orderStatus;
 
-	@ApiModelProperty(value = "安排日期")
+	@ApiModelProperty(value = "reserveDate")
 	private String reserveDate;
 
-	@ApiModelProperty(value = "创建时间")
+	@ApiModelProperty(value = "createTimeBegin")
 	private String createTimeBegin;
+	@ApiModelProperty(value = "createTimeEnd")
 	private String createTimeEnd;
 }
 

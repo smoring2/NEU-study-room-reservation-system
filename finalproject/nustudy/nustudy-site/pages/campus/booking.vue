@@ -63,7 +63,7 @@
                     class="inline"
                     v-for="(item, index) in studentList"
                     :key="item.id"
-                    @click="selectPatient(index)"
+                    @click="selectStudent(index)"
                     style="margin-right: 10px"
                   >
                     <div
@@ -122,16 +122,6 @@
                   >
                 </div>
               </div>
-              <!--              <div class="card SELF_PAY_CARD">-->
-              <!--                <div class="info">-->
-              <!--                  <span class="type">{{-->
-              <!--                      student.isInsure == 0 ? "自费" : "医保"-->
-              <!--                    }}</span-->
-              <!--                  ><span class="card-no">{{ student.certificatesNo }}</span-->
-              <!--                  ><span class="card-view">居民身份证</span>-->
-              <!--                </div>-->
-              <!--                <span class="operate"></span>-->
-              <!--              </div>-->
               <div class="card">
                 <div class="text bind-card"></div>
               </div>
@@ -195,7 +185,7 @@
               <div class="content-wrapper">
                 <el-form ref="form" :model="form">
                   <el-form-item class="form-item" label="Student Email：">
-                    {{ student.phone }}
+                    {{ student.email }}
                   </el-form-item>
                 </el-form>
               </div>
@@ -266,7 +256,7 @@ export default {
       });
     },
 
-    selectPatient(index) {
+    selectStudent(index) {
       this.activeIndex = index;
       this.student = this.studentList[index];
     },

@@ -12,7 +12,7 @@ public enum ResultCodeEnum {
     SUCCESS(200,"成功"),
     FAIL(201, "失败"),
     SERVICE_ERROR(202, "服务异常"),
-    DATA_ERROR(204, "数据异常"),
+    DATA_ERROR(204, "DATA_ERROR"),
 
     SIGN_ERROR(300, "签名错误"),
 

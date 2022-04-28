@@ -59,44 +59,44 @@ public class OrderInfo extends BaseEntity {
 	@TableField("reserve_time")
 	private Integer reserveTime;
 
-	@ApiModelProperty(value = "就诊人id")
+	@ApiModelProperty(value = "studentId")
 	@TableField("student_id")
-	private Long patientId;
+	private Long studentId;
 
-	@ApiModelProperty(value = "就诊人名称")
+	@ApiModelProperty(value = "studentName")
 	@TableField("student_name")
-	private String patientName;
+	private String studentName;
 
-	@ApiModelProperty(value = "就诊人手机")
+	@ApiModelProperty(value = "studentEmail")
 	@TableField("student_email")
-	private String patientPhone;
+	private String studentEmail;
 
-	@ApiModelProperty(value = "预约记录唯一标识（医院预约记录主键）")
+	@ApiModelProperty(value = "campusRecordId")
 	@TableField("campus_record_id")
-	private String hosRecordId;
+	private String campusRecordId;
 
-	@ApiModelProperty(value = "预约号序")
+	@ApiModelProperty(value = "number")
 	@TableField("number")
 	private Integer number;
 
-	@ApiModelProperty(value = "建议取号时间")
+	@ApiModelProperty(value = "fetchTime")
 	@TableField("fetch_time")
 	private String fetchTime;
 
-	@ApiModelProperty(value = "取号地点")
+	@ApiModelProperty(value = "fetchAddress")
 	@TableField("fetch_address")
 	private String fetchAddress;
 
-	@ApiModelProperty(value = "医事服务费")
+	@ApiModelProperty(value = "amount")
 	@TableField("amount")
 	private BigDecimal amount;
 
-	@ApiModelProperty(value = "退号时间")
+	@ApiModelProperty(value = "quitTime")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm")
 	@TableField("quit_time")
 	private Date quitTime;
 
-	@ApiModelProperty(value = "订单状态")
+	@ApiModelProperty(value = "orderStatus")
 	@TableField("order_status")
 	private Integer orderStatus;
 

@@ -8,9 +8,6 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
- * <p>
- * Patient
- * </p>
  *
  * @author qy
  */
@@ -37,22 +34,9 @@ public class Student extends BaseEntity {
 	@TableField("certificates_no")
 	private String certificatesNo;
 
-	@ApiModelProperty(value = "性别")
-	@TableField("sex")
-	private Integer sex;
-
-	@ApiModelProperty(value = "出生年月")
-	@JsonFormat(pattern = "yyyy-MM-dd")
-	@TableField("birthdate")
-	private String birthdate;
-
 	@ApiModelProperty(value = "手机")
 	@TableField("email")
 	private String email;
-
-	@ApiModelProperty(value = "是否结婚")
-	@TableField("is_marry")
-	private Integer isMarry;
 
 	@ApiModelProperty(value = "省code")
 	@TableField("province_code")
@@ -70,21 +54,21 @@ public class Student extends BaseEntity {
 	@TableField("address")
 	private String address;
 
-	@ApiModelProperty(value = "联系人姓名")
-	@TableField("contacts_name")
-	private String contactsName;
+//	@ApiModelProperty(value = "联系人姓名")
+//	@TableField("contacts_name")
+//	private String contactsName;
+//
+//	@ApiModelProperty(value = "联系人证件类型")
+//	@TableField("contacts_certificates_type")
+//	private String contactsCertificatesType;
 
-	@ApiModelProperty(value = "联系人证件类型")
-	@TableField("contacts_certificates_type")
-	private String contactsCertificatesType;
-
-	@ApiModelProperty(value = "联系人证件号")
-	@TableField("contacts_certificates_no")
-	private String contactsCertificatesNo;
-
-	@ApiModelProperty(value = "联系人手机")
-	@TableField("contacts_phone")
-	private String contactsPhone;
+//	@ApiModelProperty(value = "联系人证件号")
+//	@TableField("contacts_certificates_no")
+//	private String contactsCertificatesNo;
+//
+//	@ApiModelProperty(value = "联系人手机")
+//	@TableField("contacts_phone")
+//	private String contactsPhone;
 
 }
 

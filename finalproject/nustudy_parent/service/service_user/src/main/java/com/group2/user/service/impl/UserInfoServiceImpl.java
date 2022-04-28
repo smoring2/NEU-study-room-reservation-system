@@ -28,9 +28,6 @@ import java.util.Map;
 public class UserInfoServiceImpl  extends
         ServiceImpl<UserInfoMapper, UserInfo> implements UserInfoService {
 
-//    @Autowired
-//    private RedisTemplate<String,String> redisTemplate;
-
     @Autowired
     private UserInfoService userInfoService;
 
@@ -68,7 +65,7 @@ public class UserInfoServiceImpl  extends
         if (userInfo == null) {
             //判断是否第一次登录：根据手机号查询数据库，如果不存在相同手机号就是第一次登录
             QueryWrapper<UserInfo> wrapper = new QueryWrapper<>();
-            wrapper.eq("phone", email);
+            wrapper.eq("email", email);
             userInfo = baseMapper.selectOne(wrapper);
             if (userInfo == null) { //第一次使用这个手机号登录
                 //添加信息到数据库

@@ -66,9 +66,9 @@ public class OrderServiceImpl extends
         orderInfo.setOutTradeNo(outTradeNo);
         orderInfo.setScheduleId(scheduleId);
         orderInfo.setUserId(student.getUserId());
-        orderInfo.setPatientId(studentId);
-        orderInfo.setPatientName(student.getName());
-        orderInfo.setPatientPhone(student.getPhone());
+        orderInfo.setStudentId(studentId);
+        orderInfo.setStudentName(student.getName());
+        orderInfo.setStudentEmail(student.getEmail());
         orderInfo.setOrderStatus(OrderStatusEnum.UNPAID.getStatus());
         baseMapper.insert(orderInfo);
 
@@ -85,25 +85,12 @@ public class OrderServiceImpl extends
         paramMap.put("name", student.getName());
         paramMap.put("certificatesType", student.getCertificatesType());
         paramMap.put("certificatesNo", student.getCertificatesNo());
-        paramMap.put("sex", student.getSex());
-        Date date = student.getBirthdate();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        String format = formatter.format(date);
-        paramMap.put("birthdate", format);
-
-        System.out.println("birthdate: " + date);
-        System.out.println("birthdate: " + format);
-        paramMap.put("phone", student.getPhone());
-        paramMap.put("isMarry", student.getIsMarry());
+        paramMap.put("email", student.getEmail());
         paramMap.put("provinceCode", student.getProvinceCode());
         paramMap.put("cityCode", student.getCityCode());
         paramMap.put("districtCode", student.getDistrictCode());
         paramMap.put("address", student.getAddress());
-        //contacts
-        paramMap.put("contactsName", student.getContactsName());
-        paramMap.put("contactsCertificatesType", student.getContactsCertificatesType());
-        paramMap.put("contactsCertificatesNo", student.getContactsCertificatesNo());
-        paramMap.put("contactsPhone", student.getContactsPhone());
         paramMap.put("timestamp", HttpRequestHelper.getTimestamp());
 
         String sign = HttpRequestHelper.getSign(paramMap, signInfoVo.getSignKey());
@@ -126,7 +113,7 @@ public class OrderServiceImpl extends
             String fetchAddress = jsonObject.getString("fetchAddress");
             ;
             //更新订单
-            orderInfo.setHosRecordId(hosRecordId);
+            orderInfo.setCampusRecordId(hosRecordId);
             orderInfo.setNumber(number);
             orderInfo.setFetchTime(fetchTime);
             orderInfo.setFetchAddress(fetchAddress);
@@ -167,7 +154,6 @@ public class OrderServiceImpl extends
     public OrderInfo getOrder(String orderId) {
         OrderInfo orderInfo = baseMapper.selectById(orderId);
         return orderInfo;
-//        return this.packOrderInfo(orderInfo);
     }
 
     //订单列表（条件查询带分页）
