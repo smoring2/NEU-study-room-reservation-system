@@ -30,14 +30,14 @@
                         onclick="javascript:window.location.reload(true);"
                         class="btn btn-white btn-sm"
                       >
-                        <i class="fa fa-refresh"></i> 刷新
+                        <i class="fa fa-refresh"></i> Refresh
                       </button>
                       <button
                         type="button"
                         class="btn btn-white btn-sm"
-                        onclick="javascript:opt.openWin('/schedule/create','添加',550,450);"
+                        onclick="javascript:opt.openWin('/schedule/create','Add',550,450);"
                       >
-                        添加
+                        Add
                       </button>
                     </div>
                   </div>
@@ -46,19 +46,19 @@
                   >
                     <thead>
                       <tr>
-                        <th style="width: 20px">序号</th>
-                        <th>医院编号</th>
-                        <th>科室编号</th>
-                        <th>职称</th>
-                        <th>医生名称</th>
-                        <th>安排日期</th>
-                        <th>安排时间</th>
-                        <th>可预约数</th>
-                        <th>剩余预约数</th>
-                        <th>挂号费</th>
-                        <th>排班编号</th>
-                        <th>擅长技能</th>
-                        <th>操作</th>
+                        <th style="width: 20px">No.</th>
+                        <th>Campus code</th>
+                        <th>Department code</th>
+                        <th>Title</th>
+                        <th>Room</th>
+                        <th>Work date</th>
+                        <th>Work time</th>
+                        <th>Reserved number</th>
+                        <th>Available number</th>
+                        <th>Amount</th>
+                        <th>Schedule Id</th>
+                        <th>Skill</th>
+                        <th>Operation</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -79,7 +79,7 @@
                           <a
                             class="delete"
                             th:attr="data-hosScheduleId=${item.hosScheduleId}"
-                            >删除</a
+                            >Delete</a
                           >
                         </td>
                       </tr>

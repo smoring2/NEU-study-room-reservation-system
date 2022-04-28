@@ -45,7 +45,7 @@ public class ApiController extends BaseController {
 		try {
 			CampusSet campusSet = campusSetMapper.selectById(1);
 			if(null == campusSet || StringUtils.isEmpty(campusSet.getCampuscode()) || StringUtils.isEmpty(campusSet.getSignKey())) {
-				this.failureMessage("先设置医院code与签名key", redirectAttributes);
+				this.failureMessage("Please set the campus code and sign key", redirectAttributes);
 				return "redirect:/campusSet/index";
 			}
 
@@ -53,7 +53,7 @@ public class ApiController extends BaseController {
 		} catch (NustudyException e) {
 			this.failureMessage(e.getMessage(), request);
 		} catch (Exception e) {
-			this.failureMessage("数据异常", request);
+			this.failureMessage("Data exception", request);
 		}
 		return "campus/index";
 	}
@@ -70,7 +70,7 @@ public class ApiController extends BaseController {
 		} catch (NustudyException e) {
 			return this.failurePage(e.getMessage(),request);
 		} catch (Exception e) {
-			return this.failurePage("数据异常",request);
+			return this.failurePage("Data exception",request);
 		}
 		return this.successPage(null,request);
 	}
@@ -83,7 +83,7 @@ public class ApiController extends BaseController {
 		try {
 			CampusSet campusSet = campusSetMapper.selectById(1);
 			if(null == campusSet || StringUtils.isEmpty(campusSet.getCampuscode()) || StringUtils.isEmpty(campusSet.getSignKey())) {
-				this.failureMessage("先设置医院code与签名key", redirectAttributes);
+				this.failureMessage("Please set the campus code and sign key", redirectAttributes);
 				return "redirect:/campusSet/index";
 			}
 
@@ -91,7 +91,7 @@ public class ApiController extends BaseController {
 		} catch (NustudyException e) {
 			this.failureMessage(e.getMessage(), request);
 		} catch (Exception e) {
-			this.failureMessage("数据异常", request);
+			this.failureMessage("Data exception", request);
 		}
 		return "department/index";
 	}
@@ -108,7 +108,7 @@ public class ApiController extends BaseController {
 		} catch (NustudyException e) {
 			return this.failurePage(e.getMessage(),request);
 		} catch (Exception e) {
-			return this.failurePage("数据异常",request);
+			return this.failurePage("Data exception",request);
 		}
 		return this.successPage(null,request);
 	}
@@ -121,7 +121,7 @@ public class ApiController extends BaseController {
 		try {
 			CampusSet campusSet = campusSetMapper.selectById(1);
 			if(null == campusSet || StringUtils.isEmpty(campusSet.getCampuscode()) || StringUtils.isEmpty(campusSet.getSignKey())) {
-				this.failureMessage("先设置医院code与签名key", redirectAttributes);
+				this.failureMessage("Please set the campus code and sign key", redirectAttributes);
 				return "redirect:/campusSet/index";
 			}
 
@@ -129,7 +129,7 @@ public class ApiController extends BaseController {
 		} catch (NustudyException e) {
 			this.failureMessage(e.getMessage(), request);
 		} catch (Exception e) {
-			this.failureMessage("数据异常", request);
+			this.failureMessage("Data exception", request);
 		}
 		return "schedule/index";
 	}
@@ -148,7 +148,7 @@ public class ApiController extends BaseController {
 			return this.failurePage(e.getMessage(),request);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return this.failurePage("数据异常："+e.getMessage(),request);
+			return this.failurePage("Data exception："+e.getMessage(),request);
 		}
 		return this.successPage(null,request);
 	}
@@ -165,7 +165,7 @@ public class ApiController extends BaseController {
 		} catch (NustudyException e) {
 			return this.failurePage(e.getMessage(),request);
 		} catch (Exception e) {
-			return this.failurePage("数据异常",request);
+			return this.failurePage("Data exception",request);
 		}
 		return this.successPage(null,request);
 	}

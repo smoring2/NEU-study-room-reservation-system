@@ -10,13 +10,14 @@
 
 <div class="yb-top-title clearfix" style="height: 75px; top:0px;">
     <!--<span class="logo-bg"><img th:src="@{/img/wd/logo2.png}" alt="wanda" width="48"/></span>-->
-    <span class="yb-top-desc fl hjyz">医院接口模拟管理系统</span>
+    <span class="yb-top-desc fl hjyz">Campus interface simulation management system</span>
     <span class="yb-help-center fr">
         <!--
         <i class="fa fa-question-circle"></i>
         -->
-        <a href="javascript:void(0);">欢迎&nbsp;admin&nbsp;登录&nbsp;&nbsp;|</a>
-        <a href="/logout">退出</a>
+        <a href="javascript:void(0);">Welcome&nbsp;admin&nbsp</a>
+<!--            ;log in&nbsp;&nbsp;|</a>-->
+<!--        <a href="/logout">log out</a>-->
     </span>
 </div>
 <div id="wrapper">
@@ -36,9 +37,9 @@
                         </a>
 
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                            <li><a  href="javascript:opt.openWin('/sysUser/pswd','修改密码',630,510)">修改密码</a></li>
+                            <li><a  href="javascript:opt.openWin('/sysUser/pswd','修改密码',630,510)">Change password</a></li>
                             <li class="divider"></li>
-                            <li><a th:href="@{/index/logout}">安全退出</a>
+                            <li><a th:href="@{/index/logout}">Quit</a>
                             </li>
                         </ul>
                     </div>
@@ -48,14 +49,14 @@
                 <li>
                     <a href="#">
                         <i class="fa fa-flask"></i>
-                        <span class="nav-label"> 医院推送管理</span>
+                        <span class="nav-label"> Campus Management </span>
                         <span class="fa arrow"></span>
                     </a>
                     <ul class="nav nav-second-level">
-                        <li><a class="J_menuItem" th:href="@{/campusSet/index}" data-index="91">医院设置</a></li>
-                        <li><a class="J_menuItem" th:href="@{/campus/index}" data-index="91">医院管理</a></li>
-                        <li><a class="J_menuItem" th:href="@{/department/list}" data-index="92">科室列表</a></li>
-                        <li><a class="J_menuItem" th:href="@{/schedule/list}" data-index="91">排班列表</a></li>
+                        <li><a class="J_menuItem" th:href="@{/campusSet/index}" data-index="91">Campus set</a></li>
+                        <li><a class="J_menuItem" th:href="@{/campus/index}" data-index="91">Campus management</a></li>
+                        <li><a class="J_menuItem" th:href="@{/department/list}" data-index="92">Department list</a></li>
+                        <li><a class="J_menuItem" th:href="@{/schedule/list}" data-index="91">Schedule list</a></li>
                     </ul>
                 </li>
             </ul>
@@ -70,7 +71,7 @@
                 <div class="navbar-header"><a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
                     <form role="search" class="navbar-form-custom" method="post" action="http://www.zi-han.net/theme/hplus/search_results.html">
                         <div class="form-group">
-                            <input type="text" placeholder='管理系统' class="form-control" name="top-search" id="top-search" readonly="readonly"/>
+                            <input type="text" placeholder='management system' class="form-control" name="top-search" id="top-search" readonly="readonly"/>
                         </div>
                     </form>
                 </div>
@@ -91,22 +92,22 @@
             </button>
             <nav class="page-tabs J_menuTabs">
                 <div class="page-tabs-content">
-                    <a href="javascript:;" class="active J_menuTab" data-id="index_v1.html">首页</a>
+                    <a href="javascript:;" class="active J_menuTab" data-id="index_v1.html">Main</a>
                 </div>
             </nav>
             <button class="roll-nav roll-right J_tabRight"><i class="fa fa-forward"></i>
             </button>
             <div class="btn-group roll-nav roll-right">
-                <button class="dropdown J_tabClose" data-toggle="dropdown">关闭操作<span class="caret"></span>
+                <button class="dropdown J_tabClose" data-toggle="dropdown">Close<span class="caret"></span>
 
                 </button>
                 <ul role="menu" class="dropdown-menu dropdown-menu-right">
-                    <li class="J_tabShowActive"><a>定位当前选项卡</a>
+                    <li class="J_tabShowActive"><a>Locate current tab</a>
                     </li>
                     <li class="divider"></li>
-                    <li class="J_tabCloseAll"><a>关闭全部选项卡</a>
+                    <li class="J_tabCloseAll"><a>Close all tabs</a>
                     </li>
-                    <li class="J_tabCloseOther"><a>关闭其他选项卡</a>
+                    <li class="J_tabCloseOther"><a>Close other tabs</a>
                     </li>
                 </ul>
             </div>
@@ -117,10 +118,6 @@
         <div class="row J_mainContent" id="content-main">
             <iframe class="J_iframe" name="iframe0" width="100%" height="100%" th:src="@{/main}" frameborder="0" data-id="index_v1.html"></iframe>
         </div>
-<!--         <div class="footer">
-            <div class="pull-right">&copy; 版权所有：万达
-            </div>
-        </div> -->
     </div>
     <!--右侧部分结束-->
     <!--右侧边栏开始-->

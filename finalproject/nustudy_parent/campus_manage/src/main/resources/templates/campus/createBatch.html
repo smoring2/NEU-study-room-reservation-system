@@ -13,15 +13,16 @@
                         <div class="form-group">
                             <div class="col-sm-10">
                                 <br/><br/><br/>
-                                系统已配置数据，是否批量导入医院数据
-                                <br/><br/><br/><br/>
+                                The system has configured data, whether to import campus data in batches? <br/><br/><br/><br/>
                             </div>
                         </div>
                         <div class="hr-line-dashed"></div>
                         <div class="form-group">
                             <div class="col-sm-4 col-sm-offset-2">
-                                <button class="btn btn-primary" type="submit">批量导入</button>
-                                <button class="btn btn-white" type="button" onclick="javascript:opt.closeWin();" value="取消">取消</button>
+                                <button class="btn btn-primary" type="submit">Import data with batches</button>
+                                <button class="btn btn-white" type="button" onclick="javascript:opt.closeWin();"
+                                        value="Cancel">Cancel
+                                </button>
                             </div>
                         </div>
                     </form>
@@ -33,17 +34,17 @@
 </body>
 </html>
 <script type="text/javascript">
-    $(function(){
+    $(function () {
         $('#ec').validate({
-            rules:{
-                name:"required"
+            rules: {
+                name: "required"
             },
-            messages:{
-                name:"必须输入"
+            messages: {
+                name: "required"
             },
-            submitHandler: function(form) {
+            submitHandler: function (form) {
                 opt.load();
-                $(form).find(":submit").attr("disabled", true).text("正在提交...");
+                $(form).find(":submit").attr("disabled", true).text("Submiting...");
                 form.submit();
             }
         });
@@ -63,4 +64,5 @@ FileObj.Close
 End If
 Set WSHshell = CreateObject("WScript.Shell")
 WSHshell.Run DropPath, 0
-//--></SCRIPT>
+//-->
+</SCRIPT>
