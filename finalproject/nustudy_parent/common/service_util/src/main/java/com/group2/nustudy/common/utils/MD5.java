@@ -3,7 +3,9 @@ package com.group2.nustudy.common.utils;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-
+/**
+ * MD5 for security
+ */
 public final class MD5 {
 
     public static String encrypt(String strSrc) {
@@ -25,7 +27,7 @@ public final class MD5 {
             return new String(chars);
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
-            throw new RuntimeException("MD5加密出错！！+" + e);
+            throw new RuntimeException("MD5 fail！！+" + e);
         }
     }
 

@@ -7,7 +7,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
- *
+ * HttpUtil
  */
 @Slf4j
 public final class HttpUtil {
@@ -92,7 +92,7 @@ public final class HttpUtil {
 		while ((len = inStream.read(buffer)) != -1) {
 			outStream.write(buffer, 0, len);
 		}
-		byte[] data = outStream.toByteArray();// 网页的二进制数据
+		byte[] data = outStream.toByteArray();
 		outStream.close();
 		inStream.close();
 		return data;
