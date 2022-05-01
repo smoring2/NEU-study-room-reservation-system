@@ -8,18 +8,21 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+/**
+ * FeignClient of service-campus
+ */
 @FeignClient(value = "service-campus")
 @Repository
 public interface CampusFeignClient {
 
     /**
-     * 根据排班id获取预约下单数据
+     * getScheduleOrderVo by scheduleId
      */
     @GetMapping("/api/campus/campus/inner/getScheduleOrderVo/{scheduleId}")
     ScheduleOrderVo getScheduleOrderVo(@PathVariable("scheduleId") String scheduleId);
 
     /**
-     * 获取医院签名信息
+     * get campus information by its code
      */
     @GetMapping("/api/campus/campus/inner/getSignInfoVo/{campuscode}")
     public SignInfoVo getSignInfoVo(@PathVariable("campuscode") String campuscode);

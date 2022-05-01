@@ -7,11 +7,14 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+/**
+ * FeignClient of service-user
+ */
 @FeignClient(value = "service-user")
 @Repository
 public interface StudentFeignClient {
 
-    //根据就诊人id获取就诊人信息
+    //get student information by id
     @GetMapping("/api/user/student/inner/get/{id}")
     public Student getStudentOrder(@PathVariable("id") Long id);
 }
