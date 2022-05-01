@@ -5,10 +5,10 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
- * 全局统一返回结果类
+ * Result globally
  */
 @Data
-@ApiModel(value = "Standardize the return format全局统一返回结果")
+@ApiModel(value = "Standardize the return format")
 public class Result<T> {
 
     @ApiModelProperty(value = "responseCode")

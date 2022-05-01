@@ -5,25 +5,36 @@ import com.group2.nustudy.common.helper.JwtHelper;
 
 import javax.servlet.http.HttpServletRequest;
 
-//获取当前用户信息工具类
+
+/**
+ * Get the current user info
+ */
 public class AuthContextHolder {
 
-    //获取当前用户id
+    /**
+     * Get current user id
+     * @param request
+     * @return
+     */
     public static Long getUserId(HttpServletRequest request) {
-        //从header获取token
+        //get token from header
         String token = request.getHeader("token");
         System.out.println("token: " + token);
-        //jwt从token获取userid
+        // jwt get userid from token
         Long userId = JwtHelper.getUserId(token);
         System.out.println("userid: " + userId);
         return userId;
     }
 
-    //获取当前用户名称
+    /**
+     * Get current user name
+     * @param request
+     * @return
+     */
     public static String getUserName(HttpServletRequest request) {
-        //从header获取token
+        //get token from header
         String token = request.getHeader("token");
-        //jwt从token获取userid
+        // jwt get userid from token
         String userName = JwtHelper.getUserName(token);
         return userName;
     }

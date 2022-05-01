@@ -3,11 +3,11 @@ package com.group2.nustudy.common.result;
 import lombok.Getter;
 
 /**
- * 统一返回结果状态信息类
+ * result code
  */
 @Getter
 public enum ResultCodeEnum {
-// DEBUG TRANSLATE
+    // DEBUG TRANSLATE
     SUCCESS(200,"Succeed"),
     FAIL(201, "Failed"),
     PARAM_ERROR( 202, "The param is wrong"),
@@ -19,7 +19,6 @@ public enum ResultCodeEnum {
     PERMISSION(209, "No Permission"),
 
     CODE_ERROR(210, "CODE ERROR"),
-//    LOGIN_MOBLE_ERROR(211, "账号不正确"),
     LOGIN_DISABLED_ERROR(212, "LOGIN_DISABLED_ERROR"),
     REGISTER_MOBLE_ERROR(213, "REGISTER_MOBLE_ERROR"),
     LOGIN_AURH(214, "LOGIN_AURH"),
@@ -29,7 +28,6 @@ public enum ResultCodeEnum {
     ILLEGAL_CALLBACK_REQUEST_ERROR( 217, "ILLEGAL_CALLBACK_REQUEST_ERROR"),
     FETCH_ACCESSTOKEN_FAILD( 218, "FETCH_ACCESSTOKEN_FAILD"),
     FETCH_USERINFO_ERROR( 219, "FETCH_USERINFO_ERROR"),
-    //LOGIN_ERROR( 23005, "登录失败"),
 
     PAY_RUN(220, "PAY_RUN"),
     CANCEL_ORDER_FAIL(225, "CANCEL_ORDER_FAIL"),

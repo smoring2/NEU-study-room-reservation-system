@@ -7,12 +7,18 @@ import java.util.Date;
 
 public class JwtHelper {
 
-    //过期时间
+    /**
+     * expiration time
+     */
     private static long tokenExpiration = 24*60*60*1000;
-    //签名秘钥
+    /**
+     * sign key
+     */
     private static String tokenSignKey = "123456";
 
-    //根据参数生成token
+    /**
+     * generate token by parameters
+     */
     public static String createToken(Long userId, String userName) {
         String token = Jwts.builder()
                 .setSubject("YYGH-USER")
@@ -25,7 +31,12 @@ public class JwtHelper {
         return token;
     }
 
-    //根据token字符串得到用户id
+
+    /**
+     * Get user id by token
+     * @param token
+     * @return
+     */
     public static Long getUserId(String token) {
         if(StringUtils.isEmpty(token)) return null;
 
@@ -35,7 +46,12 @@ public class JwtHelper {
         return userId.longValue();
     }
 
-    //根据token字符串得到用户名称
+
+    /**
+     * Get user name by token
+     * @param token
+     * @return
+     */
     public static String getUserName(String token) {
         if(StringUtils.isEmpty(token)) return "";
 
@@ -44,6 +60,10 @@ public class JwtHelper {
         return (String)claims.get("userName");
     }
 
+    /**
+     * Main
+     * @param args
+     */
     public static void main(String[] args) {
         String token = JwtHelper.createToken(1L, "lucy");
         System.out.println(token);

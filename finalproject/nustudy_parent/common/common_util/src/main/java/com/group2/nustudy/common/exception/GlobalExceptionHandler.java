@@ -4,9 +4,17 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+/**
+ * customer exception
+ */
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
+    /**
+     * Get Exception error result
+     * @param e
+     * @return
+     */
     @ExceptionHandler(Exception.class)
     @ResponseBody
     public Result error(Exception e) {
@@ -14,6 +22,11 @@ public class GlobalExceptionHandler {
         return Result.fail();
     }
 
+    /**
+     * Get NustudyException error result
+     * @param e
+     * @return
+     */
     @ExceptionHandler(NustudyException.class)
     @ResponseBody
     public Result error(NustudyException e) {

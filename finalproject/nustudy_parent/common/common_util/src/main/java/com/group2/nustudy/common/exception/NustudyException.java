@@ -6,19 +6,19 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
- * 自定义全局异常类
+ * Globally exception
  *
- * @author qy
+ * @author YT
  */
 @Data
-@ApiModel(value = "自定义全局异常类")
+@ApiModel(value = "Globally exception")
 public class NustudyException extends RuntimeException {
 
-    @ApiModelProperty(value = "异常状态码")
+    @ApiModelProperty(value = "exception code")
     private Integer code;
 
     /**
-     * 通过状态码和错误消息创建异常对象
+     * Get exception by exception code and error message
      * @param message
      * @param code
      */
@@ -28,7 +28,7 @@ public class NustudyException extends RuntimeException {
     }
 
     /**
-     * 接收枚举类型对象
+     * Enum
      * @param resultCodeEnum
      */
     public NustudyException(ResultCodeEnum resultCodeEnum) {
