@@ -39,8 +39,8 @@ public class Student extends BaseEntity {
 	private String email;
 
 	@ApiModelProperty(value = "省code")
-	@TableField("province_code")
-	private String provinceCode;
+	@TableField("state_code")
+	private String stateCode;
 
 	@ApiModelProperty(value = "市code")
 	@TableField("city_code")

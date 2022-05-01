@@ -26,8 +26,8 @@ public class Campus extends BaseMongoEntity {
 	@ApiModelProperty(value = "campus type")
 	private String campustype;
 
-	@ApiModelProperty(value = "province Code")
-	private String provinceCode;
+	@ApiModelProperty(value = "state Code")
+	private String stateCode;
 
 	@ApiModelProperty(value = "city Code")
 	private String cityCode;
@@ -71,12 +71,44 @@ public class Campus extends BaseMongoEntity {
 		this.bookingRule = JSONObject.parseObject(bookingRule, BookingRule.class);
 	}
 
-	public String getProvinceCode() {
-		return provinceCode;
+	public String getStateCode() {
+		return stateCode;
 	}
 
-	public void setProvinceCode(String provinceCode) {
-		this.provinceCode = provinceCode;
+	public String getCityCode() {
+		return cityCode;
+	}
+
+	public String getDistrictCode() {
+		return districtCode;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public String getLogoData() {
+		return logoData;
+	}
+
+	public String getIntro() {
+		return intro;
+	}
+
+	public String getRoute() {
+		return route;
+	}
+
+	public Integer getStatus() {
+		return status;
+	}
+
+	public BookingRule getBookingRule() {
+		return bookingRule;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
 	}
 }
 

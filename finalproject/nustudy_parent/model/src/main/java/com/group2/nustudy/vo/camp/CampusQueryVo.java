@@ -22,7 +22,7 @@ public class CampusQueryVo implements Serializable {
 	private String campustype;
 
 	@ApiModelProperty(value = "省code")
-	private String provinceCode;
+	private String stateCode;
 
 	@ApiModelProperty(value = "市code")
 	private String cityCode;

@@ -87,7 +87,7 @@ public class ApiServiceImpl implements ApiService {
         paramMap.put("campuscode",this.getCampuscode());
         paramMap.put("campusname",jsonObject.getString("campusname"));
         paramMap.put("campustype",jsonObject.getString("campustype"));
-        paramMap.put("provinceCode",jsonObject.getString("provinceCode"));
+        paramMap.put("stateCode",jsonObject.getString("stateCode"));
         paramMap.put("cityCode", jsonObject.getString("cityCode"));
         paramMap.put("districtCode",jsonObject.getString("districtCode"));
         paramMap.put("address",jsonObject.getString("address"));
@@ -306,7 +306,7 @@ public class ApiServiceImpl implements ApiService {
             paramMap.put("campuscode","1000_"+i);
             paramMap.put("campusname",jsonObject.getString("campusname"));
             paramMap.put("campustype",i % 3 == 0 ? 1 : i % 3 == 1 ? 2 :4);
-            paramMap.put("provinceCode","110000");
+            paramMap.put("stateCode","110000");
             paramMap.put("cityCode", "110100");
             if(i % 3 == 0) {
                 paramMap.put("districtCode","110101");

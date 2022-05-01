@@ -37,4 +37,12 @@ public class BaseEntity implements Serializable {
     @ApiModelProperty(value = "others")
     @TableField(exist = false)
     private Map<String,Object> param = new HashMap<>();
+
+    public Map<String, Object> getParam() {
+        return param;
+    }
+
+    public Long getId() {
+        return id;
+    }
 }

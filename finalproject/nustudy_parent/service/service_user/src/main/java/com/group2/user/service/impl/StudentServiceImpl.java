@@ -49,7 +49,7 @@ public class StudentServiceImpl extends
 //        String contactsCertificatesTypeString =
 //                dictFeignClient.getName(DictEnum.CERTIFICATES_TYPE.getDictCode(),student.getContactsCertificatesType());
         //省
-        String provinceString = dictFeignClient.getName(student.getProvinceCode());
+        String stateString = dictFeignClient.getName(student.getStateCode());
         //市
         String cityString = dictFeignClient.getName(student.getCityCode());
         //区
@@ -57,10 +57,10 @@ public class StudentServiceImpl extends
 
         student.getParam().put("certificatesTypeString", certificatesTypeString);
 //        student.getParam().put("contactsCertificatesTypeString", contactsCertificatesTypeString);
-        student.getParam().put("provinceString", provinceString);
+        student.getParam().put("stateString", stateString);
         student.getParam().put("cityString", cityString);
         student.getParam().put("districtString", districtString);
-        student.getParam().put("fullAddress", provinceString + cityString + districtString + student.getAddress());
+        student.getParam().put("fullAddress", stateString + cityString + districtString + student.getAddress());
         System.out.println("userid: " + student.getUserId());
         return student;
     }

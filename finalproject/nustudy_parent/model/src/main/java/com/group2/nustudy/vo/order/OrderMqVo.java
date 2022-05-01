@@ -22,6 +22,16 @@ public class OrderMqVo {
 	@ApiModelProperty(value = "短信实体")
 	private MsmVo msmVo;
 
+	public void setReservedNumber(Integer reservedNumber) {
+		this.reservedNumber = reservedNumber;
+	}
 
+	public void setAvailableNumber(Integer availableNumber) {
+		this.availableNumber = availableNumber;
+	}
+
+	public void setScheduleId(String scheduleId) {
+		this.scheduleId = scheduleId;
+	}
 }
 

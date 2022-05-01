@@ -87,7 +87,7 @@ public class OrderServiceImpl extends
         paramMap.put("certificatesNo", student.getCertificatesNo());
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         paramMap.put("email", student.getEmail());
-        paramMap.put("provinceCode", student.getProvinceCode());
+        paramMap.put("stateCode", student.getStateCode());
         paramMap.put("cityCode", student.getCityCode());
         paramMap.put("districtCode", student.getDistrictCode());
         paramMap.put("address", student.getAddress());

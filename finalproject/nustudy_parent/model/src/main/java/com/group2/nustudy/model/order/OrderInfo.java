@@ -100,5 +100,131 @@ public class OrderInfo extends BaseEntity {
 	@TableField("order_status")
 	private Integer orderStatus;
 
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
+
+	public void setOutTradeNo(String outTradeNo) {
+		this.outTradeNo = outTradeNo;
+	}
+
+	public void setCampuscode(String campuscode) {
+		this.campuscode = campuscode;
+	}
+
+	public void setCampusname(String campusname) {
+		this.campusname = campusname;
+	}
+
+	public void setDepcode(String depcode) {
+		this.depcode = depcode;
+	}
+
+	public void setDepname(String depname) {
+		this.depname = depname;
+	}
+
+	public void setScheduleId(String scheduleId) {
+		this.scheduleId = scheduleId;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public void setStudentId(Long studentId) {
+		this.studentId = studentId;
+	}
+
+	public void setStudentName(String studentName) {
+		this.studentName = studentName;
+	}
+
+	public void setStudentEmail(String studentEmail) {
+		this.studentEmail = studentEmail;
+	}
+
+	public void setCampusRecordId(String campusRecordId) {
+		this.campusRecordId = campusRecordId;
+	}
+
+	public void setNumber(Integer number) {
+		this.number = number;
+	}
+
+	public void setFetchTime(String fetchTime) {
+		this.fetchTime = fetchTime;
+	}
+
+	public void setFetchAddress(String fetchAddress) {
+		this.fetchAddress = fetchAddress;
+	}
+
+	public void setAmount(BigDecimal amount) {
+		this.amount = amount;
+	}
+
+	public void setQuitTime(Date quitTime) {
+		this.quitTime = quitTime;
+	}
+
+	public void setOrderStatus(Integer orderStatus) {
+		this.orderStatus = orderStatus;
+	}
+
+	public Long getUserId() {
+		return userId;
+	}
+
+
+	public String getCampuscode() {
+		return campuscode;
+	}
+
+	public String getCampusname() {
+		return campusname;
+	}
+
+	public String getDepcode() {
+		return depcode;
+	}
+
+	public String getDepname() {
+		return depname;
+	}
+
+	public String getScheduleId() {
+		return scheduleId;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public Date getReserveDate() {
+		return reserveDate;
+	}
+
+	public Integer getReserveTime() {
+		return reserveTime;
+	}
+
+
+	public Integer getNumber() {
+		return number;
+	}
+
+
+	public BigDecimal getAmount() {
+		return amount;
+	}
+
+	public Date getQuitTime() {
+		return quitTime;
+	}
+
+	public Integer getOrderStatus() {
+		return orderStatus;
+	}
 }
 

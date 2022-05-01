@@ -50,7 +50,22 @@ TODO:
   - nustudy_cmn
   - nustudy_order
   - nustudy_user
+
+    CREATE SCHEMA `nustudy_campus` ;
+    CREATE SCHEMA `nustudy_cmn` ;
+    CREATE SCHEMA `nustudy_manage` ;
+    CREATE SCHEMA `nustudy_order` ;
+    CREATE SCHEMA `nustudy_user` ;
+
 #### MongoDB
+#### Nacos
+- sh startup.sh -m standalone
+- sh shutdown.sh
+#### RabbitMQ
+- brew services start rabbitmq 抄一下自己以前写的
+#### 9998
+http://localhost:9998/
+Campus management:
 #### Nginx
 - Download Nginx. You can use homebrew to install nginx `brew install nginx`.  
   - Modify its config. If you use homebrew to install nginx, you can find its config file at `/usr/local/etc/nginx/nginx.conf`. Please add the following setting in the `http` block:

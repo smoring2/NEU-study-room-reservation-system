@@ -45,4 +45,8 @@ public class BaseMongoEntity implements Serializable {
     @ApiModelProperty(value = "others")
     @Transient
     private Map<String,Object> param = new HashMap<>();
+
+    public Date getCreateTime() {
+        return createTime;
+    }
 }

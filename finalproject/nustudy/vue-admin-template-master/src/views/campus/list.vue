@@ -3,12 +3,12 @@
     <el-form :inline="true" class="demo-form-inline">
       <el-form-item>
         <el-select
-          v-model="searchObj.provinceCode"
+          v-model="searchObj.stateCode"
           placeholder="State"
-          @change="provinceChanged"
+          @change="stateChanged"
         >
           <el-option
-            v-for="item in provinceList"
+            v-for="item in stateList"
             :key="item.id"
             :label="item.name"
             :value="item.id"
@@ -131,16 +131,16 @@ export default {
       page: 1,
       limit: 10,
       searchObj: {
-        provinceCode: "",
+        stateCode: "",
         cityCode: ""
       },
-      provinceList: [],
+      stateList: [],
       cityList: []
     };
   },
   created() {
     this.fetchData();
-    this.findAllProvince();
+    this.findAllState();
   },
   methods: {
     updateStatus(id, status) {
@@ -158,15 +158,15 @@ export default {
           this.listLoading = false;
         });
     },
-    findAllProvince() {
-      campusApi.findByDictCode("Province").then(response => {
-        this.provinceList = response.data;
+    findAllState() {
+      campusApi.findByDictCode("State").then(response => {
+        this.stateList = response.data;
       });
     },
-    provinceChanged() {
+    stateChanged() {
       this.cityList = [];
       this.searchObj.cityCode = "";
-      campusApi.findChildId(this.searchObj.provinceCode).then(response => {
+      campusApi.findChildId(this.searchObj.stateCode).then(response => {
         this.cityList = response.data;
       });
     },

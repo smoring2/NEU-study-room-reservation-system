@@ -53,7 +53,7 @@
                   v-for="(item, index) in districtList"
                   :key="index"
                   class="item v-link clickable"
-                  :class="provinceActiveIndex == index ? 'selected' : ''"
+                  :class="stateActiveIndex == index ? 'selected' : ''"
                   @click="districtSelect(item.value, index)"
                   >{{ item.name }}</span
                 >
@@ -125,7 +125,7 @@ export default {
       districtList: [],
 
       campustypeActiveIndex: 0,
-      provinceActiveIndex: 0,
+      stateActiveIndex: 0,
       state: "",
     };
   },
@@ -145,7 +145,7 @@ export default {
 
   methods: {
     init() {
-      dictApi.findByDictCode("Province").then((response) => {
+      dictApi.findByDictCode("State").then((response) => {
         this.campustypeList = [];
         this.campustypeList.push({ name: "All", value: "" });
         for (let i in response.data) {
@@ -218,7 +218,7 @@ export default {
     districtSelect(districtCode, index) {
       this.list = [];
       this.page = 1;
-      this.provinceActiveIndex = index;
+      this.stateActiveIndex = index;
       this.searchObj.districtCode = districtCode;
       this.getList();
     },

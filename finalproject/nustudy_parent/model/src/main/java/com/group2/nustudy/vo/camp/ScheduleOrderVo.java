@@ -52,5 +52,61 @@ public class ScheduleOrderVo {
 
 	@ApiModelProperty(value = "当天停止挂号时间")
 	private Date stopTime;
+
+	public String getCampuscode() {
+		return campuscode;
+	}
+
+	public String getCampusname() {
+		return campusname;
+	}
+
+	public String getDepcode() {
+		return depcode;
+	}
+
+	public String getDepname() {
+		return depname;
+	}
+
+	public String getHosScheduleId() {
+		return hosScheduleId;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public Date getReserveDate() {
+		return reserveDate;
+	}
+
+	public Integer getAvailableNumber() {
+		return availableNumber;
+	}
+
+	public Integer getReserveTime() {
+		return reserveTime;
+	}
+
+	public BigDecimal getAmount() {
+		return amount;
+	}
+
+	public Date getQuitTime() {
+		return quitTime;
+	}
+
+	public Date getStartTime() {
+		return startTime;
+	}
+
+	public Date getEndTime() {
+		return endTime;
+	}
+
+	public Date getStopTime() {
+		return stopTime;
+	}
 }
 

@@ -18,5 +18,12 @@ public class SignInfoVo  implements Serializable {
 	@ApiModelProperty(value = "签名秘钥")
 	private String signKey;
 
+	public String getApiUrl() {
+		return apiUrl;
+	}
+
+	public String getSignKey() {
+		return signKey;
+	}
 }
 

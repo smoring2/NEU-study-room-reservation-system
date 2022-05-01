@@ -10,10 +10,6 @@ import lombok.Data;
 
 import java.util.Date;
 
-/**
- *
- * @author qy
- */
 @Data
 @ApiModel(description = "Student")
 @TableName("student")
@@ -42,8 +38,8 @@ public class Student extends BaseEntity {
 	private String email;
 
 	@ApiModelProperty(value = "省code")
-	@TableField("province_code")
-	private String provinceCode;
+	@TableField("state_code")
+	private String stateCode;
 
 	@ApiModelProperty(value = "市code")
 	@TableField("city_code")
@@ -57,6 +53,41 @@ public class Student extends BaseEntity {
 	@TableField("address")
 	private String address;
 
+	public Long getUserId() {
+		return userId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getCertificatesType() {
+		return certificatesType;
+	}
+
+	public String getCertificatesNo() {
+		return certificatesNo;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public String getStateCode() {
+		return stateCode;
+	}
+
+	public String getCityCode() {
+		return cityCode;
+	}
+
+	public String getDistrictCode() {
+		return districtCode;
+	}
+
+	public String getAddress() {
+		return address;
+	}
 //	@ApiModelProperty(value = "联系人姓名")
 //	@TableField("contacts_name")
 //	private String contactsName;

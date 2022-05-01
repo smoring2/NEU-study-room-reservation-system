@@ -23,13 +23,13 @@ DROP TABLE IF EXISTS `student`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `student` (
-  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '编号',
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `user_id` bigint DEFAULT NULL,
   `name` varchar(20) DEFAULT NULL,
   `certificates_type` varchar(3) DEFAULT NULL,
   `certificates_no` varchar(30) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL COMMENT 'email',
-  `province_code` varchar(20) DEFAULT NULL,
+  `state_code` varchar(20) DEFAULT NULL,
   `city_code` varchar(20) DEFAULT NULL,
   `district_code` varchar(20) DEFAULT NULL,
   `address` varchar(100) DEFAULT NULL,
