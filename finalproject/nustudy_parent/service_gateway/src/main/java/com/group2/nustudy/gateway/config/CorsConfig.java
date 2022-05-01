@@ -7,10 +7,18 @@ import org.springframework.web.cors.reactive.CorsWebFilter;
 import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 import org.springframework.web.util.pattern.PathPatternParser;
 
-// handle @CrossOrigin
+
+/**
+ * handle CrossOrigin
+ * CrossOrigin configuration
+ */
 @Configuration
 public class CorsConfig {
 
+    /**
+     * corsFilter
+     * @return CorsWebFilter
+     */
     @Bean
     public CorsWebFilter corsFilter() {
         CorsConfiguration config = new CorsConfiguration();

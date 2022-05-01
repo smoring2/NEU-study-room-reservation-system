@@ -19,24 +19,38 @@ import reactor.core.publisher.Mono;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
+/**
+ * Filter
+ * Inner interface can be accessed only by inner call
+ * Api interface can be accessed only by the authorized user
+ */
 @Component
 public class AuthGlobalFilter implements GlobalFilter, Ordered {
 
+    /**
+     * antPathMatcher to check if the url match a pattern
+     */
     private AntPathMatcher antPathMatcher = new AntPathMatcher();
 
+    /**
+     * Filter
+     * @param exchange
+     * @param chain
+     * @return
+     */
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         ServerHttpRequest request = exchange.getRequest();
         String path = request.getURI().getPath();
         System.out.println("===" + path);
 
-        //内部服务接口，不允许外部访问
+        //Inner interface only can be accessed by inner call
         if (antPathMatcher.match("/**/inner/**", path)) {
             ServerHttpResponse response = exchange.getResponse();
             return out(response, ResultCodeEnum.PERMISSION);
         }
 
-        //api接口，异步请求，校验用户必须登录
+        //User must log in
         if (antPathMatcher.match("/api/**/auth/**", path)) {
             Long userId = this.getUserId(request);
             if (StringUtils.isEmpty(userId)) {
@@ -53,8 +67,8 @@ public class AuthGlobalFilter implements GlobalFilter, Ordered {
     }
 
     /**
-     * api接口鉴权失败返回数据
      *
+     * return response if api filter fails
      * @param response
      * @return
      */
@@ -62,16 +76,15 @@ public class AuthGlobalFilter implements GlobalFilter, Ordered {
         Result result = Result.build(null, resultCodeEnum);
         byte[] bits = JSONObject.toJSONString(result).getBytes(StandardCharsets.UTF_8);
         DataBuffer buffer = response.bufferFactory().wrap(bits);
-        //指定编码，否则在浏览器中会中文乱码
         response.getHeaders().add("Content-Type", "application/json;charset=UTF-8");
         return response.writeWith(Mono.just(buffer));
     }
 
     /**
-     * 获取当前登录用户id
+     * Get the user id
      *
-     * @param request
-     * @return
+     * @param request request
+     * @return user id
      */
     private Long getUserId(ServerHttpRequest request) {
         String token = "";
