@@ -15,7 +15,7 @@
     <description>rabbit_util</description>
 
     <dependencies>
-        <!--rabbitmq消息队列-->
+        <!--rabbitmq message queue-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
