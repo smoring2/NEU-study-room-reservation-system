@@ -48,7 +48,7 @@
         </div>
       </div>
     </div>
-    <!-- 右侧内容 #end -->
+    <!-- right navi #end -->
   </div>
   <!-- footer -->
 </template>

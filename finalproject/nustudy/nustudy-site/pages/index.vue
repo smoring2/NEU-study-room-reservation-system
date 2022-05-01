@@ -104,7 +104,6 @@
 import campusApi from "@/api/campus/campus";
 import dictApi from "@/api/dict";
 export default {
-  // asyncData：渲染组件之前异步获取数据
   asyncData({ params, error }) {
     return campusApi.getPageList(1, 10, null).then((response) => {
       console.log(response.data);
@@ -162,7 +161,6 @@ export default {
     },
 
     load(event) {
-      // 滚动条高度为430 页面搜索消失，头部搜索显示
       // if(event.target.scrollTop > 430) {
       //   document.getElementById("search").style.display = 'block';
       // } else {
@@ -174,9 +172,8 @@ export default {
         event.target.scrollHeight
       ) {
         if (this.page < this.pages) {
-          //先判断下一页是否有数据
           this.page = this.page + 1;
-          this.getList(); //拉取接口数据
+          this.getList();
         }
       }
     },

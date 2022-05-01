@@ -1,51 +1,6 @@
 <template>
   <!-- header -->
   <div class="nav-container page-component">
-    <!--left navi #start -->
-    <!--    <div class="nav left-nav">-->
-    <!--      <div class="nav-item selected">-->
-    <!--        <span-->
-    <!--          class="v-link selected dark"-->
-    <!--          :onclick="-->
-    <!--            'javascript:window.location=\'/campus/' + schedule.hoscode + '\''-->
-    <!--          "-->
-    <!--          >Reservation-->
-    <!--        </span>-->
-    <!--      </div>-->
-    <!--      <div class="nav-item">-->
-    <!--        <span-->
-    <!--          class="v-link clickable dark"-->
-    <!--          :onclick="-->
-    <!--            'javascript:window.location=\'/campus/detail/' +-->
-    <!--            schedule.hoscode +-->
-    <!--            '\''-->
-    <!--          "-->
-    <!--        >-->
-    <!--          Campus Intro-->
-    <!--        </span>-->
-    <!--      </div>-->
-    <!--      <div class="nav-item">-->
-    <!--        <span-->
-    <!--          class="v-link clickable dark"-->
-    <!--          :onclick="-->
-    <!--            'javascript:window.location=\'/campus/notice/' +-->
-    <!--            schedule.hoscode +-->
-    <!--            '\''-->
-    <!--          "-->
-    <!--        >-->
-    <!--          Reservation notice-->
-    <!--        </span>-->
-    <!--      </div>-->
-    <!--      <div class="nav-item">-->
-    <!--        <span class="v-link clickable dark"> Suspension information </span>-->
-    <!--      </div>-->
-    <!--      <div class="nav-item">-->
-    <!--        <span class="v-link clickable dark"> Search/Cancel </span>-->
-    <!--      </div>-->
-    <!--    </div>-->
-
-    <!-- left navi #end -->
-
     <!-- right navi #start -->
     <div class="page-container">
       <div class="hospital-order">
@@ -103,10 +58,6 @@
             <div class="sub-title" v-if="studentList.length > 0">
               <div class="block"></div>
               Chosen student card：
-              <!--              <span class="card-tips"-->
-              <!--                ><span class="iconfont"></span>-->
-              <!--                如您持社保卡就诊，请务必选择医保预约挂号，以保证正常医保报销</span-->
-              <!--              >-->
             </div>
 
             <el-card
@@ -168,11 +119,6 @@
                     <span>{{ schedule.skill }}</span>
                   </div>
                 </el-form-item>
-                <!--                <el-form-item label="医事服务费：">-->
-                <!--                  <div class="content">-->
-                <!--                    <div class="fee">{{ schedule.amount }}</div>-->
-                <!--                  </div>-->
-                <!--                </el-form-item>-->
               </el-form>
             </div>
 

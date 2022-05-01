@@ -2,49 +2,12 @@
   <!-- header -->
   <div class="nav-container page-component">
     <!--left navi #start -->
-    <!--    <div class="nav left-nav">-->
-    <!--      <div class="nav-item selected">-->
-    <!--        <span-->
-    <!--          class="v-link selected dark"-->
-    <!--          :onclick="'javascript:window.location=\'/campus/' + campuscode + '\''"-->
-    <!--          >Reservation-->
-    <!--        </span>-->
-    <!--      </div>-->
-    <!--      <div class="nav-item">-->
-    <!--        <span-->
-    <!--          class="v-link clickable dark"-->
-    <!--          :onclick="-->
-    <!--            'javascript:window.location=\'/campus/detail/' + campuscode + '\''-->
-    <!--          "-->
-    <!--        >-->
-    <!--          Campus Detail-->
-    <!--        </span>-->
-    <!--      </div>-->
-    <!--      <div class="nav-item">-->
-    <!--        <span-->
-    <!--          class="v-link clickable dark"-->
-    <!--          :onclick="-->
-    <!--            'javascript:window.location=\'/campus/notice/' + campuscode + '\''-->
-    <!--          "-->
-    <!--        >-->
-    <!--          Reservation notice-->
-    <!--        </span>-->
-    <!--      </div>-->
-    <!--      <div class="nav-item">-->
-    <!--        <span class="v-link clickable dark"> Suspension information </span>-->
-    <!--      </div>-->
-    <!--      <div class="nav-item">-->
-    <!--        <span class="v-link clickable dark"> Search/Cancel </span>-->
-    <!--      </div>-->
-    <!--    </div>-->
-    <!-- Left navi #end -->
-    <!--left navi #start -->
     <div class="nav left-nav">
       <div class="nav-item selected">
         <span
           class="v-link selected dark"
           :onclick="'javascript:window.location=\'/campus/' + campuscode + '\''"
-          >Start</span
+        >Start</span
         >
       </div>
       <div class="nav-item">
@@ -75,8 +38,8 @@
       <div class="hospital-source-list">
         <div class="header-wrapper" style="justify-content: normal">
           <span class="v-link clickable" @click="show()">{{
-            baseMap.campusname
-          }}</span>
+              baseMap.campusname
+            }}</span>
           <div class="split"></div>
           <div>{{ baseMap.bigname }}</div>
         </div>
@@ -85,8 +48,6 @@
         <div class="mt60">
           <div class="title-wrapper">{{ baseMap.workDateString }}</div>
           <div class="calendar-list-wrapper">
-            <!-- item.depNumber == -1 ? 'gray space' : item.depNumber == 0 ? 'gray' : 'small small-space'-->
-            <!-- selected , index == activeIndex ? 'selected' : ''-->
             <div
               :class="'calendar-item ' + item.curClass"
               style="width: 124px"
@@ -103,8 +64,8 @@
                   item.availableNumber == -1
                     ? "Not open"
                     : item.availableNumber == 0
-                    ? "Full already"
-                    : "Available"
+                      ? "Full already"
+                      : "Available"
                 }}
               </div>
               <div class="status-wrapper" v-if="item.status == 1">
@@ -128,9 +89,10 @@
         <!-- Start booking  #start-->
         <div class="countdown-wrapper mt60" v-if="!tabShow">
           <div class="countdonw-title">
-            {{ time
+            {{
+              time
             }}<span class="v-link selected">{{ baseMap.releaseTime }} </span
-            >Releasing
+          >Releasing
           </div>
           <div class="countdown-text">
             Countdown
@@ -175,11 +137,11 @@
                       "
                     >
                       <span v-if="item.availableNumber !== 0"
-                        >Book
+                      >Book
                         <!-- <span class="number">{{ item.availableNumber }}</span> -->
                       </span>
                       <span v-if="item.availableNumber === 0"
-                        >Reserved
+                      >Reserved
                         <!-- <span class="number">{{ item.availableNumber }}</span> -->
                       </span>
                     </div>
@@ -212,7 +174,6 @@
                   <div class="special-wrapper">{{ item.skill }}</div>
                 </div>
                 <div class="right-wrapper">
-                  <!--                  <div class="fee">￥{{ item.amount }}</div>-->
                   <div class="button-wrapper">
                     <div
                       class="v-button"
@@ -224,11 +185,11 @@
                       "
                     >
                       <span v-if="item.availableNumber !== 0"
-                        >Book
+                      >Book
                         <!-- <span class="number">{{ item.availableNumber }}</span> -->
                       </span>
                       <span v-if="item.availableNumber === 0"
-                        >Reserved
+                      >Reserved
                         <!-- <span class="number">{{ item.availableNumber }}</span> -->
                       </span>
                     </div>
@@ -252,6 +213,7 @@ import "~/assets/css/campus_personal.css";
 import "~/assets/css/campus.css";
 
 import campusApi from "@/api/campus/campus";
+
 export default {
   data() {
     return {
@@ -338,7 +300,7 @@ export default {
       this.workDate = item.workDate;
       this.activeIndex = index;
 
-      //清理定时
+      //clean the timer
       if (this.timer != null) clearInterval(this.timer);
 
       if (item.status == 1) {
@@ -364,8 +326,8 @@ export default {
           this.bookingScheduleList[i].availableNumber == -1
             ? "gray space"
             : this.bookingScheduleList[i].availableNumber == 0
-            ? "gray"
-            : "small small-space";
+              ? "gray"
+              : "small small-space";
         curClass += i == this.activeIndex ? " selected" : "";
         this.bookingScheduleList[i].curClass = curClass;
       }

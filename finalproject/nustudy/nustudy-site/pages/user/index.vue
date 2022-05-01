@@ -2,7 +2,7 @@
 
   <!-- header -->
   <div class="nav-container page-component">
-    <!--左侧导航 #start -->
+    <!--left navi #start -->
     <div class="nav left-nav">
       <div class="nav-item">
         <span class="v-link selected dark" onclick="javascript:window.location='/student'"> My Information </span>
@@ -15,9 +15,9 @@
       </div>
 
     </div>
-    <!-- 左侧导航 #end -->
+    <!-- left navi #end -->
 
-    <!-- 右侧内容 #start -->
+    <!-- right navi #start -->
     <div class="page-container">
       <div>
         <div class="title"> My Information </div>
@@ -90,7 +90,7 @@
 
       </div>
     </div>
-    <!-- right #end -->
+    <!-- right navi #end -->
 
   </div>
   <!-- footer -->

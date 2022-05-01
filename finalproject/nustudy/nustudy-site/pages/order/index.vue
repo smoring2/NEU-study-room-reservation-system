@@ -1,24 +1,7 @@
 <template>
   <!-- header -->
   <div class="nav-container page-component">
-    <!--left navi #start -->
-    <!--    <div class="nav left-nav">-->
-    <!--      <div class="nav-item ">-->
-    <!--        <span class="v-link clickable dark" onclick="javascript:window.location='/user'">实名认证 </span>-->
-    <!--      </div>-->
-    <!--      <div class="nav-item selected">-->
-    <!--        <span class="v-link selected dark" onclick="javascript:window.location='/order'"> 挂号订单 </span>-->
-    <!--      </div>-->
-    <!--      <div class="nav-item ">-->
-    <!--        <span class="v-link clickable dark" onclick="javascript:window.location='/patient'"> 就诊人管理 </span>-->
-    <!--      </div>-->
-    <!--      <div class="nav-item ">-->
-    <!--        <span class="v-link clickable dark"> 修改账号信息 </span>-->
-    <!--      </div>-->
-    <!--      <div class="nav-item ">-->
-    <!--        <span class="v-link clickable dark"> 意见反馈 </span>-->
-    <!--      </div>-->
-    <!--    </div>-->
+    <!-- left navi #start -->
     <div class="nav left-nav">
       <div class="nav-item selected">
         <span
@@ -50,15 +33,15 @@
     </div>
     <!-- left navi #end -->
 
-    <!-- 右侧内容 #start -->
+    <!-- right navi #start -->
     <div class="page-container">
       <div class="personal-order">
-        <div class="title">挂号订单</div>
+        <div class="title">Order</div>
         <el-form :inline="true">
-          <el-form-item label="就诊人：">
+          <el-form-item label="Student:">
             <el-select
               v-model="searchObj.patientId"
-              placeholder="请选择就诊人"
+              placeholder="Choose the student:"
               class="v-select patient-select"
             >
               <el-option
@@ -70,10 +53,10 @@
               </el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="订单状态：" style="margin-left: 80px">
+          <el-form-item label="order status：" style="margin-left: 80px">
             <el-select
               v-model="searchObj.orderStatus"
-              placeholder="全部"
+              placeholder="All"
               class="v-select patient-select"
               style="width: 200px"
             >
@@ -92,41 +75,41 @@
               class="search-button v-link highlight clickable selected"
               @click="fetchData()"
             >
-              查询
+              Search
             </el-button>
           </el-form-item>
         </el-form>
         <div class="table-wrapper table">
           <el-table :data="list" stripe style="width: 100%">
-            <el-table-column label="就诊时间" width="120">
+            <el-table-column label="Time" width="120">
               <template slot-scope="scope">
                 {{ scope.row.reserveDate }}
                 {{ scope.row.reserveTime === 0 ? "上午" : "下午" }}
               </template>
             </el-table-column>
-            <el-table-column prop="campusname" label="医院" width="100">
+            <el-table-column prop="campusname" label="Campus" width="100">
             </el-table-column>
-            <el-table-column prop="depname" label="科室"> </el-table-column>
-            <el-table-column prop="title" label="医生"> </el-table-column>
-            <el-table-column prop="amount" label="医事服务费">
+            <el-table-column prop="depname" label="Department"> </el-table-column>
+            <el-table-column prop="title" label="Room"> </el-table-column>
+            <el-table-column prop="amount" label="Amount">
             </el-table-column>
-            <el-table-column prop="patientName" label="就诊人">
+            <el-table-column prop="patientName" label="Student">
             </el-table-column>
-            <el-table-column prop="param.orderStatusString" label="订单状态">
+            <el-table-column prop="param.orderStatusString" label="Order status">
             </el-table-column>
-            <el-table-column label="操作">
+            <el-table-column label="Operation">
               <template slot-scope="scope">
                 <el-button
                   type="text"
                   class="v-link highlight clickable selected"
                   @click="show(scope.row.id)"
-                  >详情</el-button
+                  >Detail</el-button
                 >
               </template>
             </el-table-column>
           </el-table>
         </div>
-        <!-- 分页 -->
+        <!-- page divider -->
         <el-pagination
           class="pagination"
           layout="prev, pager, next"
@@ -138,7 +121,7 @@
         </el-pagination>
       </div>
     </div>
-    <!-- 右侧内容 #end -->
+    <!-- right navi #end -->
   </div>
   <!-- footer -->
 </template>
@@ -153,11 +136,11 @@ import studentApi from "@/api/user/student";
 export default {
   data() {
     return {
-      list: [], // banner列表
-      total: 0, // 数据库中的总记录数
-      page: 1, // 默认页码
-      limit: 10, // 每页记录数
-      searchObj: {}, // 查询表单对象
+      list: [],
+      total: 0,
+      page: 1,
+      limit: 10,
+      searchObj: {},
 
       studentList: [],
       statusList: [],

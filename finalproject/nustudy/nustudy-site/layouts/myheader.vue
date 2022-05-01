@@ -64,14 +64,13 @@
       <div class="container">
         <div class="login">
           <el-card style="text-align: center">
-            <h2>NU Study Room Reservation Login</h2>
+            <h2>NEU Study Room Reservation Login</h2>
             <el-form
               class="login-form"
               :model="model"
               :rules="rules"
               ref="form"
-              @submit.native.prevent="login"
-            >
+              @submit.native.prevent="login">
               <el-form-item prop="username">
                 <el-input
                   v-model="dialogAtrr.inputValue"
@@ -189,11 +188,13 @@ export default {
     },
 
     showInfo() {
+      debugger;
       let token = cookie.get("token");
       if (token) {
         this.name = cookie.get("name");
         console.log(this.name);
       }
+      // this.$refs.myDiv.hidden = false;
     },
 
     querySearchAsync(queryString, cb) {

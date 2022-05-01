@@ -86,7 +86,7 @@ export default {
 
       dialogPayVisible: false,
       payObj: {},
-      timer: null, // 定时器名称
+      timer: null, // timer name
     };
   },
 
@@ -103,53 +103,6 @@ export default {
         console.log("orderInfo: ", this.orderInfo);
       });
     },
-
-    // cancelOrder() {
-    //   this.$confirm("确定取消预约吗?", "提示", {
-    //     confirmButtonText: "确定",
-    //     cancelButtonText: "取消",
-    //     type: "warning",
-    //   })
-    //     .then(() => {
-    //       // promise
-    //       // 点击确定，远程调用
-    //       return orderInfoApi.cancelOrder(this.orderId);
-    //     })
-    //     .then((response) => {
-    //       this.$message.success("取消成功");
-    //       this.init();
-    //     })
-    //     .catch(() => {
-    //       this.$message.info("已取消取消预约");
-    //     });
-    // },
-
-    // pay() {
-    //   this.dialogPayVisible = true
-
-    //   weixinApi.createNative(this.orderId).then(response => {
-    //     this.payObj = response.data
-    //     if(this.payObj.codeUrl == '') {
-    //       this.dialogPayVisible = false
-    //       this.$message.error("支付错误")
-    //     } else {
-    //       this.timer = setInterval(() => {
-    //         this.queryPayStatus(this.orderId)
-    //       }, 3000);
-    //     }
-    //   })
-    // },
-
-    // queryPayStatus(orderId) {
-    //   weixinApi.queryPayStatus(orderId).then(response => {
-    //     debugger
-    //     if (response.message == '支付中') {
-    //       return
-    //     }
-    //     clearInterval(this.timer);
-    //     window.location.reload()
-    //   })
-    // },
 
     closeDialog() {
       debugger;

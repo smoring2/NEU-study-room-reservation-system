@@ -38,11 +38,11 @@
                 name:"required"
             },
             messages:{
-                name:"必须输入"
+                name:"required"
             },
             submitHandler: function(form) {
                 opt.load();
-                $(form).find(":submit").attr("disabled", true).text("正在提交...");
+                $(form).find(":submit").attr("disabled", true).text("Submitting...");
                 form.submit();
             }
         });

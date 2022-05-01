@@ -62,7 +62,7 @@
             },
             submitHandler: function(form) {
                 opt.load();
-                $(form).find(":submit").attr("disabled", true).text("正在提交...");
+                $(form).find(":submit").attr("disabled", true).text("Submitting...");
                 form.submit();
             }
         });
