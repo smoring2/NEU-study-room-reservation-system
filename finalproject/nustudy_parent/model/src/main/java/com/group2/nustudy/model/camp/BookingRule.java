@@ -13,10 +13,10 @@ import java.util.List;
 @Document("BookingRule")
 public class BookingRule {
 	
-	@ApiModelProperty(value = "预约周期")
+	@ApiModelProperty(value = "booking cycle")
 	private Integer cycle;
 
-	@ApiModelProperty(value = "放号时间")
+	@ApiModelProperty(value = "releaseTime")
 	private String releaseTime;
 
 	public Integer getCycle() {
@@ -67,16 +67,16 @@ public class BookingRule {
 		this.rule = rule;
 	}
 
-	@ApiModelProperty(value = "停挂时间")
+	@ApiModelProperty(value = "stopTime")
 	private String stopTime;
 
-	@ApiModelProperty(value = "退号截止天数（如：就诊前一天为-1，当天为0）")
+	@ApiModelProperty(value = "quitDay")
 	private Integer quitDay;
 
-	@ApiModelProperty(value = "退号时间")
+	@ApiModelProperty(value = "quitTime")
 	private String quitTime;
 
-	@ApiModelProperty(value = "预约规则")
+	@ApiModelProperty(value = "rule")
 	private List<String> rule;
 
 	/**

@@ -7,20 +7,15 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * <p>
- * 角色查询实体
- * </p>
- *
- * @author qy
- * @since 2019-11-08
+ * RoleQueryVo
  */
 @Data
-@ApiModel(description = "角色查询实体")
+@ApiModel(description = "RoleQueryVo")
 public class RoleQueryVo implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
-	@ApiModelProperty(value = "角色名称")
+	@ApiModelProperty(value = "role Name")
 	private String roleName;
 
 }

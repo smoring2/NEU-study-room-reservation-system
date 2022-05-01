@@ -1,8 +1,8 @@
 package com.group2.nustudy.enums;
 
 public enum RefundStatusEnum {
-    UNREFUND(1,"退款中"),
-    REFUND(2,"已退款");
+    UNREFUND(1,"Canceling"),
+    REFUND(2,"Canceled");
 
     private Integer status ;
 

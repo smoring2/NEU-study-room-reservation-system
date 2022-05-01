@@ -8,20 +8,16 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
- * <p>
- * UserLoginRecord
- * </p>
- *
- * @author qy
+ * user login record
  */
 @Data
-@ApiModel(description = "用户登录日志")
+@ApiModel(description = "user login record")
 @TableName("user_login_record")
 public class UserLoginRecord extends BaseEntity {
 	
 	private static final long serialVersionUID = 1L;
 	
-	@ApiModelProperty(value = "用户id")
+	@ApiModelProperty(value = "user Id")
 	@TableField("user_id")
 	private Long userId;
 

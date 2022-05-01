@@ -7,16 +7,19 @@ import lombok.Data;
 
 import java.util.Map;
 
+/**
+ * for further plan
+ */
 @Data
-@ApiModel(description = "短信实体")
+@ApiModel(description = "message")
 public class MsmVo {
 
     @ApiModelProperty(value = "phone")
     private String phone;
 
-    @ApiModelProperty(value = "短信模板code")
+    @ApiModelProperty(value = "templateCode")
     private String templateCode;
 
-    @ApiModelProperty(value = "短信模板参数")
+    @ApiModelProperty(value = "param")
     private Map<String,Object> param;
 }

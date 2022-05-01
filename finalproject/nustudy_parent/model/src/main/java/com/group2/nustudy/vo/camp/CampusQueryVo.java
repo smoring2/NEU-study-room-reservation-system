@@ -7,30 +7,30 @@ import lombok.Data;
 import java.io.Serializable;
 
 @Data
-@ApiModel(description = "Hospital")
+@ApiModel(description = "Campus")
 public class CampusQueryVo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	@ApiModelProperty(value = "医院编号")
+	@ApiModelProperty(value = "campus code")
 	private String campuscode;
 
-	@ApiModelProperty(value = "医院名称")
+	@ApiModelProperty(value = "campus name")
 	private String campusname;
 
-	@ApiModelProperty(value = "医院类型")
+	@ApiModelProperty(value = "campus type")
 	private String campustype;
 
-	@ApiModelProperty(value = "省code")
+	@ApiModelProperty(value = "state Code")
 	private String stateCode;
 
-	@ApiModelProperty(value = "市code")
+	@ApiModelProperty(value = "city Code")
 	private String cityCode;
 
-	@ApiModelProperty(value = "区code")
+	@ApiModelProperty(value = "district Code")
 	private String districtCode;
 
-	@ApiModelProperty(value = "状态")
+	@ApiModelProperty(value = "status")
 	private Integer status;
 }
 

@@ -10,37 +10,32 @@ import lombok.Data;
 import java.util.List;
 
 /**
- * <p>
- * 权限
- * </p>
- *
- * @author qy
- * @since 2019-11-08
+ *  Permission
  */
 @Data
-@ApiModel(description = "权限")
+@ApiModel(description = "Permission")
 @TableName("acl_permission")
 public class Permission extends BaseEntity {
 	
 	private static final long serialVersionUID = 1L;
 	
-	@ApiModelProperty(value = "所属上级")
+	@ApiModelProperty(value = "parent id")
 	@TableField("pid")
 	private Long pid;
 
-	@ApiModelProperty(value = "名称")
+	@ApiModelProperty(value = "name")
 	@TableField("name")
 	private String name;
 
-	@ApiModelProperty(value = "类型(1:菜单,2:按钮)")
+	@ApiModelProperty(value = "type(1:menu, 2: button)")
 	@TableField("type")
 	private Integer type;
 
-	@ApiModelProperty(value = "权限值")
+	@ApiModelProperty(value = "permission value")
 	@TableField("permission_value")
 	private String permissionValue;
 
-	@ApiModelProperty(value = "路径")
+	@ApiModelProperty(value = "path")
 	@TableField("path")
 	private String path;
 
@@ -48,23 +43,23 @@ public class Permission extends BaseEntity {
 	@TableField("component")
 	private String component;
 
-	@ApiModelProperty(value = "图标")
+	@ApiModelProperty(value = "icon")
 	@TableField("icon")
 	private String icon;
 
-	@ApiModelProperty(value = "状态(0:禁止,1:正常)")
+	@ApiModelProperty(value = "status(0:forbidden,1:normal)")
 	@TableField("status")
 	private Integer status;
 
-	@ApiModelProperty(value = "层级")
+	@ApiModelProperty(value = "level")
 	@TableField(exist = false)
 	private Integer level;
 
-	@ApiModelProperty(value = "下级")
+	@ApiModelProperty(value = "children")
 	@TableField(exist = false)
 	private List<Permission> children;
 
-	@ApiModelProperty(value = "是否选中")
+	@ApiModelProperty(value = "is Selected")
 	@TableField(exist = false)
 	private boolean isSelect;
 

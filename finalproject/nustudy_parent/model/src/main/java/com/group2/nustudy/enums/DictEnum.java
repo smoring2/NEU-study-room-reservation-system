@@ -3,8 +3,8 @@ package com.group2.nustudy.enums;
 public enum DictEnum {
 
 
-    CAMPUSTYPE("Campustype", "医院等级"),
-    CERTIFICATES_TYPE("CertificatesType", "证件类型"),
+    CAMPUSTYPE("Campustype", "campus  Type"),
+    CERTIFICATES_TYPE("CertificatesType", "Certificates Type"),
     ;
 
     private String dictCode;

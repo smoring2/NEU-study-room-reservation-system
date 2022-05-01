@@ -1,9 +1,8 @@
 package com.group2.nustudy.enums;
 
 public enum PaymentStatusEnum {
-    UNPAID(1,"支付中"),
-    PAID(2,"已支付");
-    //REFUND(-1,"已退款");
+    UNPAID(1,"PAYING"),
+    PAID(2,"PAID");
 
     private Integer status ;
 

@@ -8,33 +8,28 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
- * <p>
- * 首页Banner实体
- * </p>
- *
- * @author qy
- * @since 2019-11-08
+ * Banner of main page
  */
 @Data
-@ApiModel(description = "首页Banner实体")
+@ApiModel(description = "Banner")
 @TableName("banner")
 public class Banner extends BaseEntity {
 	
 	private static final long serialVersionUID = 1L;
 	
-	@ApiModelProperty(value = "标题")
+	@ApiModelProperty(value = "title")
 	@TableField("title")
 	private String title;
 
-	@ApiModelProperty(value = "图片地址")
+	@ApiModelProperty(value = "image Url")
 	@TableField("image_url")
 	private String imageUrl;
 
-	@ApiModelProperty(value = "链接地址")
+	@ApiModelProperty(value = "link Url")
 	@TableField("link_url")
 	private String linkUrl;
 
-	@ApiModelProperty(value = "排序")
+	@ApiModelProperty(value = "sort")
 	@TableField("sort")
 	private Integer sort;
 

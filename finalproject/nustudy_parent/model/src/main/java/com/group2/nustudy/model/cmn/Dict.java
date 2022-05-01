@@ -11,7 +11,9 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-// DEBUG TRANSLATE
+/**
+ * Dict
+ */
 @Data
 @ApiModel(description = "dict data")
 @TableName("dict")

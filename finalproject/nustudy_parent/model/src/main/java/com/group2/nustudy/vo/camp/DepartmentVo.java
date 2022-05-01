@@ -33,13 +33,13 @@ public class DepartmentVo {
 		this.children = children;
 	}
 
-	@ApiModelProperty(value = "科室编号")
+	@ApiModelProperty(value = "department code")
 	private String depcode;
 
-	@ApiModelProperty(value = "科室名称")
+	@ApiModelProperty(value = "department name")
 	private String depname;
 
-	@ApiModelProperty(value = "下级节点")
+	@ApiModelProperty(value = "children")
 	private List<DepartmentVo> children;
 
 }

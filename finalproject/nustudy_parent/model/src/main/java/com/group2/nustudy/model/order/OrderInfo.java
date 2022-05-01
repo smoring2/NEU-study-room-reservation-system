@@ -11,6 +11,9 @@ import lombok.Data;
 import java.math.BigDecimal;
 import java.util.Date;
 
+/**
+ * Order
+ */
 @Data
 @ApiModel(description = "Order")
 @TableName("order_info")
@@ -22,40 +25,40 @@ public class OrderInfo extends BaseEntity {
 	@TableField("user_id")
 	private Long userId;
 
-	@ApiModelProperty(value = "订单交易号")
+	@ApiModelProperty(value = "trade id")
 	@TableField("out_trade_no")
 	private String outTradeNo;
 
-	@ApiModelProperty(value = "医院编号")
+	@ApiModelProperty(value = "campus code")
 	@TableField("campuscode")
 	private String campuscode;
 
-	@ApiModelProperty(value = "医院名称")
+	@ApiModelProperty(value = "campus name")
 	@TableField("campusname")
 	private String campusname;
 
-	@ApiModelProperty(value = "科室编号")
+	@ApiModelProperty(value = "department code")
 	@TableField("depcode")
 	private String depcode;
 
-	@ApiModelProperty(value = "科室名称")
+	@ApiModelProperty(value = "department name")
 	@TableField("depname")
 	private String depname;
 
-	@ApiModelProperty(value = "排班id")
+	@ApiModelProperty(value = "schedule Id")
 	@TableField("schedule_id")
 	private String scheduleId;
 
-	@ApiModelProperty(value = "医生职称")
+	@ApiModelProperty(value = "title")
 	@TableField("title")
 	private String title;
 
-	@ApiModelProperty(value = "安排日期")
+	@ApiModelProperty(value = "reserveDate")
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	@TableField("reserve_date")
 	private Date reserveDate;
 
-	@ApiModelProperty(value = "安排时间（0：上午 1：下午）")
+	@ApiModelProperty(value = "reserveTime(0: morning, 1: afternoon")
 	@TableField("reserve_time")
 	private Integer reserveTime;
 

@@ -50,7 +50,6 @@ public class Campus extends BaseMongoEntity {
 	@ApiModelProperty(value = "status 0:offline 1:online")
 	private Integer status;
 
-	//预约规则
 	@ApiModelProperty(value = "bookingRule")
 	private BookingRule bookingRule;
 

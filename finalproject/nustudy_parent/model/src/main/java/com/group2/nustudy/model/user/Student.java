@@ -25,7 +25,7 @@ public class Student extends BaseEntity {
 	@TableField("name")
 	private String name;
 
-	@ApiModelProperty(value = "证件类型")
+	@ApiModelProperty(value = "certificates Type")
 	@TableField("certificates_type")
 	private String certificatesType;
 
@@ -37,19 +37,19 @@ public class Student extends BaseEntity {
 	@TableField("email")
 	private String email;
 
-	@ApiModelProperty(value = "省code")
+	@ApiModelProperty(value = "state Code")
 	@TableField("state_code")
 	private String stateCode;
 
-	@ApiModelProperty(value = "市code")
+	@ApiModelProperty(value = "city Code")
 	@TableField("city_code")
 	private String cityCode;
 
-	@ApiModelProperty(value = "区code")
+	@ApiModelProperty(value = "district Code")
 	@TableField("district_code")
 	private String districtCode;
 
-	@ApiModelProperty(value = "详情地址")
+	@ApiModelProperty(value = "address")
 	@TableField("address")
 	private String address;
 
@@ -88,28 +88,5 @@ public class Student extends BaseEntity {
 	public String getAddress() {
 		return address;
 	}
-//	@ApiModelProperty(value = "联系人姓名")
-//	@TableField("contacts_name")
-//	private String contactsName;
-//
-//	@ApiModelProperty(value = "联系人证件类型")
-//	@TableField("contacts_certificates_type")
-//	private String contactsCertificatesType;
-
-//	@ApiModelProperty(value = "联系人证件号")
-//	@TableField("contacts_certificates_no")
-//	private String contactsCertificatesNo;
-//
-//	@ApiModelProperty(value = "联系人手机")
-//	@TableField("contacts_phone")
-//	private String contactsPhone;
-
-//	@ApiModelProperty(value = "就诊卡")
-//	@TableField("card_no")
-//	private String cardNo;
-//
-//	@ApiModelProperty(value = "状态（0：默认 1：已认证）")
-//	@TableField("status")
-//	private String status;
 }
 

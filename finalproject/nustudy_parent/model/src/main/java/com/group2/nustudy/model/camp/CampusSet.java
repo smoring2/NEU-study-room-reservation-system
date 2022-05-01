@@ -33,31 +33,31 @@ public class CampusSet extends BaseEntity {
 
 	private static final long serialVersionUID = 1L;
 
-	@ApiModelProperty(value = "医院名称")
+	@ApiModelProperty(value = "campus name")
 	@TableField("campusname")
 	private String campusname;
 
-	@ApiModelProperty(value = "医院编号")
+	@ApiModelProperty(value = "campus code")
 	@TableField("campuscode")
 	private String campuscode;
 
-	@ApiModelProperty(value = "api基础路径")
+	@ApiModelProperty(value = "api_url")
 	@TableField("api_url")
 	private String apiUrl;
 
-	@ApiModelProperty(value = "签名秘钥")
+	@ApiModelProperty(value = "sign Key")
 	@TableField("sign_key")
 	private String signKey;
 
-	@ApiModelProperty(value = "联系人姓名")
+	@ApiModelProperty(value = "contacts Name")
 	@TableField("contacts_name")
 	private String contactsName;
 
-	@ApiModelProperty(value = "联系人手机")
+	@ApiModelProperty(value = "contacts Phone")
 	@TableField("contacts_phone")
 	private String contactsPhone;
 
-	@ApiModelProperty(value = "状态")
+	@ApiModelProperty(value = "status")
 	@TableField("status")
 	private Integer status;
 

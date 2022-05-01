@@ -8,25 +8,20 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
- * <p>
- * 角色权限
- * </p>
- *
- * @author qy
- * @since 2019-11-08
+ * role permission
  */
 @Data
-@ApiModel(description = "角色权限")
+@ApiModel(description = "role permission")
 @TableName("acl_role_permission")
 public class RolePermission extends BaseEntity {
 	
 	private static final long serialVersionUID = 1L;
 	
-	@ApiModelProperty(value = "roleid")
+	@ApiModelProperty(value = "role id")
 	@TableField("role_id")
 	private Long roleId;
 
-	@ApiModelProperty(value = "permissionId")
+	@ApiModelProperty(value = "permission Id")
 	@TableField("permission_id")
 	private Long permissionId;
 

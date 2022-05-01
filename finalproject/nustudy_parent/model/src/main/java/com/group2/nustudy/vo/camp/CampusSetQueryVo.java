@@ -6,10 +6,10 @@ import lombok.Data;
 @Data
 public class CampusSetQueryVo {
 
-    @ApiModelProperty(value = "医院名称")
+    @ApiModelProperty(value = "campus name")
     private String campusname;
 
-    @ApiModelProperty(value = "医院编号")
+    @ApiModelProperty(value = "campus code")
     private String campuscode;
 
     public String getCampusname() {

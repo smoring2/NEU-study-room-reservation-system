@@ -5,18 +5,15 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 @Data
-@ApiModel(description="登录对象")
+@ApiModel(description="Login Vo")
 public class LoginVo {
 
-//    @ApiModelProperty(value = "openid")
-//    private String openid;
-
-    @ApiModelProperty(value = "手机号")
+    @ApiModelProperty(value = "email")
     private String email;
 
-    @ApiModelProperty(value = "密码")
+    @ApiModelProperty(value = "code")
     private String code;
 
-    @ApiModelProperty(value = "IP")
+    @ApiModelProperty(value = "ip")
     private String ip;
 }

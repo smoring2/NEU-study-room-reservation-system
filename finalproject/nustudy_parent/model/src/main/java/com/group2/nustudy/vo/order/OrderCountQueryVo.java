@@ -8,14 +8,16 @@ import lombok.Data;
 @ApiModel(description = "OrderCountQueryVo")
 public class OrderCountQueryVo {
 	
-	@ApiModelProperty(value = "医院编号")
+	@ApiModelProperty(value = "campus code")
 	private String campuscode;
 
-	@ApiModelProperty(value = "医院名称")
+	@ApiModelProperty(value = "campus name")
 	private String campusname;
 
-	@ApiModelProperty(value = "安排日期")
+	@ApiModelProperty(value = "reserveDateBegin")
 	private String reserveDateBegin;
+
+	@ApiModelProperty(value = "reserveDateEnd")
 	private String reserveDateEnd;
 
 }

@@ -2,10 +2,10 @@ package com.group2.nustudy.enums;
 
 public enum AuthStatusEnum {
 
-    NO_AUTH(0, "未认证"),
-    AUTH_RUN(1, "认证中"),
-    AUTH_SUCCESS(2, "认证成功"),
-    AUTH_FAIL(-1, "认证失败"),
+    NO_AUTH(0, "Not Authorized"),
+    AUTH_RUN(1, "Authorizing"),
+    AUTH_SUCCESS(2, "Authorize Succeed"),
+    AUTH_FAIL(-1, "Authorize Fail"),
     ;
 
     private Integer status;

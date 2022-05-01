@@ -1,8 +1,8 @@
 package com.group2.nustudy.enums;
 
 public enum PaymentTypeEnum {
-    ALIPAY(1,"支付宝"),
-    WEIXIN(2,"微信" );
+    ALIPAY(1,"Paypal"),
+    WEIXIN(2,"Credit Card" );
 
     public Integer getStatus() {
         return status;
