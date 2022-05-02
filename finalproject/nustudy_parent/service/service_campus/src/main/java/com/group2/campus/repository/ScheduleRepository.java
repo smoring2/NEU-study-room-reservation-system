@@ -8,10 +8,10 @@ import java.util.List;
 
 @Repository
 public interface ScheduleRepository extends MongoRepository<Schedule,String> {
-    //根据医院编号 和 排班编号查询
+    //Query by campus number and student number
     Schedule getScheduleByCampuscodeAndHosScheduleId(String campuscode, String hosScheduleId);
 
-    //根据医院编号 、科室编号和工作日期，查询排班详细信息
+    //According to the campus number, department number and working date, check the details of the schedule
     List<Schedule> findScheduleByCampuscodeAndDepcodeAndWorkDate(String campuscode, String depcode, Date toDate);
     Schedule findScheduleByHosScheduleId(String scheduleId);
 }

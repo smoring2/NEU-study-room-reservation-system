@@ -52,7 +52,7 @@ class CampusSetController {
         }
     }
 
-    //3 条件查询带分页
+    //3 Conditional query
     @PostMapping("findPageCampusSet/{current}/{limit}")
     public Result findPageCampusSet(@PathVariable long current,
                                     @PathVariable long limit,
@@ -62,9 +62,9 @@ class CampusSetController {
 
 
 
-        //创建page对象，传递当前页，每页记录数
+        //Create a page object, pass the current page, the number of records per page
         Page<CampusSet> page = new Page<>(current,limit);
-        //构建条件
+        //build condition
         QueryWrapper<CampusSet> wrapper = new QueryWrapper<>();
         String campusname = campusSetQueryVo.getCampusname();//医院名称
         String campuscode = campusSetQueryVo.getCampuscode();//医院编号
@@ -75,22 +75,22 @@ class CampusSetController {
             wrapper.eq("campuscode", campusSetQueryVo.getCampuscode());
         }
 
-        //调用方法实现分页查询
+        //Call method to implement paging query
         IPage<CampusSet> pageCampusSet = campusSetService.page(page, wrapper);
 
-        //返回结果
+        //result
         return Result.ok(pageCampusSet);
     }
 
-    //4 添加医院设置
+    //4 Add campus settings
     @PostMapping("saveCampusSet")
     public Result saveCampusSet(@RequestBody CampusSet campusSet) {
-        //设置状态 1 使用 0 不能使用
+        //set status 1:use 0:not-used
         campusSet.setStatus(1);
-        //签名秘钥
+        //signature key
         Random random = new Random();
         campusSet.setSignKey(MD5.encrypt(System.currentTimeMillis()+""+random.nextInt(1000)));
-        //调用service
+        //use service
         boolean save = campusSetService.save(campusSet);
         if(save) {
             return Result.ok();
@@ -99,21 +99,21 @@ class CampusSetController {
         }
     }
 
-    //5 根据id获取医院设置
+    //5 Get campus settings by id
     @GetMapping("getCampusSet/{id}")
     public Result getCampusSet(@PathVariable Long id) {
 //        try {
-//            //模拟异常
+//            //Mock exception
 //            int a = 1/0;
 //        }catch (Exception e) {
-//            throw new NustudyException("失败",201);
+//            throw new NustudyException("fail",201);
 //        }
 
         CampusSet campusSet = campusSetService.getById(id);
         return Result.ok(campusSet);
     }
 
-    //6 修改医院设置
+    //6 Modify campus settings
     @PostMapping("updateCampusSet")
     public Result updateCampusSet(@RequestBody CampusSet campusSet) {
         boolean flag = campusSetService.updateById(campusSet);
@@ -124,34 +124,34 @@ class CampusSetController {
         }
     }
 
-    //7 批量删除医院设置
+    //7 Batch delete campus settings
     @DeleteMapping("batchRemove")
     public Result batchRemoveCampusSet(@RequestBody List<Long> idList) {
         campusSetService.removeByIds(idList);
         return Result.ok();
     }
 
-    //8 医院设置锁定和解锁
+    //8 Hospital Settings Lock and Unlock
     @PutMapping("lockCampusSet/{id}/{status}")
     public Result lockCampusSet(@PathVariable Long id,
                                 @PathVariable Integer status) {
-        //根据id查询医院设置信息
+        //Query campus setting information based on id
         CampusSet campusSet = campusSetService.getById(id);
-        //设置状态
+        //set state
         campusSet.setStatus(status);
-        //调用方法
+        //use function
         campusSetService.updateById(campusSet);
         return Result.ok();
     }
 
 
-    //9 发送签名秘钥
+    //9 Send signing key
     @PutMapping("sendKey/{id}")
     public Result lockCampusSet(@PathVariable Long id) {
         CampusSet campusSet = campusSetService.getById(id);
         String signKey = campusSet.getSignKey();
         String campuscode = campusSet.getCampuscode();
-        //TODO 发送短信
+        //TODO text
         return Result.ok();
     }
 }

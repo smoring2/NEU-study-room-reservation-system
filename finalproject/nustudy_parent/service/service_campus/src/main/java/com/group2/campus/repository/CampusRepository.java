@@ -8,10 +8,10 @@ import java.util.List;
 
 @Repository
 public interface CampusRepository extends MongoRepository<Campus,String> {
-    //判断是否存在数据
+    //Determine if there is data
     Campus getCampusByCampuscode(String campuscode);
 
-    //根据医院名称查询
+    //Search by hospital name
     List<Campus> findCampusByCampusnameLike(String campusName);
 }
 
