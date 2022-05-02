@@ -18,7 +18,7 @@ public final class HttpUtil {
 	static final int READ_TIMEOUT = 30000;// ms
 
 	/**
-	 * post 方式发送http请求.
+	 * post way to send http request.
 	 * 
 	 * @param strUrl
 	 * @param reqData
@@ -29,7 +29,7 @@ public final class HttpUtil {
 	}
 
 	/**
-	 * get方式发送http请求.
+	 * get way to send http request.
 	 * 
 	 * @param strUrl
 	 * @return

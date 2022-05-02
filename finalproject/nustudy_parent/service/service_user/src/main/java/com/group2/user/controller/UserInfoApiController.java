@@ -19,7 +19,7 @@ public class UserInfoApiController {
     @Autowired
     private UserInfoService userInfoService;
 
-    //用户手机号登录接口
+    //User mobile phone number login interface
     @PostMapping("login")
     public Result login(@RequestBody LoginVo loginVo) {
         System.out.println(loginVo);
@@ -27,15 +27,15 @@ public class UserInfoApiController {
         return Result.ok(info);
     }
 
-    //用户认证接口
+    //User Authentication Interface
 //    @PostMapping("auth/userAuth")
 //    public Result userAuth(@RequestBody UserAuthVo userAuthVo, HttpServletRequest request) {
-//        //传递两个参数，第一个参数用户id，第二个参数认证数据vo对象
+//        //Pass two parameters, the first parameter user id, the second parameter authentication data vo object
 //        userInfoService.userAuth(AuthContextHolder.getUserId(request),userAuthVo);
 //        return Result.ok();
 //    }
 
-    //获取用户id信息接口
+    //Get user id information interface
 //    @GetMapping("auth/getUserInfo")
 //    public Result getUserInfo(HttpServletRequest request) {
 //        Long userId = AuthContextHolder.getUserId(request);

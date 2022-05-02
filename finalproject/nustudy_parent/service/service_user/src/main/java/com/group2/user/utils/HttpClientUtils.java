@@ -80,17 +80,17 @@
 //    }
 //
 //    /**
-//     * 发送一个 Post 请求, 使用指定的字符集编码.
+//     * Send a Post request, using the specified charset encoding.
 //     *
 //     * @param url
 //     * @param body RequestBody
-//     * @param mimeType 例如 application/xml "application/x-www-form-urlencoded" a=1&b=2&c=3
-//     * @param charset 编码
-//     * @param connTimeout 建立链接超时时间,毫秒.
-//     * @param readTimeout 响应超时时间,毫秒.
-//     * @return ResponseBody, 使用指定的字符集编码.
-//     * @throws ConnectTimeoutException 建立链接超时异常
-//     * @throws SocketTimeoutException  响应超时
+//     * @param mimeType eg: application/xml "application/x-www-form-urlencoded" a=1&b=2&c=3
+//     * @param charset
+//     * @param connTimeout
+//     * @param readTimeout
+//     * @return ResponseBody
+//     * @throws ConnectTimeoutException
+//     * @throws SocketTimeoutException
 //     * @throws Exception
 //     */
 //    public static String post(String url, String body, String mimeType,String charset, Integer connTimeout, Integer readTimeout)
@@ -103,7 +103,7 @@
 //                HttpEntity entity = new StringEntity(body, ContentType.create(mimeType, charset));
 //                post.setEntity(entity);
 //            }
-//            // 设置参数
+//            // set parameter
 //            RequestConfig.Builder customReqConf = RequestConfig.custom();
 //            if (connTimeout != null) {
 //                customReqConf.setConnectTimeout(connTimeout);
@@ -115,11 +115,11 @@
 //
 //            HttpResponse res;
 //            if (url.startsWith("https")) {
-//                // 执行 Https 请求.
+//                // Execute Https request.
 //                client = createSSLInsecureClient();
 //                res = client.execute(post);
 //            } else {
-//                // 执行 Http 请求.
+//                // Execute Https request.
 //                client = HttpClientUtils.client;
 //                res = client.execute(post);
 //            }
@@ -135,7 +135,7 @@
 //
 //
 //    /**
-//     * 提交form表单
+//     * submit form
 //     *
 //     * @param url
 //     * @param params
@@ -167,7 +167,7 @@
 //                    post.addHeader(entry.getKey(), entry.getValue());
 //                }
 //            }
-//            // 设置参数
+//            // set parameter
 //            Builder customReqConf = RequestConfig.custom();
 //            if (connTimeout != null) {
 //                customReqConf.setConnectTimeout(connTimeout);
@@ -178,11 +178,11 @@
 //            post.setConfig(customReqConf.build());
 //            HttpResponse res = null;
 //            if (url.startsWith("https")) {
-//                // 执行 Https 请求.
+//                //submit form.
 //                client = createSSLInsecureClient();
 //                res = client.execute(post);
 //            } else {
-//                // 执行 Http 请求.
+//                // Execute HTTP request.
 //                client = HttpClientUtils.client;
 //                res = client.execute(post);
 //            }
@@ -197,7 +197,7 @@
 //    }
 //
 //    /**
-//     * 发送一个 GET 请求
+//     * sent GET request
 //     */
 //    public static String get(String url, String charset, Integer connTimeout,Integer readTimeout)
 //            throws ConnectTimeoutException,SocketTimeoutException, Exception {
@@ -206,7 +206,7 @@
 //        HttpGet get = new HttpGet(url);
 //        String result = "";
 //        try {
-//            // 设置参数
+//            // set parameter
 //            Builder customReqConf = RequestConfig.custom();
 //            if (connTimeout != null) {
 //                customReqConf.setConnectTimeout(connTimeout);
@@ -219,11 +219,11 @@
 //            HttpResponse res = null;
 //
 //            if (url.startsWith("https")) {
-//                // 执行 Https 请求.
+//                // Execute HTTP request.
 //                client = createSSLInsecureClient();
 //                res = client.execute(get);
 //            } else {
-//                // 执行 Http 请求.
+//                // Execute HTTP request.
 //                client = HttpClientUtils.client;
 //                res = client.execute(get);
 //            }
@@ -239,7 +239,7 @@
 //    }
 //
 //    /**
-//     * 从 response 里获取 charset
+//     * from response get charset
 //     */
 //    @SuppressWarnings("unused")
 //    private static String getCharsetFromResponse(HttpResponse ressponse) {
@@ -254,7 +254,7 @@
 //    }
 //
 //    /**
-//     * 创建 SSL连接
+//     * create SSL connection
 //     * @return
 //     * @throws GeneralSecurityException
 //     */

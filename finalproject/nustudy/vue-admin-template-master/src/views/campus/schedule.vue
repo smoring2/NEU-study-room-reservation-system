@@ -15,7 +15,7 @@
       </el-aside>
       <el-main style="padding: 0 0 0 20px;">
         <el-row style="width: 100%">
-          <!-- 排班日期 分页 -->
+          <!-- Schedule date pagination  -->
           <el-tag
             v-for="(item, index) in bookingScheduleList"
             :key="item.id"
@@ -27,7 +27,7 @@
             {{ item.availableNumber }} / {{ item.reservedNumber }}
           </el-tag>
 
-          <!-- 分页 -->
+          <!-- pagination  -->
           <el-pagination
             :current-page="page"
             :total="total"
@@ -40,7 +40,7 @@
         </el-row>
 
         <el-row style="margin-top: 20px;">
-          <!-- 排班日期对应的排班医生 -->
+          <!-- reservation room corresponding to the date -->
           <el-table
             v-loading="listLoading"
             :data="scheduleList"
@@ -100,11 +100,11 @@ export default {
       bookingScheduleList: [],
       baseMap: {},
 
-      page: 1, // 当前页
-      limit: 10, // 每页个数
-      total: 0, // 总页码
+      page: 1, // current page
+      limit: 10, // count per page
+      total: 0, // total pages
 
-      scheduleList: [] // 排班详情
+      scheduleList: [] // schedule like
     };
   },
   created() {
@@ -113,7 +113,7 @@ export default {
     this.fetchData();
   },
   methods: {
-    // 查询排班详情
+    // Call to query schedule details
     getDetailSchedule() {
       campusApi
         .getScheduleDetail(this.campuscode, this.depcode, this.workDate)
@@ -125,7 +125,7 @@ export default {
     fetchData() {
       campusApi.getDeptByCampusCode(this.campuscode).then(response => {
         this.data = response.data;
-        // 默认选中第一个
+        // The first one is selected by default
         if (this.data.length > 0) {
           this.depcode = this.data[0].children[0].depcode;
           this.depname = this.data[0].children[0].depname;
@@ -148,17 +148,17 @@ export default {
           this.total = response.data.total;
           this.scheduleList = response.data.scheduleList;
           this.baseMap = response.data.baseMap;
-          // 分页后workDate=null，默认选中第一个
+          // pagination 后workDate=null，The first one is selected by default
           if (this.workDate == null) {
             this.workDate = this.bookingScheduleList[0].workDate;
           }
-          // 调用查询排班详情
+          // Call to query schedule details
           this.getDetailSchedule();
         });
     },
 
     handleNodeClick(data) {
-      // 科室大类直接返回
+      // Department categories return directly
       if (data.children != null) return;
       this.depcode = data.depcode;
       this.depname = data.depname;
@@ -168,7 +168,7 @@ export default {
     selectDate(workDate, index) {
       this.workDate = workDate;
       this.activeIndex = index;
-      // 调用查询排班详情
+      // Call to query schedule details
       this.getDetailSchedule();
     },
 

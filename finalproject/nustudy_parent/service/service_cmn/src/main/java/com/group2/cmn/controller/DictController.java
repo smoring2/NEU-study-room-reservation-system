@@ -43,7 +43,7 @@ public class DictController {
         return Result.ok();
     }
 
-    //根据数据id查询子数据列表
+    //Query sub-data list based on data id
     @ApiOperation(value = "Lookup child data list based on id")
     @GetMapping("findChildData/{id}")
     public Result findChildData(@PathVariable Long id) {

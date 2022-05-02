@@ -11,24 +11,24 @@ import com.group2.nustudy.vo.user.UserInfoQueryVo;
 import java.util.Map;
 
 public interface UserInfoService {// extends IService<UserInfo> {
-    //用户手机号登录接口
+    //User mobile phone number login interface
     Map<String, Object> loginUser(LoginVo loginVo);
 
-    //根据openid判断
+    //from openid to judge
 //    UserInfo selectWxInfoOpenId(String openid);
 
-//    //用户认证
+//    //user identification
 //    void userAuth(Long userId, UserAuthVo userAuthVo);
 //
-//    //用户列表（条件查询带分页）
+//    //user list）
 //    IPage<UserInfo> selectPage(Page<UserInfo> pageParam, UserInfoQueryVo userInfoQueryVo);
 //
-//    //用户锁定
+//    //user lockout
 //    void lock(Long userId, Integer status);
 
-    //用户详情
+    //user detail
 //    Map<String, Object> show(Long userId);
 //
-//    //认证审批
+//    //varification
 //    void approval(Long userId, Integer authStatus);
 }

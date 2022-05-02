@@ -22,7 +22,7 @@
 //    @Autowired
 //    private StudentService studentService;
 //
-//    //用户列表（条件查询带分页）
+//    //User list (conditional query with pagination)
 //    @GetMapping("{page}/{limit}")
 //    public Result list(@PathVariable Long page,
 //                       @PathVariable Long limit,
@@ -33,21 +33,21 @@
 //        return Result.ok(pageModel);
 //    }
 //
-//    //用户锁定
+//    //User lockout
 //    @GetMapping("lock/{userId}/{status}")
 //    public Result lock(@PathVariable Long userId,@PathVariable Integer status) {
 //        studentService.lock(userId,status);
 //        return Result.ok();
 //    }
 //
-//    //用户详情
+//    //User details
 //    @GetMapping("show/{userId}")
 //    public Result show(@PathVariable Long userId) {
 //        Map<String,Object> map = userInfoService.show(userId);
 //        return Result.ok(map);
 //    }
 //
-//    //认证审批
+//    //Certification approval
 //    @GetMapping("approval/{userId}/{authStatus}")
 //    public Result approval(@PathVariable Long userId,@PathVariable Integer authStatus) {
 //        userInfoService.approval(userId,authStatus);

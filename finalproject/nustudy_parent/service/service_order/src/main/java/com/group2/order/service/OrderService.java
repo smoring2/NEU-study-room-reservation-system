@@ -13,22 +13,22 @@ import java.util.Map;
 
 public interface OrderService extends IService<OrderInfo> {
 
-    //生成挂号订单
+    //Generate registered orders
     Long saveOrder(String scheduleId, Long studentId);
 
-    //根据订单id查询订单详情
+    //Query order details based on order id
     OrderInfo getOrder(String orderId);
 //
-//    //订单列表（条件查询带分页）
+//    //Order list (conditional query with pagination)
 //    IPage<OrderInfo> selectPage(Page<OrderInfo> pageParam, OrderQueryVo orderQueryVo);
 //
-//    //取消预约
+//    //cancel appointment
 //    Boolean cancelOrder(Long orderId);
 //
-//    //就诊通知
+//    //Consultation notice
 //    void patientTips();
 //
-//    //预约统计
+//    //Appointment Statistics
 //    Map<String,Object> getCountMap(OrderCountQueryVo orderCountQueryVo );
 
 }

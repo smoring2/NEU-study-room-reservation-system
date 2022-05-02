@@ -45,7 +45,7 @@
       <tbody>
         <tr>
           <th width="15%">Cycle</th>
-          <td width="35%">{{ bookingRule.cycle }}天</td>
+          <td width="35%">{{ bookingRule.cycle }}day</td>
           <th width="15%">Start Time</th>
           <td width="35%">{{ bookingRule.releaseTime }}</td>
         </tr>
@@ -77,8 +77,8 @@ import campusApi from "@/api/campus";
 export default {
   data() {
     return {
-      campus: null, //医院信息
-      bookingRule: null //预约信息
+      campus: null, //hospital information
+      bookingRule: null //Reservation information
     };
   },
   created() {
@@ -88,7 +88,7 @@ export default {
   methods: {
     fetachCampusDetail(id) {
       campusApi.getCampusById(id).then(response => {
-        this.campus = response.data.campus //DEBUG 改controller里的response封装 CampusServiceImpl/getCampusById()
+        this.campus = response.data.campus //DEBUG change response of controller, CampusServiceImpl/getCampusById()
         this.bookingRule = response.data.bookingRule
       })
     },

@@ -9,7 +9,7 @@
           <el-button type="text"><i class="fa fa-plus" /> 导出</el-button>
         </a>
         <el-button type="text" @click="importData"
-          ><i class="fa fa-plus" /> 导入</el-button
+          ><i class="fa fa-plus" /> import</el-button
         >
       </div>
     </div> -->
@@ -83,7 +83,7 @@ export default {
     return {
       dialogImportVisible: false, // dialog
       listLoading: true,
-      list: [] // 数据字典列表数组
+      list: [] // array of data dictionary lists
     }
   },
   created() {
@@ -105,7 +105,7 @@ export default {
       // refresh the page
       this.getDictList(1)
     },
-    // 数据字典列表
+    // array of data dictionary lists
     getDictList(id) {
       dict.dictList(id).then(response => {
         this.list = response.data

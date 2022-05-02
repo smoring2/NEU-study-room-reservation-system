@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-//就诊人管理接口
+//Patient management interface
 @RestController
 @RequestMapping("/api/user/student")
 public class StudentApiController {
@@ -20,7 +20,7 @@ public class StudentApiController {
     @Autowired
     private StudentService studentService;
 
-    //获取就诊人列表
+    //Get a list of students
     @GetMapping("auth/findAll")
     public Result findAll(HttpServletRequest request) {
         //获取当前登录用户id
@@ -32,38 +32,38 @@ public class StudentApiController {
         return Result.ok(list);
     }
 
-    //添加就诊人
+    //Add a student
     @PostMapping("auth/save")
     public Result saveStudent(@RequestBody Student student, HttpServletRequest request) {
-        //获取当前登录用户id
+        //Get the currently logged in user id
         Long userId = AuthContextHolder.getUserId(request);
         student.setUserId(userId);
         studentService.save(student);
         return Result.ok();
     }
 
-    //根据id获取就诊人信息
+    //Get student information based on id
     @GetMapping("auth/get/{id}")
     public Result getStudent(@PathVariable Long id) {
         Student student = studentService.getStudentId(id);
         return Result.ok(student);
     }
 
-    //修改就诊人
+    //Modify student
     @PostMapping("auth/update")
     public Result updateStudent(@RequestBody Student student) {
         studentService.updateById(student);
         return Result.ok();
     }
 
-    //删除就诊人
+    //delete student
     @DeleteMapping("auth/remove/{id}")
     public Result removeStudent(@PathVariable Long id) {
         studentService.removeById(id);
         return Result.ok();
     }
 
-    //根据就诊人id获取就诊人信息
+    //Obtain student information based on student id
     @GetMapping("inner/get/{id}")
     public Student getStudentOrder(
             @ApiParam(name="id", value = "student id", required = true)
