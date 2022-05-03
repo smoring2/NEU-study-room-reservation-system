@@ -43,7 +43,7 @@ public class ApiServiceImpl implements ApiService {
     @Autowired
     private ApiService apiService;
 
-    @Value("classpath:hospital.json")
+    @Value("classpath:campus.json")
     private Resource campusResource;
 
     @Override
