@@ -1,6 +1,6 @@
 import request from "@/utils/request";
 
-//DEBUG TRANSLATE
+ // DEBUG TRANSLATE
 export default {
   dictList(id) {
     return request({
