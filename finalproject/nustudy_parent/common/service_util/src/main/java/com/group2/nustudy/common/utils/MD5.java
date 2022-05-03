@@ -27,7 +27,7 @@ public final class MD5 {
             return new String(chars);
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
-            throw new RuntimeException("MD5 fail！！+" + e);
+            throw new RuntimeException("MD5 fail!+" + e);
         }
     }
 
