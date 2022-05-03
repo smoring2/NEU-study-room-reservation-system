@@ -6,20 +6,20 @@ import java.util.Map;
 public interface CampusService {
 
     /**
-     * 预约下单
+     * Make an appointment
      * @param paramMap
      * @return
      */
     Map<String, Object> submitOrder(Map<String, Object> paramMap);
 
     /**
-     * 更新支付状态
+     * Update payment status
      * @param paramMap
      */
     void updatePayStatus(Map<String, Object> paramMap);
 
     /**
-     * 更新取消预约状态
+     * Update Cancellation Status
      * @param paramMap
      */
     void updateCancelStatus(Map<String, Object> paramMap);

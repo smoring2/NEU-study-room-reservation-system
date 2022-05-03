@@ -8,27 +8,27 @@ import java.util.List;
 import java.util.Map;
 
 public interface CampusService {
-    //上传医院接口
+    //Upload hospital interface
     void save(Map<String, Object> paramMap);
 
-    //实现根据医院编号查询
+    //Realize query according to hospital number
     Campus getByCampuscode(String campuscode);
 
-    //医院列表(条件查询分页)
+    //Hospital List (Conditional Query Pagination)
     Page<Campus> selectCampusPage(Integer page, Integer limit, CampusQueryVo campusQueryVo);
 
-    //更新医院上线状态
+    //Update hospital online status
     void updateStatus(String id, Integer status);
 
-    //医院详情信息
+    //hospital details
     Map<String, Object> getCampusById(String id);
 
-    //获取医院名称
+    //Get hospital name
     String getCampusName(String campuscode);
 
-    //根据医院名称查询
+    //Search by hospital name
     List<Campus> findByCampusName(String campusName);
 
-    //根据医院编号获取医院预约挂号详情
+    //Get hospital appointment registration details based on hospital number
     Map<String, Object> item(String campuscode);
 }

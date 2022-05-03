@@ -11,12 +11,12 @@ import java.util.Map;
 
 public class BaseController {
 
-    //提示信息
-    public final static String MESSAGE_SUCCESS = "操作成功！";
-    public final static String MESSAGE_FAILURE = "操作失败！";
+    //prompt information
+    public final static String MESSAGE_SUCCESS = "Successful operation！";
+    public final static String MESSAGE_FAILURE = "operation failed！";
 
     /**
-     * 成功提示
+     * success
      *
      * @param message
      * @param redirectAttributes
@@ -27,7 +27,7 @@ public class BaseController {
     }
 
     /**
-     * 失败提示
+     * fail
      *
      * @param message
      * @param redirectAttributes
@@ -43,7 +43,7 @@ public class BaseController {
     }
 
     /**
-     * 成功页
+     * success page
      *
      * @param message
      * @param request
@@ -54,7 +54,7 @@ public class BaseController {
     }
 
     /**
-     * 失败页
+     * failure page
      *
      * @param message
      * @param request

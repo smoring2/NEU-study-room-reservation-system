@@ -11,10 +11,6 @@ import java.lang.reflect.Modifier;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * @author xubo
- * @date 2017.9.25
- */
 public class BeanUtils extends org.springframework.beans.BeanUtils {
 
     public static void copyBean(Object source, Object target, Class<?> editable, String... ignoreProperties)
@@ -47,7 +43,7 @@ public class BeanUtils extends org.springframework.beans.BeanUtils {
                                 readMethod.setAccessible(true);
                             }
                             Object value = readMethod.invoke(source);
-                            if(value != null){  //只拷贝不为null的属性 by zhao
+                            if(value != null){  //Only copy properties that are not null, by zhao
                                 if (!Modifier.isPublic(writeMethod.getDeclaringClass().getModifiers())) {
                                     writeMethod.setAccessible(true);
                                 }

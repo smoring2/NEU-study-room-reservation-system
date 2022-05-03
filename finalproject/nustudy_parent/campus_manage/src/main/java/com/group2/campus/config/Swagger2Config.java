@@ -32,10 +32,8 @@ public class Swagger2Config {
                 .groupName("webApi")
                 .apiInfo(webApiInfo())
                 .select()
-                //过滤掉admin路径下的所有页面
+                //Filter out all pages under the admin path
                 .paths(Predicates.and(PathSelectors.regex("/P2P/.*")))
-                //过滤掉所有error或error.*页面
-                //.paths(Predicates.not(PathSelectors.regex("/error.*")))
                 .build();
 
     }
@@ -43,8 +41,8 @@ public class Swagger2Config {
     private ApiInfo webApiInfo(){
 
         return new ApiInfoBuilder()
-                .title("网站-API文档")
-                .description("本文档描述了网站微服务接口定义")
+                .title("Website - API Documentation")
+                .description("This document describes the website microservice interface definition")
                 .version("1.0")
                 .contact(new Contact("qy", "http://atguigu.com", "55317332@qq.com"))
                 .build();

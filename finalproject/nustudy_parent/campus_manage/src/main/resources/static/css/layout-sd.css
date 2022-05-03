@@ -20,18 +20,7 @@
     padding-left: 5px;
     overflow: hidden;
 }
-/*tr.gradeX.active:after {
-    display: block;
-    content: '>>';
-    position: absolute;
-    line-height: 40px;
-    font-weight: 600;
-    color: #08C;
-    padding-left: 16px;
-    width: 40px;
-    height: 40px;
-    z-index:2;
-}*/
+
 tr.gradeX.active {
     position: relative;
 }
@@ -190,15 +179,7 @@ tr.gradeX.active {
 .td-form .yb-calendar{
     background:#ffffff url("./../img/wd/icon-calendar-yb.png") no-repeat 98% center;
 }
-/* .yb-top-title{
-    height:60px;
-    width:100%;
-    position: fixed;
-    z-index:2002;
-    left:0;
-    top: 25px;
-    background: #086db1;
-} */
+
 .yb-top-title{
     height:50px;
     width:100%;
@@ -208,11 +189,7 @@ tr.gradeX.active {
     top: 25px;
     background: #086db1;
 }
-/* .logo-bg{
-    display: block;
-    width:220px;
-    padding: 10px 0 0 20px;
-} */
+
 .logo-bg{
     display: block;
     width:200px;
@@ -221,7 +198,7 @@ tr.gradeX.active {
 .yb-top-desc{
     display: block;
     font-size:23px;
-    font-family: microsoft yahei,"微软雅黑";
+    font-family: microsoft yahei,"Microsoft Yahei";
     color: #f1f2f3;
     padding:9px 0 0 0;
     letter-spacing: 1px;

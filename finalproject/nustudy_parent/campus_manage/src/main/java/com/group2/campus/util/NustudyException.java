@@ -5,19 +5,19 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
- * 自定义全局异常类
+ * Custom global exception class
  *
  * @author qy
  */
 @Data
-@ApiModel(value = "自定义全局异常类")
+@ApiModel(value = "Custom global exception class")
 public class NustudyException extends RuntimeException {
 
-    @ApiModelProperty(value = "异常状态码")
+    @ApiModelProperty(value = "exception status code")
     private Integer code;
 
     /**
-     * 通过状态码和错误消息创建异常对象
+     * Create exception object with status code and error message
      * @param message
      * @param code
      */

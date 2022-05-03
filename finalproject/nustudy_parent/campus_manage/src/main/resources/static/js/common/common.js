@@ -9,19 +9,19 @@ var opt = {
 	
 	load : function () {
         layer.load(1, {
-            shade: [0.5,'#fff'] //0.1透明度的白色背景
+            shade: [0.5,'#fff'] //0.1 Transparency on white background
         });
     },
 
 	confirm : function(url, msg) {
-		var msg = msg ? msg : "你确认删除该记录吗？";
+		var msg = msg ? msg : "Do you delete confirm this record？";
 		layer.confirm(msg,function(index){
             opt.load();
 			window.location = url;
 		});
 	},
     updateConfirm : function(url, msg) {
-        var msg = msg ? msg : "你确认更新排序吗？";
+        var msg = msg ? msg : "Are you sure to update the sort？";
         layer.confirm(msg,function(index){
             window.location = url;
         });
@@ -46,7 +46,7 @@ var opt = {
             anim: -1,
 	        maxmin: true,
             aini:2,
-	        shadeClose: false, //点击遮罩关闭层
+	        shadeClose: false, //Click on the mask to close the layer
 	        area: [width+"px", height+"px"],
 	        content: url
 	    });
@@ -57,10 +57,10 @@ var opt = {
 	        type: 2,
 	        title: title,
 	        maxmin: true,
-	        shadeClose: true, //点击遮罩关闭层
+	        shadeClose: true, //Click on the mask to close the layer
 	        area: [width+"px", heigth+"px"],
 	        content: url,
-	        btn:['确认','取消'],
+	        btn:['sure','cancel'],
 	        yes:function(index,layero){
 	        	call(index,layero);
 	        },
@@ -79,7 +79,7 @@ var opt = {
 	        type: 2,
 	        title: title,
 	        maxmin: true,
-	        shadeClose: true, //点击遮罩关闭层
+	        shadeClose: true, //Click on the mask to close the layer
 	        area: area,
 	        content: url,
 	        btn:btn,
@@ -100,7 +100,7 @@ var opt = {
         if(call) {
             parent.init();
         }
-		parent.layer.close(index); //执行关闭
+		parent.layer.close(index); //close
 	}
 }
 
@@ -116,7 +116,7 @@ var ajax = {
 			url : url,
 			contentType : "application/json; charset=utf-8",
 			type : "GET",
-			timeout : 120000,//超时时间设定
+			timeout : 120000,//time out
 			data : param,
 			dataType : "json",
 			success : function(data) {
@@ -125,9 +125,8 @@ var ajax = {
 				var status = data.status;
 				if(status === 500){alert(data.message);}
 				else if(status === 208){
-					console.log('用户尚未登录，请重新登录后在操作.');
-					//alert('用户尚未登录，请重新登录后在操作.');
-					//如果是登录页面
+					console.log('The user is not logged in, please log in again.');
+
 					window.location.href = config.basePath+'/acl/login';
 				}
 				
@@ -144,7 +143,7 @@ var ajax = {
 			},
 			error : function(data) {
 				console.log(data);
-				console.log('服务器繁忙,请稍后!');
+				console.log('The server is busy, please wait!');
 				if(typeof errorCallback == 'function'){
 					errorCallback(data);
 				}
@@ -163,7 +162,7 @@ var ajax = {
 			url : url,
 			contentType : "application/json; charset=utf-8",
 			type : "POST",
-			timeout : 20000,//超时时间设定
+			timeout : 20000,//time out
 			data : JSON.stringify(param),
 			dataType : "json",
 			success : function(data) {
@@ -172,7 +171,7 @@ var ajax = {
 				if(status === 500){
 					console.log(data.message);
 				} else if(status === 208){
-					console.log('用户尚未登录，请重新登录后在操作.');
+					console.log('The user is not logged in, please log in again.');
 					window.location.href = config.basePath+'/acl/login';
 				}
 				
@@ -189,7 +188,7 @@ var ajax = {
 			},
 			error : function(data) {
 				console.log(data);
-				console.log('服务器繁忙,请稍后!');
+				console.log('The server is busy, please wait!');
 				if(typeof errorCallback == 'function'){
 					errorCallback(data);
 				}

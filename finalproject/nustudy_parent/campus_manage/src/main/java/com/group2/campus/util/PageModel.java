@@ -6,16 +6,16 @@ import java.util.List;
 
 public class PageModel<T> implements java.io.Serializable {
 
-    // 总条数
+
     private long total;
 
-    // 每页大小
+
     private int pageSize;
 
-    // 总页数
+
     private int totalPage;
 
-    // 第几页
+
     private int pageNum = 1;
 
     private int[] navigatepageNums;
@@ -35,7 +35,7 @@ public class PageModel<T> implements java.io.Serializable {
     }
 
     public void init() {
-        // pageSize 默认为5
+        // pageSize default 5
         if (pageSize <= 0) {
             pageSize = 5;
         }
@@ -95,24 +95,24 @@ public class PageModel<T> implements java.io.Serializable {
     }
 
     public int[] getNavigatepageNums() {
-        int beginPageIndex;//页码列表的开始索引
-        int endPageIndex;//页码列表的结束索引
+        int beginPageIndex;//The starting index of the page number list
+        int endPageIndex;//The ending index of the page number list
         if(totalPage <= 10){
             beginPageIndex = 1;
             endPageIndex = totalPage;
         }
-        //总页数多于10页，则显示当前页附近的共10个页码
+        //If the total number of pages is more than 10 pages, a total of 10 page numbers near the current page will be displayed
         else{
-            //当前页附近的共10个页码（前4个+当前页+后5个）
+            //A total of 10 page numbers near the current page (the first 4 + the current page + the last 5)
             beginPageIndex = pageNum - 4;
             endPageIndex = pageNum + 5;
 
-            //当前面的页码不足4个时，则显示前10个页码
+            //When the previous page numbers are less than 4, the first 10 page numbers will be displayed
             if(beginPageIndex < 1){
                 beginPageIndex = 1;
                 endPageIndex = 10;
             }
-            //当后面的页码不足5个时，则显示后10个页码
+            //When the following page numbers are less than 5, the last 10 page numbers will be displayed
             if(endPageIndex > totalPage){
                 endPageIndex = totalPage;
                 beginPageIndex = totalPage -10 + 1;

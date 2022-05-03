@@ -35,15 +35,15 @@ $(function(){
         var password = $("#password").val();
         var code = $("#code").val();
         if (userName == "") {
-            opt.alert("请输入您的用户名!");
+            opt.alert("Please enter your username!");
             return;
         }
         if (password == "") {
-            opt.alert("请输入您的密码!");
+            opt.alert("Please enter your password!");
             return;
         }
         if (code == "") {
-            opt.alert("请输入您的验证码!");
+            opt.alert("Please enter your verification code!");
             return;
         }
         ajax.post("/login",{
@@ -54,7 +54,7 @@ $(function(){
             window.location.href ="/";
         },function (data) {
             opt.alert(data.message);
-            if(data.message.indexOf("验证码") != -1) {
+            if(data.message.indexOf("verification code") != -1) {
                 $("#a-code").trigger("click");
             }
         });

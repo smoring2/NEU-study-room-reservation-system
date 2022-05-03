@@ -14,8 +14,7 @@ import java.util.logging.Logger;
 @Slf4j
 public class HttpRequestHelper {
 
-    //private final static String signKey = "09c1ff67d1ae4999e137f34b0dff1046";
-    //public static Logger log = Logger.getLogger("HttpRequestHelper");
+
 
     public static void main(String[] args) {
         Map<String, Object> paramMap = new HashMap<>();

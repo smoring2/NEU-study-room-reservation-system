@@ -2,26 +2,26 @@ package com.group2.campus.util;
 import lombok.Getter;
 
 /**
- * 统一返回结果状态信息类
+ * Unified return result status information class
  *
  * @author qy
  */
 @Getter
 public enum ResultCodeEnum {
 
-    SUCCESS(200,"成功"),
-    FAIL(201, "失败"),
-    SERVICE_ERROR(202, "服务异常"),
+    SUCCESS(200,"success"),
+    FAIL(201, "fail"),
+    SERVICE_ERROR(202, "Service exception"),
     DATA_ERROR(204, "DATA_ERROR"),
 
-    SIGN_ERROR(300, "签名错误"),
+    SIGN_ERROR(300, "Signature error"),
 
-    PAY_PASSWORD_ERROR(401, "支付密码错误"),
-    REPEAT_ERROR(402, "重复提交"),
+    PAY_PASSWORD_ERROR(401, "wrong payment password"),
+    REPEAT_ERROR(402, "repeated submit"),
 
-    INVEST_AMMOUNT_MORE_ERROR(501, "出借金额已经多余标的金额"),
-    RETURN_AMMOUNT_MORE_ERROR(502, "还款金额不正确"),
-    PROJECT_AMMOUNT_ERROR(503, "标的金额不一致")
+    INVEST_AMMOUNT_MORE_ERROR(501, "The loan amount has exceeded the target amount"),
+    RETURN_AMMOUNT_MORE_ERROR(502, "Incorrect repayment amount"),
+    PROJECT_AMMOUNT_ERROR(503, "The target amount does not match")
     ;
 
     private Integer code;

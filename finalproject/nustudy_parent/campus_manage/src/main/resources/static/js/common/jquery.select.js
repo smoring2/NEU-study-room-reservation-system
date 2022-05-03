@@ -1,14 +1,10 @@
-/*
- *  下拉列表几级联动插件
- *	made by owenhong 2013-08-08
- *	作者：qy 2014-07-25
- */
+
 (function($){
 	$.fn.select=function(options){
 		var defaults={
-			key:"privince|city",                                                //下拉列表联动id
-			value:"1|1066",                                                     //下拉列表联动value
-			path:"http://localhost:9000/dict/parId/"       //下拉列表联动数据获取
+			key:"privince|city",                                                //drop-down list linkage id
+			value:"1|1066",                                                     //drop-down list linkage value
+			path:"http://localhost:9000/dict/parId/"       //drop-down list linkage data
 		};
 	
 		var options=$.extend(defaults,options);
@@ -44,7 +40,7 @@
 						}
 						if(j > k) {
 							$("#"+keys[j]).empty();
-							$("<option></option>").val("").text("--请选择--").appendTo("#"+keys[j]);
+							$("<option></option>").val("").text("--please choose--").appendTo("#"+keys[j]);
 						}
 					});
 				});
@@ -93,7 +89,7 @@
 				ajax.get(path + one_value,null,function(data){
 					if(data.status == 200) {
 						if(data.body.length > 0) {
-							$("<option></option>").val("").text("--请选择--").appendTo("#"+two_id);
+							$("<option></option>").val("").text("--please choose--").appendTo("#"+two_id);
 						}
 						$.each(data.body, function(i,item) {
 							if(two_value == item.id) {
@@ -103,14 +99,14 @@
 							}
 						});
 						if(data.body.length == 0) {
-							$("<option></option>").val("").text("--请选择--").appendTo("#"+two_id);
+							$("<option></option>").val("").text("--please choose--").appendTo("#"+two_id);
 						}
 					} else {
-						$("<option></option>").val("").text("--请选择--").appendTo("#"+two_id);
+						$("<option></option>").val("").text("--please choose--").appendTo("#"+two_id);
 					}
 				});
 			} else {
-				$("<option></option>").val("").text("--请选择--").appendTo("#"+two_id);
+				$("<option></option>").val("").text("--please choose--").appendTo("#"+two_id);
 			}
 		};
 	};

@@ -76,7 +76,7 @@ public class CampusApiController {
     public Result getBookingSchedule(
             @ApiParam(name = "page", value = "当前页码", required = true)
             @PathVariable Integer page,
-            @ApiParam(name = "limit", value = "每页记录数", required = true)
+            @ApiParam(name = "limit", value = "records per page", required = true)
             @PathVariable Integer limit,
             @ApiParam(name = "campuscode", value = "医院code", required = true)
             @PathVariable String campuscode,

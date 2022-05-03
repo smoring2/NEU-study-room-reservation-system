@@ -10,20 +10,6 @@ export default {
     });
   },
 
-  // getPageList(page, limit, searchObj) {
-  //   return request({
-  //     url: `${api_name}/auth/${page}/${limit}`,
-  //     method: 'get',
-  //     params: searchObj
-  //   })
-  // },
-  //
-  // getStatusList() {
-  //   return request({
-  //     url: `${api_name}/auth/getStatusList`,
-  //     method: 'get'
-  //   })
-  // },
 
   getOrderInfo(orderId) {
     return request({
@@ -33,10 +19,4 @@ export default {
     });
   },
 
-  // cancelOrder(orderId) {
-  //   return request({
-  //     url: `${api_name}/auth/cancelOrder/${orderId}`,
-  //     method: 'get'
-  //   })
-  // }
 };

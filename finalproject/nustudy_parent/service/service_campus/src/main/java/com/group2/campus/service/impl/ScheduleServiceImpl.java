@@ -76,7 +76,7 @@ public class ScheduleServiceImpl implements ScheduleService {
     //查询排班接口
     @Override
     public Page<Schedule> findPageSchedule(int page, int limit, ScheduleQueryVo scheduleQueryVo) {
-        // 创建Pageable对象，设置当前页和每页记录数
+        // 创建Pageable对象，设置当前页和records per page
         //0是第一页
         Pageable pageable = PageRequest.of(page - 1, limit);
         // 创建Example对象

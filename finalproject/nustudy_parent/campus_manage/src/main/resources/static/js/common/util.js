@@ -1,5 +1,5 @@
 /**
- * 工具类
+ * tools
  */
 var util ={
 
@@ -27,34 +27,34 @@ var util ={
         }
     },
 
-	//验证手机
+	//varify phone number
 	checkMobile :function(v){
 
 		return /^(13[0-9]|14[0-9]|15[0-9]|18[0-9]|17[0-9])\d{8}$/.test(v);
 
 	},
-	//处理手机号 加星号
+	//deal with phone number
 	dealMobile : function(phone){
 		if(phone.length != 11){
 			return phone;
 		}
 		return phone.substr(0, 3)+'*****'+phone.substr(8); 
 	},
-	//邮箱
+	//email
 	checkMail:function(v){
 		return /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test(v);
 	},
-	//特殊字符
+	//special character
 	checkStrValid: function(str) {
 		var pattern = new RegExp("[%#$^&*|\\[\\]<>/]");
 
 		return pattern.test(str);
 	},
-	//文本域替换回车
+	//text field replace carriage return
 	replace : function(v){
 		return v.replace(/(\r|\n)/g,'<br/>');
 	},
-	//随机串
+	//random string
 	nonceStr:function(){
 
 		var $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -68,11 +68,11 @@ var util ={
 
 	    return noceStr;
 	},
-	//时间戳
+	//timestamp
 	timeStamp:function(){
 	    var timestamp=new Date().getTime();
 	    var times1 = parseInt(parseInt(timestamp));
-	    var timestampstring = times1.toString();//一定要转换字符串
+	    var timestampstring = times1.toString();//Be sure to convert the string
 	    return timestampstring;
 	},
 	jsonToString: function(O) {
@@ -130,21 +130,21 @@ var util ={
 		    img = new Image(),
 		    body = document.body;
     	img.src = url;
-	    // 从缓存中读取
+	    // read from cache
 	    if (img.complete) {
     		return callback(img.width, img.height);
 	    };
-	    // 加载完毕后方式获取
+	    // Get it after loading
 	    img.onload = function () {
 		    callback(img.width, img.height);
 		    img.onload = img.onerror = null;
 	    };
-	    // 图片加载错误
+	    // Image loading error
 	    img.onerror = function () {
 		    error && error();
 	    };
 	},
-	//验证字符串是否为空
+	//Validate if string is empty
 	isEmpty:function(str){
 		return (typeof str== 'undefined' || str==null || (typeof str=='string' && str.replace(/^\s|\s$/g,'') =='') || str == 'null');
 	},
@@ -152,7 +152,7 @@ var util ={
 	isNotEmpty:function(v){
 		return !util.isEmpty(v);
 	},
-	//持久存储
+	//persistent storage
 	store :(function(){
 		try{
 			window.localStorage.setItem('_localStorage_support_',1);
@@ -216,8 +216,8 @@ var util ={
 		}
 	})(),
 
-	//取cookie
-	getCookie:function(objName){//获取指定名称的cookie的值
+	//get cookie
+	getCookie:function(objName){//Get the value of the cookie with the specified name
 	    var arrStr = document.cookie.split("; ");
 	    for(var i = 0;i < arrStr.length;i ++){
 			var temp = arrStr[i].split("=");
@@ -233,13 +233,13 @@ var util ={
         exp.setTime(exp.getTime() + Days*24*60*60*1000);  
         document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString()+';path=/;';  
     } ,
-    //删除cookie
-    delCookie:function(name){//为了删除指定名称的cookie，可以将其过期时间设定为一个过去的时间
+    //delete cookie
+    delCookie:function(name){//To delete a cookie with a specified name, set its expiration time to a time in the past
 	   var date = new Date();
 	   date.setTime(date.getTime() - 10000);
 	   document.cookie = name + "=0;  path=/;expires=" + date.toGMTString();
 	},
-	//url 参数
+	//url parameter
 	getUrlParams: function(name) {
 		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
 		var r = window.location.search.substr(1).match(reg);
@@ -248,7 +248,7 @@ var util ={
 		return null;
 	},
 	
-	//比较两个日期大小
+	//campare date
 	compareDate : function(startTime,endTime){  
 		if(typeof startTime == 'object'){
 			startTime = util.formatDate('YYYY-MM-DD hh:mm:ss');
@@ -263,17 +263,17 @@ var util ={
 	    }  
 	    return true;  
 	},
-	//校验密码
+	//check password
 	checkPwd : function(pwd){
 		if(/^[a-zA-Z]+$/g.test(pwd)){
-			return '不能为全字母'; //全字母
+			return 'cannot be all letters';
 		}else if(/^\d+$/g.test(pwd)){
-			return '不能为全数字'; //全数字
+			return 'cannot be all numbers';
 		}else{
-			return 1; //正确
+			return 1; //correct
 		}
 	},
-	//渲染模板 
+	//render template
 	render: function(id, data, type) {
 		$("#"+id).setTemplateElement(id+"-template");
 		$("#"+id).processTemplate(data);
@@ -283,9 +283,9 @@ var util ={
 		}
 	},
 	
-	//判断是否为微信浏览器
+
 	isWeixinBrowser : function() {
-		var ua = navigator.userAgent.toLowerCase();//获取判断用的对象
+		var ua = navigator.userAgent.toLowerCase();
         if (ua.match(/MicroMessenger/i) == "micromessenger") {
         	return true;
         } else {
@@ -296,7 +296,7 @@ var util ={
 
 var win = {
 	confirm : function(url, msg) {
-		var msg = msg ? msg : "你确认删除该记录吗？";
+		var msg = msg ? msg : "Are you sure you want to delete this record?？";
 		layer.confirm(msg,function(index){
 			window.location = url;
 		});
@@ -307,15 +307,15 @@ var win = {
 			layer.open({
 			    content: message
 			    ,skin: 'msg'
-			    ,time: 1 //2秒后自动关闭
+			    ,time: 1 //Automatically shuts off after 2 seconds
 			});
 		}
 	},
 	dialogSuccess : function() {
-		win.dialog("操作成功", 1);
+		win.dialog("success", 1);
 	},
 	dialogFail : function() {
-		win.dialog("操作失败", 0);
+		win.dialog("fail", 0);
 	}
 }
 
@@ -331,7 +331,7 @@ ajax = {
 			url : url+"?v="+util.nonceStr(),
 			contentType : "application/json; charset=utf-8",
 			type : "GET",
-			timeout : 120000,//超时时间设定
+			timeout : 120000,//time out
 			data : param,
 			dataType : "json",
 			success : function(data) {
@@ -340,9 +340,7 @@ ajax = {
 				var status = data.status;
 				if(status === 500 && typeof errorCallback !== 'function'){opt.alert(data.message);}
 				else if(status === 208){
-					console.log('用户尚未登录，请重新登录后在操作.');
-					//alert('用户尚未登录，请重新登录后在操作.');
-					//如果是登录页面
+					console.log('The user is not logged in, please log in again.');
 					window.location.href = config.basePath+'/acl/login';
 				}
 				
@@ -359,7 +357,7 @@ ajax = {
 			},
 			error : function(data) {
 				console.log(data);
-				console.log('服务器繁忙,请稍后!');
+				console.log('The server is busy, please wait!');
 				if(typeof errorCallback == 'function'){
 					errorCallback(data);
 				}
@@ -378,7 +376,7 @@ ajax = {
 			url : url+"?v="+util.nonceStr(),
 			contentType : "application/json; charset=utf-8",
 			type : "POST",
-			timeout : 20000,//超时时间设定
+			timeout : 20000,
 			data : JSON.stringify(param),
 			dataType : "json",
 			success : function(data) {
@@ -387,7 +385,7 @@ ajax = {
 				if(status === 500){
                     opt.alert(data.message);
 				} else if(status === 208){
-					console.log('用户尚未登录，请重新登录后在操作.');
+					console.log('The user is not logged in, please log in again.');
 					window.location.href = config.basePath+'/acl/login';
 				}
 				
@@ -404,7 +402,7 @@ ajax = {
 			},
 			error : function(data) {
 				console.log(data);
-				console.log('服务器繁忙,请稍后!');
+				console.log('The server is busy, please wait!');
 				if(typeof errorCallback == 'function'){
 					errorCallback(data);
 				}

@@ -15,13 +15,13 @@ public class CampusSet extends BaseEntity {
 	
 	private static final long serialVersionUID = 1L;
 
-	@ApiModelProperty(value = "医院编号")
+	@ApiModelProperty(value = "campus code")
 	private String campuscode;
 
-	@ApiModelProperty(value = "签名秘钥")
+	@ApiModelProperty(value = "sign key")
 	private String signKey;
 
-	@ApiModelProperty(value = "api基础路径")
+	@ApiModelProperty(value = "api url")
 	private String apiUrl;
 
 }

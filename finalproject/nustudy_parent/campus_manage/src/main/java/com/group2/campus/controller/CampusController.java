@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 
-@Api(tags = "医院管理接口")
+@Api(tags = "Hospital management interface")
 @RestController
 public class CampusController {
 
@@ -26,7 +26,7 @@ public class CampusController {
 	private ApiService apiService;
 
 	/**
-	 * 预约下单
+	 * Make an appointment
 	 * @param request
 	 * @return
 	 */
@@ -46,7 +46,7 @@ public class CampusController {
 	}
 
 	/**
-	 * 更新支付状态
+	 * Update oeder status
 	 * @param request
 	 * @return
 	 */
@@ -66,7 +66,7 @@ public class CampusController {
 	}
 
 	/**
-	 * 更新取消预约状态
+	 * Update Cancellation Status
 	 * @param request
 	 * @return
 	 */

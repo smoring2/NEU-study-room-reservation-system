@@ -20,47 +20,47 @@ public class Schedule extends BaseNoAutoEntity {
 	
 	private static final long serialVersionUID = 1L;
 
-	@ApiModelProperty(value = "医院编号")
+	@ApiModelProperty(value = "campus code")
 	@TableField("campuscode")
 	private String campuscode;
 
-	@ApiModelProperty(value = "科室编号")
+	@ApiModelProperty(value = "department code")
 	@TableField("depcode")
 	private String depcode;
 
-	@ApiModelProperty(value = "职称")
+	@ApiModelProperty(value = "title")
 	@TableField("title")
 	private String title;
 
-	@ApiModelProperty(value = "医生名称")
+	@ApiModelProperty(value = "doc name")
 	@TableField("docname")
 	private String docname;
 
-	@ApiModelProperty(value = "擅长技能")
+	@ApiModelProperty(value = "skill")
 	@TableField("skill")
 	private String skill;
 
-	@ApiModelProperty(value = "安排日期")
+	@ApiModelProperty(value = "work date")
 	@TableField("work_date")
 	private String workDate;
 
-	@ApiModelProperty(value = "安排时间（0：上午 1：下午）")
+	@ApiModelProperty(value = "work time（0：AM 1：PM）")
 	@TableField("work_time")
 	private Integer workTime;
 
-	@ApiModelProperty(value = "可预约数")
+	@ApiModelProperty(value = "reserved number")
 	@TableField("reserved_number")
 	private Integer reservedNumber;
 
-	@ApiModelProperty(value = "剩余预约数")
+	@ApiModelProperty(value = "available number")
 	@TableField("available_number")
 	private Integer availableNumber;
 
-	@ApiModelProperty(value = "挂号费")
+	@ApiModelProperty(value = "amount")
 	@TableField("amount")
 	private String amount;
 
-	@ApiModelProperty(value = "排班状态（-1：停诊 0：停约 1：可约）")
+	@ApiModelProperty(value = "status（-1：finish reservation 0：unavailable 1:available）")
 	@TableField("status")
 	private Integer status;
 }

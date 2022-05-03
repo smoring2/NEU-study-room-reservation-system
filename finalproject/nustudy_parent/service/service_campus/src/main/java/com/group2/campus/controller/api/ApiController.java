@@ -66,7 +66,7 @@ public class ApiController {
 
         //department code
         String depcode = (String)paramMap.get("depcode");
-        //当前页 和 每页记录数
+        //当前页 和 records per page
         int page = StringUtils.isEmpty(paramMap.get("page")) ? 1 : Integer.parseInt((String)paramMap.get("page"));
         int limit = StringUtils.isEmpty(paramMap.get("limit")) ? 1 : Integer.parseInt((String)paramMap.get("limit"));
         //TODO sign_key check

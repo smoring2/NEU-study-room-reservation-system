@@ -17,7 +17,7 @@ public class IndexController {
 	private final static String PAGE_AUTH = "frame/auth";
 	
 	/**
-	 * 框架首页
+	 * Frame Home
 	 * @return
 	 */
 	@RequestMapping(value = "/")
@@ -27,7 +27,7 @@ public class IndexController {
 	}
 
 	/**
-	 * 框架主页
+	 * Frame Home
 	 * @return
 	 */
 	@RequestMapping(value = "/main",method = RequestMethod.GET)
@@ -37,7 +37,7 @@ public class IndexController {
 	}
 
 	/**
-	 * 框架主页
+	 * Frame Home
 	 *
 	 * @return
 	 */
@@ -47,7 +47,7 @@ public class IndexController {
 	}
 
 	/**
-	 * 登录
+	 * login
 	 * @return
 	 */
 	@RequestMapping(value = "/login",method = RequestMethod.GET)

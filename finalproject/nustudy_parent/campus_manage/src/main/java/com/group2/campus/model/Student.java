@@ -18,57 +18,42 @@ public class Student extends BaseEntity {
 	
 	private static final long serialVersionUID = 1L;
 	
-	@ApiModelProperty(value = "用户id")
+	@ApiModelProperty(value = "user id")
 	@TableField("user_id")
 	private Long userId;
 
-	@ApiModelProperty(value = "姓名")
+	@ApiModelProperty(value = "name")
 	@TableField("name")
 	private String name;
 
-	@ApiModelProperty(value = "证件类型")
+	@ApiModelProperty(value = "certificates type")
 	@TableField("certificates_type")
 	private String certificatesType;
 
-	@ApiModelProperty(value = "证件编号")
+	@ApiModelProperty(value = "certificates number")
 	@TableField("certificates_no")
 	private String certificatesNo;
 
-	@ApiModelProperty(value = "手机")
+	@ApiModelProperty(value = "email")
 	@TableField("email")
 	private String email;
 
-	@ApiModelProperty(value = "省code")
+	@ApiModelProperty(value = "state code")
 	@TableField("state_code")
 	private String stateCode;
 
-	@ApiModelProperty(value = "市code")
+	@ApiModelProperty(value = "city code")
 	@TableField("city_code")
 	private String cityCode;
 
-	@ApiModelProperty(value = "区code")
+	@ApiModelProperty(value = "district code")
 	@TableField("district_code")
 	private String districtCode;
 
-	@ApiModelProperty(value = "详情地址")
+	@ApiModelProperty(value = "specific address")
 	@TableField("address")
 	private String address;
 
-//	@ApiModelProperty(value = "联系人姓名")
-//	@TableField("contacts_name")
-//	private String contactsName;
-//
-//	@ApiModelProperty(value = "联系人证件类型")
-//	@TableField("contacts_certificates_type")
-//	private String contactsCertificatesType;
-
-//	@ApiModelProperty(value = "联系人证件号")
-//	@TableField("contacts_certificates_no")
-//	private String contactsCertificatesNo;
-//
-//	@ApiModelProperty(value = "联系人手机")
-//	@TableField("contacts_phone")
-//	private String contactsPhone;
 
 }
 

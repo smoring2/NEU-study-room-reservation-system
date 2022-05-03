@@ -18,7 +18,7 @@ public final class HttpUtil {
 	static final int READ_TIMEOUT = 30000;// ms
 
 	/**
-	 * post 方式发送http请求.
+	 * post way to send http request.
 	 * 
 	 * @param strUrl
 	 * @param reqData
@@ -29,7 +29,7 @@ public final class HttpUtil {
 	}
 
 	/**
-	 * get方式发送http请求.
+	 * getway to send http request.
 	 * 
 	 * @param strUrl
 	 * @return
@@ -78,7 +78,7 @@ public final class HttpUtil {
 	}
 	
 	/**
-	 * 从输入流中读取数据
+	 * read data from input stream
 	 * 
 	 * @param inStream
 	 * @return
@@ -91,7 +91,7 @@ public final class HttpUtil {
 		while ((len = inStream.read(buffer)) != -1) {
 			outStream.write(buffer, 0, len);
 		}
-		byte[] data = outStream.toByteArray();// 网页的二进制数据
+		byte[] data = outStream.toByteArray();// Binary data for web pages
 		outStream.close();
 		inStream.close();
 		return data;

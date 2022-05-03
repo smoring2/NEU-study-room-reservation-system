@@ -21,7 +21,7 @@
     </span>
 </div>
 <div id="wrapper">
-    <!--左侧导航开始-->
+    <!--Start left navigation-->
     <nav class="navbar-default navbar-static-side" role="navigation">
         <div class="sidebar-collapse">
             <ul class="nav" id="side-menu">
@@ -31,13 +31,13 @@
 
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#" style="display: none;">
                             <span class="clear">
-                                	<!-- <span class="text-muted text-xs block">管理系统</span> -->
+                                	<!-- <span class="text-muted text-xs block">management system</span> -->
                                 	<span class="text-muted text-xs text-center block margin-top10">admins</span>
                             </span>
                         </a>
 
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                            <li><a  href="javascript:opt.openWin('/sysUser/pswd','修改密码',630,510)">Change password</a></li>
+                            <li><a  href="javascript:opt.openWin('/sysUser/pswd','change Password',630,510)">Change password</a></li>
                             <li class="divider"></li>
                             <li><a th:href="@{/index/logout}">Quit</a>
                             </li>
@@ -62,8 +62,8 @@
             </ul>
         </div>
     </nav>
-    <!--左侧导航结束-->
-    <!--右侧部分开始-->
+    <!--left end-->
+    <!--right start-->
     <div id="page-wrapper" class="gray-bg dashbard-1">
         <div class="row border-bottom" style="display: none;">
             <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
@@ -75,15 +75,7 @@
                         </div>
                     </form>
                 </div>
-                <!--
-                <ul class="nav navbar-top-links navbar-right">
-                    <li class="dropdown">
-                        <a href="acl/logout" class="roll-nav count-info J_tabExit">
-                            <i class="fa fa fa-sign-out"></i>退出</span>
-                        </a>
-                    </li>
-                </ul>
-                  -->
+
             </nav>
         </div>
 
@@ -111,22 +103,22 @@
                     </li>
                 </ul>
             </div>
-            <a class="navbar-minimalize roll-nav roll-right J_tabExit" href="#" title="收缩展开菜单"><i class="fa fa-bars"></i> </a>
+            <a class="navbar-minimalize roll-nav roll-right J_tabExit" href="#" title="Collapse the expand menu"><i class="fa fa-bars"></i> </a>
             <!--<a th:href="@{/index/logout}" class=""><i class="fa fa fa-sign-out"></i> 退出</a>-->
         </div>
-        <!-- 包在里面了 -->
+        <!-- included -->
         <div class="row J_mainContent" id="content-main">
             <iframe class="J_iframe" name="iframe0" width="100%" height="100%" th:src="@{/main}" frameborder="0" data-id="index_v1.html"></iframe>
         </div>
     </div>
-    <!--右侧部分结束-->
-    <!--右侧边栏开始-->
+    <!--right end-->
+    <!--right side start-->
     <div id="right-sidebar">
         <div class="sidebar-container">
 
         </div>
     </div>
-    <!--右侧边栏结束-->
+    <!--right side end-->
 </div>
 
 <script th:src="@{/js/bootstrap.min.js}" type="text/javascript"></script>

@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
-@Api(tags = "医院管理接口")
+@Api(tags = "campus management interface")
 @Controller
 @RequestMapping
 public class ApiController extends BaseController {

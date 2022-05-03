@@ -53,11 +53,11 @@ public class CampusServiceImpl implements CampusService {
         }
         System.out.println(JSONObject.toJSONString(paramMap));
 
-        //就诊人信息
+        //student info
         Student student = JSONObject.parseObject(JSONObject.toJSONString(paramMap), Student.class);
         System.out.println("student: " + student);
         log.info(JSONObject.toJSONString(student));
-        //处理就诊人业务
+        //deal with student reservation
         Long studentId = this.saveStudent(student);
 
         Map<String, Object> resultMap = new HashMap<>();
@@ -66,33 +66,33 @@ public class CampusServiceImpl implements CampusService {
             schedule.setAvailableNumber(availableNumber - 1);
             scheduleMapper.updateById(schedule);
 
-            //记录预约记录
+            //record reservation
             OrderInfo orderInfo = new OrderInfo();
             orderInfo.setStudentId(studentId);
             orderInfo.setScheduleId(Long.parseLong(hosScheduleId));
             int number = schedule.getReservedNumber().intValue() - schedule.getAvailableNumber().intValue();
             orderInfo.setNumber(number);
             orderInfo.setAmount(new BigDecimal(amount));
-            String fetchTime = "0".equals(reserveDate) ? " 09:30前" : " 14:00前";
+            String fetchTime = "0".equals(reserveDate) ? " 09:30 before" : " 14:00 before";
             orderInfo.setFetchTime(reserveTime + fetchTime);
-            orderInfo.setFetchAddress("一楼9号窗口");
-            //默认 未支付
+            orderInfo.setFetchAddress("4 N. 2nd Street San Jose, CA 95113");
+            //default unordered
             orderInfo.setOrderStatus(0);
             orderInfoMapper.insert(orderInfo);
 
             resultMap.put("resultCode","0000");
-            resultMap.put("resultMsg","预约成功");
-            //预约记录唯一标识（医院预约记录主键）
+            resultMap.put("resultMsg","success");
+            //only signal of reservation
             resultMap.put("hosRecordId", orderInfo.getId());
-            //预约号序
+            //reserved order
             resultMap.put("number", number);
-            //取号时间
-            resultMap.put("fetchTime", reserveDate + "09:00前");;
-            //取号地址
-            resultMap.put("fetchAddress", "一层114窗口");;
-            //排班可预约数
+            //reserved time
+            resultMap.put("fetchTime", reserveDate + "09:00 before");;
+            //room address
+            resultMap.put("fetchAddress", "4 N. 2nd Street San Jose, CA 95113");;
+            //reserved room number
             resultMap.put("reservedNumber", schedule.getReservedNumber());
-            //排班剩余预约数
+            //room available
             resultMap.put("availableNumber", schedule.getAvailableNumber());
         } else {
             throw new NustudyException(ResultCodeEnum.DATA_ERROR);
@@ -109,7 +109,7 @@ public class CampusServiceImpl implements CampusService {
         if(null == orderInfo) {
             throw new NustudyException(ResultCodeEnum.DATA_ERROR);
         }
-        //已支付
+        //ordered
         orderInfo.setOrderStatus(1);
         orderInfo.setPayTime(new Date());
         orderInfoMapper.updateById(orderInfo);
@@ -124,7 +124,7 @@ public class CampusServiceImpl implements CampusService {
         if(null == orderInfo) {
             throw new NustudyException(ResultCodeEnum.DATA_ERROR);
         }
-        //已取消
+        //canceled
         orderInfo.setOrderStatus(-1);
         orderInfo.setQuitTime(new Date());
         orderInfoMapper.updateById(orderInfo);
@@ -136,11 +136,11 @@ public class CampusServiceImpl implements CampusService {
     }
 
     /**
-     * 医院处理就诊人信息
+     * record student info
      * @param student
      */
     private Long saveStudent(Student student) {
-        // 业务：略
+
         return 1L;
     }
 
