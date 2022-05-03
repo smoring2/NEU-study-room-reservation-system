@@ -24,17 +24,17 @@ DROP TABLE IF EXISTS `dict`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `dict` (
   `id` bigint NOT NULL DEFAULT '0' COMMENT 'id',
-  `student_id` bigint NOT NULL DEFAULT '0' COMMENT '上级id',
-  `name` varchar(100) NOT NULL DEFAULT '' COMMENT '名称',
-  `value` bigint DEFAULT NULL COMMENT '值',
-  `dict_code` varchar(20) DEFAULT NULL COMMENT '编码',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-  `is_deleted` tinyint NOT NULL DEFAULT '1' COMMENT '删除标记（0:不可用 1:可用）',
+  `student_id` bigint NOT NULL DEFAULT '0' COMMENT 'student id',
+  `name` varchar(100) NOT NULL DEFAULT '' COMMENT 'name',
+  `value` bigint DEFAULT NULL COMMENT 'value',
+  `dict_code` varchar(20) DEFAULT NULL COMMENT 'code',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'created time',
+  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'updated time',
+  `is_deleted` tinyint NOT NULL DEFAULT '1' COMMENT 'deletion mark',
   PRIMARY KEY (`id`),
   KEY `idx_dict_code` (`dict_code`),
   KEY `idx_parent_id` (`student_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='组织架构表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='organization configuration form';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

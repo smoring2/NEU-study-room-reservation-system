@@ -23,15 +23,15 @@ DROP TABLE IF EXISTS `campus_set`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `campus_set` (
-  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '编号',
-  `campuscode` varchar(30) DEFAULT NULL COMMENT '医院编号',
-  `sign_key` varchar(50) DEFAULT NULL COMMENT '签名秘钥',
-  `api_url` varchar(100) DEFAULT NULL COMMENT '统一挂号平台api地址',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-  `is_deleted` tinyint NOT NULL DEFAULT '0' COMMENT '逻辑删除(1:已删除，0:未删除)',
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `campuscode` varchar(30) DEFAULT NULL COMMENT 'campus id',
+  `sign_key` varchar(50) DEFAULT NULL COMMENT 'private sign key',
+  `api_url` varchar(100) DEFAULT NULL COMMENT 'api url for platforms,
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'create time',
+  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'updated time',
+  `is_deleted` tinyint NOT NULL DEFAULT '0' COMMENT 'deletion logic',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3 COMMENT='医院设置表';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3 COMMENT='campus configuration form';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -52,21 +52,21 @@ DROP TABLE IF EXISTS `order_info`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `order_info` (
-  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '编号',
-  `schedule_id` varchar(100) DEFAULT NULL COMMENT '排班id',
-  `student_id` bigint DEFAULT NULL COMMENT '就诊人id',
-  `number` int DEFAULT NULL COMMENT '预约号序',
-  `fetch_time` varchar(50) DEFAULT NULL COMMENT '建议取号时间',
-  `fetch_address` varchar(255) DEFAULT NULL COMMENT '取号地点',
-  `amount` decimal(10,0) DEFAULT NULL COMMENT '医事服务费',
-  `pay_time` datetime DEFAULT NULL COMMENT '支付时间',
-  `quit_time` datetime DEFAULT NULL COMMENT '退号时间',
-  `order_status` tinyint DEFAULT NULL COMMENT '订单状态',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-  `is_deleted` tinyint NOT NULL DEFAULT '0' COMMENT '逻辑删除(1:已删除，0:未删除)',
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `schedule_id` varchar(100) DEFAULT NULL COMMENT 'schedule id',
+  `student_id` bigint DEFAULT NULL COMMENT 'student id',
+  `number` int DEFAULT NULL COMMENT 'number id',
+  `fetch_time` varchar(50) DEFAULT NULL COMMENT 'suggested fetch time',
+  `fetch_address` varchar(255) DEFAULT NULL COMMENT 'suggested fetch address',
+  `amount` decimal(10,0) DEFAULT NULL COMMENT 'service amount',
+  `pay_time` datetime DEFAULT NULL COMMENT 'payment time',
+  `quit_time` datetime DEFAULT NULL COMMENT 'quit time',
+  `order_status` tinyint DEFAULT NULL COMMENT 'order status',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'create time',
+  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'updated time',
+  `is_deleted` tinyint NOT NULL DEFAULT '0' COMMENT 'deletion logic',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb3 COMMENT='订单表';
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb3 COMMENT='order list';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -87,23 +87,23 @@ DROP TABLE IF EXISTS `schedule`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `schedule` (
-  `id` bigint NOT NULL DEFAULT '0' COMMENT '编号',
-  `campuscode` varchar(30) DEFAULT NULL COMMENT '医院编号',
-  `depcode` varchar(30) DEFAULT NULL COMMENT '科室编号',
-  `title` varchar(20) DEFAULT NULL COMMENT '职称',
-  `docname` varchar(20) DEFAULT NULL COMMENT '医生名称',
-  `skill` text COMMENT '擅长技能',
-  `work_date` date DEFAULT NULL COMMENT '安排日期',
-  `work_time` tinyint DEFAULT '0' COMMENT '安排时间（0：上午 1：下午）',
-  `reserved_number` int DEFAULT '0' COMMENT '可预约数',
-  `available_number` int DEFAULT '0' COMMENT '剩余预约数',
-  `amount` decimal(10,0) DEFAULT NULL COMMENT '挂号费',
-  `status` tinyint DEFAULT NULL COMMENT '排班状态（-1：停诊 0：停约 1：可约）',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-  `is_deleted` tinyint NOT NULL DEFAULT '0' COMMENT '逻辑删除(1:已删除，0:未删除)',
+  `id` bigint NOT NULL DEFAULT '0' COMMENT 'id',
+  `campuscode` varchar(30) DEFAULT NULL COMMENT 'campus id',
+  `depcode` varchar(30) DEFAULT NULL COMMENT 'department id',
+  `title` varchar(20) DEFAULT NULL COMMENT 'title',
+  `docname` varchar(20) DEFAULT NULL COMMENT 'administration name',
+  `skill` text COMMENT 'skill',
+  `work_date` date DEFAULT NULL COMMENT 'work date',
+  `work_time` tinyint DEFAULT '0' COMMENT 'work time',
+  `reserved_number` int DEFAULT '0' COMMENT 'reserved number',
+  `available_number` int DEFAULT '0' COMMENT 'available reservation number',
+  `amount` decimal(10,0) DEFAULT NULL COMMENT 'amount',
+  `status` tinyint DEFAULT NULL COMMENT 'schedule status',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'create time',
+  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'updated time',
+  `is_deleted` tinyint NOT NULL DEFAULT '0' COMMENT 'deletion logic',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='医生日程安排表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COMMENT='meeting room schedule';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

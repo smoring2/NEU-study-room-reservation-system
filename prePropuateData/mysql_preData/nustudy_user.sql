@@ -38,7 +38,7 @@ CREATE TABLE `student` (
   `is_deleted` tinyint NOT NULL DEFAULT '0' COMMENT '1: deleted. 0: not deleted',
   PRIMARY KEY (`id`),
   KEY `idx_user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb3 COMMENT='就诊人表';
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb3 COMMENT='student list';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -59,21 +59,21 @@ DROP TABLE IF EXISTS `user_info`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `user_info` (
-  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '编号',
-  `nick_name` varchar(20) DEFAULT NULL COMMENT '昵称',
-  `email` varchar(50) NOT NULL DEFAULT '' COMMENT '手机号',
-  `name` varchar(20) DEFAULT NULL COMMENT '用户姓名',
-  `certificates_type` varchar(3) DEFAULT NULL COMMENT '证件类型',
-  `certificates_no` varchar(30) DEFAULT NULL COMMENT '证件编号',
-  `certificates_url` varchar(200) DEFAULT NULL COMMENT '证件路径',
-  `auth_status` tinyint NOT NULL DEFAULT '0' COMMENT '认证状态（0：未认证 1：认证中 2：认证成功 -1：认证失败）',
-  `status` tinyint NOT NULL DEFAULT '1' COMMENT '状态（0：锁定 1：正常）',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-  `is_deleted` tinyint NOT NULL DEFAULT '0' COMMENT '逻辑删除(1:已删除，0:未删除)',
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `nick_name` varchar(20) DEFAULT NULL COMMENT 'nick name',
+  `email` varchar(50) NOT NULL DEFAULT '' COMMENT 'phone number',
+  `name` varchar(20) DEFAULT NULL COMMENT 'name',
+  `certificates_type` varchar(3) DEFAULT NULL COMMENT 'certificate type',
+  `certificates_no` varchar(30) DEFAULT NULL COMMENT 'certificate number',
+  `certificates_url` varchar(200) DEFAULT NULL COMMENT 'certificate path',
+  `auth_status` tinyint NOT NULL DEFAULT '0' COMMENT 'authorization status',
+  `status` tinyint NOT NULL DEFAULT '1' COMMENT 'status',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'create time',
+  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'update time',
+  `is_deleted` tinyint NOT NULL DEFAULT '0' COMMENT 'deletion logic',
   PRIMARY KEY (`id`),
   KEY `uk_mobile` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb3 COMMENT='用户表';
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb3 COMMENT='student list';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
