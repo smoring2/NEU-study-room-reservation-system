@@ -66,7 +66,7 @@ class CampusSetController {
         Page<CampusSet> page = new Page<>(current,limit);
         //build condition
         QueryWrapper<CampusSet> wrapper = new QueryWrapper<>();
-        String campusname = campusSetQueryVo.getCampusname();//医院名称
+        String campusname = campusSetQueryVo.getCampusname();//hospital name
         String campuscode = campusSetQueryVo.getCampuscode();//医院编号
         if(!StringUtils.isEmpty(campusname)) {
             wrapper.like("campusname", campusSetQueryVo.getCampusname());
@@ -102,12 +102,7 @@ class CampusSetController {
     //5 Get campus settings by id
     @GetMapping("getCampusSet/{id}")
     public Result getCampusSet(@PathVariable Long id) {
-//        try {
-//            //Mock exception
-//            int a = 1/0;
-//        }catch (Exception e) {
-//            throw new NustudyException("fail",201);
-//        }
+
 
         CampusSet campusSet = campusSetService.getById(id);
         return Result.ok(campusSet);

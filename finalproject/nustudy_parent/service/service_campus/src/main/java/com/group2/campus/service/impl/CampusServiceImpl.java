@@ -66,7 +66,7 @@ public class CampusServiceImpl implements CampusService {
     public Page<Campus> selectCampusPage(Integer page, Integer limit, CampusQueryVo campusQueryVo) {
         //create pageable object
         Pageable pageable = PageRequest.of(page - 1, limit);
-        //创建条件匹配器
+        //Create a condition matcher
         ExampleMatcher matcher = ExampleMatcher.matching()
                 .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING)
                 .withIgnoreCase(true);
@@ -90,9 +90,9 @@ public class CampusServiceImpl implements CampusService {
     // update the status of campus (offline / online)
     @Override
     public void updateStatus(String id, Integer status) {
-        //根据id查询医院信息
+        //Query campus information by id
         Campus campus = campusRepository.findById(id).get();
-        //设置修改的值
+        //set modified value
         campus.setStatus(status);
         campus.setUpdateTime(new Date());
         campusRepository.save(campus);
@@ -103,16 +103,16 @@ public class CampusServiceImpl implements CampusService {
     public Map<String, Object> getCampusById(String id) {
         Map<String, Object> result = new HashMap<>();
         Campus campus = this.setCampusCamType(campusRepository.findById(id).get());
-        //医院基本信息（包含医院等级）
+        //basic info of campus
         result.put("campus", campus);
-        //单独处理更直观
+        //It is more intuitive to handle alone
         result.put("bookingRule", campus.getBookingRule());
-        //不需要重复返回
+        //No need to return repeatedly
         campus.setBookingRule(null);
         return result;
     }
 
-    //获取医院名称
+    //Get campus name
     @Override
     public String getCampusName(String campuscode) {
         Campus campus = campusRepository.getCampusByCampuscode(campuscode);
@@ -122,31 +122,31 @@ public class CampusServiceImpl implements CampusService {
         return null;
     }
 
-    //根据医院名称查询
+    //Search by campus name
     @Override
     public List<Campus> findByCampusName(String campusName) {
         return campusRepository.findCampusByCampusnameLike(campusName);
     }
 
-    //根据医院编号获取医院预约挂号详情
+    //Get campus appointment registration details based on campus number
     @Override
     public Map<String, Object> item(String campuscode) {
         Map<String, Object> result = new HashMap<>();
-        //医院详情
+        //campus details
         Campus campus = this.setCampusCamType(this.getByCampuscode(campuscode));
         result.put("campus", campus);
-        //预约规则
+        //Appointment Rules
         result.put("bookingRule", campus.getBookingRule());
-        //不需要重复返回
+        //No need to return repeatedly
         campus.setBookingRule(null);
         return result;
     }
 
     //
-    //获取查询list集合，遍历进行医院等级封装
+    //Get the query list collection, traverse for campus-level encapsulation
     private Campus setCampusCamType(Campus campus) {
         System.out.println("Campus: " + campus);
-        //根据dictCode和value获取医院等级名称
+        //Get campus grade name based on dictCode and value
         String campustypeString = dictFeignClient.getName("Campustype", campus.getCampustype());
         System.out.println("campustypeString: " + campustypeString);
         String stateString = dictFeignClient.getName(campus.getStateCode());

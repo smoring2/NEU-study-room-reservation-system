@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-//Patient management interface
+//Student management interface
 @RestController
 @RequestMapping("/api/user/student")
 public class StudentApiController {
@@ -23,7 +23,7 @@ public class StudentApiController {
     //Get a list of students
     @GetMapping("auth/findAll")
     public Result findAll(HttpServletRequest request) {
-        //获取当前登录用户id
+        //Get the currently logged in user id
         Long userId = AuthContextHolder.getUserId(request);
         System.out.println("userid: " + userId);
         List<Student> list = studentService.findAllUserId(userId);

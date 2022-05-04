@@ -47,7 +47,7 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements Di
     }
 
 
-    //判断id下面是否有子节点
+    //Determine if there is a child node under the id
     private boolean isChildren(Long id) {
         QueryWrapper<Dict> wrapper = new QueryWrapper<>();
         wrapper.eq("student_id", id);
@@ -113,9 +113,9 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements Di
 
     @Override
     public List<Dict> findByDictCode(String dictCode) {
-        //根据dictcode获取对应id
+        //from dictcode to get id
         Dict dict = this.getDictByDictCode(dictCode);
-        //根据id获取子节点
+        //get child according to id
         List<Dict> childData = this.findChildData(dict.getId());
         return childData;
     }

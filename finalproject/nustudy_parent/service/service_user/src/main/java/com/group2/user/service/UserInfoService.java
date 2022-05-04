@@ -14,21 +14,5 @@ public interface UserInfoService {// extends IService<UserInfo> {
     //User mobile phone number login interface
     Map<String, Object> loginUser(LoginVo loginVo);
 
-    //from openid to judge
-//    UserInfo selectWxInfoOpenId(String openid);
 
-//    //user identification
-//    void userAuth(Long userId, UserAuthVo userAuthVo);
-//
-//    //user list）
-//    IPage<UserInfo> selectPage(Page<UserInfo> pageParam, UserInfoQueryVo userInfoQueryVo);
-//
-//    //user lockout
-//    void lock(Long userId, Integer status);
-
-    //user detail
-//    Map<String, Object> show(Long userId);
-//
-//    //varification
-//    void approval(Long userId, Integer authStatus);
 }

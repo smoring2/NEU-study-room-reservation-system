@@ -18,17 +18,5 @@ public interface OrderService extends IService<OrderInfo> {
 
     //Query order details based on order id
     OrderInfo getOrder(String orderId);
-//
-//    //Order list (conditional query with pagination)
-//    IPage<OrderInfo> selectPage(Page<OrderInfo> pageParam, OrderQueryVo orderQueryVo);
-//
-//    //cancel appointment
-//    Boolean cancelOrder(Long orderId);
-//
-//    //Consultation notice
-//    void patientTips();
-//
-//    //Appointment Statistics
-//    Map<String,Object> getCountMap(OrderCountQueryVo orderCountQueryVo );
 
 }

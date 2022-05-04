@@ -19,44 +19,37 @@ public class StudentServiceImpl extends
     @Autowired
     private DictFeignClient dictFeignClient;
 
-    //获取就诊人列表
+    //Get a list of students
     @Override
     public List<Student> findAllUserId(Long userId) {
-        //根据userid查询所有就诊人信息列表
+        //Query a list of all student information based on userid
         QueryWrapper<Student> wrapper = new QueryWrapper<>();
         wrapper.eq("user_id",userId);
         List<Student> studentList = baseMapper.selectList(wrapper);
-        //通过远程调用，得到编码对应具体内容，查询数据字典表内容
-//        studentList.stream().forEach(item -> {
-//            //其他参数封装
-//            this.packStudent(item);
-//        });
+
         return studentList;
     }
 
     @Override
     public Student getStudentId(Long id) {
-//        return this.packStudent(baseMapper.selectById(id));
+
         return baseMapper.selectById(id);
     }
 
-    //Patient对象里面其他参数封装
+    //Student: Other parameter encapsulation in the object
     private Student packStudent(Student student) {
-        //根据证件类型编码，获取证件类型具体指
+        //According to the certificate type code, obtaining the certificate type specifically refers to
         String certificatesTypeString =
                 dictFeignClient.getName(DictEnum.CERTIFICATES_TYPE.getDictCode(), student.getCertificatesType());//联系人证件
-        //联系人证件类型
-//        String contactsCertificatesTypeString =
-//                dictFeignClient.getName(DictEnum.CERTIFICATES_TYPE.getDictCode(),student.getContactsCertificatesType());
-        //省
+
+        //state
         String stateString = dictFeignClient.getName(student.getStateCode());
-        //市
+        //city
         String cityString = dictFeignClient.getName(student.getCityCode());
-        //区
+        //district
         String districtString = dictFeignClient.getName(student.getDistrictCode());
 
         student.getParam().put("certificatesTypeString", certificatesTypeString);
-//        student.getParam().put("contactsCertificatesTypeString", contactsCertificatesTypeString);
         student.getParam().put("stateString", stateString);
         student.getParam().put("cityString", cityString);
         student.getParam().put("districtString", districtString);

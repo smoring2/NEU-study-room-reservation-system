@@ -27,19 +27,5 @@ public class UserInfoApiController {
         return Result.ok(info);
     }
 
-    //User Authentication Interface
-//    @PostMapping("auth/userAuth")
-//    public Result userAuth(@RequestBody UserAuthVo userAuthVo, HttpServletRequest request) {
-//        //Pass two parameters, the first parameter user id, the second parameter authentication data vo object
-//        userInfoService.userAuth(AuthContextHolder.getUserId(request),userAuthVo);
-//        return Result.ok();
-//    }
 
-    //Get user id information interface
-//    @GetMapping("auth/getUserInfo")
-//    public Result getUserInfo(HttpServletRequest request) {
-//        Long userId = AuthContextHolder.getUserId(request);
-//        UserInfo userInfo = userInfoService.getById(userId);
-//        return Result.ok(userInfo);
-//    }
 }

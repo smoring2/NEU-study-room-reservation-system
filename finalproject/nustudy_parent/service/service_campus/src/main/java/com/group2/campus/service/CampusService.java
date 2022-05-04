@@ -8,27 +8,27 @@ import java.util.List;
 import java.util.Map;
 
 public interface CampusService {
-    //Upload hospital interface
+    //Upload campus interface
     void save(Map<String, Object> paramMap);
 
-    //Realize query according to hospital number
+    //Realize query according to campus number
     Campus getByCampuscode(String campuscode);
 
     //Hospital List (Conditional Query Pagination)
     Page<Campus> selectCampusPage(Integer page, Integer limit, CampusQueryVo campusQueryVo);
 
-    //Update hospital online status
+    //Update campus online status
     void updateStatus(String id, Integer status);
 
-    //hospital details
+    //campus details
     Map<String, Object> getCampusById(String id);
 
-    //Get hospital name
+    //Get campus name
     String getCampusName(String campuscode);
 
-    //Search by hospital name
+    //Search by campus name
     List<Campus> findByCampusName(String campusName);
 
-    //Get hospital appointment registration details based on hospital number
+    //Get campus appointment registration details based on campus number
     Map<String, Object> item(String campuscode);
 }

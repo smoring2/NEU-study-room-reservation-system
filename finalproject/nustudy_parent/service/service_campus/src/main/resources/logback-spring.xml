@@ -1,62 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration  scan="true" scanPeriod="10 seconds">
-    <!-- 日志级别从低到高分为TRACE < DEBUG < INFO < WARN < ERROR < FATAL，如果设置为WARN，则低于WARN的信息都不会输出 -->
-    <!-- scan:当此属性设置为true时，配置文件如果发生改变，将会被重新加载，默认值为true -->
-    <!-- scanPeriod:设置监测配置文件是否有修改的时间间隔，如果没有给出时间单位，默认单位是毫秒。当scan为true时，此属性生效。默认的时间间隔为1分钟。 -->
-    <!-- debug:当此属性设置为true时，将打印出logback内部日志信息，实时查看logback运行状态。默认值为false。 -->
+
 
     <contextName>logback</contextName>
-    <!-- name的值是变量的名称，value的值时变量定义的值。通过定义的值会被插入到logger上下文中。定义变量后，可以使“${}”来使用变量。 -->
+    <!-- The value of name is the name of the variable, and the value of value is the value defined by the variable. The defined value will be inserted into the logger context. After defining the variable, you can use "${}" to use the variable -->
     <property name="log.path" value="finalproject/nustudy_log" />
 
-    <!-- 彩色日志 -->
-    <!-- 配置格式变量：CONSOLE_LOG_PATTERN 彩色日志格式 -->
-    <!-- magenta:洋红 -->
-    <!-- boldMagenta:粗红-->
-    <!-- cyan:青色 -->
-    <!-- white:白色 -->
-    <!-- magenta:洋红 -->
+    <!-- color log -->
+    <!-- Configure format variables：CONSOLE_LOG_PATTERN -->
+    <!-- magenta -->
+    <!-- boldMagenta-->
+    <!-- cyan -->
+    <!-- white -->
+    <!-- magenta -->
     <property name="CONSOLE_LOG_PATTERN"
               value="%yellow(%date{yyyy-MM-dd HH:mm:ss}) |%highlight(%-5level) |%blue(%thread) |%blue(%file:%line) |%green(%logger) |%cyan(%msg%n)"/>
 
 
-    <!--输出到控制台-->
+    <!--output to console-->
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
-        <!--此日志appender是为开发使用，只配置最底级别，控制台输出的日志级别是大于或等于此级别的日志信息-->
-        <!-- 例如：如果此处配置了INFO级别，则后面其他位置即使配置了DEBUG级别的日志，也不会被输出 -->
+
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>INFO</level>
         </filter>
         <encoder>
             <Pattern>${CONSOLE_LOG_PATTERN}</Pattern>
-            <!-- 设置字符集 -->
+            <!-- set character -->
             <charset>UTF-8</charset>
         </encoder>
     </appender>
 
 
-    <!--输出到文件-->
+    <!--output to file-->
 
-    <!-- 时间滚动输出 level为 INFO 日志 -->
+    <!-- Time rolling output level is INFO log -->
     <appender name="INFO_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <!-- 正在记录的日志文件的路径及文件名 -->
+        <!-- The path and filename of the log file being logged -->
         <file>${log.path}/log_info.log</file>
-        <!--日志文件输出格式-->
+        <!--log file output format-->
         <encoder>
             <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
             <charset>UTF-8</charset>
         </encoder>
-        <!-- 日志记录器的滚动策略，按日期，按大小记录 -->
+        <!-- Rolling strategy for logger, log by date, by size -->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <!-- 每天日志归档路径以及格式 -->
+            <!-- Daily log archive path and format -->
             <fileNamePattern>${log.path}/info/log-info-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>100MB</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
-            <!--日志文件保留天数-->
+            <!--Days to keep log files-->
             <maxHistory>15</maxHistory>
         </rollingPolicy>
-        <!-- 此日志文件只记录info级别的 -->
+        <!-- This log file only records info level -->
         <filter class="ch.qos.logback.classic.filter.LevelFilter">
             <level>INFO</level>
             <onMatch>ACCEPT</onMatch>
@@ -64,25 +60,25 @@
         </filter>
     </appender>
 
-    <!-- 时间滚动输出 level为 WARN 日志 -->
+    <!-- Time rolling output level is WARN log -->
     <appender name="WARN_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <!-- 正在记录的日志文件的路径及文件名 -->
+        <!-- The path and filename of the log file being logged-->
         <file>${log.path}/log_warn.log</file>
-        <!--日志文件输出格式-->
+        <!--log file output format-->
         <encoder>
             <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
-            <charset>UTF-8</charset> <!-- 此处设置字符集 -->
+            <charset>UTF-8</charset> <!-- set character set -->
         </encoder>
-        <!-- 日志记录器的滚动策略，按日期，按大小记录 -->
+        <!-- Rolling strategy for logger, log by date, by size -->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>${log.path}/warn/log-warn-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>100MB</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
-            <!--日志文件保留天数-->
+            <!--Days to keep log files-->
             <maxHistory>15</maxHistory>
         </rollingPolicy>
-        <!-- 此日志文件只记录warn级别的 -->
+        <!-- This log file only records warning level -->
         <filter class="ch.qos.logback.classic.filter.LevelFilter">
             <level>warn</level>
             <onMatch>ACCEPT</onMatch>
@@ -91,25 +87,25 @@
     </appender>
 
 
-    <!-- 时间滚动输出 level为 ERROR 日志 -->
+    <!-- Time rolling output level is ERROR log -->
     <appender name="ERROR_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <!-- 正在记录的日志文件的路径及文件名 -->
+        <!-- The path and filename of the log file being logged -->
         <file>${log.path}/log_error.log</file>
-        <!--日志文件输出格式-->
+        <!--log file output format-->
         <encoder>
             <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
-            <charset>UTF-8</charset> <!-- 此处设置字符集 -->
+            <charset>UTF-8</charset>
         </encoder>
-        <!-- 日志记录器的滚动策略，按日期，按大小记录 -->
+        <!-- Rolling strategy for logger, log by date, by size -->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>${log.path}/error/log-error-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>100MB</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
-            <!--日志文件保留天数-->
+            <!--Days to keep log files-->
             <maxHistory>15</maxHistory>
         </rollingPolicy>
-        <!-- 此日志文件只记录ERROR级别的 -->
+        <!-- This log file only records ERROR level -->
         <filter class="ch.qos.logback.classic.filter.LevelFilter">
             <level>ERROR</level>
             <onMatch>ACCEPT</onMatch>
@@ -117,28 +113,17 @@
         </filter>
     </appender>
 
-    <!--
-        <logger>用来设置某一个包或者具体的某一个类的日志打印级别、以及指定<appender>。
-        <logger>仅有一个name属性，
-        一个可选的level和一个可选的addtivity属性。
-        name:用来指定受此logger约束的某一个包或者具体的某一个类。
-        level:用来设置打印级别，大小写无关：TRACE, DEBUG, INFO, WARN, ERROR, ALL 和 OFF，
-              如果未设置此属性，那么当前logger将会继承上级的级别。
-    -->
-    <!--
-        使用mybatis的时候，sql语句是debug下才会打印，而这里我们只配置了info，所以想要查看sql语句的话，有以下两种操作：
-        第一种把<root level="INFO">改成<root level="DEBUG">这样就会打印sql，不过这样日志那边会出现很多其他消息
-        第二种就是单独给mapper下目录配置DEBUG模式，代码如下，这样配置sql语句会打印，其他还是正常DEBUG级别：
-     -->
-    <!--开发环境:打印控制台-->
+
+
+    <!--Development environment: print console-->
     <springProfile name="dev">
-        <!--可以输出项目中的debug日志，包括mybatis的sql日志-->
+        <!--Can output the debug log in the project, including the sql log of mybatis-->
         <logger name="com.guli" level="INFO" />
 
         <!--
-            root节点是必选节点，用来指定最基础的日志输出级别，只有一个level属性
-            level:用来设置打印级别，大小写无关：TRACE, DEBUG, INFO, WARN, ERROR, ALL 和 OFF，默认是DEBUG
-            可以包含零个或多个appender元素。
+            The root node is a required node, which is used to specify the most basic log output level. There is only one level attribute.
+            level: used to set the print level, case-insensitive: TRACE, DEBUG, INFO, WARN, ERROR, ALL and OFF, the default is DEBUG
+            Can contain zero or more appender elements.
         -->
         <root level="INFO">
             <appender-ref ref="CONSOLE" />
@@ -149,7 +134,7 @@
     </springProfile>
 
 
-    <!--生产环境:输出到文件-->
+    <!--Production environment: output to file-->
     <springProfile name="pro">
 
         <root level="INFO">

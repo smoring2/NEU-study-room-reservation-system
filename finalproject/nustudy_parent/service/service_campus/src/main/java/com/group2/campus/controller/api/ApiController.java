@@ -41,10 +41,10 @@ public class ApiController {
     // delete schedule api
     @PostMapping("schedule/remove")
     public Result remove(HttpServletRequest request) {
-        //获取传递过来科室信息
+        //Get the information passed over to the department
         Map<String, String[]> requestMap = request.getParameterMap();
         Map<String, Object> paramMap = HttpRequestHelper.switchMap(requestMap);
-        //获取医院编号和排班编号
+        //Get campus number and shift number
         String campuscode = (String)paramMap.get("campuscode");
         String hosScheduleId = (String)paramMap.get("hosScheduleId");
 
@@ -57,7 +57,7 @@ public class ApiController {
     // lookup schedule api
     @PostMapping("schedule/list")
     public Result findSchedule(HttpServletRequest request) {
-        //获取传递过来科室信息
+        //Get the information passed over to the department
         Map<String, String[]> requestMap = request.getParameterMap();
         Map<String, Object> paramMap = HttpRequestHelper.switchMap(requestMap);
 
@@ -66,7 +66,7 @@ public class ApiController {
 
         //department code
         String depcode = (String)paramMap.get("depcode");
-        //当前页 和 records per page
+        //current page and records per page
         int page = StringUtils.isEmpty(paramMap.get("page")) ? 1 : Integer.parseInt((String)paramMap.get("page"));
         int limit = StringUtils.isEmpty(paramMap.get("limit")) ? 1 : Integer.parseInt((String)paramMap.get("limit"));
         //TODO sign_key check
@@ -74,15 +74,15 @@ public class ApiController {
         ScheduleQueryVo scheduleQueryVo = new ScheduleQueryVo();
         scheduleQueryVo.setCampuscode(campuscode);
         scheduleQueryVo.setDepcode(depcode);
-        //调用service方法
+        //use service method
         Page<Schedule> pageModel = scheduleService.findPageSchedule(page,limit,scheduleQueryVo);
         return Result.ok(pageModel);
     }
 
-    //上传排班接口
+    //Upload schedule interface
     @PostMapping("saveSchedule")
     public Result saveSchedule(HttpServletRequest request) {
-        //获取传递过来科室信息
+        //Get the information passed over to the department
         Map<String, String[]> requestMap = request.getParameterMap();
         Map<String, Object> paramMap = HttpRequestHelper.switchMap(requestMap);
 
@@ -91,13 +91,13 @@ public class ApiController {
         return Result.ok();
     }
 
-    //删除科室接口
+    //Delete department interface
     @PostMapping("department/remove")
     public Result removeDepartment(HttpServletRequest request) {
-        //获取传递过来科室信息
+        //Get the information passed over to the department
         Map<String, String[]> requestMap = request.getParameterMap();
         Map<String, Object> paramMap = HttpRequestHelper.switchMap(requestMap);
-        //医院编号 和 科室编号
+        //Hospital number and department number
         String campuscode = (String)paramMap.get("campuscode");
         String depcode = (String)paramMap.get("depcode");
         //TODO sign_key check
@@ -105,7 +105,7 @@ public class ApiController {
         return Result.ok();
     }
 
-    //查询科室接口
+    //Query department interface
     @PostMapping("department/list")
     public Result findDepartment(HttpServletRequest request) {
         // get department info
@@ -126,65 +126,65 @@ public class ApiController {
         return Result.ok(pageModel);
     }
 
-    //上传科室接口
+    //Upload department interface
     @PostMapping("saveDepartment")
     public Result saveDepartment(HttpServletRequest request) {
-        //获取传递过来科室信息
+        //Get the information passed over to the department
         Map<String, String[]> requestMap = request.getParameterMap();
         Map<String, Object> paramMap = HttpRequestHelper.switchMap(requestMap);
 
-        //获取医院编号
+        //Get campus number
         String campuscode = (String)paramMap.get("campuscode");
-        //1 获取医院系统传递过来的签名,签名进行MD5加密
+        //1 Obtain the signature passed by the campus system, and perform MD5 encryption on the signature
         String hospSign = (String)paramMap.get("sign");
 
-        //2 根据传递过来医院编码，查询数据库，查询签名
+        //2 According to the passed campus code, query the database and query the signature
         String signKey = campusSetService.getSignKey(campuscode);
 
-        //3 把数据库查询签名进行MD5加密
+        //3 MD5 encryption of database query signature
         String signKeyMd5 = MD5.encrypt(signKey);
 
-        //4 判断签名是否一致
+        //4 Check whether the signature is consistent
         if(!hospSign.equals(signKeyMd5)) {
             throw new NustudyException(ResultCodeEnum.SIGN_ERROR);
         }
 
-        //调用service的方法
+        //use service method
         departmentService.save(paramMap);
         return Result.ok();
     }
 
-//    查询医院
+//    Inquire about the campus
     @PostMapping("campus/show")
     public Result getCampus(HttpServletRequest request) {
-        //获取传递过来医院信息
+        //Get the information passed over to the campus
         Map<String, String[]> requestMap = request.getParameterMap();
         Map<String, Object> paramMap = HttpRequestHelper.switchMap(requestMap);
-        //获取医院编号
+        //Get campus number
         String campuscode = (String)paramMap.get("campuscode");
-        //1 获取医院系统传递过来的签名,签名进行MD5加密
+        //1 Obtain the signature passed by the campus system, and perform MD5 encryption on the signature
         String hospSign = (String)paramMap.get("sign");
 
-        //2 根据传递过来医院编码，查询数据库，查询签名
+        //2 According to the passed campus code, query the database and query the signature
         String signKey = campusSetService.getSignKey(campuscode);
 
-        //3 把数据库查询签名进行MD5加密
+        //3 MD5 encryption of database query signature
         String signKeyMd5 = MD5.encrypt(signKey);
 
-        //4 判断签名是否一致
+        //4 Check whether the signature is consistent
         if(!hospSign.equals(signKeyMd5)) {
             throw new NustudyException(ResultCodeEnum.SIGN_ERROR);
         }
 
-        //调用service方法实现根据医院编号查询
+        //Call the service method to query according to the campus number
         Campus campus = campusService.getByCampuscode(campuscode);
         return Result.ok(campus);
     }
 
-    //上传医院接口
+    //Upload campus interface
     @PostMapping("saveCampus")
     public Result saveCamp(HttpServletRequest request) {
-        //获取传递过来医院信息
+        //Get the information passed over to the campus
         Map<String, String[]> requestMap = request.getParameterMap();
         Map<String, Object> paramMap = HttpRequestHelper.switchMap(requestMap);
 
@@ -208,7 +208,7 @@ public class ApiController {
         logoData = logoData.replaceAll(" ","+");
         paramMap.put("logoData",logoData);
 
-        //调用service的方法
+        //use service method
         campusService.save(paramMap);
         return Result.ok();
     }

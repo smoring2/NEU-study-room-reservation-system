@@ -11,10 +11,5 @@ public class UserData {
     private String username;
 
 
-    //wrirt
-//    @ExcelProperty("user index")
-//    private int id;
-//    @ExcelProperty("username")
-//    private String username;
 
 }

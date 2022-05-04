@@ -22,7 +22,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Autowired
     private DepartmentRepository departmentRepository;
 
-    //上传科室接口
+    //Upload department interface
     @Override
     public void save(Map<String, Object> paramMap) {
         //paramMap convert to department object
@@ -65,63 +65,63 @@ public class DepartmentServiceImpl implements DepartmentService {
         return all;
     }
 
-    //删除科室接口
+    //Delete department interface
     @Override
     public void remove(String campuscode, String depcode) {
-        //根据医院编号 和 科室编号查询
+        //Search by campus number and department number
         Department department = departmentRepository.getDepartmentByCampuscodeAndDepcode(campuscode, depcode);
         if(department != null) {
-            //调用方法删除
+            //call delete method
             departmentRepository.deleteById(department.getId());
         }
     }
 
-    //根据医院编号，查询医院所有科室列表
+    //According to the campus number, query the list of all departments in the campus
     @Override
     public List<DepartmentVo> findDeptTree(String campuscode) {
-        //创建list集合，用于最终数据封装
+        //Create a list collection for final data encapsulation
         List<DepartmentVo> result = new ArrayList<>();
 
-        //根据医院编号，查询医院所有科室信息
+        //According to the campus number, query the information of all departments in the campus
         Department departmentQuery = new Department(); // using mongoDB
         departmentQuery.setCampuscode(campuscode);
         Example example = Example.of(departmentQuery);
-        //所有科室列表 departmentList
+        //departmentList
         List<Department> departmentList = departmentRepository.findAll(example);
 
         // DEBUG TRANSLATE bigcode-> building number
-        //根据大科室编号  bigcode 分组，获取每个大科室里面下级子科室
+        //According to the big code grouping of the big code, get the lower-level sub-departments in each big department
         Map<String, List<Department>> deparmentMap =
                 departmentList.stream().collect(Collectors.groupingBy(Department::getBigcode));
-        //遍历map集合 deparmentMap
+        //Iterate over the map collection deparmentMap
         for(Map.Entry<String,List<Department>> entry : deparmentMap.entrySet()) {
-            //大科室编号
+            //Big department number
             String bigcode = entry.getKey();
-            //大科室编号对应的全局数据
+            //Global data corresponding to the big department number
             List<Department> deparment1List = entry.getValue();
-            //封装大科室
+            //Packaging big department
             DepartmentVo departmentVo1 = new DepartmentVo();
             departmentVo1.setDepcode(bigcode);
             departmentVo1.setDepname(deparment1List.get(0).getBigname());
 
-            //封装小科室
+            //Packaging children department
             List<DepartmentVo> children = new ArrayList<>();
             for(Department department: deparment1List) {
                 DepartmentVo departmentVo2 =  new DepartmentVo();
                 departmentVo2.setDepcode(department.getDepcode());
                 departmentVo2.setDepname(department.getDepname());
-                //封装到list集合
+                //Packaging to list
                 children.add(departmentVo2);
             }
-            //把小科室list集合放到大科室children里面
+            //put list of subdepartment into children of big department
             departmentVo1.setChildren(children);
-            //放到最终result里面
+            //put into result
             result.add(departmentVo1);
         }
         return result;
     }
 
-    //根据科室编号，和医院编号，查询科室名称
+    //According to the department number and campus number, query the department name
     @Override
     public String getDepName(String campuscode, String depcode) {
         Department department = departmentRepository.getDepartmentByCampuscodeAndDepcode(campuscode, depcode);

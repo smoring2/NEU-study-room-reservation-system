@@ -30,7 +30,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * http请求客户端
+ * http request client
  *
  * @author qy
  *
@@ -44,7 +44,7 @@ public class HttpClient {
     private String xmlParam;
     private boolean isHttps;
     private boolean isCert = false;
-    //证书密码 微信商户号（mch_id）
+    //Certificate Password WeChat Merchant ID (mch_id)
     private String certPassword;
 
     public boolean isHttps() {
@@ -144,56 +144,7 @@ public class HttpClient {
     private void execute(HttpUriRequest http) throws ClientProtocolException,
             IOException {
         CloseableHttpClient httpClient = null;
-//        try {
-//            if (isHttps) {
-//                if(isCert) {
-//                    //TODO 需要完善
-//                    FileInputStream inputStream = new FileInputStream(new File(ConstantPropertiesUtils.CERT));
-//                    KeyStore keystore = KeyStore.getInstance("PKCS12");
-//                    char[] partnerId2charArray = certPassword.toCharArray();
-//                    keystore.load(inputStream, partnerId2charArray);
-//                    SSLContext sslContext = SSLContexts.custom().loadKeyMaterial(keystore, partnerId2charArray).build();
-//                    SSLConnectionSocketFactory sslsf =
-//                            new SSLConnectionSocketFactory(sslContext,
-//                                    new String[] { "TLSv1" },
-//                                    null,
-//                                    SSLConnectionSocketFactory.BROWSER_COMPATIBLE_HOSTNAME_VERIFIER);
-//                    httpClient = HttpClients.custom().setSSLSocketFactory(sslsf).build();
-//                } else {
-//                    SSLContext sslContext = new SSLContextBuilder()
-//                            .loadTrustMaterial(null, new TrustStrategy() {
-//                                // 信任所有
-//                                public boolean isTrusted(X509Certificate[] chain,
-//                                                         String authType)
-//                                        throws CertificateException {
-//                                    return true;
-//                                }
-//                            }).build();
-//                    SSLConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(
-//                            sslContext);
-//                    httpClient = HttpClients.custom().setSSLSocketFactory(sslsf)
-//                            .build();
-//                }
-//            } else {
-//                httpClient = HttpClients.createDefault();
-//            }
-//            CloseableHttpResponse response = httpClient.execute(http);
-//            try {
-//                if (response != null) {
-//                    if (response.getStatusLine() != null)
-//                        statusCode = response.getStatusLine().getStatusCode();
-//                    HttpEntity entity = response.getEntity();
-//                    // 响应内容
-//                    content = EntityUtils.toString(entity, Consts.UTF_8);
-//                }
-//            } finally {
-//                response.close();
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        } finally {
-//            httpClient.close();
-//        }
+
     }
     public int getStatusCode() {
         return statusCode;

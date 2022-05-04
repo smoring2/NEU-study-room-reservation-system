@@ -9,21 +9,21 @@ import java.util.List;
 import java.util.Map;
 
 public interface DepartmentService {
-    //上传科室接口
+    //Upload department interface
     void save(Map<String, Object> paramMap);
 
-    //查询科室接口
+    //Query department interface
     Page<Department> findPageDepartment(int page, int limit, DepartmentQueryVo departmentQueryVo);
 
-    //删除科室接口
+    //Delete department interface
     void remove(String campuscode, String depcode);
 
-    //根据医院编号，查询医院所有科室列表
+    //According to the campus number, query the list of all departments in the campus
     List<DepartmentVo> findDeptTree(String campuscode);
 
-    //根据科室编号，和医院编号，查询科室名称
+    //According to the department number and campus number, query the department name
     String getDepName(String campuscode, String depcode);
 
-    //根据科室编号，和医院编号，查询科室
+    //According to the department number and campus number, query the department
     Department getDepartment(String campuscode, String depcode);
 }

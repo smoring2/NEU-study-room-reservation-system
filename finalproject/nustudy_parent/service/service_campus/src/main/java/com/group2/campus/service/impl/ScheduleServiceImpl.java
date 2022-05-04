@@ -48,17 +48,17 @@ public class ScheduleServiceImpl implements ScheduleService {
     @Autowired
     private DepartmentService departmentService;
 
-    //上传排班接口
+    //Upload schedule interface
     @Override
     public void save(Map<String, Object> paramMap) {
-        //paramMap 转换department对象
+        //paramMap Convert the department object
         String paramMapString = JSONObject.toJSONString(paramMap);
         Schedule schedule = JSONObject.parseObject(paramMapString, Schedule.class);
 
-        //根据医院编号 和 排班编号查询
+        //Query by campus number and shift number
         Schedule scheduleExist = scheduleRepository.
                 getScheduleByCampuscodeAndHosScheduleId(schedule.getCampuscode(), schedule.getHosScheduleId());
-        //判断
+        //judge
         if (scheduleExist != null) {
             scheduleExist.setUpdateTime(new Date());
             scheduleExist.setIsDeleted(0);
@@ -73,13 +73,13 @@ public class ScheduleServiceImpl implements ScheduleService {
         }
     }
 
-    //查询排班接口
+    //Query scheduling interface
     @Override
     public Page<Schedule> findPageSchedule(int page, int limit, ScheduleQueryVo scheduleQueryVo) {
-        // 创建Pageable对象，设置当前页和records per page
-        //0是第一页
+        // Create a Pageable object, set the current page and records per page
+        //0 is the first page
         Pageable pageable = PageRequest.of(page - 1, limit);
-        // 创建Example对象
+        // create Example object
         Schedule schedule = new Schedule();
         BeanUtils.copyProperties(scheduleQueryVo, schedule);
         schedule.setIsDeleted(0);
@@ -94,40 +94,40 @@ public class ScheduleServiceImpl implements ScheduleService {
         return all;
     }
 
-    //删除排班
+    //delete schedule
     @Override
     public void remove(String campuscode, String hosScheduleId) {
-        //根据医院编号和排班编号查询信息
+        //Query information based on campus number and shift number
         Schedule schedule = scheduleRepository.getScheduleByCampuscodeAndHosScheduleId(campuscode, hosScheduleId);
         if (schedule != null) {
             scheduleRepository.deleteById(schedule.getId());
         }
     }
 
-    //根据医院编号 和 科室编号 ，查询排班规则数据
+    //According to the campus number and department number, query the scheduling rule data
     @Override
     public Map<String, Object> getRuleSchedule(long page, long limit, String campuscode, String depcode) {
-        //1 根据医院编号 和 科室编号 查询
+        //1 Search by campus number and department number
         Criteria criteria = Criteria.where("campuscode").is(campuscode).and("depcode").is(depcode);
 
 
-        //2 根据工作日workDate期进行分组
+        //2 Group by weekday workDate period
         Aggregation agg = Aggregation.newAggregation(
-                Aggregation.match(criteria),//匹配条件
-                Aggregation.group("workDate")//分组字段
+                Aggregation.match(criteria),//match condition
+                Aggregation.group("workDate")//group field
                         .first("workDate").as("workDate")
-                        //3 统计号源数量
+                        //3 Number of statistical number sources
                         .count().as("docCount")
                         .sum("reservedNumber").as("reservedNumber")
                         .sum("availableNumber").as("availableNumber")
         );
-        //调用方法，最终执行
+        //Invoke the method and finally execute
         AggregationResults<BookingScheduleRuleVo> aggResults =
                 mongoTemplate.aggregate(agg, Schedule.class, BookingScheduleRuleVo.class);
         System.out.println("aggResults" + aggResults);
         List<BookingScheduleRuleVo> bookingScheduleRuleVoList = aggResults.getMappedResults();
 
-        //分组查询的总记录数
+        //The total number of records for group query
         Aggregation totalAgg = Aggregation.newAggregation(
                 Aggregation.match(criteria),
                 Aggregation.group("workDate")
@@ -136,14 +136,14 @@ public class ScheduleServiceImpl implements ScheduleService {
                 mongoTemplate.aggregate(totalAgg, Schedule.class, BookingScheduleRuleVo.class);
         int total = totalAggResults.getMappedResults().size();
 
-        //把日期对应星期获取
+        //Get the date corresponding to the week
         for (BookingScheduleRuleVo bookingScheduleRuleVo : bookingScheduleRuleVoList) {
             Date workDate = bookingScheduleRuleVo.getWorkDate();
             String dayOfWeek = this.getDayOfWeek(new DateTime(workDate));
             bookingScheduleRuleVo.setDayOfWeek(dayOfWeek);
         }
 
-        //设置最终数据，进行返回
+        //Set final data and return
         Map<String, Object> result = new HashMap<>();
         result.put("bookingScheduleRuleList", bookingScheduleRuleVoList);
         result.put("total", total);
@@ -158,25 +158,25 @@ public class ScheduleServiceImpl implements ScheduleService {
         return result;
     }
 
-    //根据医院编号 、科室编号和工作日期，查询排班详细信息
+    //According to the campus number, department number and working date, check the details of the schedule
     @Override
     public List<Schedule> getDetailSchedule(String campuscode, String depcode, String workDate) {
-        //根据参数查询mongodb
+        //Query by parameters mongodb
         List<Schedule> scheduleList =
                 scheduleRepository.findScheduleByCampuscodeAndDepcodeAndWorkDate(campuscode, depcode, new DateTime(workDate).toDate());
-        //把得到list集合遍历，向设置其他值：医院名称、科室名称、日期对应星期
+        //Traverse the obtained list set and set other values: campus name, department name, date corresponding to the week
         scheduleList.stream().forEach(item -> {
             this.packageSchedule(item);
         });
         return scheduleList;
     }
 
-    //获取可预约的排班数据
+    //Get the schedule data that can be booked
     @Override
     public Map<String, Object> getBookingScheduleRule(int page, int limit, String campuscode, String depcode) {
         Map<String, Object> result = new HashMap<>();
-        //获取预约规则
-        //根据医院编号获取预约规则
+        //Get the reservation rules
+        //Get the appointment rule according to the campus number
         Campus campus = campusService.getByCampuscode(campuscode);
         if (campus == null) {
             throw new NustudyException(ResultCodeEnum.DATA_ERROR);
@@ -184,12 +184,12 @@ public class ScheduleServiceImpl implements ScheduleService {
         BookingRule bookingRule = campus.getBookingRule();
         bookingRule.setReleaseTime("00:00");
         bookingRule.setStopTime("23:59");
-        //获取可预约日期的数据（分页）
+        //Get data on available dates (paginated）
         IPage iPage = this.getListDate(page, limit, bookingRule);
-        //当前可预约日期
+        //Current available dates
         List<Date> dateList = iPage.getRecords();
 
-        //获取可预约日期里面科室的剩余预约数
+        //Get the number of remaining appointments in the department on the available date
         Criteria criteria = Criteria.where("campuscode").is(campuscode).and("depcode").is(depcode)
                 .and("workDate").in(dateList);
 
@@ -208,7 +208,7 @@ public class ScheduleServiceImpl implements ScheduleService {
                 mongoTemplate.aggregate(agg, Schedule.class, BookingScheduleRuleVo.class);
         List<BookingScheduleRuleVo> scheduleVoList = aggregateResult.getMappedResults();
         System.out.println("scheduleVoList:" + scheduleVoList);
-        //合并数据  map集合 key日期  value预约规则和剩余数量等
+        //Merge data map set key date value reservation rule and remaining quantity, etc.
         Map<Date, BookingScheduleRuleVo> scheduleVoMap = new HashMap<>();
         System.out.println("scheduleVoMap:" +  scheduleVoMap);
         if (!CollectionUtils.isEmpty(scheduleVoList)) {
@@ -218,85 +218,85 @@ public class ScheduleServiceImpl implements ScheduleService {
                                     BookingScheduleRuleVo -> BookingScheduleRuleVo));
         }
 
-        //获取可预约排班规则
+        //Get Scheduleable Schedule Rules
         List<BookingScheduleRuleVo> bookingScheduleRuleVoList = new ArrayList<>();
         for (int i = 0, len = dateList.size(); i < len; i++) {
             Date date = dateList.get(i);
-            //从map集合根据key日期获取value值
+            //Get the value from the map collection based on the key date
             BookingScheduleRuleVo bookingScheduleRuleVo = scheduleVoMap.get(date);
-            //如果当天没有排班医生
+            //If there is no scheduled doctor on the day
             if (bookingScheduleRuleVo == null) {
                 bookingScheduleRuleVo = new BookingScheduleRuleVo();
-                //就诊医生人数
+                //Number of visiting doctors
                 bookingScheduleRuleVo.setDocCount(0);
-                //科室剩余预约数  -1表示无号
+                //The number of remaining appointments in the department -1 means no number
                 bookingScheduleRuleVo.setAvailableNumber(-1);
             }
             bookingScheduleRuleVo.setWorkDate(date);
             bookingScheduleRuleVo.setWorkDateMd(date);
-            //计算当前预约日期对应星期
+            //Calculate the week corresponding to the current appointment date
             String dayOfWeek = this.getDayOfWeek(new DateTime(date));
             bookingScheduleRuleVo.setDayOfWeek(dayOfWeek);
 
-            //最后一页最后一条记录为即将预约   状态 0：正常 1：即将放号 -1：当天已停止挂号
+            //The last record on the last page is about reservation status 0: normal 1: about to be released -1: the registration has been stopped on the day
             if (i == len - 1 && page == iPage.getPages()) {
                 bookingScheduleRuleVo.setStatus(1);
             } else {
                 bookingScheduleRuleVo.setStatus(0);
             }
-            //当天预约如果过了停号时间， 不能预约
+            //If you make an appointment on the same day after the stop time, you cannot make an appointment
             if (i == 0 && page == 1) {
                 DateTime stopTime = this.getDateTime(new Date(), bookingRule.getStopTime());
                 if (stopTime.isBeforeNow()) {
-                    //停止预约
+                    //stop booking
                     bookingScheduleRuleVo.setStatus(-1);
                 }
             }
             bookingScheduleRuleVoList.add(bookingScheduleRuleVo);
         }
 
-        //可预约日期规则数据
+        //Scheduleable date rule data
         result.put("bookingScheduleList", bookingScheduleRuleVoList);
         result.put("total", iPage.getTotal());
 
-        //其他基础数据
+        //Other basic data
         Map<String, String> baseMap = new HashMap<>();
-        //医院名称
+        //Hospital name
         baseMap.put("campusname", campusService.getCampusName(campuscode));
-        //科室
+        //Department
         Department department = departmentService.getDepartment(campuscode, depcode);
-        //大科室名称
+        //Big department name
         baseMap.put("bigname", department.getBigname());
-        //科室名称
+        //department name
         baseMap.put("depname", department.getDepname());
-//月
+//month
         baseMap.put("workDateString", new DateTime().toString("yyyy-MM"));
-//放号时间
+//release time
         baseMap.put("releaseTime", bookingRule.getReleaseTime());
-//停号时间
+//stop time
         baseMap.put("stopTime", bookingRule.getStopTime());
         result.put("baseMap", baseMap);
         return result;
     }
 
-    ////获取排班id获取排班数据
+    ////Get shift id Get shift data
     @Override
     public Schedule getScheduleId(String scheduleId) {
         Schedule schedule = scheduleRepository.findScheduleByHosScheduleId(scheduleId);
         return this.packageSchedule(schedule);
     }
 
-    //根据排班id获取预约下单数据
+    //Get reservation order data based on shift id
     @Override
     public ScheduleOrderVo getScheduleOrderVo(String scheduleId) {
         ScheduleOrderVo scheduleOrderVo = new ScheduleOrderVo();
-        //获取排班信息
+        //Get shift information
         Schedule schedule = this.getScheduleId(scheduleId);
         //Schedule schedule = baseMapper.selectById(scheduleId);
         if (schedule == null) {
             throw new NustudyException(ResultCodeEnum.PARAM_ERROR);
         }
-        //获取预约规则信息
+        //Get reservation rule information
         Campus campus = campusService.getByCampuscode(schedule.getCampuscode());
         if (campus == null) {
             throw new NustudyException(ResultCodeEnum.PARAM_ERROR);
@@ -306,7 +306,7 @@ public class ScheduleServiceImpl implements ScheduleService {
             throw new NustudyException(ResultCodeEnum.PARAM_ERROR);
         }
 
-        //把获取数据设置到scheduleOrderVo
+        //Set the fetch data to scheduleOrderVo
         scheduleOrderVo.setCampuscode(schedule.getCampuscode());
         scheduleOrderVo.setCampusname(campusService.getCampusName(schedule.getCampuscode()));
         scheduleOrderVo.setDepcode(schedule.getDepcode());
@@ -318,68 +318,68 @@ public class ScheduleServiceImpl implements ScheduleService {
         scheduleOrderVo.setReserveTime(schedule.getWorkTime());
         scheduleOrderVo.setAmount(schedule.getAmount());
 
-        //退号截止天数（如：就诊前一天为-1，当天为0）
+        //The number of days to cancel the account
         int quitDay = bookingRule.getQuitDay();
         DateTime quitTime = this.getDateTime(new DateTime(schedule.getWorkDate()).plusDays(quitDay).toDate(), bookingRule.getQuitTime());
         scheduleOrderVo.setQuitTime(quitTime.toDate());
 
-        //预约开始时间
+        //Appointment start time
         DateTime startTime = this.getDateTime(new Date(), bookingRule.getReleaseTime());
         scheduleOrderVo.setStartTime(startTime.toDate());
 
-        //预约截止时间
+        //Appointment Deadline
         DateTime endTime = this.getDateTime(new DateTime().plusDays(bookingRule.getCycle()).toDate(), bookingRule.getStopTime());
         scheduleOrderVo.setEndTime(endTime.toDate());
 
-        //当天停止挂号时间
+        //Stop registration time on the day
         DateTime stopTime = this.getDateTime(new Date(), bookingRule.getStopTime());
         scheduleOrderVo.setStartTime(startTime.toDate());
         return scheduleOrderVo;
     }
 
-    //更新排班信息 用于mp
+    //Update shift information for mp
     @Override
     public void update(Schedule schedule) {
         schedule.setUpdateTime(new Date());
         scheduleRepository.save(schedule);
     }
 
-    //获取可预约日志分页数据
+    //Get bookable log paging data
     private IPage getListDate(int page, int limit, BookingRule bookingRule) {
-        //获取当天放号时间  年 月 日 小时 分钟
+        //Get the date when the number is released year month day hour minute
         DateTime releaseTime = this.getDateTime(new Date(), bookingRule.getReleaseTime());
-        //获取预约周期
+        //Get appointment cycle
         Integer cycle = bookingRule.getCycle();
-        //如果当天放号时间已经过去了，预约周期从后一天开始计算，周期+1
+        //If the time for assigning the number on the day has passed, the reservation period will be calculated from the next day, and the period will be +1
         if (releaseTime.isBeforeNow()) {
             cycle += 1;
         }
-        //获取可预约所有日期，最后一天显示即将放号
+        //Get all the dates that can be reserved, the last day shows the upcoming number
         List<Date> dateList = new ArrayList<>();
         for (int i = 0; i < cycle; i++) {
             DateTime curDateTime = new DateTime().plusDays(i);
             String dateString = curDateTime.toString("yyyy-MM-dd");
             dateList.add(new DateTime(dateString).toDate());
         }
-        //因为预约周期不同的，每页显示日期最多7天数据，超过7天分页
+        //Because the reservation cycle is different, each page displays up to 7 days of data, and more than 7 days are paginated
         List<Date> pageDateList = new ArrayList<>();
         int start = (page - 1) * limit;
         int end = (page - 1) * limit + limit;
-        //如果可以显示数据小于7，直接显示
+        //If the data that can be displayed is less than 7, display it directly
         if (end > dateList.size()) {
             end = dateList.size();
         }
         for (int i = start; i < end; i++) {
             pageDateList.add(dateList.get(i));
         }
-        //如果可以显示数据大于7，进行分页
+        //If you can display data greater than 7, paginate
         IPage<Date> iPage = new com.baomidou.mybatisplus.extension.plugins.pagination.Page<>(page, 7, dateList.size());
         iPage.setRecords(pageDateList);
         return iPage;
     }
 
     /**
-     * 将Date日期（yyyy-MM-dd HH:mm）转换为DateTime
+     * Convert Date (yyyy-MM-dd HH:mm) to DateTime
      */
     private DateTime getDateTime(Date date, String timeString) {
         String dateTimeString = new DateTime(date).toString("yyyy-MM-dd") + " " + timeString;
@@ -387,20 +387,20 @@ public class ScheduleServiceImpl implements ScheduleService {
         return dateTime;
     }
 
-    //封装排班详情其他值 医院名称、科室名称、日期对应星期
+    //Package schedule details Other values ​​campus name, department name, date corresponding to the week
     private Schedule packageSchedule(Schedule schedule) {
-        //设置医院名称
+        //set campus name
         schedule.getParam().put("campusname", campusService.getCampusName(schedule.getCampuscode()));
-        //设置科室名称
+        //Set department name
         schedule.getParam().put("depname", departmentService.getDepName(schedule.getCampuscode(), schedule.getDepcode()));
-        //设置日期对应星期
+        //Set the date to correspond to the day of the week
         schedule.getParam().put("dayOfWeek", this.getDayOfWeek(new DateTime(schedule.getWorkDate())));
         return schedule;
     }
 
     /**
      * Util class
-     * 根据日期获取周几数据
+     * Get day of week data based on date
      *
      * @param dateTime
      * @return

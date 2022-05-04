@@ -74,13 +74,13 @@ public class CampusApiController {
     @ApiOperation(value = "getBookingSchedule")
     @GetMapping("auth/getBookingScheduleRule/{page}/{limit}/{campuscode}/{depcode}")
     public Result getBookingSchedule(
-            @ApiParam(name = "page", value = "当前页码", required = true)
+            @ApiParam(name = "page", value = "current page", required = true)
             @PathVariable Integer page,
             @ApiParam(name = "limit", value = "records per page", required = true)
             @PathVariable Integer limit,
-            @ApiParam(name = "campuscode", value = "医院code", required = true)
+            @ApiParam(name = "campuscode", value = "campuscode", required = true)
             @PathVariable String campuscode,
-            @ApiParam(name = "depcode", value = "科室code", required = true)
+            @ApiParam(name = "depcode", value = "depcode", required = true)
             @PathVariable String depcode) {
         return Result.ok(scheduleService.getBookingScheduleRule(page, limit, campuscode, depcode));
     }
@@ -88,11 +88,11 @@ public class CampusApiController {
     @ApiOperation(value = "findScheduleList")
     @GetMapping("auth/findScheduleList/{campuscode}/{depcode}/{workDate}")
     public Result findScheduleList(
-            @ApiParam(name = "campuscode", value = "医院code", required = true)
+            @ApiParam(name = "campuscode", value = "campuscode", required = true)
             @PathVariable String campuscode,
-            @ApiParam(name = "depcode", value = "科室code", required = true)
+            @ApiParam(name = "depcode", value = "depcode", required = true)
             @PathVariable String depcode,
-            @ApiParam(name = "workDate", value = "排班日期", required = true)
+            @ApiParam(name = "workDate", value = "workDate", required = true)
             @PathVariable String workDate) {
         return Result.ok(scheduleService.getDetailSchedule(campuscode, depcode, workDate));
     }
@@ -107,7 +107,7 @@ public class CampusApiController {
     @ApiOperation(value = "getScheduleOrderVo")
     @GetMapping("inner/getScheduleOrderVo/{scheduleId}")
     public ScheduleOrderVo getScheduleOrderVo(
-            @ApiParam(name = "scheduleId", value = "排班id", required = true)
+            @ApiParam(name = "scheduleId", value = "schaduleId", required = true)
             @PathVariable("scheduleId") String scheduleId) {
         return scheduleService.getScheduleOrderVo(scheduleId);
     }
@@ -115,7 +115,7 @@ public class CampusApiController {
     @ApiOperation(value = "getSignInfoVo")
     @GetMapping("inner/getSignInfoVo/{campuscode}")
     public SignInfoVo getSignInfoVo(
-            @ApiParam(name = "campuscode", value = "医院code", required = true)
+            @ApiParam(name = "campuscode", value = "campuscode", required = true)
             @PathVariable("campuscode") String campuscode) {
         return campusSetService.getSignInfoVo(campuscode);
     }
