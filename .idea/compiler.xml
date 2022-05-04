@@ -13,14 +13,14 @@
         <module name="service_order" />
         <module name="service_cmn" />
         <module name="service_campus_client" />
-        <module name="common_util" />
         <module name="service_gateway" />
+        <module name="common_util" />
         <module name="service_order_client" />
         <module name="service_user_client" />
         <module name="service_campus" />
-        <module name="service_util" />
         <module name="model" />
         <module name="service_cmn_client" />
+        <module name="service_util" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -47,11 +47,15 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="campus_manage" options="-parameters" />
+      <module name="common" options="-parameters" />
       <module name="common_util" options="-parameters" />
       <module name="model" options="-parameters" />
+      <module name="nustudy_parent" options="-parameters" />
       <module name="rabbit_util" options="-parameters" />
+      <module name="service" options="-parameters" />
       <module name="service_campus" options="-parameters" />
       <module name="service_campus_client" options="-parameters" />
+      <module name="service_client" options="-parameters" />
       <module name="service_cmn" options="-parameters" />
       <module name="service_cmn_client" options="-parameters" />
       <module name="service_gateway" options="-parameters" />

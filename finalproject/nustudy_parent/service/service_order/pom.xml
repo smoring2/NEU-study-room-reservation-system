@@ -10,7 +10,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>service_order</artifactId>
-
+    <!--    TODO: delete it-->
+    <packaging>jar</packaging>
     <dependencies>
         <dependency>
             <groupId>com.nustudy</groupId>
@@ -40,6 +41,13 @@
             <groupId>com.github.wxpay</groupId>
             <artifactId>wxpay-sdk</artifactId>
             <version>0.0.3</version>
+        </dependency>
+
+        <!--lombok-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.22</version>
         </dependency>
     </dependencies>
 
