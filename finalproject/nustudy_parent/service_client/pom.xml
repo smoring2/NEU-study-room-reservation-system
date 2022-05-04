@@ -24,6 +24,19 @@
             <artifactId>common_util</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>provided </scope>
+            <exclusions>
+                <exclusion>
+                    <artifactId>lombok</artifactId>
+                    <groupId>org.projectlombok</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!--lombok-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.22</version>
         </dependency>
 
         <dependency>
@@ -31,6 +44,12 @@
             <artifactId>model</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>provided </scope>
+            <exclusions>
+                <exclusion>
+                    <artifactId>lombok</artifactId>
+                    <groupId>org.projectlombok</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>

@@ -11,7 +11,6 @@
 
     <artifactId>service_campus</artifactId>
 
-    <packaging>jar</packaging>
     <name>service_campus</name>
     <description>service_campus</description>
 
@@ -26,10 +25,15 @@
             <artifactId>service_cmn_client</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+        <!--lombok-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.22</version>
+        </dependency>
     </dependencies>
 
     <build>
-        <finalName>service_campus</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
