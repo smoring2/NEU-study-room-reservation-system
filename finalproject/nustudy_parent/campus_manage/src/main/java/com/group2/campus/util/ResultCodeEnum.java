@@ -3,8 +3,6 @@ import lombok.Getter;
 
 /**
  * Unified return result status information class
- *
- * @author qy
  */
 @Getter
 public enum ResultCodeEnum {

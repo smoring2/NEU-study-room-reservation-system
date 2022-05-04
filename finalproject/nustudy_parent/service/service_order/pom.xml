@@ -10,7 +10,6 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>service_order</artifactId>
-    <!--    TODO: delete it-->
     <packaging>jar</packaging>
     <dependencies>
         <dependency>

@@ -6,8 +6,6 @@ import lombok.Data;
 
 /**
  * Global unified return result class
- *
- * @author qy
  */
 @Data
 @ApiModel(value = "Global unified return result")

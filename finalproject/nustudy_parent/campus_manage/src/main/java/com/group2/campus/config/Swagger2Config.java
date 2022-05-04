@@ -19,7 +19,6 @@ import java.util.List;
 
 /**
  * Swagger2
- * @author qy
  */
 @Configuration
 @EnableSwagger2

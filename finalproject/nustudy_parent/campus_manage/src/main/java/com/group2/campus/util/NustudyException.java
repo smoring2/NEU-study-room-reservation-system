@@ -6,8 +6,6 @@ import lombok.Data;
 
 /**
  * Custom global exception class
- *
- * @author qy
  */
 @Data
 @ApiModel(value = "Custom global exception class")

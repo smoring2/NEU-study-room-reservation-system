@@ -9,9 +9,6 @@ import lombok.Data;
 /**
  * <p>
  * Schedule
- * </p>
- *
- * @author qy
  */
 @Data
 @ApiModel(description = "Schedule")

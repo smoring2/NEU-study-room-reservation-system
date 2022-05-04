@@ -32,8 +32,6 @@ import java.util.Map;
 /**
  * http request client
  *
- * @author qy
- *
  */
 public class HttpClient {
 

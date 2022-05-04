@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 /**
  * Global exception handling class
  *
- * @author qy
  */
 @ControllerAdvice
 @Slf4j
