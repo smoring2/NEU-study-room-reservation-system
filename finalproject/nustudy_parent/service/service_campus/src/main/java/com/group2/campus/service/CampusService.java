@@ -14,7 +14,7 @@ public interface CampusService {
     //Realize query according to campus number
     Campus getByCampuscode(String campuscode);
 
-    //Hospital List (Conditional Query Pagination)
+    //campus List (Conditional Query Pagination)
     Page<Campus> selectCampusPage(Integer page, Integer limit, CampusQueryVo campusQueryVo);
 
     //Update campus online status

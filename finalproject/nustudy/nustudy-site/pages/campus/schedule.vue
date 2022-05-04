@@ -35,7 +35,7 @@
 
     <!-- Right navi #start -->
     <div class="page-container">
-      <div class="hospital-source-list">
+      <div class="campus-source-list">
         <div class="header-wrapper" style="justify-content: normal">
           <span class="v-link clickable" @click="show()">{{
               baseMap.campusname

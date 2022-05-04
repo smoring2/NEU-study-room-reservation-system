@@ -1,4 +1,5 @@
 <template>
+
   <!-- header -->
   <div class="nav-container page-component">
     <!--left navi #start -->
@@ -41,10 +42,10 @@
 
     <!-- right info #start -->
     <div class="page-container">
-      <div class="hospital-home">
+      <div class="campus-home">
         <div class="common-header">
           <div class="title-wrapper">
-            <span class="hospital-title">{{ campus.campusname }}</span>
+            <span class="campus-title">{{ campus.campusname }}</span>
             <div class="icon-wrapper">
               {{ campus.param.campustypeString }}
             </div>
@@ -52,7 +53,7 @@
         </div>
         <div class="info-wrapper">
           <img
-            class="hospital-img"
+            class="campus-img"
             :src="'data:image/jpeg;base64,' + campus.logoData"
             :alt="campus.campusname"
           />
@@ -100,7 +101,7 @@
         <div class="title select-title">Building And Floor</div>
         <div class="select-dept-wrapper">
           <div class="department-wrapper">
-            <div class="hospital-department">
+            <div class="campus-department">
               <div class="dept-list-wrapper el-scrollbar" style="height: 100%">
                 <div
                   class="dept-list el-scrollbar__wrap"

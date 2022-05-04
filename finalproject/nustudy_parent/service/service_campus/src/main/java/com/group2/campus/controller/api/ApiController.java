@@ -97,7 +97,7 @@ public class ApiController {
         //Get the information passed over to the department
         Map<String, String[]> requestMap = request.getParameterMap();
         Map<String, Object> paramMap = HttpRequestHelper.switchMap(requestMap);
-        //Hospital number and department number
+        //Campus number and department number
         String campuscode = (String)paramMap.get("campuscode");
         String depcode = (String)paramMap.get("depcode");
         //TODO sign_key check

@@ -30,7 +30,7 @@
                 </div>
               </el-form-item>
               <el-form-item prop="certificatesType" label="Certification Type：">
-                <el-select v-model="userAuah.certificatesType" placeholder="Certification Type" class="v-select patient-select">
+                <el-select v-model="userAuah.certificatesType" placeholder="Certification Type" class="v-select student-select">
                   <el-option
                     v-for="item in certificatesTypeList"
                     :key="item.value"
@@ -192,7 +192,7 @@ export default {
     margin-left: 0;
   }
 
-  .patient-card .el-card__header .detail {
+  .student-card .el-card__header .detail {
     font-size: 14px;
   }
 

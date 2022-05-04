@@ -101,7 +101,7 @@ public class OrderServiceImpl extends
 
         if (result.getInteger("code") == 200) {
             JSONObject jsonObject = result.getJSONObject("data");
-            //Appointment record unique identifier (hospital appointment record primary key)
+            //Appointment record unique identifier (campus appointment record primary key)
             String hosRecordId = jsonObject.getString("hosRecordId");
             //reservation number
             Integer number = jsonObject.getInteger("number");

@@ -8,7 +8,7 @@
     <!-- search -->
     <div class="search-container">
       <div class="search-wrapper">
-        <div class="hospital-search">
+        <div class="campus-search">
           <el-autocomplete
             class="search-input"
             prefix-icon="el-icon-search"
@@ -61,7 +61,7 @@
             </div>
           </div>
         </div>
-        <div class="v-scroll-list hospital-list">
+        <div class="v-scroll-list campus-list">
           <div
             v-for="(item, index) in list"
             :key="index"
@@ -69,12 +69,12 @@
           >
             <div class="">
               <div
-                class="hospital-list-item hos-item"
+                class="campus-list-item hos-item"
                 index="0"
                 @click="show(item.campuscode)"
               >
                 <div class="wrapper">
-                  <div class="hospital-title">{{ item.campusname }}</div>
+                  <div class="campus-title">{{ item.campusname }}</div>
                   <div class="bottom-container">
                     <div class="icon-wrapper">
                       <span class="iconfont"></span>
@@ -89,7 +89,7 @@
                 <img
                   src="~assets/images/logoNeu.png"
                   alt="item.campusname"
-                  class="hospital-img"
+                  class="campus-img"
                 />
               </div>
             </div>

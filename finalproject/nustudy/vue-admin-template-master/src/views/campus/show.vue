@@ -77,7 +77,7 @@ import campusApi from "@/api/campus";
 export default {
   data() {
     return {
-      campus: null, //hospital information
+      campus: null, //campus information
       bookingRule: null //Reservation information
     };
   },

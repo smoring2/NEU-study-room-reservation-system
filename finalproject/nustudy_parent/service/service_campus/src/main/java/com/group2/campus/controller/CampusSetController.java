@@ -66,8 +66,8 @@ class CampusSetController {
         Page<CampusSet> page = new Page<>(current,limit);
         //build condition
         QueryWrapper<CampusSet> wrapper = new QueryWrapper<>();
-        String campusname = campusSetQueryVo.getCampusname();//hospital name
-        String campuscode = campusSetQueryVo.getCampuscode();//医院编号
+        String campusname = campusSetQueryVo.getCampusname();//campus name
+        String campuscode = campusSetQueryVo.getCampuscode();//campus code
         if(!StringUtils.isEmpty(campusname)) {
             wrapper.like("campusname", campusSetQueryVo.getCampusname());
         }
@@ -126,7 +126,7 @@ class CampusSetController {
         return Result.ok();
     }
 
-    //8 Hospital Settings Lock and Unlock
+    //8 campus Settings Lock and Unlock
     @PutMapping("lockCampusSet/{id}/{status}")
     public Result lockCampusSet(@PathVariable Long id,
                                 @PathVariable Integer status) {

@@ -24,7 +24,7 @@
   justify-content: flex-start;
 }
 
-.row-left-middle,
+
 .row-left-top {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -270,7 +270,7 @@
   align-items: flex-end;
 }
 
-.hospital-department {
+.campus-department {
   width: 170px;
   background: #f4f9ff;
   position: relative;
@@ -278,12 +278,12 @@
   color: #333;
 }
 
-.hospital-department .dept-list-wrapper {
+.campus-department .dept-list-wrapper {
   padding: 10px 0;
   height: 100%;
 }
 
-.hospital-department .dept-list-wrapper .sub-item {
+.campus-department .dept-list-wrapper .sub-item {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -301,17 +301,17 @@
   min-height: 40px;
 }
 
-.hospital-department .dept-list-wrapper .sub-item:hover {
+.campus-department .dept-list-wrapper .sub-item:hover {
   background: hsla(0, 0%, 100%, 0.7);
 }
 
-.hospital-department .dept-list-wrapper .sub-item.selected {
+.campus-department .dept-list-wrapper .sub-item.selected {
   font-size: 16px;
   font-weight: 700;
   background: #fff;
 }
 
-.hospital-department .mask {
+.campus-department .mask {
   width: 100%;
   height: 40px;
   background: -webkit-gradient(
@@ -405,7 +405,7 @@
   align-items: center;
 }
 
-.common-header .title-wrapper .hospital-title {
+.common-header .title-wrapper .campus-title {
   color: #333;
   font-size: 20px;
   font-weight: 700;
@@ -416,11 +416,11 @@
   font-size: 14px;
 }
 
-.hospital-home .header-wrapper {
+.campus-home .header-wrapper {
   position: fixed;
 }
 
-.hospital-home .info-wrapper {
+.campus-home .info-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -431,7 +431,7 @@
   flex-direction: inherit;
 }
 
-.hospital-home .info-wrapper .content-wrapper {
+.campus-home .info-wrapper .content-wrapper {
   -webkit-box-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -439,11 +439,11 @@
   margin-left: 30px;
 }
 
-.hospital-home .info-wrapper .content-wrapper .sub-title {
+.campus-home .info-wrapper .content-wrapper .sub-title {
   letter-spacing: 1px;
 }
 
-.hospital-home .info-wrapper .content-wrapper .line {
+.campus-home .info-wrapper .content-wrapper .line {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -451,25 +451,25 @@
   font-size: 12px;
 }
 
-.hospital-home .info-wrapper .content-wrapper .line .label {
+.campus-home .info-wrapper .content-wrapper .line .label {
   color: #999;
 }
 
-.hospital-home .info-wrapper .content-wrapper .space {
+.campus-home .info-wrapper .content-wrapper .space {
   margin-left: 60px;
 }
 
-.hospital-home .info-wrapper .mt20 {
+.campus-home .info-wrapper .mt20 {
   margin-top: 20px;
 }
 
-.hospital-home .info-wrapper .hospital-img {
+.campus-home .info-wrapper .campus-img {
   height: 80px;
   width: 80px;
   border-radius: 40px;
 }
 
-.hospital-home .maintain-wrapper {
+.campus-home .maintain-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -483,24 +483,24 @@
   margin-top: 100px;
 }
 
-.hospital-home .maintain-wrapper .maintain-img {
+.campus-home .maintain-wrapper .maintain-img {
   width: 130px;
   height: 130px;
 }
 
-.hospital-home .maintain-wrapper .text {
+.campus-home .maintain-wrapper .text {
   margin-top: 20px;
   color: #333;
   font-size: 16px;
 }
 
-.hospital-home .maintain-wrapper .tips {
+.campus-home .maintain-wrapper .tips {
   margin-top: 10px;
   color: #ccc;
   width: 550px;
 }
 
-.hospital-home .rule-wrapper {
+.campus-home .rule-wrapper {
   margin-top: 8px;
   font-size: 12px;
   color: #999;
@@ -510,12 +510,12 @@
   background: none;
 }
 
-.hospital-home .rule-wrapper ol {
+.campus-home .rule-wrapper ol {
   margin: 0;
   padding-left: 13px;
 }
 
-.hospital-home .select-title {
+.campus-home .select-title {
   padding-top: 40px;
   padding-bottom: 20px;
   background: #fff;
@@ -524,7 +524,7 @@
   top: 0;
 }
 
-.hospital-home .select-dept-wrapper {
+.campus-home .select-dept-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -534,53 +534,53 @@
   min-height: 100px;
 }
 
-.hospital-home .select-dept-wrapper .block {
+.campus-home .select-dept-wrapper .block {
   width: 2px;
   border-radius: 1px;
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
 
-.hospital-home .select-dept-wrapper .block.selected {
+.campus-home .select-dept-wrapper .block.selected {
   width: 4px;
   border-radius: 2px;
 }
 
-.hospital-home .select-dept-wrapper .department-wrapper {
+.campus-home .select-dept-wrapper .department-wrapper {
   max-height: 460px;
   position: -webkit-sticky;
   position: sticky;
   top: 82px;
 }
 
-.hospital-home .select-dept-wrapper .sub-dept-container {
+.campus-home .select-dept-wrapper .sub-dept-container {
   margin-left: 50px;
   -webkit-box-flex: 1;
   -ms-flex: 1;
   flex: 1;
 }
 
-.hospital-home .select-dept-wrapper .sub-dept-container .sub-dept-wrapper {
+.campus-home .select-dept-wrapper .sub-dept-container .sub-dept-wrapper {
   padding: 20px 0 20px 30px;
   border-radius: 4px;
   margin-top: 20px;
 }
 
-.hospital-home
+.campus-home
   .select-dept-wrapper
   .sub-dept-container
   .sub-dept-wrapper:first-child {
   margin-top: 0;
 }
 
-.hospital-home
+.campus-home
   .select-dept-wrapper
   .sub-dept-container
   .sub-dept-wrapper.selected {
   background: #fafafa;
 }
 
-.hospital-home
+.campus-home
   .select-dept-wrapper
   .sub-dept-container
   .sub-dept-wrapper
@@ -595,7 +595,7 @@
   color: #333;
 }
 
-.hospital-home
+.campus-home
   .select-dept-wrapper
   .sub-dept-container
   .sub-dept-wrapper
@@ -608,7 +608,7 @@
   margin-top: 10px;
 }
 
-.hospital-home
+.campus-home
   .select-dept-wrapper
   .sub-dept-container
   .sub-dept-wrapper
@@ -1138,7 +1138,7 @@
   margin-left: 20px;
 }
 
-.hospital-source-list .list-item {
+.campus-source-list .list-item {
   width: auto;
   height: auto;
   color: #333;
@@ -1158,7 +1158,7 @@
   -ms-flex-pack: justify;
   justify-content: space-between;
 }
-.hospital-source-list .list-item:hover {
+.campus-source-list .list-item:hover {
   border: 0;
   -webkit-box-shadow: none;
 }
@@ -1807,7 +1807,7 @@
   margin-top: 40px;
 }
 
-.patient-wrapper {
+.student-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1816,7 +1816,7 @@
   margin-top: 30px;
 }
 
-.patient-wrapper .item {
+.student-wrapper .item {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1825,17 +1825,17 @@
   align-items: center;
 }
 
-.patient-wrapper .item .iconfont {
+.student-wrapper .item .iconfont {
   margin-right: 10px;
   color: #999;
   font-size: 14px;
 }
 
-.patient-wrapper .item:hover .item-title {
+.student-wrapper .item:hover .item-title {
   font-weight: 700;
 }
 
-.patient-wrapper .item-wrapper {
+.student-wrapper .item-wrapper {
   width: 202px;
   height: 90px;
   display: -webkit-box;
@@ -1850,40 +1850,40 @@
   border-radius: 4px;
 }
 
-.patient-wrapper .item-wrapper .item-title {
+.student-wrapper .item-wrapper .item-title {
   color: #333;
   letter-spacing: 1px;
   font-size: 14px;
   margin-bottom: 10px;
 }
 
-.patient-wrapper .item-wrapper.selected {
+.student-wrapper .item-wrapper.selected {
   background-color: #4990f1;
   color: #fff;
   -webkit-box-shadow: 0 10px 20px -10px rgba(73, 144, 241, 0.5);
   box-shadow: 0 10px 20px -10px rgba(73, 144, 241, 0.5);
 }
 
-.patient-wrapper .item-wrapper.selected .item-title {
+.student-wrapper .item-wrapper.selected .item-title {
   color: #fff;
   font-weight: 700;
 }
 
-.patient-wrapper .item-wrapper .checked {
+.student-wrapper .item-wrapper .checked {
   height: 22px;
   width: 22px;
   margin-top: 22px;
 }
 
-.patient-wrapper .space {
+.student-wrapper .space {
   margin-left: 32px;
 }
 
-.patient-wrapper .add-patient {
+.student-wrapper .add-student {
   height: 90px;
 }
 
-.patient-wrapper .item-add-wrapper {
+.student-wrapper .item-add-wrapper {
   width: 202px;
   height: 90px;
   display: -webkit-box;
@@ -1899,7 +1899,7 @@
   font-size: 16px;
 }
 
-.patient-wrapper .tips-wrapper {
+.student-wrapper .tips-wrapper {
   width: 226px;
   padding: 10px 20px;
   word-wrap: break-word;
@@ -1914,37 +1914,37 @@
   margin-top: -2px;
 }
 
-.patient-card {
+.student-card {
   margin-top: 30px;
   padding: 0 30px;
 }
 
-.patient-card .el-card__header {
+.student-card .el-card__header {
   padding: 16px 0;
 }
 
-.patient-card .el-card__header span {
+.student-card .el-card__header span {
   font-size: 12px;
   color: #999;
 }
 
-.patient-card .el-card__header span.name {
+.student-card .el-card__header span.name {
   font-size: 16px;
   color: #333;
   margin-right: 30px;
 }
 
-.patient-card .el-card__header .detail {
+.student-card .el-card__header .detail {
   float: right;
   color: #999;
 }
 
-.patient-card .el-card__body {
+.student-card .el-card__body {
   padding: 20px 0;
 }
 
-.patient-card .el-card__body,
-.patient-card .el-card__body .card {
+.student-card .el-card__body,
+.student-card .el-card__body .card {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1953,7 +1953,7 @@
   align-items: center;
 }
 
-.patient-card .el-card__body .card {
+.student-card .el-card__body .card {
   width: 50%;
   height: 50px;
   border-radius: 4px;
@@ -1965,53 +1965,53 @@
   cursor: pointer;
 }
 
-.patient-card .el-card__body .card .info {
+.student-card .el-card__body .card .info {
   width: 100%;
 }
 
-.patient-card .el-card__body .card .info span {
+.student-card .el-card__body .card .info span {
   margin-right: 10px;
 }
 
-.patient-card .el-card__body .card .info .type {
+.student-card .el-card__body .card .info .type {
   background: #fff;
   font-size: 12px;
   padding: 4px;
   border-radius: 4px;
 }
 
-.patient-card .el-card__body .card.MEDICARE_CARD {
+.student-card .el-card__body .card.MEDICARE_CARD {
   background: #76ced5;
 }
 
-.patient-card .el-card__body .card.MEDICARE_CARD .type {
+.student-card .el-card__body .card.MEDICARE_CARD .type {
   color: #76ced5;
 }
 
-.patient-card .el-card__body .card.SELF_PAY_CARD {
+.student-card .el-card__body .card.SELF_PAY_CARD {
   background: #89c4ed;
 }
 
-.patient-card .el-card__body .card.SELF_PAY_CARD .type {
+.student-card .el-card__body .card.SELF_PAY_CARD .type {
   color: #89c4ed;
 }
 
-.patient-card .el-card__body .card .operate {
+.student-card .el-card__body .card .operate {
   width: 100px;
   text-align: right;
 }
 
-.patient-card .el-card__body .card .operate img {
+.student-card .el-card__body .card .operate img {
   width: 22px;
   -webkit-transform: translateY(2px);
   transform: translateY(2px);
 }
 
-.patient-card .el-card__body .card:nth-child(2n) {
+.student-card .el-card__body .card:nth-child(2n) {
   margin-right: 0;
 }
 
-.patient-card .el-card__body .card .text {
+.student-card .el-card__body .card .text {
   width: 100%;
   text-align: center;
   color: #333;
@@ -2083,85 +2083,85 @@
   height: 440px;
 }
 
-.hospital-detail .info-wrapper {
+.campus-detail .info-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   margin-top: 30px;
 }
 
-.hospital-detail .info-wrapper .space {
+.campus-detail .info-wrapper .space {
   margin-bottom: 10px;
 }
 
-.hospital-detail .info-wrapper .content-wrapper {
+.campus-detail .info-wrapper .content-wrapper {
   -webkit-box-flex: 1;
   -ms-flex: 1;
   flex: 1;
   margin-left: 30px;
 }
 
-.hospital-detail .info-wrapper .hospital-img {
+.campus-detail .info-wrapper .campus-img {
   height: 80px;
   width: 80px;
   border-radius: 40px;
 }
 
-.hospital-detail .detail-content {
+.campus-detail .detail-content {
   line-height: 22px;
   letter-spacing: 1px;
   font-size: 12px;
 }
 
-.hospital-detail .detail-content p {
+.campus-detail .detail-content p {
   text-indent: 2em;
   margin: 0;
 }
 
-.hospital-detail .detail-content h4 {
+.campus-detail .detail-content h4 {
   color: #333;
   margin-bottom: 0;
 }
 
-.hospital-detail .mt40 {
+.campus-detail .mt40 {
   margin-top: 40px;
 }
 
-.hospital-notice {
+.campus-notice {
   min-height: 300px;
 }
 
-.hospital-notice h2,
-.hospital-notice h4 {
+.campus-notice h2,
+.campus-notice h4 {
   color: #333;
 }
 
-.hospital-notice h2 {
+.campus-notice h2 {
   text-align: center;
   margin-top: 0;
 }
 
-.hospital-notice p {
+.campus-notice p {
   text-indent: 2em;
 }
 
-.hospital-suspend {
+.campus-suspend {
   padding-bottom: 60px;
 }
 
-.hospital-suspend .table {
+.campus-suspend .table {
   margin-top: 60px;
 }
 
-.hospital-suspend .pagination {
+.campus-suspend .pagination {
   margin-top: 100px;
 }
 
-.hospital-query .content {
+.campus-query .content {
   padding-top: 80px;
 }
 
-.hospital-query .content .wrapper {
+.campus-query .content .wrapper {
   width: 400px;
   margin-left: 200px;
   line-height: 22px;
@@ -2170,7 +2170,7 @@
   font-size: 12px;
 }
 
-.hospital-query .content .wrapper .slot-wrapper {
+.campus-query .content .wrapper .slot-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2179,26 +2179,26 @@
   align-items: center;
 }
 
-.hospital-query .el-input__inner {
+.campus-query .el-input__inner {
   padding-right: 70px !important;
   padding-left: 30px !important;
 }
 
-.hospital-query .table {
+.campus-query .table {
   margin-top: 40px;
 }
 
-.hospital-query .el-dialog__body {
+.campus-query .el-dialog__body {
   text-align: center;
   padding: 0;
 }
 
-.hospital-query .icon {
+.campus-query .icon {
   font-size: 54px;
   color: #4490f1;
 }
 
-.hospital-query .dialog-footer {
+.campus-query .dialog-footer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2206,13 +2206,13 @@
   justify-content: space-around;
 }
 
-.hospital-query .dialog-text {
+.campus-query .dialog-text {
   margin: 30px 0 58px;
   color: #333;
   font-size: 16px;
   letter-spacing: 1px;
 }
 
-.hospital-query .button-wrapper {
+.campus-query .button-wrapper {
   width: 140px;
 }

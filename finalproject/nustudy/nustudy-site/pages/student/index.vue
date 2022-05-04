@@ -23,7 +23,7 @@
           <div class="title">My Information</div>
         </div>
         <div class="content-wrapper">
-          <el-card class="patient-card" shadow="always" v-for="item in studentList" :key="item.id">
+          <el-card class="student-card" shadow="always" v-for="item in studentList" :key="item.id">
             <div slot="header" class="clearfix">
               <div>
                 <span class="name">{{ item.name }}</span>
@@ -91,7 +91,7 @@ export default {
   margin-left: 0;
 }
 
-.patient-card .el-card__header .detail {
+.student-card .el-card__header .detail {
   font-size: 14px;
 }
 

@@ -65,7 +65,7 @@
     width: 500px;
 }
 
-.hospital-search {
+.campus-search {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -81,11 +81,11 @@
     justify-content: center;
 }
 
-.hospital-search .search-input{
+.campus-search .search-input{
     width: 100%;
 }
 
-.col-right-bottom, .hospital-search {
+.col-right-bottom, .campus-search {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;

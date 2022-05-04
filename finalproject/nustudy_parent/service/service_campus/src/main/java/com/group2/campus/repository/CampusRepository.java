@@ -11,7 +11,7 @@ public interface CampusRepository extends MongoRepository<Campus,String> {
     //Determine if there is data
     Campus getCampusByCampuscode(String campuscode);
 
-    //Search by hospital name
+    //Search by campus name
     List<Campus> findCampusByCampusnameLike(String campusName);
 }
 

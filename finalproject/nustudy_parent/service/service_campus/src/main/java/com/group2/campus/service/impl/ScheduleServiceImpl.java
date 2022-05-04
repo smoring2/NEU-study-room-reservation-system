@@ -261,7 +261,7 @@ public class ScheduleServiceImpl implements ScheduleService {
 
         //Other basic data
         Map<String, String> baseMap = new HashMap<>();
-        //Hospital name
+        //campus name
         baseMap.put("campusname", campusService.getCampusName(campuscode));
         //Department
         Department department = departmentService.getDepartment(campuscode, depcode);

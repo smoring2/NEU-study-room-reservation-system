@@ -25,7 +25,7 @@
     margin-top: 20px;
     font-size: 14px
 }
-
+campus
 .mobile-wrapper {
     position: fixed;
     top: 0;
@@ -150,7 +150,7 @@ img {
     margin-right: 3px
 }
 
-.hospital-list-item {
+.campus-list-item {
     height: 98px;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -163,23 +163,23 @@ img {
     justify-content: space-between
 }
 
-.hospital-list-item:hover .wrapper .hospital-title {
+.campus-list-item:hover .wrapper .campus-title {
     color: #000;
     font-weight: 800
 }
 
-.hospital-list-item:hover .hospital-img {
+.campus-list-item:hover .campus-img {
     -webkit-transform: scale(1.03);
     transform: scale(1.03)
 }
 
-.hospital-list-item .dept-name {
+.campus-list-item .dept-name {
     margin-left: 6px;
     font-weight: 400;
     font-size: 14px
 }
 
-.hospital-list-item .wrapper {
+.campus-list-item .wrapper {
     height: 76px;
     color: #333;
     display: -webkit-box;
@@ -198,7 +198,7 @@ img {
     align-items: normal;
 }
 
-.hospital-list-item .wrapper .hospital-title {
+.campus-list-item .wrapper .campus-title {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -213,7 +213,7 @@ img {
     width: 100%;
 }
 
-.hospital-list-item .wrapper .bottom-container {
+.campus-list-item .wrapper .bottom-container {
     width: 250px;
     color: #999;
     display: -webkit-box;
@@ -224,7 +224,7 @@ img {
     justify-content: space-between
 }
 
-.hospital-list-item .wrapper .bottom-container .label-wrapper {
+.campus-list-item .wrapper .bottom-container .label-wrapper {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -233,11 +233,11 @@ img {
     align-items: center
 }
 
-.hospital-list-item .wrapper .bottom-container .label-wrapper .iconfont {
+.campus-list-item .wrapper .bottom-container .label-wrapper .iconfont {
     margin-right: 3px
 }
 
-.hospital-list-item .hospital-img {
+.campus-list-item .campus-img {
     width: 80px;
     height: 80px;
     border-radius: 40px;
@@ -262,7 +262,7 @@ img {
     margin-left: 26px
 }
 
-.hospital-list {
+.campus-list {
     padding-left: 10px;
     padding-right: 80px
 }

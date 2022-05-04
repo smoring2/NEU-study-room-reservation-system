@@ -41,7 +41,7 @@
 
     <!-- right info #start -->
     <div class="page-container">
-      <div class="hospital-notice">
+      <div class="campus-notice">
         <div class="content">
           <h2>{{ campus.campusname }}Reservation Notice</h2>
           <p>For your convenience, please read the following rules.</p>

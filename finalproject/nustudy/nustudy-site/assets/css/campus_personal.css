@@ -678,7 +678,7 @@
     font-weight: 700
 }
 
-.order-detail .info-wrapper .info-form .patient-info {
+.order-detail .info-wrapper .info-form .student-info {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -688,18 +688,18 @@
     font-size: 12px
 }
 
-.order-detail .info-wrapper .info-form .patient-info .patient-name {
+.order-detail .info-wrapper .info-form .student-info .student-name {
     color: #333;
     font-weight: 700;
     font-size: 14px
 }
 
-.order-detail .info-wrapper .info-form .patient-info .split {
+.order-detail .info-wrapper .info-form .student-info .split {
     margin: 0 20px;
     height: 14px
 }
 
-.order-detail .info-wrapper .info-form .patient-info .patient-no {
+.order-detail .info-wrapper .info-form .student-info .student-no {
     margin-left: 10px
 }
 
@@ -870,34 +870,34 @@
     box-shadow: none
 }
 
-.patient-card {
+.student-card {
     margin-top: 30px;
     padding: 0 30px;
     width: 100%;
     cursor: pointer
 }
 
-.patient-card .el-card__header {
+.student-card .el-card__header {
     padding: 16px 0
 }
 
-.patient-card .el-card__header span {
+.student-card .el-card__header span {
     font-size: 12px;
     color: #999
 }
 
-.patient-card .el-card__header span.name {
+.student-card .el-card__header span.name {
     font-size: 16px;
     color: #333;
     margin-right: 30px
 }
 
-.patient-card .el-card__header .detail {
+.student-card .el-card__header .detail {
     float: right;
     color: #999
 }
 
-.patient-card .el-card__body {
+.student-card .el-card__body {
     padding: 20px 0;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -907,7 +907,7 @@
     align-items: center
 }
 
-.patient-card .el-card__body .card {
+.student-card .el-card__body .card {
     -webkit-box-flex: 1;
     -ms-flex: 1;
     flex: 1;
@@ -927,60 +927,60 @@
     cursor: pointer
 }
 
-.patient-card .el-card__body .card .info {
+.student-card .el-card__body .card .info {
     width: 100%
 }
 
-.patient-card .el-card__body .card .info span {
+.student-card .el-card__body .card .info span {
     margin-right: 10px
 }
 
-.patient-card .el-card__body .card .info .type {
+.student-card .el-card__body .card .info .type {
     background: #fff;
     font-size: 12px;
     padding: 4px;
     border-radius: 4px
 }
 
-.patient-card .el-card__body .card.MEDICARE_CARD {
+.student-card .el-card__body .card.MEDICARE_CARD {
     background: #76ced5
 }
 
-.patient-card .el-card__body .card.MEDICARE_CARD .type {
+.student-card .el-card__body .card.MEDICARE_CARD .type {
     color: #76ced5
 }
 
-.patient-card .el-card__body .card.SELF_PAY_CARD {
+.student-card .el-card__body .card.SELF_PAY_CARD {
     background: #89c4ed
 }
 
-.patient-card .el-card__body .card.SELF_PAY_CARD .type {
+.student-card .el-card__body .card.SELF_PAY_CARD .type {
     color: #89c4ed
 }
 
-.patient-card .el-card__body .card .operate {
+.student-card .el-card__body .card .operate {
     width: 100px;
     text-align: right
 }
 
-.patient-card .el-card__body .card .operate img {
+.student-card .el-card__body .card .operate img {
     width: 22px;
     -webkit-transform: translateY(2px);
     transform: translateY(2px)
 }
 
-.patient-card .el-card__body .card:nth-child(2n) {
+.student-card .el-card__body .card:nth-child(2n) {
     margin-right: 0
 }
 
-.patient-card .el-card__body .card .text {
+.student-card .el-card__body .card .text {
     width: 100%;
     text-align: center;
     color: #333;
     font-size: 14px
 }
 
-.patient-card .tips {
+.student-card .tips {
     width: 100%;
     font-size: 14px;
     color: #ff5f5f
@@ -1056,3 +1056,4 @@
     width: 280px;
     margin-bottom: 20px
 }
+

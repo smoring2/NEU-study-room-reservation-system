@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 
-@Api(tags = "Hospital management interface")
+@Api(tags = "Campus management interface")
 @RestController
 public class CampusController {
 

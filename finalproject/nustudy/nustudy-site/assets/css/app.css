@@ -1311,7 +1311,7 @@
         visibility: visible
     }
 }
-
+campus
 .text {
     margin-left: 10px;
     font-size: 22px
@@ -3913,14 +3913,14 @@ body, html {
     align-items: flex-end
 }
 
-.col-right-bottom, .hospital-search {
+.col-right-bottom, .campus-search {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-direction: normal
 }
 
-.hospital-search {
+.campus-search {
     -webkit-box-orient: vertical;
     -ms-flex-direction: column;
     flex-direction: column;
@@ -3932,11 +3932,11 @@ body, html {
     justify-content: center
 }
 
-.hospital-search .search-input {
+.campus-search .search-input {
     width: 100%
 }
 
-.hospital-search .search-input .el-input__inner {
+.campus-search .search-input .el-input__inner {
     padding-left: 48px;
     padding-right: 58px;
     padding-top: 1px;
@@ -3948,20 +3948,20 @@ body, html {
     border-bottom: 1px solid #eee
 }
 
-.hospital-search .search-input.small .el-input__inner {
+.campus-search .search-input.small .el-input__inner {
     height: 43px;
     font-size: 14px
 }
 
-.hospital-search .search-input.small .search-btn {
+.campus-search .search-input.small .search-btn {
     font-size: 14px
 }
 
-.hospital-search .search-input .el-input__inner:hover {
+.campus-search .search-input .el-input__inner:hover {
     border-bottom-color: #ddd
 }
 
-.hospital-search .search-input .el-input__prefix {
+.campus-search .search-input .el-input__prefix {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -3973,7 +3973,7 @@ body, html {
     padding: 0 10px
 }
 
-.hospital-search .search-input .el-input__suffix {
+.campus-search .search-input .el-input__suffix {
     right: 20px;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -3983,12 +3983,12 @@ body, html {
     align-items: center
 }
 
-.hospital-search .search-input .search-btn {
+.campus-search .search-input .search-btn {
     font-weight: 700;
     font-size: 16px
 }
 
-.hospital-search .focus-line {
+.campus-search .focus-line {
     height: 1px;
     background: #4990f1;
     margin-top: -1px;
@@ -3998,7 +3998,7 @@ body, html {
     transition: all .3s ease
 }
 
-.hospital-search .focus {
+.campus-search .focus {
     width: 100%
 }
 

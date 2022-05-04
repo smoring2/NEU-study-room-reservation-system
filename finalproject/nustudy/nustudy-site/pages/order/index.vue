@@ -40,9 +40,9 @@
         <el-form :inline="true">
           <el-form-item label="Student:">
             <el-select
-              v-model="searchObj.patientId"
+              v-model="searchObj.studentId"
               placeholder="Choose the student:"
-              class="v-select patient-select"
+              class="v-select student-select"
             >
               <el-option
                 v-for="item in studentList"
@@ -57,7 +57,7 @@
             <el-select
               v-model="searchObj.orderStatus"
               placeholder="All"
-              class="v-select patient-select"
+              class="v-select student-select"
               style="width: 200px"
             >
               <el-option
@@ -93,7 +93,7 @@
             <el-table-column prop="title" label="Room"> </el-table-column>
             <el-table-column prop="amount" label="Amount">
             </el-table-column>
-            <el-table-column prop="patientName" label="Student">
+            <el-table-column prop="studentName" label="Student">
             </el-table-column>
             <el-table-column prop="param.orderStatusString" label="Order status">
             </el-table-column>

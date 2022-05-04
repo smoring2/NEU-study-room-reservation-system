@@ -1,9 +1,10 @@
 <template>
+
   <!-- header -->
   <div class="nav-container page-component">
     <!-- right navi #start -->
     <div class="page-container">
-      <div class="hospital-order">
+      <div class="campus-order">
         <div class="header-wrapper">
           <div class="title mt20">Reservation Confirmation</div>
           <div>
@@ -11,7 +12,7 @@
               <div class="block"></div>
               Chosen student：
             </div>
-            <div class="patient-wrapper">
+            <div class="student-wrapper">
               <div>
                 <div class="v-card clickable item">
                   <div
@@ -61,7 +62,7 @@
             </div>
 
             <el-card
-              class="patient-card"
+              class="student-card"
               shadow="always"
               v-if="studentList.length > 0"
             >
@@ -232,7 +233,7 @@ export default {
 };
 </script>
 <style>
-.hospital-order .header-wrapper {
+.campus-order .header-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: block !important;
@@ -240,7 +241,7 @@ export default {
   -ms-flex-align: center;
   align-items: center;
 }
-.hospital-order .sub-title {
+.campus-order .sub-title {
   letter-spacing: 1px;
   color: #999;
   margin-top: 60px;
@@ -251,13 +252,13 @@ export default {
   -ms-flex-align: center;
   align-items: center;
 }
-.hospital-order .content-wrapper .content {
+.campus-order .content-wrapper .content {
   color: #333;
 }
 .el-form-item {
   margin-bottom: 5px;
 }
-.hospital-order .content-wrapper {
+.campus-order .content-wrapper {
   margin-left: 140px;
   margin-top: 20px;
 }
