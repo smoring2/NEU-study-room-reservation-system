@@ -1,6 +1,6 @@
 package com.group2.campus.util;
 
-import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson2.JSONArray;
 
 import java.util.List;
 

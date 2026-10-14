@@ -3,7 +3,7 @@ package com.group2.nustudy.common.utils;
 
 import com.group2.nustudy.common.helper.JwtHelper;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 
 /**

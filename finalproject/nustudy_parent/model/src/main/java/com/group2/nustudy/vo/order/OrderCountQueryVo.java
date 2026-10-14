@@ -1,23 +1,22 @@
 package com.group2.nustudy.vo.order;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 @Data
-@ApiModel(description = "OrderCountQueryVo")
+@Schema(description = "OrderCountQueryVo")
 public class OrderCountQueryVo {
 	
-	@ApiModelProperty(value = "campus code")
+	@Schema(description = "campus code")
 	private String campuscode;
 
-	@ApiModelProperty(value = "campus name")
+	@Schema(description = "campus name")
 	private String campusname;
 
-	@ApiModelProperty(value = "reserveDateBegin")
+	@Schema(description = "reserveDateBegin")
 	private String reserveDateBegin;
 
-	@ApiModelProperty(value = "reserveDateEnd")
+	@Schema(description = "reserveDateEnd")
 	private String reserveDateEnd;
 
 }

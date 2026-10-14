@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableLogic;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -15,24 +15,24 @@ import java.util.Map;
 @Data
 public class BaseEntity implements Serializable {
 
-    @ApiModelProperty(value = "id")
+    @Schema(description = "id")
     @TableId(type = IdType.AUTO)
     private Long id;
 
-    @ApiModelProperty(value = "creation time")
+    @Schema(description = "creation time")
     @TableField("create_time")
     private Date createTime;
 
-    @ApiModelProperty(value = "update time")
+    @Schema(description = "update time")
     @TableField("update_time")
     private Date updateTime;
 
-    @ApiModelProperty(value = "Tombstone (1: deleted, 0: not deleted)")
+    @Schema(description = "Tombstone (1: deleted, 0: not deleted)")
     @TableLogic
     @TableField("is_deleted")
     private Integer isDeleted;
 
-    @ApiModelProperty(value = "Other parameters")
+    @Schema(description = "Other parameters")
     @TableField(exist = false)
     private Map<String,Object> param = new HashMap<>();
 }

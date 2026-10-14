@@ -4,19 +4,19 @@ import com.group2.campus.mapper.CampusSetMapper;
 import com.group2.campus.model.CampusSet;
 import com.group2.campus.service.ApiService;
 import com.group2.campus.util.NustudyException;
-import io.swagger.annotations.Api;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.util.StringUtils;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.servlet.http.HttpServletRequest;
-@Api(tags = "campus management interface")
+import jakarta.servlet.http.HttpServletRequest;
+@Tag(name = "campus management interface")
 @Controller
 @RequestMapping
 public class ApiController extends BaseController {
@@ -44,7 +44,7 @@ public class ApiController extends BaseController {
 	public String getCampus(ModelMap model, HttpServletRequest request, RedirectAttributes redirectAttributes) {
 		try {
 			CampusSet campusSet = campusSetMapper.selectById(1);
-			if(null == campusSet || StringUtils.isEmpty(campusSet.getCampuscode()) || StringUtils.isEmpty(campusSet.getSignKey())) {
+			if(null == campusSet || ObjectUtils.isEmpty(campusSet.getCampuscode()) || ObjectUtils.isEmpty(campusSet.getSignKey())) {
 				this.failureMessage("Please set the campus code and sign key", redirectAttributes);
 				return "redirect:/campusSet/index";
 			}
@@ -82,7 +82,7 @@ public class ApiController extends BaseController {
 								 HttpServletRequest request,RedirectAttributes redirectAttributes) {
 		try {
 			CampusSet campusSet = campusSetMapper.selectById(1);
-			if(null == campusSet || StringUtils.isEmpty(campusSet.getCampuscode()) || StringUtils.isEmpty(campusSet.getSignKey())) {
+			if(null == campusSet || ObjectUtils.isEmpty(campusSet.getCampuscode()) || ObjectUtils.isEmpty(campusSet.getSignKey())) {
 				this.failureMessage("Please set the campus code and sign key", redirectAttributes);
 				return "redirect:/campusSet/index";
 			}
@@ -120,7 +120,7 @@ public class ApiController extends BaseController {
 							   HttpServletRequest request,RedirectAttributes redirectAttributes) {
 		try {
 			CampusSet campusSet = campusSetMapper.selectById(1);
-			if(null == campusSet || StringUtils.isEmpty(campusSet.getCampuscode()) || StringUtils.isEmpty(campusSet.getSignKey())) {
+			if(null == campusSet || ObjectUtils.isEmpty(campusSet.getCampuscode()) || ObjectUtils.isEmpty(campusSet.getSignKey())) {
 				this.failureMessage("Please set the campus code and sign key", redirectAttributes);
 				return "redirect:/campusSet/index";
 			}

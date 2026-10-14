@@ -2,8 +2,7 @@ package com.group2.campus.model;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 /**
@@ -11,53 +10,53 @@ import lombok.Data;
  * Schedule
  */
 @Data
-@ApiModel(description = "Schedule")
+@Schema(description = "Schedule")
 @TableName("schedule")
 public class Schedule extends BaseNoAutoEntity {
 	
 	private static final long serialVersionUID = 1L;
 
-	@ApiModelProperty(value = "campus code")
+	@Schema(description = "campus code")
 	@TableField("campuscode")
 	private String campuscode;
 
-	@ApiModelProperty(value = "department code")
+	@Schema(description = "department code")
 	@TableField("depcode")
 	private String depcode;
 
-	@ApiModelProperty(value = "title")
+	@Schema(description = "title")
 	@TableField("title")
 	private String title;
 
-	@ApiModelProperty(value = "doc name")
+	@Schema(description = "doc name")
 	@TableField("docname")
 	private String docname;
 
-	@ApiModelProperty(value = "skill")
+	@Schema(description = "skill")
 	@TableField("skill")
 	private String skill;
 
-	@ApiModelProperty(value = "work date")
+	@Schema(description = "work date")
 	@TableField("work_date")
 	private String workDate;
 
-	@ApiModelProperty(value = "work time（0：AM 1：PM）")
+	@Schema(description = "work time（0：AM 1：PM）")
 	@TableField("work_time")
 	private Integer workTime;
 
-	@ApiModelProperty(value = "reserved number")
+	@Schema(description = "reserved number")
 	@TableField("reserved_number")
 	private Integer reservedNumber;
 
-	@ApiModelProperty(value = "available number")
+	@Schema(description = "available number")
 	@TableField("available_number")
 	private Integer availableNumber;
 
-	@ApiModelProperty(value = "amount")
+	@Schema(description = "amount")
 	@TableField("amount")
 	private String amount;
 
-	@ApiModelProperty(value = "status（-1：finish reservation 0：unavailable 1:available）")
+	@Schema(description = "status（-1：finish reservation 0：unavailable 1:available）")
 	@TableField("status")
 	private Integer status;
 }

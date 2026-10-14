@@ -1,56 +1,55 @@
 package com.group2.nustudy.vo.camp;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
 @Data
-@ApiModel(description = "Schedule")
+@Schema(description = "Schedule")
 public class ScheduleOrderVo {
 
-	@ApiModelProperty(value = "campus code")
+	@Schema(description = "campus code")
 	private String campuscode;
 
-	@ApiModelProperty(value = "campus name")
+	@Schema(description = "campus name")
 	private String campusname;
 
-	@ApiModelProperty(value = "department code")
+	@Schema(description = "department code")
 	private String depcode;
 
-	@ApiModelProperty(value = "department name")
+	@Schema(description = "department name")
 	private String depname;
 
-	@ApiModelProperty(value = "hosScheduleId")
+	@Schema(description = "hosScheduleId")
 	private String hosScheduleId;
 
-	@ApiModelProperty(value = "title")
+	@Schema(description = "title")
 	private String title;
 
-	@ApiModelProperty(value = "reserveDate")
+	@Schema(description = "reserveDate")
 	private Date reserveDate;
 
-	@ApiModelProperty(value = "availableNumber")
+	@Schema(description = "availableNumber")
 	private Integer availableNumber;
 
-	@ApiModelProperty(value = "reserveTime")
+	@Schema(description = "reserveTime")
 	private Integer reserveTime;
 
-	@ApiModelProperty(value = "amount")
+	@Schema(description = "amount")
 	private BigDecimal amount;
 
-	@ApiModelProperty(value = "quitTime")
+	@Schema(description = "quitTime")
 	private Date quitTime;
 
-	@ApiModelProperty(value = "startTime")
+	@Schema(description = "startTime")
 	private Date startTime;
 
-	@ApiModelProperty(value = "endTime")
+	@Schema(description = "endTime")
 	private Date endTime;
 
-	@ApiModelProperty(value = "stopTime")
+	@Schema(description = "stopTime")
 	private Date stopTime;
 
 	public String getCampuscode() {

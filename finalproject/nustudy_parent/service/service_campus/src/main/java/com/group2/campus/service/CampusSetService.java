@@ -1,7 +1,7 @@
 package com.group2.campus.service;
 
 import com.group2.nustudy.model.camp.CampusSet;
-import com.baomidou.mybatisplus.extension.service.IService;
+import com.baomidou.mybatisplus.spring.service.IService;
 import com.group2.nustudy.vo.order.SignInfoVo;
 
 /**

@@ -1,6 +1,6 @@
 package com.group2.nustudy.gateway.filter;
 
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 import com.group2.nustudy.common.helper.JwtHelper;
 import com.group2.nustudy.common.result.Result;
 import com.group2.nustudy.common.result.ResultCodeEnum;
@@ -12,7 +12,7 @@ import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.stereotype.Component;
 import org.springframework.util.AntPathMatcher;
-import org.springframework.util.StringUtils;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
@@ -53,7 +53,7 @@ public class AuthGlobalFilter implements GlobalFilter, Ordered {
         //User must log in
         if (antPathMatcher.match("/api/**/auth/**", path)) {
             Long userId = this.getUserId(request);
-            if (StringUtils.isEmpty(userId)) {
+            if (ObjectUtils.isEmpty(userId)) {
                 ServerHttpResponse response = exchange.getResponse();
                 return out(response, ResultCodeEnum.LOGIN_AUTH);
             }
@@ -92,7 +92,7 @@ public class AuthGlobalFilter implements GlobalFilter, Ordered {
         if (null != tokenList) {
             token = tokenList.get(0);
         }
-        if (!StringUtils.isEmpty(token)) {
+        if (!ObjectUtils.isEmpty(token)) {
             return JwtHelper.getUserId(token);
         }
         return null;

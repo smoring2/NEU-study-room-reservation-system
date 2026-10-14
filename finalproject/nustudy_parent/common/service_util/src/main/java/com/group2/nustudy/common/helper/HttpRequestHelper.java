@@ -1,6 +1,6 @@
 package com.group2.nustudy.common.helper;
 
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 import com.group2.nustudy.common.utils.HttpUtil;
 import com.group2.nustudy.common.utils.MD5;
 import lombok.extern.slf4j.Slf4j;

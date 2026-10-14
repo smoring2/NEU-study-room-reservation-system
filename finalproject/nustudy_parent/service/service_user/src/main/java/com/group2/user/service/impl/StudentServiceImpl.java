@@ -1,7 +1,7 @@
 package com.group2.user.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.baomidou.mybatisplus.spring.service.impl.ServiceImpl;
 import com.group2.campus.cmn.client.DictFeignClient;
 import com.group2.nustudy.enums.DictEnum;
 import com.group2.nustudy.model.user.Student;

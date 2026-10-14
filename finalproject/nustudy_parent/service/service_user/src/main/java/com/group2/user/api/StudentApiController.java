@@ -5,11 +5,11 @@ import com.group2.nustudy.common.result.Result;
 import com.group2.nustudy.common.utils.AuthContextHolder;
 import com.group2.nustudy.model.user.Student;
 import com.group2.user.service.StudentService;
-import io.swagger.annotations.ApiParam;
+import io.swagger.v3.oas.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 import java.util.List;
 
 //Student management interface
@@ -66,7 +66,7 @@ public class StudentApiController {
     //Obtain student information based on student id
     @GetMapping("inner/get/{id}")
     public Student getStudentOrder(
-            @ApiParam(name="id", value = "student id", required = true)
+            @Parameter(name="id", description = "student id", required = true)
             @PathVariable Long id) {
         Student student = studentService.getStudentId(id);
         return student;

@@ -1,26 +1,25 @@
 package com.group2.nustudy.vo.user;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 @Data
-@ApiModel(description="UserInfoQueryVo")
+@Schema(description="UserInfoQueryVo")
 public class UserInfoQueryVo {
 
-    @ApiModelProperty(value = "keyword")
+    @Schema(description = "keyword")
     private String keyword;
 
-    @ApiModelProperty(value = "status")
+    @Schema(description = "status")
     private Integer status;
 
-    @ApiModelProperty(value = "authStatus")
+    @Schema(description = "authStatus")
     private Integer authStatus;
 
-    @ApiModelProperty(value = "createTimeBegin")
+    @Schema(description = "createTimeBegin")
     private String createTimeBegin;
 
-    @ApiModelProperty(value = "createTimeEnd")
+    @Schema(description = "createTimeEnd")
     private String createTimeEnd;
 
 }

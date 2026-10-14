@@ -2,7 +2,7 @@ package com.group2.cmn.service.impl;
 
 import com.alibaba.excel.EasyExcel;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.baomidou.mybatisplus.spring.service.impl.ServiceImpl;
 
 import com.fasterxml.jackson.databind.util.BeanUtil;
 import com.group2.cmn.listener.DictListener;
@@ -13,10 +13,10 @@ import com.group2.nustudy.model.cmn.Dict;
 import com.group2.nustudy.vo.cmn.DictEeVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -51,7 +51,7 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements Di
     private boolean isChildren(Long id) {
         QueryWrapper<Dict> wrapper = new QueryWrapper<>();
         wrapper.eq("student_id", id);
-        Integer count = baseMapper.selectCount(wrapper);
+        Long count = baseMapper.selectCount(wrapper);
         // 0>0    1>0
         return count > 0;
     }
@@ -94,7 +94,7 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements Di
     public String getDictName(String dictCode, String value) {
         QueryWrapper<Dict> wrapper = new QueryWrapper<>();
         System.out.println("use wrapper: " + value + ", " + dictCode);
-        if (StringUtils.isEmpty(dictCode)) {
+        if (ObjectUtils.isEmpty(dictCode)) {
             wrapper.eq("value", value);
             Dict dict = baseMapper.selectOne(wrapper);
             System.out.println("find dict: " + dict);

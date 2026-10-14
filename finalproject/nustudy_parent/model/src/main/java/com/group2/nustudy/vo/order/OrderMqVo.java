@@ -1,25 +1,24 @@
 package com.group2.nustudy.vo.order;
 
 import com.group2.nustudy.vo.msm.MsmVo;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 
 @Data
-@ApiModel(description = "OrderMqVo")
+@Schema(description = "OrderMqVo")
 public class OrderMqVo {
 
-	@ApiModelProperty(value = "reservedNumber")
+	@Schema(description = "reservedNumber")
 	private Integer reservedNumber;
 
-	@ApiModelProperty(value = "availableNumber")
+	@Schema(description = "availableNumber")
 	private Integer availableNumber;
 
-	@ApiModelProperty(value = "scheduleId")
+	@Schema(description = "scheduleId")
 	private String scheduleId;
 
-	@ApiModelProperty(value = "msmVo")
+	@Schema(description = "msmVo")
 	private MsmVo msmVo;
 
 	public void setReservedNumber(Integer reservedNumber) {

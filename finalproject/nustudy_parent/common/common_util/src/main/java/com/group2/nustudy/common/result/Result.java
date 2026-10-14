@@ -1,23 +1,22 @@
 package com.group2.nustudy.common.result;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 /**
  * Result globally
  */
 @Data
-@ApiModel(value = "Standardize the return format")
+@Schema(description = "Standardize the return format")
 public class Result<T> {
 
-    @ApiModelProperty(value = "responseCode")
+    @Schema(description = "responseCode")
     private Integer code;
 
-    @ApiModelProperty(value = "responseMessage")
+    @Schema(description = "responseMessage")
     private String message;
 
-    @ApiModelProperty(value = "responseData")
+    @Schema(description = "responseData")
     private T data;
 
     public Result(){}

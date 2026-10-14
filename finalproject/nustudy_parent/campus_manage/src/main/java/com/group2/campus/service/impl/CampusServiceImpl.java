@@ -1,6 +1,6 @@
 package com.group2.campus.service.impl;
 
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 import com.group2.campus.mapper.OrderInfoMapper;
 import com.group2.campus.mapper.ScheduleMapper;
 import com.group2.campus.model.OrderInfo;

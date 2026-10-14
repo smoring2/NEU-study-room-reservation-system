@@ -2,8 +2,7 @@ package com.group2.nustudy.model.camp;
 
 import com.group2.nustudy.model.base.BaseMongoEntity;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -15,13 +14,13 @@ import java.util.Date;
  * Schedule
  */
 @Data
-@ApiModel(description = "Schedule")
+@Schema(description = "Schedule")
 @Document("Schedule")
 public class Schedule extends BaseMongoEntity {
 	
 	private static final long serialVersionUID = 1L;
 
-	@ApiModelProperty(value = "campus code")
+	@Schema(description = "campus code")
 	@Indexed
 	private String campuscode;
 
@@ -121,39 +120,39 @@ public class Schedule extends BaseMongoEntity {
 		this.hosScheduleId = hosScheduleId;
 	}
 
-	@ApiModelProperty(value = "department code")
+	@Schema(description = "department code")
 	@Indexed
 	private String depcode;
 
-	@ApiModelProperty(value = "title")
+	@Schema(description = "title")
 	private String title;
 
-	@ApiModelProperty(value = "docname")
+	@Schema(description = "docname")
 	private String docname;
 
-	@ApiModelProperty(value = "skill")
+	@Schema(description = "skill")
 	private String skill;
 
-	@ApiModelProperty(value = "workDate")
+	@Schema(description = "workDate")
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date workDate;
 
-	@ApiModelProperty(value = "workTime(0: morning 1: afternoon)")
+	@Schema(description = "workTime(0: morning 1: afternoon)")
 	private Integer workTime;
 
-	@ApiModelProperty(value = "reservedNumber")
+	@Schema(description = "reservedNumber")
 	private Integer reservedNumber;
 
-	@ApiModelProperty(value = "availableNumber")
+	@Schema(description = "availableNumber")
 	private Integer availableNumber;
 
-	@ApiModelProperty(value = "amount")
+	@Schema(description = "amount")
 	private BigDecimal amount;
 
-	@ApiModelProperty(value = "status (-1: stop 0: full 1: available）")
+	@Schema(description = "status (-1: stop 0: full 1: available）")
 	private Integer status;
 
-	@ApiModelProperty(value = "hosScheduleId")
+	@Schema(description = "hosScheduleId")
 	@Indexed
 	private String hosScheduleId;
 

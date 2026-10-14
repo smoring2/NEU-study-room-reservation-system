@@ -1,7 +1,6 @@
 package com.group2.nustudy.vo.msm;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 
@@ -11,15 +10,15 @@ import java.util.Map;
  * for further plan
  */
 @Data
-@ApiModel(description = "message")
+@Schema(description = "message")
 public class MsmVo {
 
-    @ApiModelProperty(value = "phone")
+    @Schema(description = "phone")
     private String phone;
 
-    @ApiModelProperty(value = "templateCode")
+    @Schema(description = "templateCode")
     private String templateCode;
 
-    @ApiModelProperty(value = "param")
+    @Schema(description = "param")
     private Map<String,Object> param;
 }

@@ -11,8 +11,8 @@ import com.group2.nustudy.vo.camp.CampusQueryVo;
 import com.group2.nustudy.vo.camp.DepartmentVo;
 import com.group2.nustudy.vo.camp.ScheduleOrderVo;
 import com.group2.nustudy.vo.order.SignInfoVo;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,7 +38,7 @@ public class CampusApiController {
     @Autowired
     private CampusSetService campusSetService;
 
-    @ApiOperation(value = "findCampusList")
+    @Operation(summary = "findCampusList")
     @GetMapping(value = "findCampusList/{page}/{limit}")
     public Result findCampusList(@PathVariable Integer page,
                                  @PathVariable Integer limit,
@@ -50,72 +50,72 @@ public class CampusApiController {
         return Result.ok(campuses);
     }
 
-    @ApiOperation(value = "findByCampusName")
+    @Operation(summary = "findByCampusName")
     @GetMapping(value = "findByCampusName/{campusName}")
     public Result findByCampusName(@PathVariable String campusName){
         List<Campus> list = campusService.findByCampusName(campusName);
         return Result.ok(list);
     }
 
-    @ApiOperation(value = "findDepartmentByCampuscode")
+    @Operation(summary = "findDepartmentByCampuscode")
     @GetMapping("department/{campusCode}")
     public Result index(@PathVariable String campusCode) {
         List<DepartmentVo> list = departmentService.findDeptTree(campusCode);
         return Result.ok(list);
     }
 
-    @ApiOperation(value = "findCampusDetailByCampuscode")
+    @Operation(summary = "findCampusDetailByCampuscode")
     @GetMapping("findCampusDetail/{campuscode}")
     public Result item(@PathVariable String campuscode) {
         Map<String, Object> map = campusService.item(campuscode);
         return Result.ok(map);
     }
 
-    @ApiOperation(value = "getBookingSchedule")
+    @Operation(summary = "getBookingSchedule")
     @GetMapping("auth/getBookingScheduleRule/{page}/{limit}/{campuscode}/{depcode}")
     public Result getBookingSchedule(
-            @ApiParam(name = "page", value = "current page", required = true)
+            @Parameter(name = "page", description = "current page", required = true)
             @PathVariable Integer page,
-            @ApiParam(name = "limit", value = "records per page", required = true)
+            @Parameter(name = "limit", description = "records per page", required = true)
             @PathVariable Integer limit,
-            @ApiParam(name = "campuscode", value = "campuscode", required = true)
+            @Parameter(name = "campuscode", description = "campuscode", required = true)
             @PathVariable String campuscode,
-            @ApiParam(name = "depcode", value = "depcode", required = true)
+            @Parameter(name = "depcode", description = "depcode", required = true)
             @PathVariable String depcode) {
         return Result.ok(scheduleService.getBookingScheduleRule(page, limit, campuscode, depcode));
     }
 
-    @ApiOperation(value = "findScheduleList")
+    @Operation(summary = "findScheduleList")
     @GetMapping("auth/findScheduleList/{campuscode}/{depcode}/{workDate}")
     public Result findScheduleList(
-            @ApiParam(name = "campuscode", value = "campuscode", required = true)
+            @Parameter(name = "campuscode", description = "campuscode", required = true)
             @PathVariable String campuscode,
-            @ApiParam(name = "depcode", value = "depcode", required = true)
+            @Parameter(name = "depcode", description = "depcode", required = true)
             @PathVariable String depcode,
-            @ApiParam(name = "workDate", value = "workDate", required = true)
+            @Parameter(name = "workDate", description = "workDate", required = true)
             @PathVariable String workDate) {
         return Result.ok(scheduleService.getDetailSchedule(campuscode, depcode, workDate));
     }
 
-    @ApiOperation(value = "getScheduleByScheduleId")
+    @Operation(summary = "getScheduleByScheduleId")
     @GetMapping("getSchedule/{scheduleId}")
     public Result getSchedule(@PathVariable String scheduleId) {
         Schedule schedule = scheduleService.getScheduleId(scheduleId);
         return Result.ok(schedule);
     }
 
-    @ApiOperation(value = "getScheduleOrderVo")
+    @Operation(summary = "getScheduleOrderVo")
     @GetMapping("inner/getScheduleOrderVo/{scheduleId}")
     public ScheduleOrderVo getScheduleOrderVo(
-            @ApiParam(name = "scheduleId", value = "schaduleId", required = true)
+            @Parameter(name = "scheduleId", description = "schaduleId", required = true)
             @PathVariable("scheduleId") String scheduleId) {
         return scheduleService.getScheduleOrderVo(scheduleId);
     }
 
-    @ApiOperation(value = "getSignInfoVo")
+    @Operation(summary = "getSignInfoVo")
     @GetMapping("inner/getSignInfoVo/{campuscode}")
     public SignInfoVo getSignInfoVo(
-            @ApiParam(name = "campuscode", value = "campuscode", required = true)
+            @Parameter(name = "campuscode", description = "campuscode", required = true)
             @PathVariable("campuscode") String campuscode) {
         return campusSetService.getSignInfoVo(campuscode);
     }

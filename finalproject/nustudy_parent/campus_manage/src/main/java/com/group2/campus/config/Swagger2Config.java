@@ -1,50 +1,38 @@
 package com.group2.campus.config;
 
-import com.google.common.base.Predicates;
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Contact;
+import io.swagger.v3.oas.models.info.Info;
+import org.springdoc.core.models.GroupedOpenApi;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import springfox.documentation.builders.ApiInfoBuilder;
-import springfox.documentation.builders.ParameterBuilder;
-import springfox.documentation.builders.PathSelectors;
-import springfox.documentation.schema.ModelRef;
-import springfox.documentation.service.ApiInfo;
-import springfox.documentation.service.Contact;
-import springfox.documentation.service.Parameter;
-import springfox.documentation.spi.DocumentationType;
-import springfox.documentation.spring.web.plugins.Docket;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Swagger2
  */
 @Configuration
-@EnableSwagger2
 public class Swagger2Config {
 
     @Bean
-    public Docket webApiConfig(){
+    public GroupedOpenApi webApiConfig(){
 
-        return new Docket(DocumentationType.SWAGGER_2)
-                .groupName("webApi")
-                .apiInfo(webApiInfo())
-                .select()
+        return GroupedOpenApi.builder()
+                .group("webApi")
                 //Filter out all pages under the admin path
-                .paths(Predicates.and(PathSelectors.regex("/P2P/.*")))
+                .pathsToMatch("/P2P/**")
+                .addOpenApiCustomizer(openApi -> openApi.info(webApiInfo().getInfo()))
                 .build();
 
     }
 
-    private ApiInfo webApiInfo(){
+    private OpenAPI webApiInfo(){
 
-        return new ApiInfoBuilder()
-                .title("Website - API Documentation")
-                .description("This document describes the website microservice interface definition")
-                .version("1.0")
-                .contact(new Contact("qy", "http://atguigu.com", "55317332@qq.com"))
-                .build();
+        return new OpenAPI()
+                .info(new Info()
+                        .title("Website - API Documentation")
+                        .description("This document describes the website microservice interface definition")
+                        .version("1.0")
+                        .contact(new Contact().name("qy").url("http://atguigu.com").email("55317332@qq.com")));
     }
 
 

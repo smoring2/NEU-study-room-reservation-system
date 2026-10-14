@@ -4,7 +4,7 @@ package com.group2.user.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.baomidou.mybatisplus.spring.service.impl.ServiceImpl;
 import com.group2.nustudy.common.exception.NustudyException;
 import com.group2.nustudy.common.helper.JwtHelper;
 import com.group2.nustudy.common.result.ResultCodeEnum;
@@ -18,7 +18,7 @@ import com.group2.user.mapper.UserInfoMapper;
 import com.group2.user.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
+import org.springframework.util.ObjectUtils;
 
 import java.util.HashMap;
 import java.util.List;
@@ -39,7 +39,7 @@ public class UserInfoServiceImpl  extends
         String code = loginVo.getCode();
 
         //Determine whether the mobile phone number and verification code are empty
-        if (StringUtils.isEmpty(email) || StringUtils.isEmpty(code)) {
+        if (ObjectUtils.isEmpty(email) || ObjectUtils.isEmpty(code)) {
             throw new NustudyException(ResultCodeEnum.PARAM_ERROR);
         }
 
@@ -76,10 +76,10 @@ public class UserInfoServiceImpl  extends
         //return token information
         Map<String, Object> map = new HashMap<>();
         String name = userInfo.getName();
-        if (StringUtils.isEmpty(name)) {
+        if (ObjectUtils.isEmpty(name)) {
             name = userInfo.getNickName();
         }
-        if (StringUtils.isEmpty(name)) {
+        if (ObjectUtils.isEmpty(name)) {
             name = userInfo.getEmail();
         }
         map.put("name", name);

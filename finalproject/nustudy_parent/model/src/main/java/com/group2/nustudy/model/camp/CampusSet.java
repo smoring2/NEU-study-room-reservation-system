@@ -3,12 +3,11 @@ package com.group2.nustudy.model.camp;
 import com.group2.nustudy.model.base.BaseEntity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 @Data
-@ApiModel(description = "Campus Settings")
+@Schema(description = "Campus Settings")
 @TableName("campus_set")
 public class CampusSet extends BaseEntity {
 	public String getSignKey() {
@@ -33,31 +32,31 @@ public class CampusSet extends BaseEntity {
 
 	private static final long serialVersionUID = 1L;
 
-	@ApiModelProperty(value = "campus name")
+	@Schema(description = "campus name")
 	@TableField("campusname")
 	private String campusname;
 
-	@ApiModelProperty(value = "campus code")
+	@Schema(description = "campus code")
 	@TableField("campuscode")
 	private String campuscode;
 
-	@ApiModelProperty(value = "api_url")
+	@Schema(description = "api_url")
 	@TableField("api_url")
 	private String apiUrl;
 
-	@ApiModelProperty(value = "sign Key")
+	@Schema(description = "sign Key")
 	@TableField("sign_key")
 	private String signKey;
 
-	@ApiModelProperty(value = "contacts Name")
+	@Schema(description = "contacts Name")
 	@TableField("contacts_name")
 	private String contactsName;
 
-	@ApiModelProperty(value = "contacts Phone")
+	@Schema(description = "contacts Phone")
 	@TableField("contacts_phone")
 	private String contactsPhone;
 
-	@ApiModelProperty(value = "status")
+	@Schema(description = "status")
 	@TableField("status")
 	private Integer status;
 

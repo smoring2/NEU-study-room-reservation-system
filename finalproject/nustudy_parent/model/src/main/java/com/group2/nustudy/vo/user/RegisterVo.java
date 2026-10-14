@@ -1,19 +1,18 @@
 package com.group2.nustudy.vo.user;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 @Data
-@ApiModel(description="RegisterVo")
+@Schema(description="RegisterVo")
 public class RegisterVo {
 
-    @ApiModelProperty(value = "mobile")
+    @Schema(description = "mobile")
     private String mobile;
 
-    @ApiModelProperty(value = "password")
+    @Schema(description = "password")
     private String password;
 
-    @ApiModelProperty(value = "code")
+    @Schema(description = "code")
     private String code;
 }

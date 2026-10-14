@@ -3,50 +3,49 @@ package com.group2.campus.model;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 @Data
-@ApiModel(description = "Student")
+@Schema(description = "Student")
 @TableName("student")
 public class Student extends BaseEntity {
 	
 	private static final long serialVersionUID = 1L;
 	
-	@ApiModelProperty(value = "user id")
+	@Schema(description = "user id")
 	@TableField("user_id")
 	private Long userId;
 
-	@ApiModelProperty(value = "name")
+	@Schema(description = "name")
 	@TableField("name")
 	private String name;
 
-	@ApiModelProperty(value = "certificates type")
+	@Schema(description = "certificates type")
 	@TableField("certificates_type")
 	private String certificatesType;
 
-	@ApiModelProperty(value = "certificates number")
+	@Schema(description = "certificates number")
 	@TableField("certificates_no")
 	private String certificatesNo;
 
-	@ApiModelProperty(value = "email")
+	@Schema(description = "email")
 	@TableField("email")
 	private String email;
 
-	@ApiModelProperty(value = "state code")
+	@Schema(description = "state code")
 	@TableField("state_code")
 	private String stateCode;
 
-	@ApiModelProperty(value = "city code")
+	@Schema(description = "city code")
 	@TableField("city_code")
 	private String cityCode;
 
-	@ApiModelProperty(value = "district code")
+	@Schema(description = "district code")
 	@TableField("district_code")
 	private String districtCode;
 
-	@ApiModelProperty(value = "specific address")
+	@Schema(description = "specific address")
 	@TableField("address")
 	private String address;
 

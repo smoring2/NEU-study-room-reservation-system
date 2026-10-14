@@ -1,36 +1,35 @@
 package com.group2.nustudy.vo.camp;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 import java.io.Serializable;
 
 @Data
-@ApiModel(description = "Campus")
+@Schema(description = "Campus")
 public class CampusQueryVo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	@ApiModelProperty(value = "campus code")
+	@Schema(description = "campus code")
 	private String campuscode;
 
-	@ApiModelProperty(value = "campus name")
+	@Schema(description = "campus name")
 	private String campusname;
 
-	@ApiModelProperty(value = "campus type")
+	@Schema(description = "campus type")
 	private String campustype;
 
-	@ApiModelProperty(value = "state Code")
+	@Schema(description = "state Code")
 	private String stateCode;
 
-	@ApiModelProperty(value = "city Code")
+	@Schema(description = "city Code")
 	private String cityCode;
 
-	@ApiModelProperty(value = "district Code")
+	@Schema(description = "district Code")
 	private String districtCode;
 
-	@ApiModelProperty(value = "status")
+	@Schema(description = "status")
 	private Integer status;
 }
 

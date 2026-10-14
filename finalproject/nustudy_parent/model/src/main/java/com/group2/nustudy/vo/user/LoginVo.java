@@ -1,19 +1,18 @@
 package com.group2.nustudy.vo.user;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 @Data
-@ApiModel(description="Login Vo")
+@Schema(description="Login Vo")
 public class LoginVo {
 
-    @ApiModelProperty(value = "email")
+    @Schema(description = "email")
     private String email;
 
-    @ApiModelProperty(value = "code")
+    @Schema(description = "code")
     private String code;
 
-    @ApiModelProperty(value = "ip")
+    @Schema(description = "ip")
     private String ip;
 }

@@ -6,16 +6,16 @@ import com.group2.campus.util.HttpRequestHelper;
 import com.group2.campus.util.Result;
 import com.group2.campus.util.ResultCodeEnum;
 import com.group2.campus.util.NustudyException;
-import io.swagger.annotations.Api;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.util.Map;
 
-@Api(tags = "Campus management interface")
+@Tag(name = "Campus management interface")
 @RestController
 public class CampusController {
 

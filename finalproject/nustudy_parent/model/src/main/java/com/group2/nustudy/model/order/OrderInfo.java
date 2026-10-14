@@ -4,8 +4,7 @@ import com.group2.nustudy.model.base.BaseEntity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -15,91 +14,91 @@ import java.util.Date;
  * Order
  */
 @Data
-@ApiModel(description = "Order")
+@Schema(description = "Order")
 @TableName("order_info")
 public class OrderInfo extends BaseEntity {
 	
 	private static final long serialVersionUID = 1L;
 
-	@ApiModelProperty(value = "userId")
+	@Schema(description = "userId")
 	@TableField("user_id")
 	private Long userId;
 
-	@ApiModelProperty(value = "trade id")
+	@Schema(description = "trade id")
 	@TableField("out_trade_no")
 	private String outTradeNo;
 
-	@ApiModelProperty(value = "campus code")
+	@Schema(description = "campus code")
 	@TableField("campuscode")
 	private String campuscode;
 
-	@ApiModelProperty(value = "campus name")
+	@Schema(description = "campus name")
 	@TableField("campusname")
 	private String campusname;
 
-	@ApiModelProperty(value = "department code")
+	@Schema(description = "department code")
 	@TableField("depcode")
 	private String depcode;
 
-	@ApiModelProperty(value = "department name")
+	@Schema(description = "department name")
 	@TableField("depname")
 	private String depname;
 
-	@ApiModelProperty(value = "schedule Id")
+	@Schema(description = "schedule Id")
 	@TableField("schedule_id")
 	private String scheduleId;
 
-	@ApiModelProperty(value = "title")
+	@Schema(description = "title")
 	@TableField("title")
 	private String title;
 
-	@ApiModelProperty(value = "reserveDate")
+	@Schema(description = "reserveDate")
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	@TableField("reserve_date")
 	private Date reserveDate;
 
-	@ApiModelProperty(value = "reserveTime(0: morning, 1: afternoon")
+	@Schema(description = "reserveTime(0: morning, 1: afternoon")
 	@TableField("reserve_time")
 	private Integer reserveTime;
 
-	@ApiModelProperty(value = "studentId")
+	@Schema(description = "studentId")
 	@TableField("student_id")
 	private Long studentId;
 
-	@ApiModelProperty(value = "studentName")
+	@Schema(description = "studentName")
 	@TableField("student_name")
 	private String studentName;
 
-	@ApiModelProperty(value = "studentEmail")
+	@Schema(description = "studentEmail")
 	@TableField("student_email")
 	private String studentEmail;
 
-	@ApiModelProperty(value = "campusRecordId")
+	@Schema(description = "campusRecordId")
 	@TableField("campus_record_id")
 	private String campusRecordId;
 
-	@ApiModelProperty(value = "number")
+	@Schema(description = "number")
 	@TableField("number")
 	private Integer number;
 
-	@ApiModelProperty(value = "fetchTime")
+	@Schema(description = "fetchTime")
 	@TableField("fetch_time")
 	private String fetchTime;
 
-	@ApiModelProperty(value = "fetchAddress")
+	@Schema(description = "fetchAddress")
 	@TableField("fetch_address")
 	private String fetchAddress;
 
-	@ApiModelProperty(value = "amount")
+	@Schema(description = "amount")
 	@TableField("amount")
 	private BigDecimal amount;
 
-	@ApiModelProperty(value = "quitTime")
+	@Schema(description = "quitTime")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm")
 	@TableField("quit_time")
 	private Date quitTime;
 
-	@ApiModelProperty(value = "orderStatus")
+	@Schema(description = "orderStatus")
 	@TableField("order_status")
 	private Integer orderStatus;
 
