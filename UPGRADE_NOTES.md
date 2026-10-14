@@ -9,6 +9,7 @@ Both build successfully on JDK 25 (`mvn clean install`).
 | --- | --- | --- | --- |
 | Spring Boot | 3.2.12 | 3.5.16 | Steering context requires upgrading to the latest LTS runtime; 3.5.x is the current supported line and is the baseline required for JDK 25. Spring Cloud 2025.0.3 / Spring Cloud Alibaba 2025.0.0.0 were aligned to it. |
 | maven-compiler-plugin | 3.0.5 | 3.11.0 | The installed Maven is 3.8.4; plugin 3.13.0+ requires Maven 3.6.3+ features and newer resolver behaviour that is unavailable/unstable here, so the highest compatible release was pinned. No downgrade relative to the original build. |
+| Jackson | 2.15.2 | 2.21.4 | Managed transitively by the Spring Boot 3.5.16 BOM; pinning down to 2.15.2 would conflict with the BOM and reduce security posture. No explicit override added. |
 | fastjson | 1.2.x | fastjson2 2.0.65 | fastjson 1.x has unfixed critical deserialization CVEs; v2 is the maintained successor. |
 
 ## Upgrades intentionally skipped
