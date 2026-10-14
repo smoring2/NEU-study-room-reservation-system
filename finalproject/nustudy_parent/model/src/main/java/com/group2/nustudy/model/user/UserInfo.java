@@ -3,49 +3,48 @@ package com.group2.nustudy.model.user;
 import com.group2.nustudy.model.base.BaseEntity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 /**
  * UserInfo
  */
 @Data
-@ApiModel(description = "UserInfo")
+@Schema(description = "UserInfo")
 @TableName("user_info")
 public class UserInfo extends BaseEntity {
 	
 	private static final long serialVersionUID = 1L;
 
-	@ApiModelProperty(value = "nickName")
+	@Schema(description = "nickName")
 	@TableField("nick_name")
 	private String nickName;
 
-	@ApiModelProperty(value = "email")
+	@Schema(description = "email")
 	@TableField("email")
 	private String email;
 
-	@ApiModelProperty(value = "name")
+	@Schema(description = "name")
 	@TableField("name")
 	private String name;
 
-	@ApiModelProperty(value = "certificates Type")
+	@Schema(description = "certificates Type")
 	@TableField("certificates_type")
 	private String certificatesType;
 
-	@ApiModelProperty(value = "certificates No")
+	@Schema(description = "certificates No")
 	@TableField("certificates_no")
 	private String certificatesNo;
 
-	@ApiModelProperty(value = "certificates Url")
+	@Schema(description = "certificates Url")
 	@TableField("certificates_url")
 	private String certificatesUrl;
 
-	@ApiModelProperty(value = "authStatus")
+	@Schema(description = "authStatus")
 	@TableField("auth_status")
 	private Integer authStatus;
 
-	@ApiModelProperty(value = "status")
+	@Schema(description = "status")
 	@TableField("status")
 	private Integer status;
 

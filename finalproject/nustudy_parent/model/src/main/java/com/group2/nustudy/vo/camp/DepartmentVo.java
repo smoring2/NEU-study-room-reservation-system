@@ -1,13 +1,12 @@
 package com.group2.nustudy.vo.camp;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 import java.util.List;
 
 @Data
-@ApiModel(description = "Department")
+@Schema(description = "Department")
 public class DepartmentVo {
 	public String getDepcode() {
 		return depcode;
@@ -33,13 +32,13 @@ public class DepartmentVo {
 		this.children = children;
 	}
 
-	@ApiModelProperty(value = "department code")
+	@Schema(description = "department code")
 	private String depcode;
 
-	@ApiModelProperty(value = "department name")
+	@Schema(description = "department name")
 	private String depname;
 
-	@ApiModelProperty(value = "children")
+	@Schema(description = "children")
 	private List<DepartmentVo> children;
 
 }

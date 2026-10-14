@@ -1,8 +1,8 @@
 package com.group2.order.service.impl;
 
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.baomidou.mybatisplus.spring.service.impl.ServiceImpl;
 import com.group2.campus.campus.client.CampusFeignClient;
 import com.group2.campus.user.client.StudentFeignClient;
 import com.group2.common.rabbit.constant.MqConst;

@@ -1,27 +1,26 @@
 package com.group2.nustudy.vo.user;
 
 import com.baomidou.mybatisplus.annotation.TableField;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 @Data
-@ApiModel(description="UserAuthVo")
+@Schema(description="UserAuthVo")
 public class UserAuthVo {
 
-    @ApiModelProperty(value = "name")
+    @Schema(description = "name")
     @TableField("name")
     private String name;
 
-    @ApiModelProperty(value = "certificatesType")
+    @Schema(description = "certificatesType")
     @TableField("certificates_type")
     private String certificatesType;
 
-    @ApiModelProperty(value = "certificatesNo")
+    @Schema(description = "certificatesNo")
     @TableField("certificates_no")
     private String certificatesNo;
 
-    @ApiModelProperty(value = "certificatesUrl")
+    @Schema(description = "certificatesUrl")
     @TableField("certificates_url")
     private String certificatesUrl;
 

@@ -1,6 +1,6 @@
 package com.group2.campus.service.impl;
 
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 import com.group2.campus.repository.DepartmentRepository;
 import com.group2.campus.service.DepartmentService;
 import com.group2.nustudy.model.camp.Department;

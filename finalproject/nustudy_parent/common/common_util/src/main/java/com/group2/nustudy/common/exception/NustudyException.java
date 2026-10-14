@@ -1,8 +1,7 @@
 package com.group2.nustudy.common.exception;
 
 import com.group2.nustudy.common.result.ResultCodeEnum;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 /**
@@ -11,10 +10,10 @@ import lombok.Data;
  * @author YT
  */
 @Data
-@ApiModel(value = "Globally exception")
+@Schema(description = "Globally exception")
 public class NustudyException extends RuntimeException {
 
-    @ApiModelProperty(value = "exception code")
+    @Schema(description = "exception code")
     private Integer code;
 
     /**

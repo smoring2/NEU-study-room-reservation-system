@@ -1,38 +1,37 @@
 package com.group2.nustudy.vo.order;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 @Data
-@ApiModel(description = "Order")
+@Schema(description = "Order")
 public class OrderQueryVo {
 
 
-	@ApiModelProperty(value = "userId")
+	@Schema(description = "userId")
 	private Long userId;
 	
-	@ApiModelProperty(value = "outTradeNo")
+	@Schema(description = "outTradeNo")
 	private String outTradeNo;
 
-	@ApiModelProperty(value = "studentId")
+	@Schema(description = "studentId")
 	private Long studentId;
 
-	@ApiModelProperty(value = "studentName")
+	@Schema(description = "studentName")
 	private String studentName;
 
-	@ApiModelProperty(value = "keyword")
+	@Schema(description = "keyword")
 	private String keyword;
 
-	@ApiModelProperty(value = "orderStatus")
+	@Schema(description = "orderStatus")
 	private String orderStatus;
 
-	@ApiModelProperty(value = "reserveDate")
+	@Schema(description = "reserveDate")
 	private String reserveDate;
 
-	@ApiModelProperty(value = "createTimeBegin")
+	@Schema(description = "createTimeBegin")
 	private String createTimeBegin;
-	@ApiModelProperty(value = "createTimeEnd")
+	@Schema(description = "createTimeEnd")
 	private String createTimeEnd;
 }
 

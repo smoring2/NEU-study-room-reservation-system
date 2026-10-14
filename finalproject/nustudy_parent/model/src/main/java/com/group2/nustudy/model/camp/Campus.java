@@ -1,56 +1,55 @@
 package com.group2.nustudy.model.camp;
 
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 import com.group2.nustudy.model.base.BaseMongoEntity;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
-@ApiModel(description = "Campus")
+@Schema(description = "Campus")
 @Document("Campus")
 public class Campus extends BaseMongoEntity {
 	
 	private static final long serialVersionUID = 1L;
 	
-	@ApiModelProperty(value = "campus code")
+	@Schema(description = "campus code")
 	@Indexed(unique = true)
 	private String campuscode;
 
-	@ApiModelProperty(value = "campus name")
+	@Schema(description = "campus name")
 	@Indexed
 	private String campusname;
 
-	@ApiModelProperty(value = "campus type")
+	@Schema(description = "campus type")
 	private String campustype;
 
-	@ApiModelProperty(value = "state Code")
+	@Schema(description = "state Code")
 	private String stateCode;
 
-	@ApiModelProperty(value = "city Code")
+	@Schema(description = "city Code")
 	private String cityCode;
 
-	@ApiModelProperty(value = "district Code")
+	@Schema(description = "district Code")
 	private String districtCode;
 
-	@ApiModelProperty(value = "address")
+	@Schema(description = "address")
 	private String address;
 
-	@ApiModelProperty(value = "logo Data")
+	@Schema(description = "logo Data")
 	private String logoData;
 
-	@ApiModelProperty(value = "intro")
+	@Schema(description = "intro")
 	private String intro;
 
-	@ApiModelProperty(value = "route")
+	@Schema(description = "route")
 	private String route;
 
-	@ApiModelProperty(value = "status 0:offline 1:online")
+	@Schema(description = "status 0:offline 1:online")
 	private Integer status;
 
-	@ApiModelProperty(value = "bookingRule")
+	@Schema(description = "bookingRule")
 	private BookingRule bookingRule;
 
 

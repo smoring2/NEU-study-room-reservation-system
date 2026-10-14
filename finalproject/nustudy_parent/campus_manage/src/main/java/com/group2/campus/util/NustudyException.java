@@ -1,17 +1,16 @@
 package com.group2.campus.util;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 /**
  * Custom global exception class
  */
 @Data
-@ApiModel(value = "Custom global exception class")
+@Schema(description = "Custom global exception class")
 public class NustudyException extends RuntimeException {
 
-    @ApiModelProperty(value = "exception status code")
+    @Schema(description = "exception status code")
     private Integer code;
 
     /**

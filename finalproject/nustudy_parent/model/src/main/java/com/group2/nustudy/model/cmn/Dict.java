@@ -3,8 +3,7 @@ package com.group2.nustudy.model.cmn;
 import com.baomidou.mybatisplus.annotation.*;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.group2.nustudy.model.base.BaseEntity;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 import java.util.Date;
@@ -15,7 +14,7 @@ import java.util.Map;
  * Dict
  */
 @Data
-@ApiModel(description = "dict data")
+@Schema(description = "dict data")
 @TableName("dict")
 public class Dict {
     public Long getId() {
@@ -28,32 +27,32 @@ public class Dict {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "id")
+    @Schema(description = "id")
     private Long id;
 
-    @ApiModelProperty(value = "create_time")
+    @Schema(description = "create_time")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @TableField("create_time")
     private Date createTime;
 
-    @ApiModelProperty(value = "update_time")
+    @Schema(description = "update_time")
     @TableField("update_time")
     private Date updateTime;
 
-    @ApiModelProperty(value = "is_deleted(1:deleted，0:not deleted)")
+    @Schema(description = "is_deleted(1:deleted，0:not deleted)")
     @TableLogic
     @TableField("is_deleted")
     private Integer isDeleted;
 
-    @ApiModelProperty(value = "others")
+    @Schema(description = "others")
     @TableField(exist = false)
     private Map<String,Object> param = new HashMap<>();
 
-    @ApiModelProperty(value = "student_id")
+    @Schema(description = "student_id")
     @TableField("student_id")
     private Long parentId;
 
-    @ApiModelProperty(value = "name")
+    @Schema(description = "name")
     @TableField("name")
     private String name;
 
@@ -129,15 +128,15 @@ public class Dict {
         return hasChildren;
     }
 
-    @ApiModelProperty(value = "value")
+    @Schema(description = "value")
     @TableField("value")
     private String value;
 
-    @ApiModelProperty(value = "dict_code")
+    @Schema(description = "dict_code")
     @TableField("dict_code")
     private String dictCode;
 
-    @ApiModelProperty(value = "hasChildren")
+    @Schema(description = "hasChildren")
     @TableField(exist = false)
     private boolean hasChildren;
 

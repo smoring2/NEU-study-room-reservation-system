@@ -1,6 +1,6 @@
 package com.group2.nustudy.model.base;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
@@ -13,17 +13,17 @@ import java.util.Map;
 @Data
 public class BaseMongoEntity implements Serializable {
 
-    @ApiModelProperty(value = "id")
+    @Schema(description = "id")
     @Id
     private String id;
 
-    @ApiModelProperty(value = "create_time")
+    @Schema(description = "create_time")
     private Date createTime;
 
-    @ApiModelProperty(value = "update_time")
+    @Schema(description = "update_time")
     private Date updateTime;
 
-    @ApiModelProperty(value = "is_deleted(1:deleted，0:not deleted)")
+    @Schema(description = "is_deleted(1:deleted，0:not deleted)")
     private Integer isDeleted;
 
     public String getId() {
@@ -42,7 +42,7 @@ public class BaseMongoEntity implements Serializable {
         this.param = param;
     }
 
-    @ApiModelProperty(value = "others")
+    @Schema(description = "others")
     @Transient
     private Map<String,Object> param = new HashMap<>();
 

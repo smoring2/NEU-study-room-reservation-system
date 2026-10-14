@@ -1,6 +1,6 @@
 package com.group2.campus.service.impl;
 
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.group2.campus.repository.ScheduleRepository;
 import com.group2.campus.service.DepartmentService;

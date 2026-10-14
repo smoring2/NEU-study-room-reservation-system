@@ -5,7 +5,7 @@ import com.group2.campus.mapper.CampusSetMapper;
 import com.group2.nustudy.common.exception.NustudyException;
 import com.group2.nustudy.common.result.ResultCodeEnum;
 import com.group2.nustudy.model.camp.CampusSet;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.baomidou.mybatisplus.spring.service.impl.ServiceImpl;
 import com.group2.campus.service.CampusSetService;
 import com.group2.nustudy.vo.order.SignInfoVo;
 import org.springframework.stereotype.Service;

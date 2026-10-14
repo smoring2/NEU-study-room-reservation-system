@@ -3,8 +3,7 @@ package com.group2.nustudy.model.acl;
 import com.group2.nustudy.model.base.BaseEntity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 import java.util.List;
@@ -13,53 +12,53 @@ import java.util.List;
  *  Permission
  */
 @Data
-@ApiModel(description = "Permission")
+@Schema(description = "Permission")
 @TableName("acl_permission")
 public class Permission extends BaseEntity {
 	
 	private static final long serialVersionUID = 1L;
 	
-	@ApiModelProperty(value = "parent id")
+	@Schema(description = "parent id")
 	@TableField("pid")
 	private Long pid;
 
-	@ApiModelProperty(value = "name")
+	@Schema(description = "name")
 	@TableField("name")
 	private String name;
 
-	@ApiModelProperty(value = "type(1:menu, 2: button)")
+	@Schema(description = "type(1:menu, 2: button)")
 	@TableField("type")
 	private Integer type;
 
-	@ApiModelProperty(value = "permission value")
+	@Schema(description = "permission value")
 	@TableField("permission_value")
 	private String permissionValue;
 
-	@ApiModelProperty(value = "path")
+	@Schema(description = "path")
 	@TableField("path")
 	private String path;
 
-	@ApiModelProperty(value = "component")
+	@Schema(description = "component")
 	@TableField("component")
 	private String component;
 
-	@ApiModelProperty(value = "icon")
+	@Schema(description = "icon")
 	@TableField("icon")
 	private String icon;
 
-	@ApiModelProperty(value = "status(0:forbidden,1:normal)")
+	@Schema(description = "status(0:forbidden,1:normal)")
 	@TableField("status")
 	private Integer status;
 
-	@ApiModelProperty(value = "level")
+	@Schema(description = "level")
 	@TableField(exist = false)
 	private Integer level;
 
-	@ApiModelProperty(value = "children")
+	@Schema(description = "children")
 	@TableField(exist = false)
 	private List<Permission> children;
 
-	@ApiModelProperty(value = "is Selected")
+	@Schema(description = "is Selected")
 	@TableField(exist = false)
 	private boolean isSelect;
 

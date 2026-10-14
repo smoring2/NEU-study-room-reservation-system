@@ -1,20 +1,19 @@
 package com.group2.nustudy.model.camp;
 
 import com.group2.nustudy.model.base.BaseMongoEntity;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
-@ApiModel(description = "Department")
+@Schema(description = "Department")
 @Document("Department")
 public class Department extends BaseMongoEntity {
 	
 	private static final long serialVersionUID = 1L;
 
-	@ApiModelProperty(value = "campus code")
+	@Schema(description = "campus code")
 	@Indexed
 	private String campuscode;
 
@@ -66,20 +65,20 @@ public class Department extends BaseMongoEntity {
 		this.bigname = bigname;
 	}
 
-	@ApiModelProperty(value = "department code")
+	@Schema(description = "department code")
 	@Indexed(unique = true)
 	private String depcode;
 
-	@ApiModelProperty(value = "department name")
+	@Schema(description = "department name")
 	private String depname;
 
-	@ApiModelProperty(value = "intro")
+	@Schema(description = "intro")
 	private String intro;
 
-	@ApiModelProperty(value = "bigcode")
+	@Schema(description = "bigcode")
 	private String bigcode;
 
-	@ApiModelProperty(value = "bigname")
+	@Schema(description = "bigname")
 	private String bigname;
 
 }

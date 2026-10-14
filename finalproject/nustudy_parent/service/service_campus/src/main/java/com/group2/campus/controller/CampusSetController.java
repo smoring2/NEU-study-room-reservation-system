@@ -8,10 +8,10 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.group2.campus.service.CampusSetService;
 import com.group2.nustudy.common.result.Result;
 import com.group2.nustudy.common.utils.MD5;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.StringUtils;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,7 +22,7 @@ import java.util.Random;
  * Created Time: $[Date]
  * Description:
  */
-@Api(tags = "Campus meeting room information management")
+@Tag(name = "Campus meeting room information management")
 @RestController
 @RequestMapping("/admin/campus/campusSet")
 //@CrossOrigin
@@ -33,7 +33,7 @@ class CampusSetController {
 
     //read all data
     // http://localhost:8201/admin/campus/campusSet/findAll
-    @ApiOperation(value = "Get all campus info list")
+    @Operation(summary = "Get all campus info list")
     @GetMapping("findAll")
     public Result findAllCampusSet(){
         List<CampusSet> list = campusSetService.list();
@@ -41,7 +41,7 @@ class CampusSetController {
     }
 
     // delete
-    @ApiOperation(value = "Delete campus by its id")
+    @Operation(summary = "Delete campus by its id")
     @DeleteMapping("{id}")
     public Result removeCampusSet(@PathVariable Long id){
         boolean flag = campusSetService.removeById(id);
@@ -68,10 +68,10 @@ class CampusSetController {
         QueryWrapper<CampusSet> wrapper = new QueryWrapper<>();
         String campusname = campusSetQueryVo.getCampusname();//campus name
         String campuscode = campusSetQueryVo.getCampuscode();//campus code
-        if(!StringUtils.isEmpty(campusname)) {
+        if(!ObjectUtils.isEmpty(campusname)) {
             wrapper.like("campusname", campusSetQueryVo.getCampusname());
         }
-        if(!StringUtils.isEmpty(campuscode)) {
+        if(!ObjectUtils.isEmpty(campuscode)) {
             wrapper.eq("campuscode", campusSetQueryVo.getCampuscode());
         }
 

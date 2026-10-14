@@ -3,7 +3,7 @@ package com.group2.easyexcel;
 import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.context.AnalysisContext;
 import com.alibaba.excel.event.AnalysisEventListener;
-import com.alibaba.excel.metadata.CellData;
+import com.alibaba.excel.metadata.data.ReadCellData;
 
 import java.util.Map;
 
@@ -28,7 +28,7 @@ public class TestRead {
         }
 
         @Override
-        public void invokeHead(Map<Integer, CellData> headMap, AnalysisContext context) {
+        public void invokeHead(Map<Integer, ReadCellData<?>> headMap, AnalysisContext context) {
             System.out.println("header info: " + headMap);
         }
     }

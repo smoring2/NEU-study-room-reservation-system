@@ -1,7 +1,7 @@
 package com.group2.campus.service.impl;
 
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONArray;
+import com.alibaba.fastjson2.JSONObject;
 import com.group2.campus.mapper.CampusSetMapper;
 import com.group2.campus.mapper.ScheduleMapper;
 import com.group2.campus.model.CampusSet;

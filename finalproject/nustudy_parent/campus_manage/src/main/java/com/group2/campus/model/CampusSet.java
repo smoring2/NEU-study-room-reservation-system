@@ -1,24 +1,23 @@
 package com.group2.campus.model;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 @Data
-@ApiModel(description = "CampusSet")
+@Schema(description = "CampusSet")
 @TableName("campus_set")
 public class CampusSet extends BaseEntity {
 	
 	private static final long serialVersionUID = 1L;
 
-	@ApiModelProperty(value = "campus code")
+	@Schema(description = "campus code")
 	private String campuscode;
 
-	@ApiModelProperty(value = "sign key")
+	@Schema(description = "sign key")
 	private String signKey;
 
-	@ApiModelProperty(value = "api url")
+	@Schema(description = "api url")
 	private String apiUrl;
 
 }

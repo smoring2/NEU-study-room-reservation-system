@@ -1,17 +1,16 @@
 package com.group2.nustudy.vo.order;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 @Data
-@ApiModel(description = "OrderCountVo")
+@Schema(description = "OrderCountVo")
 public class OrderCountVo {
 	
-	@ApiModelProperty(value = "reserveDate")
+	@Schema(description = "reserveDate")
 	private String reserveDate;
 
-	@ApiModelProperty(value = "count")
+	@Schema(description = "count")
 	private Integer count;
 
 }

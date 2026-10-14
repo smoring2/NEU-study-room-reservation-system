@@ -16,10 +16,10 @@ import com.group2.nustudy.vo.camp.DepartmentQueryVo;
 import com.group2.nustudy.vo.camp.ScheduleQueryVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.util.StringUtils;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 @RestController
@@ -67,8 +67,8 @@ public class ApiController {
         //department code
         String depcode = (String)paramMap.get("depcode");
         //current page and records per page
-        int page = StringUtils.isEmpty(paramMap.get("page")) ? 1 : Integer.parseInt((String)paramMap.get("page"));
-        int limit = StringUtils.isEmpty(paramMap.get("limit")) ? 1 : Integer.parseInt((String)paramMap.get("limit"));
+        int page = ObjectUtils.isEmpty(paramMap.get("page")) ? 1 : Integer.parseInt((String)paramMap.get("page"));
+        int limit = ObjectUtils.isEmpty(paramMap.get("limit")) ? 1 : Integer.parseInt((String)paramMap.get("limit"));
         //TODO sign_key check
 
         ScheduleQueryVo scheduleQueryVo = new ScheduleQueryVo();
@@ -115,8 +115,8 @@ public class ApiController {
         // campus code
         String campuscode = (String)paramMap.get("campuscode");
         // current page and the limitation of each page
-        int page = StringUtils.isEmpty(paramMap.get("page")) ? 1 : Integer.parseInt((String)paramMap.get("page"));
-        int limit = StringUtils.isEmpty(paramMap.get("limit")) ? 1 : Integer.parseInt((String)paramMap.get("limit"));
+        int page = ObjectUtils.isEmpty(paramMap.get("page")) ? 1 : Integer.parseInt((String)paramMap.get("page"));
+        int limit = ObjectUtils.isEmpty(paramMap.get("limit")) ? 1 : Integer.parseInt((String)paramMap.get("limit"));
         //TODO sign_key check
 
         DepartmentQueryVo departmentQueryVo = new DepartmentQueryVo();

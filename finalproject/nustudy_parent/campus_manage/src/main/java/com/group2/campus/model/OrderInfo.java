@@ -2,52 +2,51 @@ package com.group2.campus.model;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 
 import java.math.BigDecimal;
 import java.util.Date;
 
-@ApiModel(description = "OrderInfo")
+@Schema(description = "OrderInfo")
 @TableName("order_info")
 public class OrderInfo extends BaseEntity {
 	
 	private static final long serialVersionUID = 1L;
 	
-	@ApiModelProperty(value = "scheduleId")
+	@Schema(description = "scheduleId")
 	@TableField("schedule_id")
 	private Long scheduleId;
 
-	@ApiModelProperty(value = "studentId")
+	@Schema(description = "studentId")
 	@TableField("student_id")
 	private Long studentId;
 
-	@ApiModelProperty(value = "number")
+	@Schema(description = "number")
 	@TableField("number")
 	private Integer number;
 
-	@ApiModelProperty(value = "fetchTime")
+	@Schema(description = "fetchTime")
 	@TableField("fetch_time")
 	private String fetchTime;
 
-	@ApiModelProperty(value = "fetchAddress")
+	@Schema(description = "fetchAddress")
 	@TableField("fetch_address")
 	private String fetchAddress;
 
-	@ApiModelProperty(value = "amount")
+	@Schema(description = "amount")
 	@TableField("amount")
 	private BigDecimal amount;
 
-	@ApiModelProperty(value = "payTime")
+	@Schema(description = "payTime")
 	@TableField("pay_time")
 	private Date payTime;
 
-	@ApiModelProperty(value = "quitTime")
+	@Schema(description = "quitTime")
 	@TableField("quit_time")
 	private Date quitTime;
 
-	@ApiModelProperty(value = "orderStatus")
+	@Schema(description = "orderStatus")
 	@TableField("order_status")
 	private Integer orderStatus;
 

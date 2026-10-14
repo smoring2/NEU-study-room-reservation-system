@@ -1,22 +1,21 @@
 package com.group2.nustudy.model.camp;
 
-import com.alibaba.fastjson.JSONArray;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import com.alibaba.fastjson2.JSONArray;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.util.StringUtils;
+import org.springframework.util.ObjectUtils;
 
 import java.util.List;
 @Data
-@ApiModel(description = "BookingRule")
+@Schema(description = "BookingRule")
 @Document("BookingRule")
 public class BookingRule {
 	
-	@ApiModelProperty(value = "booking cycle")
+	@Schema(description = "booking cycle")
 	private Integer cycle;
 
-	@ApiModelProperty(value = "releaseTime")
+	@Schema(description = "releaseTime")
 	private String releaseTime;
 
 	public Integer getCycle() {
@@ -67,16 +66,16 @@ public class BookingRule {
 		this.rule = rule;
 	}
 
-	@ApiModelProperty(value = "stopTime")
+	@Schema(description = "stopTime")
 	private String stopTime;
 
-	@ApiModelProperty(value = "quitDay")
+	@Schema(description = "quitDay")
 	private Integer quitDay;
 
-	@ApiModelProperty(value = "quitTime")
+	@Schema(description = "quitTime")
 	private String quitTime;
 
-	@ApiModelProperty(value = "rule")
+	@Schema(description = "rule")
 	private List<String> rule;
 
 	/**
@@ -84,7 +83,7 @@ public class BookingRule {
 	 * @param rule
 	 */
 	public void setRule(String rule) {
-		if(!StringUtils.isEmpty(rule)) {
+		if(!ObjectUtils.isEmpty(rule)) {
 			this.rule = JSONArray.parseArray(rule, String.class);
 		}
 	}

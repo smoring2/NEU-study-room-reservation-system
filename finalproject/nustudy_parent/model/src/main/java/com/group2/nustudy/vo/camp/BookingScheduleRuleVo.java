@@ -1,8 +1,7 @@
 package com.group2.nustudy.vo.camp;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 import java.util.Date;
@@ -11,21 +10,21 @@ import java.util.Date;
  * RegisterRule
  */
 @Data
-@ApiModel(description = "Booking Schedule Rule Vo")
+@Schema(description = "Booking Schedule Rule Vo")
 public class BookingScheduleRuleVo {
 	
-	@ApiModelProperty(value = "workDate")
+	@Schema(description = "workDate")
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date workDate;
 
-	@ApiModelProperty(value = "workDateMd")
+	@Schema(description = "workDateMd")
 	@JsonFormat(pattern = "MM-dd")
 	private Date workDateMd;
 
-	@ApiModelProperty(value = "dayOfWeek")
+	@Schema(description = "dayOfWeek")
 	private String dayOfWeek;
 
-	@ApiModelProperty(value = "docCount")
+	@Schema(description = "docCount")
 	private Integer docCount;
 
 	public Date getWorkDate() {
@@ -84,13 +83,13 @@ public class BookingScheduleRuleVo {
 		this.status = status;
 	}
 
-	@ApiModelProperty(value = "reservedNumber")
+	@Schema(description = "reservedNumber")
 	private Integer reservedNumber;
 
-	@ApiModelProperty(value = "availableNumber")
+	@Schema(description = "availableNumber")
 	private Integer availableNumber;
 
-	@ApiModelProperty(value = "status")
+	@Schema(description = "status")
 	private Integer status;
 }
 

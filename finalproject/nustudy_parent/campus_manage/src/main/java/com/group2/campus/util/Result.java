@@ -1,23 +1,22 @@
 package com.group2.campus.util;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 /**
  * Global unified return result class
  */
 @Data
-@ApiModel(value = "Global unified return result")
+@Schema(description = "Global unified return result")
 public class Result<T> {
 
-    @ApiModelProperty(value = "return code")
+    @Schema(description = "return code")
     private Integer code;
 
-    @ApiModelProperty(value = "return message")
+    @Schema(description = "return message")
     private String message;
 
-    @ApiModelProperty(value = "return data")
+    @Schema(description = "return data")
     private T data;
 
     public Result(){}
