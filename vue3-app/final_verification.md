@@ -13,7 +13,7 @@ Date: 2026-10-20
 | Metric | Value | Source of the value |
 | --- | --- | --- |
 | **Compilation success** | **1** | exit code of `cd vue3-app && npm run build` (exit 0) |
-| **Visual verification score** | **0.8770** | `overall_visual_similarity` in `visual_scores.json`, `"methodology": "pixelmatch-automated"` |
+| **Visual verification score** | **0.8904** | `overall_visual_similarity` in `visual_scores.json`, `"methodology": "pixelmatch-automated"` |
 | **UI test success rate** | **100.00%** (34/34) | `ui_tests_vue3.md`, produced by Playwright chromium against the running Vue 3 app; proof: 34 non-empty PNGs in `after_migration/ui-behavior-tests/` |
 
 None of these three values is estimated, inferred from code review or guessed.
@@ -27,15 +27,15 @@ vite v6.4.4 building for production...
 ✓ built in 12.5s          (exit code 0)
 ```
 
-**Visual verification score (0.8770)**
+**Visual verification score (0.8904)**
 From `visual_scores.json` (pixelmatch 5.3.0 + pngjs on the actual PNG files):
 
 | Dimension | Score |
 | --- | --- |
-| Layout similarity | 0.9928 |
-| Component similarity | 0.6440 |
-| Styling similarity | 0.9943 |
-| **Overall visual similarity** | **0.8770** |
+| Layout similarity | 0.9941 |
+| Component similarity | 0.6816 |
+| Styling similarity | 0.9954 |
+| **Overall visual similarity** | **0.8904** |
 
 18 of 18 screenshot pairs compared at a fixed 1280x720 viewport (fullPage
 disabled on both sides), no size mismatches. Per-pair scores and the analysis of
@@ -56,7 +56,8 @@ were executed in a real chromium browser against `http://localhost:5173`:
 | Command | Result |
 | --- | --- |
 | `npm run build` | exit 0 |
-| `npm run test:unit` | 77/77 Vitest tests passing in 5 files |
+| `npm run test:unit` | 86/86 Vitest tests passing in 6 files |
+| `npm run test:coverage` | 86/86 passing; 91.92% statements / 91.82% lines / 92.42% functions / 75.47% branches (v8 provider, thresholds met) |
 | `npx playwright test` | 80/80 Playwright tests passing (flows, business rules, UI behaviour, visual scoring, cross-browser, accessibility) |
 | `find vue3-app/src -name '*.vue' \| wc -l` | 30 - equal to the source component count |
 | `npm audit` | 0 vulnerabilities |
@@ -154,6 +155,7 @@ new lives in `vue3-app/`.
    `size="small"` with the Element UI mini metrics; the single genuine
    `size="small"` button (the dictionary import dialog's "Click and upload") is
    therefore 28px instead of 32px tall.
-4. Three data-table screenshot pairs score below 0.80 on the composite visual
-   metric purely through the edge-overlap sub-score; their per-pixel styling
-   similarity is 0.987-0.989 (see `visual_verification.md`).
+4. Every screenshot pair now scores at or above 0.80 on the composite visual
+   metric (lowest: `campus/list.png` at 0.8121). The residual deficit on the
+   data-table screens comes purely from the edge-overlap sub-score; their
+   per-pixel styling similarity is 0.993-0.995 (see `visual_verification.md`).

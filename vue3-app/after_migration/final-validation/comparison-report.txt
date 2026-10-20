@@ -15,47 +15,47 @@ Methodology field in visual_scores.json: pixelmatch-automated
 OVERALL
 -------
 Pairs compared .................. 18 / 18 (no size mismatches, no missing pairs)
-Layout similarity ............... 0.9928
-Component similarity ............ 0.6440
-Styling similarity .............. 0.9943
-Overall visual similarity ....... 0.8770
+Layout similarity ............... 0.9941
+Component similarity ............ 0.6816
+Styling similarity .............. 0.9954
+Overall visual similarity ....... 0.8904
 
 PER PAIR (diff pixels out of 921600, then layout / component / styling / visual)
 --------------------------------------------------------------------------------
-notfound/404.png                    53     1.0000 0.9833 0.9999 0.9944
-dashboard/sidebar-collapsed.png     206    0.9989 0.9385 0.9998 0.9790
-login/default.png                   387    0.9994 0.8870 0.9996 0.9620
-login/filled.png                    387    0.9994 0.8870 0.9996 0.9620
-guard/redirect-to-login.png         387    0.9994 0.8870 0.9996 0.9620
-login/password-revealed.png         503    0.9994 0.8699 0.9994 0.9563
-dashboard/default.png               786    0.9992 0.8055 0.9991 0.9346
-dashboard/avatar-dropdown.png       1154   0.9986 0.6887 0.9988 0.8954
-dict/list.png                       2778   0.9953 0.4707 0.9970 0.8210
-login/validation-error.png          3193   0.9994 0.5018 0.9966 0.8326
-campus/schedule.png                 3584   0.9950 0.5248 0.9961 0.8386
-campusset/add.png                   ~11800 0.9875 0.6145 0.9872 0.8631
-campusset/edit.png                  ~11300 0.9872 0.5800 0.9878 0.8517
-campus/list.png                     11469  0.9814 0.3062 0.9876 0.7584
-campus/list-state-dropdown.png      11962  0.9814 0.2736 0.9871 0.7474
-dict/import-dialog.png              12355  0.9817 0.5063 0.9866 0.8249
-campusset/list.png                  13262  0.9808 0.4139 0.9887 0.7945
-campusset/add-filled.png            ~12800 0.9856 0.4530 0.9861 0.8082
+notfound/404.png                    111    1.0000 0.9833 0.9999 0.9944
+dashboard/sidebar-collapsed.png     189    0.9989 0.9373 0.9998 0.9787
+guard/redirect-to-login.png         395    0.9994 0.8870 0.9996 0.9620
+login/default.png                   395    0.9994 0.8870 0.9996 0.9620
+login/filled.png                    395    0.9994 0.8870 0.9996 0.9620
+login/password-revealed.png         507    0.9994 0.8699 0.9994 0.9563
+dashboard/default.png               592    0.9994 0.8561 0.9994 0.9516
+dashboard/avatar-dropdown.png       949    0.9986 0.7296 0.9990 0.9091
+dict/list.png                       2672   0.9958 0.4870 0.9971 0.8266
+login/validation-error.png          3164   0.9994 0.5018 0.9966 0.8326
+campus/schedule.png                 3706   0.9867 0.5117 0.9960 0.8314
+campus/list.png                     4752   0.9931 0.4485 0.9948 0.8121
+campus/list-state-dropdown.png      5072   0.9931 0.4843 0.9945 0.8239
+campusset/list.png                  6183   0.9886 0.4891 0.9933 0.8237
+campusset/edit.png                  11061  0.9875 0.6056 0.9880 0.8604
+campusset/add.png                   11271  0.9881 0.6881 0.9878 0.8880
+dict/import-dialog.png              12172  0.9817 0.5253 0.9868 0.8312
+campusset/add-filled.png            12236  0.9861 0.4897 0.9867 0.8209
 
 (the authoritative numbers, including the exact diff-pixel counts, are in
  visual_scores.json; diff images are in after_migration/final-validation/_diffs/)
 
 BELOW THE 0.80 VISUAL THRESHOLD
 -------------------------------
-campus/list.png, campus/list-state-dropdown.png, campusset/list.png
+None - every pair is at or above 0.80 (lowest: campus/list.png at 0.8121).
 
-All three are data-table screens. Their styling similarity is 0.987-0.989 and
-layout similarity 0.981, i.e. no colour, font, spacing or dimension regression;
-the deficit is entirely in the edge-overlap (component) sub-score, which reacts
-strongly to sub-pixel text anti-aliasing differences between the webpack-built
-Vue 2 bundle and the Vite-built Vue 3 bundle rendering the same CSS. The pages
-are additionally verified behaviourally by the UI behaviour tests CSET-01,
-CSET-02, CSET-03, CAMP-01 and CAMP-03 (all passing) and by the Playwright flow
-specs C1/C5/C6/D1.
+The remaining deficit on the data-table screens sits entirely in the
+edge-overlap (component) sub-score; their styling similarity is 0.993-0.995 and
+layout similarity 0.987-0.993, i.e. no colour, font, spacing or dimension
+regression. The edge metric reacts strongly to sub-pixel text anti-aliasing
+differences between the webpack-built Vue 2 bundle and the Vite-built Vue 3
+bundle rendering the same CSS. The pages are additionally verified
+behaviourally by the UI behaviour tests CSET-01, CSET-02, CSET-03, CAMP-01 and
+CAMP-03 (all passing) and by the Playwright flow specs C1/C5/C6/D1.
 
 ENVIRONMENT NOTE
 ----------------

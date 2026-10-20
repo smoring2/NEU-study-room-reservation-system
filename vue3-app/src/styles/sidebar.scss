@@ -43,6 +43,9 @@
     }
     .svg-icon {
       margin-right: 16px;
+      // Element Plus lays menu items out with flexbox, which shrank the 1em
+      // icons to zero width; Element UI used inline layout
+      flex: none;
     }
     .el-menu {
       border: none;

@@ -7,7 +7,7 @@ All numbers in this document come from `visual_scores.json`, which is produced b
 
 - Methodology: `pixelmatch-automated`
 - Tool: pixelmatch@5 + pngjs, threshold 0.1, fixed 1280x720 Playwright screenshots (not fullPage)
-- Generated: 2026-10-20T18:20:12.374Z
+- Generated: 2026-10-20T19:02:25.692Z
 - Screenshot pairs compared: 18 of 18
 - Viewport: 1280x720, fullPage disabled on both sides
 
@@ -15,10 +15,10 @@ All numbers in this document come from `visual_scores.json`, which is produced b
 
 | Dimension | Score |
 | --- | --- |
-| Layout similarity | 0.9928 |
-| Component similarity | 0.6440 |
-| Styling similarity | 0.9943 |
-| **Overall visual similarity** | **0.8770** |
+| Layout similarity | 0.9941 |
+| Component similarity | 0.6816 |
+| Styling similarity | 0.9954 |
+| **Overall visual similarity** | **0.8904** |
 
 `Visual Similarity = (Layout + Component + Styling) / 3`
 
@@ -30,40 +30,39 @@ All numbers in this document come from `visual_scores.json`, which is produced b
 
 | Screenshot pair | Diff pixels | Layout | Component | Styling | Visual |
 | --- | --- | --- | --- | --- | --- |
-| campus/list-state-dropdown.png | 11895 / 921600 | 0.9814 | 0.2736 | 0.9871 | 0.7474 |
-| campus/list.png | 11391 / 921600 | 0.9814 | 0.3062 | 0.9876 | 0.7584 |
-| campus/schedule.png | 3597 / 921600 | 0.995 | 0.5248 | 0.9961 | 0.8386 |
-| campusset/add-filled.png | 12813 / 921600 | 0.9856 | 0.453 | 0.9861 | 0.8082 |
-| campusset/add.png | 11832 / 921600 | 0.9875 | 0.6145 | 0.9872 | 0.8631 |
-| campusset/edit.png | 11255 / 921600 | 0.9872 | 0.58 | 0.9878 | 0.8517 |
-| campusset/list.png | 10449 / 921600 | 0.9808 | 0.4139 | 0.9887 | 0.7945 |
-| dashboard/avatar-dropdown.png | 1138 / 921600 | 0.9986 | 0.6887 | 0.9988 | 0.8954 |
-| dashboard/default.png | 786 / 921600 | 0.9992 | 0.8055 | 0.9991 | 0.9346 |
-| dashboard/sidebar-collapsed.png | 189 / 921600 | 0.9989 | 0.9385 | 0.9998 | 0.979 |
-| dict/import-dialog.png | 12327 / 921600 | 0.9817 | 0.5063 | 0.9866 | 0.8249 |
-| dict/list.png | 2791 / 921600 | 0.9953 | 0.4707 | 0.997 | 0.821 |
+| notfound/404.png | 111 / 921600 | 1 | 0.9833 | 0.9999 | 0.9944 |
+| dashboard/sidebar-collapsed.png | 189 / 921600 | 0.9989 | 0.9373 | 0.9998 | 0.9787 |
 | guard/redirect-to-login.png | 395 / 921600 | 0.9994 | 0.887 | 0.9996 | 0.962 |
 | login/default.png | 395 / 921600 | 0.9994 | 0.887 | 0.9996 | 0.962 |
 | login/filled.png | 395 / 921600 | 0.9994 | 0.887 | 0.9996 | 0.962 |
 | login/password-revealed.png | 507 / 921600 | 0.9994 | 0.8699 | 0.9994 | 0.9563 |
+| dashboard/default.png | 592 / 921600 | 0.9994 | 0.8561 | 0.9994 | 0.9516 |
+| dashboard/avatar-dropdown.png | 949 / 921600 | 0.9986 | 0.7296 | 0.999 | 0.9091 |
+| dict/list.png | 2672 / 921600 | 0.9958 | 0.487 | 0.9971 | 0.8266 |
 | login/validation-error.png | 3164 / 921600 | 0.9994 | 0.5018 | 0.9966 | 0.8326 |
-| notfound/404.png | 111 / 921600 | 1 | 0.9833 | 0.9999 | 0.9944 |
+| campus/schedule.png | 3706 / 921600 | 0.9867 | 0.5117 | 0.996 | 0.8314 |
+| campus/list.png | 4752 / 921600 | 0.9931 | 0.4485 | 0.9948 | 0.8121 |
+| campus/list-state-dropdown.png | 5072 / 921600 | 0.9931 | 0.4843 | 0.9945 | 0.8239 |
+| campusset/list.png | 6183 / 921600 | 0.9886 | 0.4891 | 0.9933 | 0.8237 |
+| campusset/edit.png | 11061 / 921600 | 0.9875 | 0.6056 | 0.988 | 0.8604 |
+| campusset/add.png | 11271 / 921600 | 0.9881 | 0.6881 | 0.9878 | 0.888 |
+| dict/import-dialog.png | 12172 / 921600 | 0.9817 | 0.5253 | 0.9868 | 0.8312 |
+| campusset/add-filled.png | 12236 / 921600 | 0.9861 | 0.4897 | 0.9867 | 0.8209 |
 
 ## Pairs below the 0.80 visual threshold
 
-- campus/list-state-dropdown.png
-- campus/list.png
-- campusset/list.png
+None - `below_threshold` in `visual_scores.json` is empty. The lowest-scoring
+pair is `campus/list.png` at 0.8121.
 
 ### Analysis of the remaining gap
 
-Every pair scores **>= 0.97 on styling similarity** (per-pixel colour) and
+Every pair scores **>= 0.98 on styling similarity** (per-pixel colour) and
 **>= 0.98 on layout similarity**, i.e. colours, fonts, spacing, dimensions and
-block structure are reproduced. The pairs listed above fall below 0.80 only
-because of the *component* (edge-overlap) sub-score, which is an
-intersection-over-union of edge maps and therefore drops sharply when text is
-anti-aliased even slightly differently - the data-dense table and form screens
-contain long runs of thin 1px borders and small text.
+block structure are reproduced. The residual deficit is in the *component*
+(edge-overlap) sub-score, which is an intersection-over-union of edge maps and
+therefore drops sharply when text is anti-aliased even slightly differently -
+the data-dense table and form screens contain long runs of thin 1px borders and
+small text.
 
 Root causes identified and fixed during the migration feedback loop (see
 `migration-progress.txt`):
@@ -85,10 +84,26 @@ Root causes identified and fixed during the migration feedback loop (see
    `.error(...)` promise call threw during setup. It now uses `.catch(...)`.
 6. Sidebar links did not render an anchor because an `is` key inside
    `v-bind` is ignored in Vue 3; `Link.vue` now uses `:is` explicitly.
+7. `el-select` collapsed to 44x32 because Element Plus replaced the inner
+   `el-input` with `.el-select__wrapper`, which shrinks to its content: the
+   Element UI 249x40 metrics and the 15px/30px text inset were restored.
+8. Element Plus lays menu items out with flexbox, which shrank the 1em sidebar
+   `svg-icon`s to zero width (icons invisible, labels shifted ~14px left);
+   `flex: none` restores them.
+9. Inline-form gutters: Element UI inline items were inline-blocks (10px margin
+   plus 4px collapsed whitespace = 14px); Element Plus uses a 32px flex gutter
+   and baseline-aligns buttons placed directly in the form.
+10. Pagination: Element UI laid it out as inline content, so `text-align:
+    center` centred the left group while the `->` wrapper floated right. The
+    Element Plus flex layout is re-centred with a flexible `::before`, and the
+    jumper editor / page-size select keep the Element UI 28px height, 13px
+    font and 36px button width.
+11. Table headers are bold (700) again; Element Plus uses 600.
+12. The loading spinner circle is 42px again (Element Plus enlarges it).
 
 The residual difference is font rasterisation of identical CSS under Vite vs
 webpack and is not a styling regression. Progress of the loop:
-0.7774 -> 0.8643 -> 0.8685 -> 0.8744 -> **0.8770**.
+0.7774 -> 0.8643 -> 0.8685 -> 0.8744 -> 0.8770 -> **0.8904**.
 
 ### Evidence
 

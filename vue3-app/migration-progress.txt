@@ -71,3 +71,18 @@ Step 9 / 10 / 11 / 12 - tests, scoring and reports
   Reports: feasibility-assessment.md, visual_verification.md, visual_scores.json,
     after_migration/final-validation/comparison-report.txt, final_verification.md,
     src/__tests__/traceability.txt and the six migration mapping documents.
+
+Step 13 - post-validation gap closing
+  Visual feedback loop iteration 6: fixed the collapsed el-select (249x40 + 15/30px
+    text inset), the zero-width sidebar svg icons (flex: none under the Element Plus
+    flex menu), inline-form gutters (14px), button alignment, bold (700) table
+    headers, the 42px loading spinner and the pagination layout (centred group,
+    13px font, 28px jumper/size-select, 36px buttons).
+    Result: overall 0.8904 (layout 0.9941 / component 0.6816 / styling 0.9954);
+    all 18/18 pairs now >= 0.80 (lowest campus/list.png 0.8121, was 0.7584).
+  Coverage: @vitest/coverage-v8 added with `npm run test:coverage` and thresholds;
+    new src/__tests__/api.spec.js -> 86 tests, 91.92% statements / 91.82% lines /
+    92.42% functions / 75.47% branches.
+  Backend integration: vite server proxy for /admin and /user -> http://localhost:80
+    (the Spring Cloud gateway); the gateway CorsConfig already allows all origins.
+  npm run build: SUCCESS; npm run test:coverage: PASS; npx playwright test: 80/80 PASS.

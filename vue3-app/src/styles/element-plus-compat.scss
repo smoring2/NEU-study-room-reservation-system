@@ -40,6 +40,36 @@
   font-size: 14px;
 }
 
+// Element UI rendered `el-select` at the default input width (249px inside an
+// inline form) and at the 40px control height. Element Plus replaced the inner
+// `el-input` with `.el-select__wrapper`, which shrinks to its content, so the
+// Element UI metrics are restored here.
+.el-select {
+  width: 249px;
+}
+.el-select__wrapper {
+  min-height: 40px;
+  line-height: 40px;
+  // Element UI put 15px of text inset on the select input and reserved 30px for
+  // the caret on the right
+  padding: 0 30px 0 15px;
+}
+
+// Element UI loading spinner is a 42px circle
+.el-loading-spinner .circular {
+  width: 42px;
+  height: 42px;
+}
+
+// The pagination page-size select keeps its own (small) metrics
+.el-pagination .el-select {
+  width: 110px;
+}
+.el-pagination .el-select__wrapper {
+  min-height: 28px;
+  line-height: 28px;
+}
+
 // Element Plus moved the dialog padding from the header/body/footer sections
 // onto .el-dialog itself; restore the Element UI section paddings
 .el-dialog {
@@ -61,6 +91,22 @@
 .el-form-item {
   margin-bottom: 22px;
 }
+// Element Plus uses a 32px horizontal gutter in inline forms and baseline-aligns
+// buttons that sit directly in the form; Element UI used 10px and top alignment.
+.el-form--inline .el-form-item {
+  // Element UI inline form items were inline-blocks: 10px margin plus the 4px
+  // of collapsed whitespace between them
+  margin-right: 14px;
+}
+.el-form--inline > .el-button {
+  vertical-align: top;
+}
+.el-form--inline .el-button + .el-button {
+  margin-left: 14px;
+}
+.el-button + .el-button {
+  margin-left: 10px;
+}
 .el-form-item__label {
   height: 40px;
   line-height: 40px;
@@ -73,12 +119,53 @@
 .el-table .el-table__cell {
   padding: 12px 0;
 }
+// Element UI table headers were bold (700); Element Plus uses 600
+.el-table th.el-table__cell {
+  font-weight: 700;
+}
 
 // Element UI pagination metrics
 .el-pagination {
   font-size: 13px;
+  --el-pagination-font-size: 13px;
   --el-pagination-button-height: 28px;
-  --el-pagination-button-width: 35px;
+  --el-pagination-button-width: 36px;
+}
+.el-pagination .el-select__wrapper,
+.el-pagination .number,
+.el-pagination .el-input__inner {
+  font-size: 13px;
+}
+// Element UI laid the pagination out as inline content, so the `text-align:
+// center` set on the component centred the left-hand group while the `->`
+// right wrapper floated right. Element Plus uses flexbox, which left-aligns
+// the group; auto margins restore the Element UI placement.
+// `.is-first` carries `margin-left: 0 !important` in Element Plus, so the group
+// is centred with a flexible pseudo-element before it, mirroring the Element UI
+// inline layout (left group centred, `->` total pinned right).
+.el-pagination::before {
+  content: '';
+  flex: 1;
+}
+// Element UI item spacing inside the pagination
+.el-pagination > .btn-prev {
+  margin-left: 10px;
+}
+.el-pagination > .el-pager,
+.el-pagination > .btn-next {
+  margin-left: 0;
+}
+.el-pagination > .el-pagination__jump {
+  margin-left: 24px;
+}
+// the jumper editor keeps the Element UI 28px height
+.el-pagination .el-input,
+.el-pagination .el-input__wrapper {
+  height: 28px;
+}
+.el-pagination .el-input__inner {
+  height: 26px;
+  line-height: 26px;
 }
 
 // Element UI horizontal menu border colour
