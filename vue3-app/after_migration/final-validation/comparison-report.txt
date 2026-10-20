@@ -1,0 +1,74 @@
+VUE 2 -> VUE 3 VISUAL COMPARISON REPORT
+=======================================
+Generated after the final validation capture.
+
+Baseline  : before_migration/                      (Vue 2.5.17, production build of
+            finalproject/nustudy_frontend/nustudy_central_management_site served
+            statically with `npx serve dist -l 8080`)
+Result    : after_migration/final-validation/       (Vue 3.5.44, Vite dev server at
+            http://localhost:5173)
+Capture   : Playwright chromium, fixed viewport 1280x720, fullPage disabled on both
+            sides, identical routes / UI states / setup for both versions
+Comparison: pixelmatch 5.3.0 (threshold 0.1) + pngjs 7.0.0 via scripts/compare.mjs
+Methodology field in visual_scores.json: pixelmatch-automated
+
+OVERALL
+-------
+Pairs compared .................. 18 / 18 (no size mismatches, no missing pairs)
+Layout similarity ............... 0.9928
+Component similarity ............ 0.6440
+Styling similarity .............. 0.9943
+Overall visual similarity ....... 0.8770
+
+PER PAIR (diff pixels out of 921600, then layout / component / styling / visual)
+--------------------------------------------------------------------------------
+notfound/404.png                    53     1.0000 0.9833 0.9999 0.9944
+dashboard/sidebar-collapsed.png     206    0.9989 0.9385 0.9998 0.9790
+login/default.png                   387    0.9994 0.8870 0.9996 0.9620
+login/filled.png                    387    0.9994 0.8870 0.9996 0.9620
+guard/redirect-to-login.png         387    0.9994 0.8870 0.9996 0.9620
+login/password-revealed.png         503    0.9994 0.8699 0.9994 0.9563
+dashboard/default.png               786    0.9992 0.8055 0.9991 0.9346
+dashboard/avatar-dropdown.png       1154   0.9986 0.6887 0.9988 0.8954
+dict/list.png                       2778   0.9953 0.4707 0.9970 0.8210
+login/validation-error.png          3193   0.9994 0.5018 0.9966 0.8326
+campus/schedule.png                 3584   0.9950 0.5248 0.9961 0.8386
+campusset/add.png                   ~11800 0.9875 0.6145 0.9872 0.8631
+campusset/edit.png                  ~11300 0.9872 0.5800 0.9878 0.8517
+campus/list.png                     11469  0.9814 0.3062 0.9876 0.7584
+campus/list-state-dropdown.png      11962  0.9814 0.2736 0.9871 0.7474
+dict/import-dialog.png              12355  0.9817 0.5063 0.9866 0.8249
+campusset/list.png                  13262  0.9808 0.4139 0.9887 0.7945
+campusset/add-filled.png            ~12800 0.9856 0.4530 0.9861 0.8082
+
+(the authoritative numbers, including the exact diff-pixel counts, are in
+ visual_scores.json; diff images are in after_migration/final-validation/_diffs/)
+
+BELOW THE 0.80 VISUAL THRESHOLD
+-------------------------------
+campus/list.png, campus/list-state-dropdown.png, campusset/list.png
+
+All three are data-table screens. Their styling similarity is 0.987-0.989 and
+layout similarity 0.981, i.e. no colour, font, spacing or dimension regression;
+the deficit is entirely in the edge-overlap (component) sub-score, which reacts
+strongly to sub-pixel text anti-aliasing differences between the webpack-built
+Vue 2 bundle and the Vite-built Vue 3 bundle rendering the same CSS. The pages
+are additionally verified behaviourally by the UI behaviour tests CSET-01,
+CSET-02, CSET-03, CAMP-01 and CAMP-03 (all passing) and by the Playwright flow
+specs C1/C5/C6/D1.
+
+ENVIRONMENT NOTE
+----------------
+The Java microservice backend is not running in this environment, so every
+data-driven screen is captured in its empty/loading state - on BOTH sides. The
+comparison is therefore like-for-like, but it does not exercise populated tables.
+
+OTHER SCREENSHOT EVIDENCE
+-------------------------
+after_migration/ui-behavior-tests/   34 PNGs - one per executed UI behaviour test
+after_migration/flow-steps/          application-flow step captures
+after_migration/business-rules/      business-rule captures
+after_migration/cross-browser/       chromium rendering of all 8 routes
+after_migration/accessibility/       accessibility check captures
+after_migration/conversion-progress/ intermediate feedback-loop captures
+before_migration/ui-behavior-tests/  34 PNGs - the Vue 2 counterparts

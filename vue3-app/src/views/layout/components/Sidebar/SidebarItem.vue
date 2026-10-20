@@ -35,7 +35,6 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
 import path from 'path'
 import { isExternal } from '@/utils'
 import Item from './Item.vue'
@@ -59,7 +58,11 @@ const props = defineProps({
   }
 })
 
-const onlyOneChild = ref(null)
+// kept intentionally non-reactive: the Vue 2 component used it as a scratch
+// value written while the template condition is evaluated, and a ref would
+// re-trigger the render that writes it
+
+let onlyOneChild = null
 
 function hasOneShowingChild(children, parent) {
   const showingChildren = children.filter(item => {
@@ -67,7 +70,7 @@ function hasOneShowingChild(children, parent) {
       return false
     } else {
       // Temp set(will be used if only has one showing child)
-      onlyOneChild.value = item
+      onlyOneChild = item
       return true
     }
   })
@@ -79,7 +82,7 @@ function hasOneShowingChild(children, parent) {
 
   // Show parent if there are no child router to display
   if (showingChildren.length === 0) {
-    onlyOneChild.value = { ... parent, path: '', noShowingChildren: true }
+    onlyOneChild = { ... parent, path: '', noShowingChildren: true }
     return true
   }
 

@@ -1,0 +1,276 @@
+{
+  "source_vue_version": "Vue 3.5.44",
+  "server_method": "vite dev server",
+  "base_url": "http://localhost:5173",
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "full_page": false,
+  "screenshots": [
+    {
+      "file": "login/default.png",
+      "route": "/#/login",
+      "ui_state": "default (unauthenticated)",
+      "viewport": "1280x720",
+      "full_page": false,
+      "setup_required": "none (unauthenticated)",
+      "actions": [],
+      "timestamp": "2026-10-20T18:28:59.114Z",
+      "source_vue_version": "Vue 3.5.44",
+      "page_errors": [],
+      "bytes": 14989
+    },
+    {
+      "file": "login/filled.png",
+      "route": "/#/login",
+      "ui_state": "form filled",
+      "viewport": "1280x720",
+      "full_page": false,
+      "setup_required": "none (unauthenticated)",
+      "actions": [
+        "fillLogin"
+      ],
+      "timestamp": "2026-10-20T18:29:02.130Z",
+      "source_vue_version": "Vue 3.5.44",
+      "page_errors": [],
+      "bytes": 14989
+    },
+    {
+      "file": "login/password-revealed.png",
+      "route": "/#/login",
+      "ui_state": "password revealed",
+      "viewport": "1280x720",
+      "full_page": false,
+      "setup_required": "none (unauthenticated)",
+      "actions": [
+        "showPwd"
+      ],
+      "timestamp": "2026-10-20T18:29:05.148Z",
+      "source_vue_version": "Vue 3.5.44",
+      "page_errors": [],
+      "bytes": 15370
+    },
+    {
+      "file": "login/validation-error.png",
+      "route": "/#/login",
+      "ui_state": "form validation errors",
+      "viewport": "1280x720",
+      "full_page": false,
+      "setup_required": "none (unauthenticated)",
+      "actions": [
+        "invalidLogin"
+      ],
+      "timestamp": "2026-10-20T18:29:08.180Z",
+      "source_vue_version": "Vue 3.5.44",
+      "page_errors": [],
+      "bytes": 20958
+    },
+    {
+      "file": "guard/redirect-to-login.png",
+      "route": "/#/dashboard",
+      "ui_state": "guard redirect, unauthenticated",
+      "viewport": "1280x720",
+      "full_page": false,
+      "setup_required": "none (unauthenticated)",
+      "actions": [],
+      "timestamp": "2026-10-20T18:29:10.429Z",
+      "source_vue_version": "Vue 3.5.44",
+      "page_errors": [],
+      "bytes": 14989
+    },
+    {
+      "file": "dashboard/default.png",
+      "route": "/#/dashboard",
+      "ui_state": "default (authenticated)",
+      "viewport": "1280x720",
+      "full_page": false,
+      "setup_required": "Admin-Token cookie set (authenticated admin)",
+      "actions": [],
+      "timestamp": "2026-10-20T18:29:12.679Z",
+      "source_vue_version": "Vue 3.5.44",
+      "page_errors": [],
+      "bytes": 16699
+    },
+    {
+      "file": "dashboard/sidebar-collapsed.png",
+      "route": "/#/dashboard",
+      "ui_state": "sidebar collapsed",
+      "viewport": "1280x720",
+      "full_page": false,
+      "setup_required": "Admin-Token cookie set (authenticated admin)",
+      "actions": [
+        "toggleSidebar"
+      ],
+      "timestamp": "2026-10-20T18:29:15.745Z",
+      "source_vue_version": "Vue 3.5.44",
+      "page_errors": [],
+      "bytes": 13052
+    },
+    {
+      "file": "dashboard/avatar-dropdown.png",
+      "route": "/#/dashboard",
+      "ui_state": "avatar dropdown open",
+      "viewport": "1280x720",
+      "full_page": false,
+      "setup_required": "Admin-Token cookie set (authenticated admin)",
+      "actions": [
+        "openAvatar"
+      ],
+      "timestamp": "2026-10-20T18:29:18.748Z",
+      "source_vue_version": "Vue 3.5.44",
+      "page_errors": [],
+      "bytes": 19379
+    },
+    {
+      "file": "dict/list.png",
+      "route": "/#/cmn/list",
+      "ui_state": "default / empty table (no backend)",
+      "viewport": "1280x720",
+      "full_page": false,
+      "setup_required": "Admin-Token cookie set (authenticated admin)",
+      "actions": [],
+      "timestamp": "2026-10-20T18:29:20.997Z",
+      "source_vue_version": "Vue 3.5.44",
+      "page_errors": [
+        "AxiosError: Network Error"
+      ],
+      "bytes": 22416
+    },
+    {
+      "file": "dict/import-dialog.png",
+      "route": "/#/cmn/list",
+      "ui_state": "import dialog open",
+      "viewport": "1280x720",
+      "full_page": false,
+      "setup_required": "Admin-Token cookie set (authenticated admin)",
+      "actions": [
+        "openImport"
+      ],
+      "timestamp": "2026-10-20T18:29:24.033Z",
+      "source_vue_version": "Vue 3.5.44",
+      "page_errors": [
+        "AxiosError: Network Error"
+      ],
+      "bytes": 28346
+    },
+    {
+      "file": "campusset/list.png",
+      "route": "/#/campusset/list",
+      "ui_state": "default / empty table (no backend)",
+      "viewport": "1280x720",
+      "full_page": false,
+      "setup_required": "Admin-Token cookie set (authenticated admin)",
+      "actions": [],
+      "timestamp": "2026-10-20T18:29:26.269Z",
+      "source_vue_version": "Vue 3.5.44",
+      "page_errors": [],
+      "bytes": 39341
+    },
+    {
+      "file": "campusset/add.png",
+      "route": "/#/campusset/add",
+      "ui_state": "pristine form",
+      "viewport": "1280x720",
+      "full_page": false,
+      "setup_required": "Admin-Token cookie set (authenticated admin)",
+      "actions": [],
+      "timestamp": "2026-10-20T18:29:28.516Z",
+      "source_vue_version": "Vue 3.5.44",
+      "page_errors": [],
+      "bytes": 32391
+    },
+    {
+      "file": "campusset/add-filled.png",
+      "route": "/#/campusset/add",
+      "ui_state": "filled form",
+      "viewport": "1280x720",
+      "full_page": false,
+      "setup_required": "Admin-Token cookie set (authenticated admin)",
+      "actions": [
+        "fillCampusSet"
+      ],
+      "timestamp": "2026-10-20T18:29:31.552Z",
+      "source_vue_version": "Vue 3.5.44",
+      "page_errors": [],
+      "bytes": 38215
+    },
+    {
+      "file": "campusset/edit.png",
+      "route": "/#/campusset/edit/1",
+      "ui_state": "edit mode (no backend)",
+      "viewport": "1280x720",
+      "full_page": false,
+      "setup_required": "Admin-Token cookie set (authenticated admin)",
+      "actions": [],
+      "timestamp": "2026-10-20T18:29:33.799Z",
+      "source_vue_version": "Vue 3.5.44",
+      "page_errors": [
+        "AxiosError: Network Error"
+      ],
+      "bytes": 29279
+    },
+    {
+      "file": "campus/list.png",
+      "route": "/#/campusset/campus/list",
+      "ui_state": "default / loading table (no backend)",
+      "viewport": "1280x720",
+      "full_page": false,
+      "setup_required": "Admin-Token cookie set (authenticated admin)",
+      "actions": [],
+      "timestamp": "2026-10-20T18:29:36.084Z",
+      "source_vue_version": "Vue 3.5.44",
+      "page_errors": [
+        "AxiosError: Network Error",
+        "AxiosError: Network Error"
+      ],
+      "bytes": 33956
+    },
+    {
+      "file": "campus/list-state-dropdown.png",
+      "route": "/#/campusset/campus/list",
+      "ui_state": "state select dropdown open",
+      "viewport": "1280x720",
+      "full_page": false,
+      "setup_required": "Admin-Token cookie set (authenticated admin)",
+      "actions": [
+        "openStateSelect"
+      ],
+      "timestamp": "2026-10-20T18:29:39.168Z",
+      "source_vue_version": "Vue 3.5.44",
+      "page_errors": [
+        "AxiosError: Network Error",
+        "AxiosError: Network Error"
+      ],
+      "bytes": 36795
+    },
+    {
+      "file": "campus/schedule.png",
+      "route": "/#/campusset/campus/schedule/1000_0",
+      "ui_state": "default (no backend)",
+      "viewport": "1280x720",
+      "full_page": false,
+      "setup_required": "Admin-Token cookie set (authenticated admin)",
+      "actions": [],
+      "timestamp": "2026-10-20T18:29:41.399Z",
+      "source_vue_version": "Vue 3.5.44",
+      "page_errors": [
+        "AxiosError: Network Error"
+      ],
+      "bytes": 25359
+    },
+    {
+      "file": "notfound/404.png",
+      "route": "/#/this-route-does-not-exist",
+      "ui_state": "404 catch-all",
+      "viewport": "1280x720",
+      "full_page": false,
+      "setup_required": "Admin-Token cookie set (authenticated admin)",
+      "actions": [],
+      "timestamp": "2026-10-20T18:29:43.689Z",
+      "source_vue_version": "Vue 3.5.44",
+      "page_errors": [],
+      "bytes": 59763
+    }
+  ]
+}

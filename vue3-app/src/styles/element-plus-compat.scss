@@ -27,7 +27,12 @@
   border-radius: 3px;
 }
 
-// Element UI input padding (Element Plus moved it onto the inner wrapper)
+// Element UI input metrics: the bordered box is 40px tall and the horizontal
+// padding sits on the inner wrapper in Element Plus
+.el-input,
+.el-input__wrapper {
+  height: 40px;
+}
 .el-input__wrapper {
   padding: 0 15px;
 }

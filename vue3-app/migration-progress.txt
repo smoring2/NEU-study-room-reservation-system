@@ -62,3 +62,12 @@ Step 3 / 10.5 - UI behaviour tests (Playwright chromium, real browser)
   Vue 3 final run: 34/34 passed (100.00%) -> ui_tests_vue3.md,
     screenshots in after_migration/ui-behavior-tests/ (34 PNGs)
   npm run build: SUCCESS
+
+Step 9 / 10 / 11 / 12 - tests, scoring and reports
+  Vitest: 77 tests in 5 files (stores, utils/filters, router, components, integration) - ALL PASS
+  Playwright: 80 tests (34 UI behaviour + flows + business rules + visual scoring + cross-browser + accessibility) - ALL PASS
+  Final visual scoring: overall 0.8770 (layout 0.9928 / component 0.6440 / styling 0.9943), 18/18 pairs, methodology pixelmatch-automated
+  npm run build: SUCCESS (exit 0); find src -name '*.vue' | wc -l = 30 (= source count)
+  Reports: feasibility-assessment.md, visual_verification.md, visual_scores.json,
+    after_migration/final-validation/comparison-report.txt, final_verification.md,
+    src/__tests__/traceability.txt and the six migration mapping documents.

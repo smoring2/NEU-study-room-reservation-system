@@ -9,10 +9,15 @@ const afterDir = process.argv[2]
 const scoresOut = process.argv[3]
 const beforeDir = 'before_migration'
 
+// page/state screenshots only: the UI-behaviour evidence shots and the diff
+// output are not part of the visual comparison set
+const SKIP_DIRS = new Set(['ui-behavior-tests', '_diffs', 'flow-steps', 'business-rules', 'cross-browser', 'accessibility', 'conversion-progress'])
+
 function listPngs(dir, prefix = '') {
   const out = []
   for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
-    if (e.isDirectory()) out.push(...listPngs(path.join(dir, e.name), prefix + e.name + '/'))
+    if (e.isDirectory() && SKIP_DIRS.has(e.name)) continue
+    else if (e.isDirectory()) out.push(...listPngs(path.join(dir, e.name), prefix + e.name + '/'))
     else if (e.name.endsWith('.png')) out.push(prefix + e.name)
   }
   return out

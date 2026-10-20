@@ -23,6 +23,6 @@ app.use(router);
 app.use(ElementPlus, { locale });
 registerSvgIcon(app);
 
-app.mount("#app");
+app.mount("#root");
 
 export default app;
