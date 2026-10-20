@@ -1,0 +1,17 @@
+Vue 2 -> Vue 3 migration progress
+Source app: finalproject/nustudy_frontend/nustudy_central_management_site (Vue 2.5.17)
+Target: vue3-app/ (Vue 3.5.44, Vite 6, Pinia 2, Vue Router 4, Element Plus 2)
+
+Target component count (find src -name '*.vue' | wc -l in the source app): 30
+Converted component count: 30
+
+Batch 1 - project scaffolding, styles, icons sprite, stores, router, permission guard, request interceptor
+  build: SUCCESS
+Batch 2 - components/{SvgIcon,Hamburger,Breadcrumb}, views/layout/** (Layout, AppMain, Navbar, Sidebar/{index,SidebarItem,Item,Link})
+  build: SUCCESS
+Batch 3 - views/{404,dashboard,login}, views/nested/** (7 files)
+  build: SUCCESS
+Batch 4 - views/dict/list, views/campus/{list,show,schedule}, views/campusSet/{list,add}, views/{table,tree,form}
+  build: SUCCESS
+
+npm run build => exit 0 (30/30 components compiled)
