@@ -14,7 +14,10 @@
   transform: none;
   left: 0;
   position: relative;
-  margin: 0 auto;
+  // was `margin: 0 auto`; split so Element Plus' --el-dialog-margin-top (15vh,
+  // the Element UI default `top` offset) is preserved
+  margin-left: auto;
+  margin-right: auto;
 }
 
 //element ui upload

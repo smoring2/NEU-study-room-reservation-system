@@ -14,7 +14,7 @@
     </el-form>
 
     <div>
-      <el-button type="danger" size="mini" @click="removeRows()"
+      <el-button type="danger" size="small" @click="removeRows()"
         >Delete All Chosen Records</el-button
       >
     </div>
@@ -41,7 +41,7 @@
           <!-- Delete -->
           <el-button
             type="danger"
-            size="mini"
+            size="small"
             icon="el-icon-delete"
             @click="removeDataById(scope.row.id)"
             >Delete</el-button
@@ -50,7 +50,7 @@
           <el-button
             v-if="scope.row.status == 1"
             type="primary"
-            size="mini"
+            size="small"
             icon="el-icon-delete"
             @click="lockCampusSet(scope.row.id, 0)"
             >Lock</el-button
@@ -59,7 +59,7 @@
           <el-button
             v-if="scope.row.status == 0"
             type="danger"
-            size="mini"
+            size="small"
             icon="el-icon-delete"
             @click="lockCampusSet(scope.row.id, 1)"
             >Unlock</el-button
@@ -67,7 +67,7 @@
           <router-link :to="'/campusset/edit/' + scope.row.id">
             <el-button
               type="primary"
-              size="mini"
+              size="small"
               icon="el-icon-edit"
             ></el-button>
           </router-link>
@@ -106,7 +106,9 @@ function getList(page = 1) {
       total.value = response.data.total;
       console.log(response);
     })
-    .error(error => {
+    // was `.error(...)`, which is not part of the Promise API and threw a
+    // TypeError on every call; `.catch` is the intended behaviour
+    .catch(error => {
       console.log(error);
     });
 }

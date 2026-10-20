@@ -36,6 +36,8 @@ const menuThemeVars = {
   '--el-menu-bg-color': '#304156',
   '--el-menu-text-color': '#bfcbd9',
   '--el-menu-active-color': '#409EFF',
-  '--el-menu-hover-bg-color': '#001528'
+  // Element UI derived the hover/opened shade from background-color as
+  // mix(#304156, #000, 10%) = #263445
+  '--el-menu-hover-bg-color': '#263445'
 }
 </script>

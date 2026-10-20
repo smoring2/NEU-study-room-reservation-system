@@ -127,6 +127,7 @@ $light_gray:#eee;
       background: transparent;
       box-shadow: none;
       padding: 0;
+      width: 100%;
     }
     input {
       background: transparent;

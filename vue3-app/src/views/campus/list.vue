@@ -81,25 +81,25 @@
       <el-table-column label="Operation" align="center">
         <template #default="scope">
           <router-link :to="'/campusset/campus/show/' + scope.row.id">
-            <el-button type="primary" size="mini">Details</el-button>
+            <el-button type="primary" size="small">Details</el-button>
           </router-link>
           <router-link
             :to="'/campusset/campus/schedule/' + scope.row.campuscode"
           >
-            <el-button type="primary" size="mini">Schedule</el-button>
+            <el-button type="primary" size="small">Schedule</el-button>
           </router-link>
 
           <el-button
             v-if="scope.row.status == 1"
             type="primary"
-            size="mini"
+            size="small"
             @click="updateStatus(scope.row.id, 0)"
             >Offline</el-button
           >
           <el-button
             v-if="scope.row.status == 0"
             type="danger"
-            size="mini"
+            size="small"
             @click="updateStatus(scope.row.id, 1)"
             >Online</el-button
           >

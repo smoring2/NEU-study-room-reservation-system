@@ -1,0 +1,179 @@
+BUSINESS RULES - NEU Study Central Server Management System (admin console)
+Source of truth: finalproject/nustudy_frontend/nustudy_central_management_site (Vue 2.5.17)
+Extracted from: src/views/**, src/store/modules/{app,user}.js, src/permission.js,
+src/utils/{request,auth,validate,index}.js, src/api/*.js, src/router/index.js,
+the Java backend controllers under finalproject/nustudy_parent/**, and the Vue 2
+baseline screenshots in before_migration/.
+
+================================================================================
+1. AUTHENTICATION & AUTHORIZATION
+================================================================================
+AUTH-01  A user is considered authenticated if and only if the browser holds a
+         non-empty cookie named "Admin-Token".
+AUTH-02  The authentication token is read from the body of the login response
+         (property `token`), never from a response header.
+AUTH-03  Every route except the whitelisted "/login" requires authentication.
+         An unauthenticated request to any other route is redirected to
+         "/login?redirect=<the originally requested path>".
+AUTH-04  An authenticated user who navigates to "/login" is redirected to "/".
+AUTH-05  After a successful login the user is sent to the path carried in the
+         "redirect" query parameter, or to "/" when that parameter is absent.
+AUTH-06  While the user profile has not been loaded yet (roles list empty), the
+         router guard loads it before the navigation is allowed to complete.
+AUTH-07  If loading the user profile fails, the front end logs the user out
+         (token cleared, Admin-Token cookie removed), shows the error message
+         (or "Verification failed, please login again") and navigates to "/".
+AUTH-08  The signed-in administrator profile is name "admin", roles "admin" and
+         a fixed avatar URL. (The real /user/info call is present but disabled
+         in the source; the stub is preserved.)
+AUTH-09  Logging out clears the token and the roles, removes the Admin-Token
+         cookie and reloads the page so the router is re-instantiated.
+AUTH-10  Every outgoing API request carries the token in a request header named
+         "token", and only when a token is present in the store.
+AUTH-11  Response codes 50008 (illegal token), 50012 (another client logged in)
+         and 50014 (token expired) force a logout confirmation dialog titled
+         "log out"; confirming it clears the session and reloads the page.
+AUTH-12  All admin API paths are served under the /admin prefix of the gateway.
+
+================================================================================
+2. VALIDATION
+================================================================================
+VAL-01   Login username is required and must be one of the valid usernames
+         "admin" or "editor" (leading/trailing spaces are ignored); otherwise
+         the message "Please enter correct username" is shown.
+VAL-02   Login password is required and must be at least 5 characters long;
+         otherwise "Password cannot be less than 5 characters" is shown.
+VAL-03   Both login fields are validated on blur and again on submit; the login
+         request is only issued when the whole form is valid.
+VAL-04   The login form is pre-filled with username "admin" and password
+         "admin", which is also advertised in the tips line under the form.
+VAL-05   The dictionary import dialog accepts Excel files only, maximum 500 kb,
+         and only one file at a time (multiple selection disabled).
+VAL-06   The campus-set form (add/edit) has no client-side validation; all five
+         fields (campus name, campus code, API url, contact name, contact phone)
+         are submitted as entered.
+VAL-07   Deleting one or many campus sets requires explicit confirmation in a
+         dialog titled "Notice" with buttons "Yes" and "Cancel".
+
+================================================================================
+3. DATA
+================================================================================
+DATA-01  A campus set record consists of campus name, campus code, API url,
+         contact name, contact phone and a status flag.
+DATA-02  A campus record carries campus name, campus code, logo (base64 JPEG),
+         campus type, full address, status flag and creation time.
+DATA-03  Campus logos are rendered from base64 data with the prefix
+         "data:image/jpeg;base64," at a width of 80 pixels.
+DATA-04  The data dictionary is a lazily loaded tree: children of a node are
+         fetched on demand from /admin/cmn/dict/findChildData/<id>; the root
+         list is loaded with id 1.
+DATA-05  A dictionary entry shows name, code (dictCode), value and create time.
+DATA-06  States are dictionary entries with dict code "State"; cities are the
+         children of the selected state entry.
+DATA-07  Saving a campus set uses create when the record has no id and update
+         when it has one (the same screen serves /campusset/add and
+         /campusset/edit/:id).
+DATA-08  The campus detail screen shows two blocks: campus basics and the
+         reservation rules (cycle, release time, stop time, quit time/day and
+         the numbered rule list).
+DATA-09  A schedule entry shows room title and name, morning/afternoon work
+         time, reserved number, available number, amount and skill.
+DATA-10  A department tree node is a leaf when it has no children; only leaves
+         identify a department code used for schedule queries.
+
+================================================================================
+4. WORKFLOW
+================================================================================
+FLOW-01  Campus status is binary: 0 = Offline, 1 = Online. The action column
+         offers "Offline" for an online campus and "Online" for an offline one,
+         and the list is reloaded from page 1 after the change.
+FLOW-02  Campus-set status is binary: 1 = online (offers "Lock"), 0 = offline
+         (offers "Unlock"); locking/unlocking reloads the current list.
+FLOW-03  Deleting a single campus set deletes by id and then reloads page 1 and
+         reports "Deleted!".
+FLOW-04  Deleting the selected campus sets sends the ids of the current table
+         selection in one batch-remove request, then reloads page 1 and reports
+         "Deleted!".
+FLOW-05  Saving a new campus set reports "Saved!" and navigates to
+         /campusset/list; updating reports "Updated!" and navigates there too.
+FLOW-06  Selecting a state clears the city list and the selected city before the
+         cities of that state are loaded.
+FLOW-07  Importing a dictionary file closes the dialog on success, reports
+         "uploded successfully!" and reloads the dictionary root list.
+FLOW-08  Exporting dictionary data navigates the browser to
+         http://localhost:8202/admin/cmn/dict/exportData.
+FLOW-09  On the schedule screen the first department leaf of the tree is
+         selected automatically, and the first available work date of the
+         returned page is selected automatically.
+FLOW-10  Clicking a department category (a non-leaf node) does nothing.
+FLOW-11  Changing the schedule page resets the selected work date and the active
+         date tag back to the first one.
+FLOW-12  The campus detail screen's "Back" button returns to
+         /campusset/campus/list.
+FLOW-13  Toggling the hamburger collapses/expands the sidebar and remembers the
+         state in the "sidebarStatus" cookie (1 = collapsed, 0 = expanded).
+FLOW-14  On a viewport narrower than 1024 px (minus a 3 px ratio allowance) the
+         application switches to the "mobile" device mode and closes the sidebar
+         without animation; in mobile mode a route change or a click on the
+         drawer background closes the sidebar.
+
+================================================================================
+5. DISPLAY
+================================================================================
+DISP-01  The shell is a fixed 180 px dark sidebar (#304156, text #bfcbd9, active
+         text #409EFF, hover/opened #263445) plus a 50 px white top navbar.
+DISP-02  When collapsed the sidebar is 36 px wide and the main container shifts
+         accordingly; the transition takes 0.28 s.
+DISP-03  Sidebar entries come from the router configuration. Routes flagged
+         `hidden` never appear. A parent with a single visible child is rendered
+         as a single flat item unless it is flagged `alwaysShow`.
+DISP-04  The breadcrumb lists the named matched routes of the current route and
+         always starts with "Dashboard"; the last crumb, and any crumb whose
+         redirect is "noredirect", is plain text (#97a8be) and not a link.
+DISP-05  The navbar shows the user avatar (40x40, 10 px radius) with a
+         click-triggered dropdown offering "Home" and "LogOut".
+DISP-06  The dashboard prints "name:" followed by the user name and "roles:"
+         followed by the roles value, at 30 px font size.
+DISP-07  Page transitions use the "fade-transform" transition (0.5 s, 30 px
+         horizontal slide); breadcrumb items use the "breadcrumb" transition.
+DISP-08  Route changes show the NProgress progress bar until navigation ends.
+DISP-09  The unknown-route page shows "OOPS!", the message "you cannot enter
+         this page......", the animated 404 clouds and a "Back to Home" button.
+DISP-10  The login screen is a #2d3a4b full-screen panel with a 520 px centred
+         form, the title "vue-admin-template", a user icon, a password icon and
+         an eye icon that toggles password visibility.
+DISP-11  Tables are bordered, fit their container and highlight the current row;
+         list screens show a centred pagination block with 30 px vertical
+         padding.
+DISP-12  The campus list numbers its rows continuously across pages as
+         (page - 1) * limit + row index + 1.
+DISP-13  Table status columns render text, not badges: "Online"/"Offline" for
+         campuses and "online"/"offline" for campus sets.
+DISP-14  The demo table screen maps a post status to a tag type: published ->
+         success, draft -> gray, deleted -> danger.
+DISP-15  The schedule screen shows the selection line "Choose:<campus> /
+         <department> / <date>", a 200 px department tree aside and date tags of
+         60 px height where the active tag has the default type and all others
+         the "info" type.
+
+================================================================================
+6. LIMITS & CONSTRAINTS
+================================================================================
+LIM-01   API requests time out after 5000 ms.
+LIM-02   Any response whose body code is not 200 is treated as an error: the
+         body message is shown as an error toast for 5 seconds and the promise
+         is rejected.
+LIM-03   Transport-level errors show the error message as an error toast for
+         5 seconds.
+LIM-04   The campus list shows 10 rows per page and offers the page sizes
+         5, 10, 20, 30, 40, 50 and 100.
+LIM-05   The campus-set list shows 5 rows per page.
+LIM-06   The schedule date pagination shows 10 dates per page.
+LIM-07   The data dictionary list is not paginated.
+LIM-08   Sidebar and navbar are only available inside the authenticated layout;
+         the login and 404 screens are rendered without the shell.
+LIM-09   The dictionary import endpoint is the fixed URL
+         http://localhost:8202/admin/cmn/dict/importData.
+LIM-10   The API base URL comes from configuration (Vue 2: process.env.BASE_API,
+         Vue 3: import.meta.env.VITE_BASE_API) and is http://localhost in
+         development.
