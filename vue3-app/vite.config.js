@@ -14,7 +14,12 @@ export default defineConfig({
   },
   server: {
     port: 5173,
-    proxy: {}
+    proxy: {
+      // Spring Cloud gateway (service_gateway, server.port=80) routes /*/campus/**,
+      // /*/cmn/**, /*/user/** and /*/order/** to the backend services.
+      '/admin': { target: 'http://localhost:80', changeOrigin: true },
+      '/user': { target: 'http://localhost:80', changeOrigin: true }
+    }
   },
   build: {
     outDir: 'dist',
@@ -26,6 +31,19 @@ export default defineConfig({
     globals: true,
     include: ['src/**/*.spec.js'],
     setupFiles: ['./src/__tests__/setup.js'],
-    css: false
+    css: false,
+    coverage: {
+      provider: 'v8',
+      reporter: ['text', 'json-summary'],
+      reportsDirectory: './coverage',
+      include: [
+        'src/stores/**/*.js',
+        'src/utils/**/*.js',
+        'src/api/**/*.js',
+        'src/router/**/*.js',
+        'src/composables/**/*.js'
+      ],
+      thresholds: { lines: 80, functions: 80, statements: 80, branches: 70 }
+    }
   }
 })
