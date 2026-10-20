@@ -1,0 +1,166 @@
+<template>
+  <div class="app-container">
+    Campus Set List
+    <el-form :inline="true" class="demo-form-inline">
+      <el-form-item>
+        <el-input v-model="searchObj.campusname" placeholder="Campus Name" />
+      </el-form-item>
+      <el-form-item>
+        <el-input v-model="searchObj.campuscode" placeholder="Campus Code" />
+      </el-form-item>
+      <el-button type="primary" icon="el-icon-search" @click="getList()"
+        >Search</el-button
+      >
+    </el-form>
+
+    <div>
+      <el-button type="danger" size="small" @click="removeRows()"
+        >Delete All Chosen Records</el-button
+      >
+    </div>
+    <el-table
+      :data="list"
+      stripe
+      style="width: 100%"
+      @selection-change="handleSelectionChange"
+    >
+      <el-table-column type="selection" width="55" />
+      <!-- <el-table-column prop="index" label="No." width="50" /> -->
+      <el-table-column prop="campusname" label="Campus Name" />
+      <el-table-column prop="campuscode" label="Campus Code" />
+      <el-table-column prop="apiUrl" label="API Url" width="180" />
+      <el-table-column prop="contactsName" label="Contact (Name)" />
+      <el-table-column prop="contactsPhone" label="Contact (Phone)" />
+      <el-table-column label="Status" width="60">
+        <template #default="scope">
+          {{ scope.row.status === 1 ? "online" : "offline" }}
+        </template>
+      </el-table-column>
+      <el-table-column label="operations" width="280" align="center">
+        <template #default="scope">
+          <!-- Delete -->
+          <el-button
+            type="danger"
+            size="small"
+            icon="el-icon-delete"
+            @click="removeDataById(scope.row.id)"
+            >Delete</el-button
+          >
+          <!-- Lcok -->
+          <el-button
+            v-if="scope.row.status == 1"
+            type="primary"
+            size="small"
+            icon="el-icon-delete"
+            @click="lockCampusSet(scope.row.id, 0)"
+            >Lock</el-button
+          >
+          <!-- Unlock -->
+          <el-button
+            v-if="scope.row.status == 0"
+            type="danger"
+            size="small"
+            icon="el-icon-delete"
+            @click="lockCampusSet(scope.row.id, 1)"
+            >Unlock</el-button
+          >
+          <router-link :to="'/campusset/edit/' + scope.row.id">
+            <el-button
+              type="primary"
+              size="small"
+              icon="el-icon-edit"
+            ></el-button>
+          </router-link>
+        </template>
+      </el-table-column>
+    </el-table>
+    <!-- Pagination -->
+    <el-pagination
+      :current-page="page"
+      :page-size="limit"
+      :total="total"
+      style="padding:30px 0;text-align: center"
+      layout="total, prev, pager, next, jumper"
+      @current-change="getList"
+    />
+  </div>
+</template>
+<script setup>
+import { ref, reactive } from "vue";
+import { ElMessage, ElMessageBox } from "element-plus";
+import campusset from "@/api/campusset";
+
+const current = ref(1);
+const limit = ref(5);
+const searchObj = reactive({});
+const list = ref([]);
+const total = ref(0);
+const multipleSelection = ref(0);
+
+function getList(page = 1) {
+  current.value = page;
+  campusset
+    .getCampusSetList(current.value, limit.value, searchObj)
+    .then(response => {
+      list.value = response.data.records;
+      total.value = response.data.total;
+      console.log(response);
+    })
+    // was `.error(...)`, which is not part of the Promise API and threw a
+    // TypeError on every call; `.catch` is the intended behaviour
+    .catch(error => {
+      console.log(error);
+    });
+}
+
+function removeDataById(id) {
+  ElMessageBox.confirm("It will delete this record.", "Notice", {
+    confirmButtonText: "Yes",
+    cancelButtonText: "Cancel",
+    type: "warning"
+  }).then(() => {
+    campusset.deleteCampusSet(id).then(response => {
+      ElMessage({
+        type: "success",
+        message: "Deleted!"
+      });
+      getList(1);
+    });
+  });
+}
+
+function removeRows() {
+  ElMessageBox.confirm("It will delete all these chosen record.", "Notice", {
+    confirmButtonText: "Yes",
+    cancelButtonText: "Cancel",
+    type: "warning"
+  }).then(() => {
+    var idList = [];
+    for (var i = 0; i < multipleSelection.value.length; i++) {
+      var obj = multipleSelection.value[i];
+      var id = obj.id;
+      idList.push(id);
+    }
+    campusset.batchRemoveCampusSet(idList).then(result => {
+      ElMessage({
+        type: "success",
+        message: "Deleted!"
+      });
+      getList(1);
+    });
+  });
+}
+
+function handleSelectionChange(selection) {
+  console.log(selection);
+  multipleSelection.value = selection;
+}
+
+function lockCampusSet(id, status) {
+  campusset.lockCampusSet(id, status).then(response => {
+    getList();
+  });
+}
+
+getList();
+</script>

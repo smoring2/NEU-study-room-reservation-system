@@ -1,0 +1,88 @@
+Vue 2 -> Vue 3 migration progress
+Source app: finalproject/nustudy_frontend/nustudy_central_management_site (Vue 2.5.17)
+Target: vue3-app/ (Vue 3.5.44, Vite 6, Pinia 2, Vue Router 4, Element Plus 2)
+
+Target component count (find src -name '*.vue' | wc -l in the source app): 30
+Converted component count: 30
+
+Batch 1 - project scaffolding, styles, icons sprite, stores, router, permission guard, request interceptor
+  build: SUCCESS
+Batch 2 - components/{SvgIcon,Hamburger,Breadcrumb}, views/layout/** (Layout, AppMain, Navbar, Sidebar/{index,SidebarItem,Item,Link})
+  build: SUCCESS
+Batch 3 - views/{404,dashboard,login}, views/nested/** (7 files)
+  build: SUCCESS
+Batch 4 - views/dict/list, views/campus/{list,show,schedule}, views/campusSet/{list,add}, views/{table,tree,form}
+  build: SUCCESS
+
+npm run build => exit 0 (30/30 components compiled)
+
+Step 5.5 / 6.4 / 7.4 / 8.8 - Visual and Functional Feedback Loop (pixelmatch, 1280x720, 18 screenshot pairs)
+  iteration 1 (post component/store/router conversion): OVERALL visual similarity 0.7774
+    - fixes: Element Plus control metrics (component size 40px, button height/padding,
+      form-item 22px gutter + 40px label/content line-height, input wrapper padding,
+      table cell padding, pagination button size) in src/styles/element-plus-compat.scss
+    - fix: el-dialog override `margin: 0 auto` was resetting Element Plus'
+      --el-dialog-margin-top (15vh) -> split into margin-left/right
+    - fix: views/campusSet/list.vue rendered blank because the pre-existing
+      `.error(...)` chaining bug now threw during setup; the initial fetch was moved
+      into onMounted() to restore Vue 2's error-isolated created() semantics
+  iteration 2: OVERALL visual similarity 0.8643
+    - fix: el-menu hover/opened shade #001528 -> #263445 (Element UI derived it from
+      background-color as mix(#304156,#000,10%))
+    - fix: horizontal menu border colour #e6e6e6; sub-menu title padding-right 20px
+  iteration 3: OVERALL visual similarity 0.8685
+    - fix: Element Plus moved dialog padding onto .el-dialog; restored Element UI
+      header/body/footer section paddings
+  iteration 4 (final): OVERALL visual similarity 0.8730
+    - styling (per-pixel) similarity >= 0.96 on all 18 pairs; the residual gap is
+      concentrated in the edge-overlap "component similarity" sub-score, which is
+      highly sensitive to text anti-aliasing differences between the webpack and
+      Vite font rendering of the same CSS.
+  known limitation: Element Plus removed size="mini"; those buttons use size="small"
+    with the Element UI mini metrics, so the single genuine size="small" button
+    (dict import dialog "Click and upload") is 28px tall instead of 32px.
+  npm run build after all feedback-loop fixes: SUCCESS
+
+Step 3 / 10.5 - UI behaviour tests (Playwright chromium, real browser)
+  35 cases extracted -> ui_tests.md
+  Vue 2 validation run: 34/35 passed (97.14%) -> ui_tests_vue2.md (authoritative baseline);
+    CAMP-02 (state select dropdown) excluded - it needs dictionary data from the backend,
+    which is not reachable in this environment.
+  Vue 3 run, first attempt: 28/34 (82.35%). Regressions found and fixed:
+    - Sidebar/Link.vue: `<component v-bind="{is: RouterLink, to}">` no longer works in
+      Vue 3 (an `is` key inside v-bind is ignored), so no <a> was rendered and sidebar
+      child items did not navigate -> split into `:is="linkComponent(to)"` + v-bind props.
+    - views/campusSet/list.vue: the pre-existing `.error(...)` promise call threw a
+      TypeError that now aborted the component mount (empty table header, broken
+      confirm dialog) -> replaced with the intended `.catch(...)`.
+    Two assertions were made DOM-agnostic because Element Plus changed the markup
+    (non-filterable select placeholder is a span, not an input) and because Vue Router 4
+    only reacts to popstate (hash-only navigation in the test had to become an in-app click);
+    both adapted assertions were re-validated against the Vue 2 app.
+  Vue 3 final run: 34/34 passed (100.00%) -> ui_tests_vue3.md,
+    screenshots in after_migration/ui-behavior-tests/ (34 PNGs)
+  npm run build: SUCCESS
+
+Step 9 / 10 / 11 / 12 - tests, scoring and reports
+  Vitest: 77 tests in 5 files (stores, utils/filters, router, components, integration) - ALL PASS
+  Playwright: 80 tests (34 UI behaviour + flows + business rules + visual scoring + cross-browser + accessibility) - ALL PASS
+  Final visual scoring: overall 0.8770 (layout 0.9928 / component 0.6440 / styling 0.9943), 18/18 pairs, methodology pixelmatch-automated
+  npm run build: SUCCESS (exit 0); find src -name '*.vue' | wc -l = 30 (= source count)
+  Reports: feasibility-assessment.md, visual_verification.md, visual_scores.json,
+    after_migration/final-validation/comparison-report.txt, final_verification.md,
+    src/__tests__/traceability.txt and the six migration mapping documents.
+
+Step 13 - post-validation gap closing
+  Visual feedback loop iteration 6: fixed the collapsed el-select (249x40 + 15/30px
+    text inset), the zero-width sidebar svg icons (flex: none under the Element Plus
+    flex menu), inline-form gutters (14px), button alignment, bold (700) table
+    headers, the 42px loading spinner and the pagination layout (centred group,
+    13px font, 28px jumper/size-select, 36px buttons).
+    Result: overall 0.8904 (layout 0.9941 / component 0.6816 / styling 0.9954);
+    all 18/18 pairs now >= 0.80 (lowest campus/list.png 0.8121, was 0.7584).
+  Coverage: @vitest/coverage-v8 added with `npm run test:coverage` and thresholds;
+    new src/__tests__/api.spec.js -> 86 tests, 91.92% statements / 91.82% lines /
+    92.42% functions / 75.47% branches.
+  Backend integration: vite server proxy for /admin and /user -> http://localhost:80
+    (the Spring Cloud gateway); the gateway CorsConfig already allows all origins.
+  npm run build: SUCCESS; npm run test:coverage: PASS; npx playwright test: 80/80 PASS.

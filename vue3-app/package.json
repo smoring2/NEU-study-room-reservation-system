@@ -1,0 +1,41 @@
+{
+  "name": "nustudy-central-management-site",
+  "version": "4.0.0",
+  "private": true,
+  "type": "module",
+  "description": "NEU Study Central Server Management System - Vue 3 migration of vue-admin-template",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test:unit": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "axios": "^1.13.1",
+    "element-plus": "^2.11.7",
+    "js-cookie": "^3.0.7",
+    "normalize.css": "^8.0.1",
+    "nprogress": "^0.2.0",
+    "path-browserify": "^1.0.1",
+    "path-to-regexp": "^6.3.0",
+    "pinia": "^2.3.1",
+    "vue": "^3.5.22",
+    "vue-router": "^4.6.4"
+  },
+  "devDependencies": {
+    "@pinia/testing": "^0.1.7",
+    "@playwright/test": "^1.56.0",
+    "@vitejs/plugin-vue": "^5.2.4",
+    "@vitejs/plugin-vue-jsx": "^4.2.0",
+    "@vitest/coverage-v8": "^5.0.5",
+    "@vue/test-utils": "^2.4.6",
+    "jsdom": "^26.0.0",
+    "pixelmatch": "^5.3.0",
+    "pngjs": "^7.0.0",
+    "sass": "^1.93.2",
+    "vite": "^6.4.3",
+    "vitest": "^5.0.5"
+  }
+}

@@ -1,0 +1,371 @@
+{
+  "baseUrl": "http://localhost:5173",
+  "label": "Vue 3.5.44 migrated application (vite dev server at http://localhost:5173)",
+  "total": 34,
+  "passed": 34,
+  "failed": 0,
+  "success_rate": 100,
+  "seconds": 96.9,
+  "results": [
+    {
+      "id": "LOGIN-01",
+      "group": "Login",
+      "action": "Open the application without an Admin-Token cookie",
+      "expected": "The login screen is shown and the URL carries the /login route with a redirect query",
+      "passed": true,
+      "failures": [],
+      "pageErrors": [],
+      "screenshot": "after_migration/ui-behavior-tests/LOGIN-01.png"
+    },
+    {
+      "id": "LOGIN-02",
+      "group": "Login",
+      "action": "Inspect the login form on load",
+      "expected": "The title \"vue-admin-template\" is shown and username/password are pre-filled with \"admin\"",
+      "passed": true,
+      "failures": [],
+      "pageErrors": [],
+      "screenshot": "after_migration/ui-behavior-tests/LOGIN-02.png"
+    },
+    {
+      "id": "LOGIN-03",
+      "group": "Login",
+      "action": "Read the tips line under the login form",
+      "expected": "It advertises \"username: admin\" and \"password: admin\"",
+      "passed": true,
+      "failures": [],
+      "pageErrors": [],
+      "screenshot": "after_migration/ui-behavior-tests/LOGIN-03.png"
+    },
+    {
+      "id": "LOGIN-04",
+      "group": "Login",
+      "action": "Click the eye icon next to the password field",
+      "expected": "The password input switches away from type \"password\" so the value becomes readable",
+      "passed": true,
+      "failures": [],
+      "pageErrors": [],
+      "screenshot": "after_migration/ui-behavior-tests/LOGIN-04.png"
+    },
+    {
+      "id": "LOGIN-05",
+      "group": "Login",
+      "action": "Enter the username \"nobody\" and submit the login form",
+      "expected": "The validation error \"Please enter correct username\" is shown and the route stays on /login",
+      "passed": true,
+      "failures": [],
+      "pageErrors": [],
+      "screenshot": "after_migration/ui-behavior-tests/LOGIN-05.png"
+    },
+    {
+      "id": "LOGIN-06",
+      "group": "Login",
+      "action": "Enter a password shorter than 5 characters and submit the login form",
+      "expected": "The validation error \"Password cannot be less than 5 characters\" is shown",
+      "passed": true,
+      "failures": [],
+      "pageErrors": [],
+      "screenshot": "after_migration/ui-behavior-tests/LOGIN-06.png"
+    },
+    {
+      "id": "LOGIN-07",
+      "group": "Login",
+      "action": "Submit the pre-filled login form",
+      "expected": "The Admin-Token cookie is written and the dashboard is shown inside the layout shell",
+      "passed": true,
+      "failures": [],
+      "pageErrors": [],
+      "screenshot": "after_migration/ui-behavior-tests/LOGIN-07.png"
+    },
+    {
+      "id": "LOGIN-08",
+      "group": "Login",
+      "action": "Open /#/login while holding a valid Admin-Token cookie",
+      "expected": "The guard redirects away from the login screen to the dashboard",
+      "passed": true,
+      "failures": [],
+      "pageErrors": [],
+      "screenshot": "after_migration/ui-behavior-tests/LOGIN-08.png"
+    },
+    {
+      "id": "DASH-01",
+      "group": "Dashboard",
+      "action": "Open the dashboard as the authenticated admin",
+      "expected": "The page prints \"name:admin\" and a roles line",
+      "passed": true,
+      "failures": [],
+      "pageErrors": [],
+      "screenshot": "after_migration/ui-behavior-tests/DASH-01.png"
+    },
+    {
+      "id": "DASH-02",
+      "group": "Dashboard",
+      "action": "Inspect the layout shell on the dashboard",
+      "expected": "A 180px dark sidebar (#304156) and a 50px navbar are rendered",
+      "passed": true,
+      "failures": [],
+      "pageErrors": [],
+      "screenshot": "after_migration/ui-behavior-tests/DASH-02.png"
+    },
+    {
+      "id": "NAV-01",
+      "group": "Navbar",
+      "action": "Click the hamburger icon in the navbar",
+      "expected": "The sidebar collapses to 36px and the sidebarStatus cookie becomes 1",
+      "passed": true,
+      "failures": [],
+      "pageErrors": [],
+      "screenshot": "after_migration/ui-behavior-tests/NAV-01.png"
+    },
+    {
+      "id": "NAV-02",
+      "group": "Navbar",
+      "action": "Click the hamburger icon twice",
+      "expected": "The sidebar collapses and then expands back to 180px",
+      "passed": true,
+      "failures": [],
+      "pageErrors": [],
+      "screenshot": "after_migration/ui-behavior-tests/NAV-02.png"
+    },
+    {
+      "id": "NAV-03",
+      "group": "Navbar",
+      "action": "Click the avatar in the navbar",
+      "expected": "A dropdown opens offering \"Home\" and \"LogOut\"",
+      "passed": true,
+      "failures": [],
+      "pageErrors": [],
+      "screenshot": "after_migration/ui-behavior-tests/NAV-03.png"
+    },
+    {
+      "id": "NAV-04",
+      "group": "Navbar",
+      "action": "Open the avatar dropdown and click \"LogOut\"",
+      "expected": "The Admin-Token cookie is removed and the login screen is shown again",
+      "passed": true,
+      "failures": [],
+      "pageErrors": [],
+      "screenshot": "after_migration/ui-behavior-tests/NAV-04.png"
+    },
+    {
+      "id": "NAV-05",
+      "group": "Navbar",
+      "action": "Open the avatar dropdown and click \"Home\"",
+      "expected": "The application navigates to the dashboard",
+      "passed": true,
+      "failures": [],
+      "pageErrors": [
+        "AxiosError: Network Error"
+      ],
+      "screenshot": "after_migration/ui-behavior-tests/NAV-05.png"
+    },
+    {
+      "id": "SIDE-01",
+      "group": "Sidebar",
+      "action": "Inspect the sidebar entries",
+      "expected": "The sub-menus \"Data Management\" and \"Campus set\" are listed and hidden routes are not",
+      "passed": true,
+      "failures": [],
+      "pageErrors": [],
+      "screenshot": "after_migration/ui-behavior-tests/SIDE-01.png"
+    },
+    {
+      "id": "SIDE-02",
+      "group": "Sidebar",
+      "action": "Expand \"Campus set\" in the sidebar",
+      "expected": "The children \"Campus Set List\", \"Campus Set Add\" and \"Campus List\" are shown",
+      "passed": true,
+      "failures": [],
+      "pageErrors": [],
+      "screenshot": "after_migration/ui-behavior-tests/SIDE-02.png"
+    },
+    {
+      "id": "SIDE-03",
+      "group": "Sidebar",
+      "action": "Expand \"Campus set\" and click \"Campus Set Add\"",
+      "expected": "The application navigates to /campusset/add and the add form is shown",
+      "passed": true,
+      "failures": [],
+      "pageErrors": [],
+      "screenshot": "after_migration/ui-behavior-tests/SIDE-03.png"
+    },
+    {
+      "id": "SIDE-04",
+      "group": "Sidebar",
+      "action": "Expand \"Data Management\" and click \"Data Dict\"",
+      "expected": "The application navigates to /cmn/list and the dictionary toolbar is shown",
+      "passed": true,
+      "failures": [],
+      "pageErrors": [
+        "AxiosError: Network Error"
+      ],
+      "screenshot": "after_migration/ui-behavior-tests/SIDE-04.png"
+    },
+    {
+      "id": "CRUMB-01",
+      "group": "Breadcrumb",
+      "action": "Navigate to /#/campusset/list and read the breadcrumb",
+      "expected": "The breadcrumb starts with \"Dashboard\" and ends with the plain-text current page",
+      "passed": true,
+      "failures": [],
+      "pageErrors": [],
+      "screenshot": "after_migration/ui-behavior-tests/CRUMB-01.png"
+    },
+    {
+      "id": "CRUMB-02",
+      "group": "Breadcrumb",
+      "action": "Navigate from /#/campusset/list to /#/cmn/list",
+      "expected": "The breadcrumb updates to the new route",
+      "passed": true,
+      "failures": [],
+      "pageErrors": [
+        "AxiosError: Network Error"
+      ],
+      "screenshot": "after_migration/ui-behavior-tests/CRUMB-02.png"
+    },
+    {
+      "id": "DICT-01",
+      "group": "Data Dictionary",
+      "action": "Open /#/cmn/list",
+      "expected": "The Export and Import toolbar buttons and the four table columns are shown",
+      "passed": true,
+      "failures": [],
+      "pageErrors": [
+        "AxiosError: Network Error"
+      ],
+      "screenshot": "after_migration/ui-behavior-tests/DICT-01.png"
+    },
+    {
+      "id": "DICT-02",
+      "group": "Data Dictionary",
+      "action": "Click the \"Import\" toolbar button",
+      "expected": "The \"Import\" dialog opens with the upload button and the 500kb Excel tip",
+      "passed": true,
+      "failures": [],
+      "pageErrors": [
+        "AxiosError: Network Error"
+      ],
+      "screenshot": "after_migration/ui-behavior-tests/DICT-02.png"
+    },
+    {
+      "id": "DICT-03",
+      "group": "Data Dictionary",
+      "action": "Open the Import dialog and click \"Cancel\"",
+      "expected": "The dialog closes again",
+      "passed": true,
+      "failures": [],
+      "pageErrors": [
+        "AxiosError: Network Error"
+      ],
+      "screenshot": "after_migration/ui-behavior-tests/DICT-03.png"
+    },
+    {
+      "id": "CSET-01",
+      "group": "Campus Set",
+      "action": "Open /#/campusset/list",
+      "expected": "The heading text, both search inputs, the batch delete button and the table columns are shown",
+      "passed": true,
+      "failures": [],
+      "pageErrors": [],
+      "screenshot": "after_migration/ui-behavior-tests/CSET-01.png"
+    },
+    {
+      "id": "CSET-02",
+      "group": "Campus Set",
+      "action": "Type a campus name filter on /#/campusset/list",
+      "expected": "The typed value is kept in the search input",
+      "passed": true,
+      "failures": [],
+      "pageErrors": [],
+      "screenshot": "after_migration/ui-behavior-tests/CSET-02.png"
+    },
+    {
+      "id": "CSET-03",
+      "group": "Campus Set",
+      "action": "Click \"Delete All Chosen Records\" with no row selected",
+      "expected": "The confirmation dialog \"It will delete all these chosen record.\" opens with Yes/Cancel",
+      "passed": true,
+      "failures": [],
+      "pageErrors": [],
+      "screenshot": "after_migration/ui-behavior-tests/CSET-03.png"
+    },
+    {
+      "id": "CSET-04",
+      "group": "Campus Set",
+      "action": "Open /#/campusset/add",
+      "expected": "The five labelled fields and the Save button are shown",
+      "passed": true,
+      "failures": [],
+      "pageErrors": [],
+      "screenshot": "after_migration/ui-behavior-tests/CSET-04.png"
+    },
+    {
+      "id": "CSET-05",
+      "group": "Campus Set",
+      "action": "Fill the campus-set add form",
+      "expected": "All five inputs keep the typed values",
+      "passed": true,
+      "failures": [],
+      "pageErrors": [],
+      "screenshot": "after_migration/ui-behavior-tests/CSET-05.png"
+    },
+    {
+      "id": "CAMP-01",
+      "group": "Campus",
+      "action": "Open /#/campusset/campus/list",
+      "expected": "The State/City selects, the campus filter, both buttons and the table columns are shown",
+      "passed": true,
+      "failures": [],
+      "pageErrors": [
+        "AxiosError: Network Error",
+        "AxiosError: Network Error"
+      ],
+      "screenshot": "after_migration/ui-behavior-tests/CAMP-01.png"
+    },
+    {
+      "id": "CAMP-03",
+      "group": "Campus",
+      "action": "Open the campus list while the backend is unreachable",
+      "expected": "The table keeps its loading state and the screen still renders the filters",
+      "passed": true,
+      "failures": [],
+      "pageErrors": [
+        "AxiosError: Network Error",
+        "AxiosError: Network Error"
+      ],
+      "screenshot": "after_migration/ui-behavior-tests/CAMP-03.png"
+    },
+    {
+      "id": "CAMP-04",
+      "group": "Campus",
+      "action": "Open /#/campusset/campus/schedule/1000_0",
+      "expected": "The \"Choose:\" selection line, the department tree aside and the schedule table are shown",
+      "passed": true,
+      "failures": [],
+      "pageErrors": [
+        "AxiosError: Network Error"
+      ],
+      "screenshot": "after_migration/ui-behavior-tests/CAMP-04.png"
+    },
+    {
+      "id": "404-01",
+      "group": "Not Found",
+      "action": "Open a route that does not exist",
+      "expected": "The 404 screen with \"OOPS!\" and the \"Back to Home\" link is shown",
+      "passed": true,
+      "failures": [],
+      "pageErrors": [],
+      "screenshot": "after_migration/ui-behavior-tests/404-01.png"
+    },
+    {
+      "id": "404-02",
+      "group": "Not Found",
+      "action": "Inspect the URL after requesting an unknown route",
+      "expected": "The catch-all route has redirected the browser to /404",
+      "passed": true,
+      "failures": [],
+      "pageErrors": [],
+      "screenshot": "after_migration/ui-behavior-tests/404-02.png"
+    }
+  ]
+}

@@ -1,0 +1,171 @@
+TRACEABILITY MATRIX
+===================
+Maps every business rule (business_rules.txt), application flow
+(application_flows.txt), UI behaviour test (ui_tests_vue2.md) and visual
+regression screenshot pair (before_migration/ <-> after_migration/final-validation/)
+to the test cases that verify it.
+
+Test suites
+-----------
+U  = Vitest unit/integration  (src/__tests__/*.spec.js, 77 tests)
+E  = Playwright E2E           (e2e/**/*.spec.js, 80 tests)
+B  = Playwright UI behaviour  (e2e/ui-behavior/cases.mjs replayed by
+                               e2e/ui-behavior/ui-behavior.spec.js and
+                               scripts/run-ui-tests.mjs, 34 cases)
+V  = pixelmatch visual score  (scripts/compare.mjs -> visual_scores.json)
+
+1. BUSINESS RULES -> TESTS
+--------------------------
+AUTH-01  U stores.spec "Login writes the token..."            | E business-rules "AUTH-01/AUTH-02" | B LOGIN-01, LOGIN-07
+AUTH-02  U stores.spec "Login writes the token..."            | E business-rules "AUTH-01/AUTH-02" | B LOGIN-07
+AUTH-03  U integration.spec "A4/AUTH-03", "/login is whitelisted" | E business-rules "AUTH-03", flows A4 | B LOGIN-01
+AUTH-04  U integration.spec "A5/AUTH-04"                      | E flows A5                          | B LOGIN-08
+AUTH-05  U components.spec "AUTH-05: a redirect query ..."    | E flows A4                          | B LOGIN-01
+AUTH-06  U integration.spec "A1/AUTH-06", "not reloaded"      | E flows A1                          | B DASH-01
+AUTH-07  U integration.spec "AUTH-07: a failing profile load" | -                                   | -
+AUTH-08  U stores.spec "GetInfo fills name, roles and avatar" | E business-rules "AUTH-08/DISP-06"   | B DASH-01
+AUTH-09  U stores.spec "LogOut clears the token..."           | E business-rules "AUTH-09", flows A6 | B NAV-04
+AUTH-10  U integration.spec "AUTH-10: the token header..."    | -                                   | -
+AUTH-11  U integration.spec "AUTH-11/H3: session codes"       | -                                   | -
+AUTH-12  U integration.spec "AUTH-12: every admin endpoint"   | -                                   | -
+VAL-01   U utils.spec "VAL-01: only admin and editor"         | E business-rules "VAL-01"            | B LOGIN-05
+VAL-02   U components.spec (login submit), utils.spec         | E business-rules "VAL-02"            | B LOGIN-06
+VAL-03   U components.spec "VAL-04 ... pre-filled"            | E flows A2, A3                       | B LOGIN-05, LOGIN-06
+VAL-04   U components.spec "VAL-04: the login form..."        | E business-rules "VAL-04"            | B LOGIN-02, LOGIN-03
+VAL-05   -                                                    | E business-rules "VAL-05"            | B DICT-02
+VAL-06   U components.spec "the campus-set form renders..."   | E flows C3                           | B CSET-04, CSET-05
+VAL-07   -                                                    | E business-rules "VAL-07", flows C5/C6 | B CSET-03
+DATA-01  U components.spec "the campus-set form renders..."   | E flows C1                           | B CSET-01, CSET-04
+DATA-02  -                                                    | E flows D1                           | B CAMP-01
+DATA-03  -                                                    | E flows D1                           | B CAMP-01
+DATA-04  U integration.spec "DATA-04/DATA-06"                 | E flows E1                           | B DICT-01
+DATA-05  -                                                    | E flows E1                           | B DICT-01
+DATA-06  U integration.spec "DATA-04/DATA-06"                 | E flows D1                           | B CAMP-02 (excluded: needs backend data)
+DATA-07  U components.spec (add renders), integration.spec verbs | E flows C3/C4                     | B CSET-04
+DATA-08  -                                                    | -                                    | V campus/* pairs
+DATA-09  -                                                    | E flows D4                           | B CAMP-04
+DATA-10  -                                                    | E flows D4                           | B CAMP-04
+FLOW-01  -                                                    | E flows D1/D2                        | B CAMP-01
+FLOW-02  U integration.spec "FLOW-02/FLOW-03/FLOW-04"         | E flows C7                           | B CSET-01
+FLOW-03  U integration.spec "FLOW-02/FLOW-03/FLOW-04"         | E flows C5                           | B CSET-01
+FLOW-04  U integration.spec "FLOW-02/FLOW-03/FLOW-04"         | E flows C6                           | B CSET-03
+FLOW-05  U components.spec (add form)                         | E flows C3                           | B CSET-05
+FLOW-06  -                                                    | E flows D1                           | B CAMP-02 (excluded)
+FLOW-07  -                                                    | E flows E2                           | B DICT-02, DICT-03
+FLOW-08  -                                                    | E flows E3                           | B DICT-01
+FLOW-09  -                                                    | E flows D4                           | B CAMP-04
+FLOW-10  -                                                    | E flows D4                           | B CAMP-04
+FLOW-11  -                                                    | E flows D4                           | B CAMP-04
+FLOW-12  U components.spec (campus show renders Back)         | -                                    | -
+FLOW-13  U stores.spec "toggleSideBar", components.spec hamburger | E flows B3                      | B NAV-01, NAV-02
+FLOW-14  U stores.spec "closeSideBar"/"toggleDevice", components.spec resize | -                    | -
+DISP-01  U components.spec "DISP-01: the sidebar menu carries..." | E business-rules "DISP-01/DISP-02" | B DASH-02 | V dashboard/*
+DISP-02  U components.spec "DISP-02/FLOW-13"                  | E business-rules "DISP-01/DISP-02"   | B NAV-01 | V dashboard/sidebar-collapsed
+DISP-03  U router.spec "DISP-03" (x2), components.spec Sidebar | E business-rules "DISP-03"           | B SIDE-01, SIDE-02
+DISP-04  U components.spec "Breadcrumb (DISP-04)" (x2)        | E business-rules "DISP-04", flows B2 | B CRUMB-01, CRUMB-02
+DISP-05  U components.spec "DISP-05: the navbar renders..."   | E flows A6                           | B NAV-03, NAV-05 | V dashboard/avatar-dropdown
+DISP-06  U components.spec "DISP-06: the dashboard prints..." | E business-rules "AUTH-08/DISP-06"    | B DASH-01
+DISP-07  -                                                    | E flows B1                           | V (all page pairs)
+DISP-08  -                                                    | E flows B1                           | -
+DISP-09  U components.spec "DISP-09" (x2)                     | E business-rules "DISP-09/DISP-10", flows B5 | B 404-01, 404-02 | V notfound/404
+DISP-10  U components.spec "DISP-10: clicking the eye icon"   | E business-rules "DISP-09/DISP-10"    | B LOGIN-02, LOGIN-04 | V login/*
+DISP-11  -                                                    | E business-rules "LIM-04"             | B CSET-01, CAMP-01
+DISP-12  -                                                    | E flows D1                            | B CAMP-01
+DISP-13  -                                                    | E business-rules "DISP-13"            | B CSET-01
+DISP-14  U utils.spec "statusFilter" (x2)                     | -                                     | -
+DISP-15  -                                                    | E flows D4                            | B CAMP-04 | V campus/schedule
+LIM-01   U integration.spec "LIM-01/LIM-10"                   | -                                     | -
+LIM-02   U integration.spec "H1/LIM-02"                       | -                                     | -
+LIM-03   U integration.spec "H2/LIM-03"                       | E business-rules "H2/LIM-03"          | B CAMP-03
+LIM-04   -                                                    | E business-rules "LIM-04"             | B CAMP-01
+LIM-05   -                                                    | E flows C1                            | B CSET-01
+LIM-06   -                                                    | E flows D4                            | B CAMP-04
+LIM-07   -                                                    | E flows E1                            | B DICT-01
+LIM-08   U router.spec "AUTH-03/LIM-08"                       | E business-rules "LIM-08"             | B LOGIN-01
+LIM-09   -                                                    | E business-rules "VAL-05"             | B DICT-02
+LIM-10   U integration.spec "LIM-01/LIM-10"                   | -                                     | -
+
+2. APPLICATION FLOWS -> TESTS
+-----------------------------
+A1 successful login              U integration.spec "A1/AUTH-06" | E flows "A1" | B LOGIN-07
+A2 invalid username              U utils.spec VAL-01             | E flows "A2" | B LOGIN-05
+A3 short password                U utils.spec/components.spec    | E flows "A3" | B LOGIN-06
+A4 guard redirect                U integration.spec "A4/AUTH-03" | E flows "A4" | B LOGIN-01
+A5 authenticated on /login       U integration.spec "A5/AUTH-04" | E flows "A5" | B LOGIN-08
+A6 logout                        U stores.spec LogOut            | E flows "A6" | B NAV-04
+A7 forced logout (50008/12/14)   U integration.spec "AUTH-11/H3" | -            | -
+B1 sidebar navigation            U components.spec Sidebar       | E flows "B1" | B SIDE-01..SIDE-04
+B2 breadcrumb                    U components.spec Breadcrumb    | E flows "B2" | B CRUMB-01, CRUMB-02
+B3 collapsing the sidebar        U stores.spec toggleSideBar     | E flows "B3" | B NAV-01, NAV-02
+B4 responsive/mobile             U stores.spec toggleDevice + components.spec resize | - | -
+B5 unknown route                 U router.spec "B5" (x2)         | E flows "B5" | B 404-01, 404-02
+C1 browse campus sets            -                              | E flows "C1/C3" | B CSET-01
+C2 search campus sets            -                              | -            | B CSET-02
+C3 create a campus set           U components.spec add form      | E flows "C1/C3" | B CSET-04, CSET-05
+C4 edit a campus set             U router.spec edit route        | -            | -
+C5 delete one campus set         U integration.spec verbs        | E flows "C5/C6" | B CSET-03
+C6 delete selected campus sets   U integration.spec verbs        | E flows "C5/C6" | B CSET-03
+C7 lock / unlock                 U integration.spec verbs        | E flows "C5/C6" | B CSET-01
+D1 browse/filter campuses        -                              | E flows "D1" | B CAMP-01, CAMP-03
+D2 campus online/offline         -                              | E flows "D1" | B CAMP-01
+D3 campus details                U components.spec (show)        | -            | -
+D4 campus schedule               -                              | E flows "D4" | B CAMP-04
+E1 browse the dictionary         U integration.spec DATA-04      | E flows "E1/E2/E3" | B DICT-01
+E2 import dictionary data        -                              | E flows "E1/E2/E3" | B DICT-02, DICT-03
+E3 export dictionary data        -                              | E flows "E1/E2/E3" | B DICT-01
+F1 demo form                     U components.spec "F1"          | -            | -
+G1 demo tree filter              U components.spec "G1"          | -            | -
+H1 business error                U integration.spec "H1/LIM-02"  | -            | -
+H2 transport error               U integration.spec "H2/LIM-03"  | E business-rules "H2/LIM-03" | B CAMP-03
+H3 session error                 U integration.spec "AUTH-11/H3" | -            | -
+
+3. UI BEHAVIOUR CASES -> EVIDENCE
+---------------------------------
+All 34 baseline cases from ui_tests_vue2.md are executed against the running
+Vue 3 application and recorded in ui_tests_vue3.md, each with a screenshot in
+after_migration/ui-behavior-tests/<ID>.png and the Vue 2 counterpart in
+before_migration/ui-behavior-tests/<ID>.png. They are additionally replayed as
+individual Playwright tests by e2e/ui-behavior/ui-behavior.spec.js.
+
+LOGIN-01..08  CSET-01..05   DASH-01..02   CAMP-01, CAMP-03, CAMP-04
+NAV-01..05    SIDE-01..04   CRUMB-01..02  DICT-01..03   404-01..02
+Excluded (failed on Vue 2, needs backend data): CAMP-02.
+
+4. SCREENSHOT PAIRS -> SCORES
+-----------------------------
+Each pair below is scored by scripts/compare.mjs (pixelmatch, threshold 0.1,
+1280x720, not fullPage) and asserted by e2e/visual/similarity-scoring.spec.js.
+Scores live in visual_scores.json; per-pair diff images in
+after_migration/final-validation/_diffs/.
+
+before_migration/login/default.png              <-> after_migration/final-validation/login/default.png
+before_migration/login/filled.png               <-> .../login/filled.png
+before_migration/login/password-revealed.png    <-> .../login/password-revealed.png
+before_migration/login/validation-error.png     <-> .../login/validation-error.png
+before_migration/guard/redirect-to-login.png    <-> .../guard/redirect-to-login.png
+before_migration/dashboard/default.png          <-> .../dashboard/default.png
+before_migration/dashboard/sidebar-collapsed.png<-> .../dashboard/sidebar-collapsed.png
+before_migration/dashboard/avatar-dropdown.png  <-> .../dashboard/avatar-dropdown.png
+before_migration/dict/list.png                  <-> .../dict/list.png
+before_migration/dict/import-dialog.png         <-> .../dict/import-dialog.png
+before_migration/campusset/list.png             <-> .../campusset/list.png
+before_migration/campusset/add.png              <-> .../campusset/add.png
+before_migration/campusset/add-filled.png       <-> .../campusset/add-filled.png
+before_migration/campusset/edit.png             <-> .../campusset/edit.png
+before_migration/campus/list.png                <-> .../campus/list.png
+before_migration/campus/list-state-dropdown.png <-> .../campus/list-state-dropdown.png
+before_migration/campus/schedule.png            <-> .../campus/schedule.png
+before_migration/notfound/404.png               <-> .../notfound/404.png
+
+5. VUE 3 MIGRATION PATTERNS -> TESTS
+------------------------------------
+Options API -> <script setup>      U components.spec "no component exposes Vue 2 Options API members"
+<script setup> adoption            U components.spec "every component is compiled from <script setup>"
+Vuex -> Pinia                      U stores.spec (11 tests), integration.spec guard/interceptor
+mixin -> composable                U components.spec "the resize handler composable registers and cleans up"
+filter -> function                 U utils.spec "statusFilter" (x2)
+vue-router 3 -> 4                  U router.spec (10 tests)
+functional/JSX -> SFC              U components.spec "MenuItem (was a functional JSX component)"
+<component :is> + RouterLink       U components.spec "AppLink renders ..." (x2), B SIDE-03, SIDE-04
+el-menu props -> CSS variables     U components.spec "DISP-01 ... theme variables", E business-rules "DISP-01/DISP-02"
+setup-binding/component shadowing  U components.spec "the Sidebar component is not shadowed"
