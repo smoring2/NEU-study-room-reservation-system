@@ -22,7 +22,8 @@
                             <label class="col-sm-2 control-label">Signed key:</label>
 
                             <div class="col-sm-10">
-                                <input type="text" name="signKey" id="signKey" th:value="${campusSet.signKey}" class="form-control"/>
+                                <input type="text" id="signKey" value="••••••••••••••••" class="form-control" readonly="readonly" disabled="disabled"/>
+                                <p class="help-block">The signing key is hidden for security. It is generated automatically when a campus is created.</p>
                             </div>
                         </div>
                         <div class="hr-line-dashed"></div>
@@ -52,12 +53,10 @@
         $('#ec').validate({
             rules:{
                 hoscode:"required",
-                signKey:"required",
                 apiUrl:"required",
             },
             messages:{
                 hoscode:"必须输入",
-                signKey:"必须输入",
                 apiUrl:"必须输入"
             },
             submitHandler: function(form) {
