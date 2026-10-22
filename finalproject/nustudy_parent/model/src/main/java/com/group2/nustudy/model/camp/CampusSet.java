@@ -3,6 +3,7 @@ package com.group2.nustudy.model.camp;
 import com.group2.nustudy.model.base.BaseEntity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -47,6 +48,7 @@ public class CampusSet extends BaseEntity {
 
 	@ApiModelProperty(value = "sign Key")
 	@TableField("sign_key")
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private String signKey;
 
 	@ApiModelProperty(value = "contacts Name")
@@ -73,4 +75,3 @@ public class CampusSet extends BaseEntity {
 		return apiUrl;
 	}
 }
-
